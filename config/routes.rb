@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     sign_up: 'signup'
   }
 
-  root 'episodes#next'
+  root 'episodes#latest'
 end

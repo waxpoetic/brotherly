@@ -1,6 +1,8 @@
 class Admin::BaseController < ApplicationController
   include Pundit
 
+  layout :admin
+
   before_action :authenticate_and_authorize
 
   rescue_from Pundit::NotAuthorizedError, with: :redirect_to_login

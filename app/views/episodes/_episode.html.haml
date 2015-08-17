@@ -1,0 +1,23 @@
+.episode{ itemid: episode.id }
+  .title.row
+    .large-12.columns
+      %h2= episode.name
+  .media.row
+    .video.large-8.columns
+      - cache "episodes/video/#{episode.id}" do
+        - if episode.youtube_url.present?
+          <iframe id="stream" width="560" height="315" src="#{episode.youtube_url}?autoplay" frameborder="0" allowfullscreen>Connecting to Live Event...</iframe>
+    .sidebar.large-4.columns
+      - cache "episodes/future/#{episode.id}" do
+        - if episode.future?
+          .row
+            .large-12.columns
+              %h2 Go!
+              = link_to 'Get Tickets', episode.eventbrite_url, target: '_blank', class: 'button success'
+      - cache performances do
+        .row
+          .large-12.columns
+            %h2 Artists
+              - performances.each do |performance|
+                - cache performance do
+                  = render 'performances/summary', performance: performance

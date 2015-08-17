@@ -9,5 +9,21 @@
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    = yield
+  %body.frontend
+    %header
+      %nav.top-bar{ 'data-topbar' => true }
+        %ul.title-area
+          %li.name
+            %h1= link_to 'brother.ly', root_path
+        %section.top-bar-section
+          %ul.right
+            %li= nav_link 'Next Episode', root_path
+            %li= nav_link 'Past Episodes', episodes_path
+
+    %main{ id: page_name, class: section_name }
+      = yield
+
+    %footer
+      %p.copyright
+        Copyright &copy; 2015
+        = link_to 'Wax Poetic Music', 'http://waxpoeticrecords.com'

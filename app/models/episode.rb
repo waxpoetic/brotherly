@@ -1,10 +1,15 @@
 class Episode < ActiveRecord::Base
-  has_many :artists, through: :performances
+  has_many :performances
+
+  attachment :video_recording
+  attachment :audio_recording
 
   after_create :promote
 
-  def self.next
-    order(:starts_at).first
+  scope :latest, -> { order :starts_at }
+
+  def future?
+    starts_at >= Time.current
   end
 
   private

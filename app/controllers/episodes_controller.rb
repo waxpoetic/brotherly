@@ -1,9 +1,7 @@
 class EpisodesController < ApplicationController
-  resource :episode, order: :starts_at do
-    collection :index, :next
-  end
+  resource :episode, scope: :latest
 
-  def next
+  def latest
     respond_with episodes.first
   end
 

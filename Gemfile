@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'haml-rails'
 gem 'pundit'
+gem 'refile'
 
 gem 'sass-rails'
 gem 'coffee-rails'
