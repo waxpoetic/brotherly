@@ -28,7 +28,7 @@ module Brotherly
     config.app_generators.scaffold_controller :responders_controller
 
     # Use EST as our local time zone. (UTC is default)
-    #config.time_zone = 'Eastern Time (US & Canada)'
+    config.time_zone = 'Eastern Time (US & Canada)'
 
     # Raise errors during transactional callback methods. This will be
     # the default in upcoming versions of Rails.
@@ -51,7 +51,12 @@ module Brotherly
     config.explicit = 'clean'
     config.capacity = 200
 
+    config.aws_region_name = 'us-east-1a'
+    config.aws_bucket_name = 'files.brother.ly'
+
     config.eager_load_namespaces << Eventbrite
     config.eager_load_namespaces << Youtube
+
+    config.asset_host = '//files.brother.ly'
   end
 end
