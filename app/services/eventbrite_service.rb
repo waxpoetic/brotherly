@@ -1,4 +1,5 @@
 require 'service'
+require 'eventbrite'
 
 class EventbriteService < Service
   remote Eventbrite::Event
@@ -9,7 +10,7 @@ class EventbriteService < Service
   CATEGORY_ID = 0
   SUBCATEGORY_ID = 0
 
-  after_create :create_ticket_class
+  after_create :create_ticket_class, :publish_event
 
   def attributes
     episode.attributes.slice(
@@ -37,8 +38,12 @@ class EventbriteService < Service
 
   private
 
+  def publish_event
+    remote.publish!
+  end
+
   def create_ticket_class
-    remote.ticket_classes.create(
+    remote.create_ticket_class(
       name: 'General Admission',
       description: 'It gets you drunk',
       cost: 'USD1000',

@@ -2,10 +2,15 @@ require 'service'
 
 class YoutubeService < Service
   remote Youtube::Video
+  local :episode
+
+  CATEGORY = 'Music'
 
   def attributes
-    local.attributes.slice(
-      :name, :starts_at, :ends_at
+    episode.attributes.slice(:description).merge(
+      category: CATEGORY,
+      keywords: Rails.application.config.keywords,
+      title: episode.name
     )
   end
 

@@ -19,6 +19,9 @@ end
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env
 
+require 'eventbrite'
+require 'youtube'
+
 module Brotherly
   class Application < Rails::Application
     # Use the responders controller from the responders gem
@@ -47,5 +50,8 @@ module Brotherly
     config.keywords = "live, electronic, music, philadelphia"
     config.explicit = 'clean'
     config.capacity = 200
+
+    config.eager_load_namespaces << Eventbrite
+    config.eager_load_namespaces << Youtube
   end
 end

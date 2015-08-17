@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :artists, only: [:index, :show]
   resources :episodes, only: [:index, :show] do
-    resources :performances, only: [:index, :show]
+    resources :performances, only: [:show]
   end
 
   devise_for :users, path_names: {

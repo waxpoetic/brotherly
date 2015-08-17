@@ -10,6 +10,8 @@ class Episode < ActiveRecord::Base
 
   scope :latest, -> { order :starts_at }
 
+  friendly_id :name
+
   def future?
     starts_at >= Time.current
   end
