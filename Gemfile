@@ -3,6 +3,8 @@ ruby '2.2.2'
 
 gem 'rails', '~> 4.2'
 gem 'pg'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 gem 'puma'
 gem 'sidekiq'
 gem 'controller_resources'
@@ -11,6 +13,7 @@ gem 'active_model_serializers'
 gem 'draper'
 gem 'simple_form'
 gem 'devise'
+gem 'haml-rails'
 
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -25,13 +28,15 @@ gem 'turbolinks' #, github: 'rails/turbolinks'
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'spring'
   gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-sidekiq'
 end
 
 group :test do
