@@ -34,7 +34,10 @@ module Brotherly
     # Always show debug logs, because we filter them out in syslog.
     config.log_level = :debug
 
+    # Title of the app in browser windows
+    config.title = 'brother.ly'
+
     # Use localhost as mail server (for Devise)
-    #config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
   end
 end
