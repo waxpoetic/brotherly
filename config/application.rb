@@ -21,6 +21,7 @@ Bundler.require :default, Rails.env
 
 require 'eventbrite'
 require 'youtube'
+require 'brotherly/version'
 
 module Brotherly
   class Application < Rails::Application
@@ -39,10 +40,6 @@ module Brotherly
 
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
-
-    # Precompile admin assets separately.
-    config.assets.precompile << 'admin.js'
-    config.assets.precompile << 'admin.css'
 
     # Meta settings
     config.name = 'brother.ly'

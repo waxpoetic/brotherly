@@ -1,6 +1,7 @@
 - title artist.name
-
 .row
+  = image_tag artist.image.url
+
   %h2 Performances
   %ul
     - artist.performances.each do |performance|

@@ -1,4 +1,5 @@
-- title 'Roster'
+- title 'Artists'
 - cache artists do
+  = render 'empty' unless artists.any?
   - cache artist do
     = render artist
