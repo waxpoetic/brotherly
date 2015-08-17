@@ -8,8 +8,10 @@ class CreateEpisodes < ActiveRecord::Migration
       t.string :facebook_url
       t.datetime :starts_at
       t.datetime :ends_at
+      t.datetime :published_at
       t.string :video_recording_id
       t.string :audio_recording_id
+      t.text :description
 
       t.timestamps null: false
     end

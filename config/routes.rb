@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     sign_up: 'signup'
   }
 
+  get '/podcast/:kind.rss' => 'episodes#podcast'
+
   root 'episodes#latest'
 end

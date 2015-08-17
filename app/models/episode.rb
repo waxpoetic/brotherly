@@ -1,12 +1,12 @@
 class Episode < ActiveRecord::Base
+  include Recordable
+
   has_many :performances
 
   accepts_nested_attributes_for :performances
 
-  attachment :video_recording
-  attachment :audio_recording
-
-  after_create :promote
+  after_create :promote!, if: :future?
+  after_create :publish!, if: :recordings_changed?
 
   scope :latest, -> { order :starts_at }
 
@@ -14,9 +14,15 @@ class Episode < ActiveRecord::Base
     starts_at >= Time.current
   end
 
-  private
+  def published?
+    published_at.present?
+  end
 
-  def promote
+  def promote!
     PromoteEpisodeJob.perform_later self
+  end
+
+  def publish!
+    PublishEpisodeJob.perform_later self
   end
 end

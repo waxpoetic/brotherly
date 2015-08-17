@@ -1,6 +1,6 @@
 class Admin::EpisodesController < Admin::BaseController
   resource :episode do
-    modify :name, :performance_attributes
+    modify :name, :performance_attributes, :description
     search :name
   end
 

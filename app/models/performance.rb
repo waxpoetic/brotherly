@@ -1,4 +1,6 @@
 class Performance < ActiveRecord::Base
+  include Recordable
+
   belongs_to :artist
   belongs_to :episode
 

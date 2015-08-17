@@ -34,14 +34,17 @@ module Brotherly
     # Always show debug logs, because we filter them out in syslog.
     config.log_level = :debug
 
-    # Title of the app in browser windows
-    config.title = 'brother.ly'
-
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
     # Precompile admin assets separately.
     config.assets.precompile << 'admin.js'
     config.assets.precompile << 'admin.css'
+
+    # Meta settings
+    config.name = 'brother.ly'
+    config.description = "A monthly electronic music showcase."
+    config.keywords = "live, electronic, music, philadelphia"
+    config.explicit = 'clean'
   end
 end
