@@ -14,7 +14,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'pundit'
 gem 'refile'
-gem 'eventbrite-client'
+gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
 
 gem 'sass-rails'
 gem 'coffee-rails'
