@@ -4,4 +4,8 @@ class EpisodePolicy < ApplicationPolicy
       scope
     end
   end
+
+  def update?
+    super && record.future?
+  end
 end

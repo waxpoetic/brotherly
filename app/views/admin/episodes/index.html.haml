@@ -1,0 +1,17 @@
+- title 'Episodes'
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Date
+      %th.new= link_to 'New', admin_episodes_path
+  %tbody
+    - cache "admin/episodes/index" do
+      - episodes.each do |episode|
+        - cache "admin/episodes/#{episode.id}" do
+          %tr{ itemid: episode.id }
+            %td= link_to episode.name, admin_episodes_path(episode)
+            %td= episode.decorate.date
+            %td.destroy= link_to 'Destroy', admin_episodes_path(episode), method: :delete, remote: true
+

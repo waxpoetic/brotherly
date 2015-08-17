@@ -1,3 +1,5 @@
-/**
- *= require_tree ./admin
- */
+//= require jquery
+//= require jquery_ujs
+//= require foundation
+//= require turbolinks
+//= require_tree ./admin

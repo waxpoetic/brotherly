@@ -1,6 +1,8 @@
 class Episode < ActiveRecord::Base
   has_many :performances
 
+  accepts_nested_attributes_for :performances
+
   attachment :video_recording
   attachment :audio_recording
 
