@@ -46,5 +46,6 @@ module Brotherly
     config.description = "A monthly electronic music showcase."
     config.keywords = "live, electronic, music, philadelphia"
     config.explicit = 'clean'
+    config.capacity = 200
   end
 end

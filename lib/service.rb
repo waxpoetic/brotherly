@@ -3,6 +3,8 @@ require 'active_model'
 class Service
   include ActiveModel::Model
 
+  define_model_callbacks :save, :create, :validation
+
   extend Enumerable
 
   attr_accessor :local
@@ -42,7 +44,9 @@ class Service
   end
 
   def save
-    valid? && create
+    run_callbacks :save do
+      valid? && create
+    end
   end
 
   def persisted?
@@ -69,8 +73,10 @@ class Service
   private
 
   def create
-    @remote = self.class.remote_object.new(attributes)
-    @remote.save
+    run_callbacks :create do
+      @remote = self.class.remote_object.new(attributes)
+      @remote.save
+    end
   end
 end
 

@@ -116,3 +116,4 @@ Session.vim
 # Ignore cache folders and source maps
 .sass-cache
 *.css.map
+.env
