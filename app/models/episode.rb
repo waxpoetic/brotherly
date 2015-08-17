@@ -1,15 +1,15 @@
 class Episode < ActiveRecord::Base
   has_many :artists, through: :performances
 
-  after_create :add_youtube_live_event, :add_eventbrite_ticket_link
+  after_create :promote
+
+  def self.next
+    order(:starts_at).first
+  end
 
   private
 
-  def add_youtube_live_event
-    AddYoutubeEventJob.perform_later self
-  end
-
-  def add_eventbrite_ticket_link
-    AddTicketLinkJob.perform_later self
+  def promote
+    PromoteEpisodeJob.perform_later self
   end
 end

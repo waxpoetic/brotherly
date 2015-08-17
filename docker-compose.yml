@@ -1,0 +1,40 @@
+
+#
+# Container services configuration
+#
+
+db:
+  image: postgresql
+  ports:
+    - "5432:5432"
+
+# search:
+#   image: elasticsearch
+#   ports:
+#     - "9200:9200"
+
+cache:
+  image: redis
+  ports:
+    - "6379:6379"
+
+app:
+  build: .
+  command: bin/rails server --port 3000 --binding 0.0.0.0
+  links:
+    - db
+    - cache
+    # - search
+  ports:
+    - "3000:3000"
+  volumes:
+    ".:/srv"
+
+web:
+  image: nginx
+  links:
+    - app
+  ports:
+    - "80:80"
+  volumes:
+    "./config/nginx:/etc/nginx/conf.d"
