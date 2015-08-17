@@ -17,6 +17,7 @@ gem 'refile'
 gem 'refile-s3'
 gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
 gem 'youtube_it'
+gem 'bitly'
 
 gem 'sass-rails'
 gem 'coffee-rails'

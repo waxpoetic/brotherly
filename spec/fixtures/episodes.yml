@@ -1,0 +1,13 @@
+one:
+  name: brother.ly one
+  eventbrite_url: http://eventbrite.com/events/brotherly-one
+  youtube_url: http://youtube.com/watch?v=12345
+  mixcloud_url: http://mixcloud.com/brotherly/one
+  facebook_url: http://facebook.com/events/12345
+  short_url: http://bit.ly/brotherly1
+  starts_at: <%= 1.hour.from_now %>
+  ends_at: <%= 8.hours.from_now %>
+  published_at: <%= 1.day.from_now %>
+  video_recording_id: 'video'
+  audio_recording_id: 'audio'
+  description: da bestest party zomg

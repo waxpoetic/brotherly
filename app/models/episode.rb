@@ -7,6 +7,7 @@ class Episode < ActiveRecord::Base
 
   after_create :promote!, if: :future?
   after_create :publish!, if: :recordings_changed?
+  after_create :generate_short_url
 
   scope :latest, -> { order :starts_at }
 
@@ -26,5 +27,11 @@ class Episode < ActiveRecord::Base
 
   def publish!
     PublishEpisodeJob.perform_later self
+  end
+
+  private
+
+  def generate_short_url
+    GenerateEpisodeLink.perform_later self
   end
 end
