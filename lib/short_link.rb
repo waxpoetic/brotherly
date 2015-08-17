@@ -12,6 +12,6 @@ class ShortLink
   end
 
   def link
-    @link ||= Bitly.client.shorten episode_url(episode)
+    @link ||= Bitly.client.shorten episode_url(episode), history: 1
   end
 end

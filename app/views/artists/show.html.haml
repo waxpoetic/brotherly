@@ -1,0 +1,7 @@
+- title artist.name
+
+.row
+  %h2 Performances
+  %ul
+    - artist.performances.each do |performance|
+      %li= link_to performance.episode.name, performance

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :artists, only: [:index, :show]
   resources :episodes, only: [:index, :show] do
+    collection do
+      get ':kind' => 'podcasts#index', format: 'rss'
+    end
     resources :performances, only: [:show]
   end
 
@@ -15,8 +18,6 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     sign_up: 'signup'
   }
-
-  get '/podcast/:kind.rss' => 'episodes#podcast'
 
   root 'episodes#latest'
 end

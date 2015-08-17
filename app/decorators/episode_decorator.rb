@@ -5,7 +5,7 @@ class EpisodeDecorator < Draper::Decorator
     model.future? ? 'next episode...' : 'latest episode'
   end
 
-  def enclosure(kind)
+  def enclosure(kind='audio')
     recording = model.send "#{kind}_recording"
     {
       url: recording.url,
@@ -19,7 +19,7 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   def subtitle
-    h.truncate episode.description, length: 150
+    h.truncate model.description, length: 150
   end
 
   def published_at

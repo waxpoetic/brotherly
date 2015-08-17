@@ -2,5 +2,5 @@
 - cache episodes do
   = render 'empty' unless episodes.any?
   - episodes.each do |episode|
-    - cache "episodes/summary/#{episode.id}" do
-      = render 'summary', episode: episode
+    - cache episode do
+      = render episode

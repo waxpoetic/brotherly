@@ -31,7 +31,7 @@ cache do
                 xml.description episode.description
                 xml.pubDate episode.decorate.published_at
                 xml.enclosure episode.decorate.enclosure(params[:kind])
-                xml.link episode_url(episode)
+                xml.link episode.short_url
                 xml.guid({isPermaLink: 'false'}, episode_url(episode))
                 xml.itunes :author, config.name
                 xml.itunes :subtitle, episode.decorate.subtitle
