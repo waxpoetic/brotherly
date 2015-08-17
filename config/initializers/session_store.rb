@@ -1,3 +1,8 @@
-# Be sure to restart your server when you modify this file.
-
-Rails.application.config.session_store :cookie_store, key: '_brotherly_session'
+Rails.application.config.session_store :redis_store, \
+  servers: {
+     host: 'redis',
+     port: 6379,
+     db: 1,
+     namespace: 'rails/session'
+   },
+   expires_in: 90.minutes
