@@ -1,6 +1,4 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -19,8 +17,8 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   config.action_dispatch.rack_cache = {
-    metastore: "#{config.redis_url}/1/rack/metadata",
-    entitystore: "#{config.redis_url}/1/rack/entities"
+    metastore: "#{config.redis_url}/1/metastore",
+    entitystore: "#{config.redis_url}/1/entitystore"
   }
 
   # Disable serving static files from the `/public` folder by default since
@@ -38,8 +36,6 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
-
   # Specifies the header that your server uses for sending files.
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
@@ -53,11 +49,17 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
-  # Use a different logger for distributed setups.
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+  # Log to syslog in production
+  config.logger = ActiveSupport::TaggedLogging.new(
+    Syslogger.new 'rails', Syslog::LOG_PID, Syslog::LOG_LOCAL0
+
+  )
+  Sidekiq::Logging.logger = Syslogger.new(
+    'sidekiq', Syslog::LOG_PID, Syslog::LOG_LOCAL0
+  )
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store, "#{config.redis_url}/1/rails/cache"
+  config.cache_store = :redis_store, "#{config.redis_url}/0/cache"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.action_controller.asset_host = 'http://files.brother.ly'

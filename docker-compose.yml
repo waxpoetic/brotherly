@@ -7,11 +7,8 @@ db:
   image: postgresql
   ports:
     - "5432:5432"
-
-# search:
-#   image: elasticsearch
-#   ports:
-#     - "9200:9200"
+  volmes:
+    "./config/postgresql:/etc/postgresql/conf.d"
 
 cache:
   image: redis
@@ -24,11 +21,17 @@ app:
   links:
     - db
     - cache
-    # - search
   ports:
     - "3000:3000"
   volumes:
     ".:/srv"
+
+worker:
+  image: app
+  command: bin/sidekiq --config config/sidekiq.yml
+  links:
+    - db
+    - cache
 
 web:
   image: nginx
