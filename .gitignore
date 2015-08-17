@@ -1,0 +1,118 @@
+## Ruby
+
+*.gem
+*.rbc
+/.config
+/InstalledFiles
+/pkg/
+
+# Testing
+/spec/reports/
+/test/tmp/
+/test/version_tmp/
+/tmp/
+/coverage/
+/spec/tmp
+
+# Documentation
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+# Environment normalisation
+/.bundle/
+/vendor/bundle
+/vendor/assets/bower_components
+/lib/bundler/man/
+*.bowerrc
+bower.json
+.powenv
+
+## Rails
+
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+#**.orig
+rerun.txt
+pickle-email-*.html
+
+## Mac OS X
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+## Tags
+
+# Ignore tags created by etags, ctags, gtags (GNU global) and cscope
+TAGS
+!TAGS/
+tags
+!tags/
+gtags.files
+GTAGS
+GRTAGS
+GPATH
+cscope.files
+cscope.out
+cscope.in.out
+cscope.po.out
+
+## Vim
+
+# Ignore Vim temporary files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+## Redis
+
+# Ignore redis binary dump (dump.rdb) files
+*.rdb
+
+## Linux
+
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+## Sass
+
+# Ignore cache folders and source maps
+.sass-cache
+*.css.map
