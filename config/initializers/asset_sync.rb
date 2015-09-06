@@ -27,4 +27,4 @@ AssetSync.configure do |config|
 
   # Fail silently.  Useful for environments such as Heroku
   config.fail_silently = true
-end unless defined? AssetSync
+end if defined? AssetSync

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   # Configure DecentExposure
-  decent_exposure_configuration do
+  decent_configuration do
     strategy Brotherly::ExposureStrategy
   end
 

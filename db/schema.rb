@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906215735) do
+ActiveRecord::Schema.define(version: 20150906224835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150906215735) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "slug"
+    t.string   "short_url"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -61,8 +62,10 @@ ActiveRecord::Schema.define(version: 20150906215735) do
     t.datetime "ends_at"
     t.string   "youtube_url"
     t.string   "mixcloud_url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "audio_recording_id"
+    t.string   "video_recording_id"
   end
 
   add_index "performances", ["artist_id"], name: "index_performances_on_artist_id", using: :btree

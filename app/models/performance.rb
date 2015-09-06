@@ -1,4 +1,6 @@
 class Performance < ActiveRecord::Base
+  extend FriendlyId
+
   include Recordable
   include Searchable
 

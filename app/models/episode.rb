@@ -19,6 +19,10 @@ class Episode < ActiveRecord::Base
   searchable name: 'A'
   multisearchable against: [:name]
 
+  def self.current
+    latest.first
+  end
+
   def future?
     starts_at >= Time.current
   end
