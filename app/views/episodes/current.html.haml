@@ -1,0 +1,17 @@
+#current_episode
+  .splash.row
+    %h2= current_episode.current_title
+  .video.row
+    .large-12.columns
+      = episode.video_tag
+  .info.row
+    .name.row
+      .large-8.columns
+        %h3= current_episode.title
+      .large-4.columns
+        - if episode.published?
+          = link_to 'Download Audio', download_episode_path(current_episode, format: 'mp3'), class: 'tiny secondary button'
+          = link_to 'Download Video', download_episode_path(current_episode, format: 'flv'), class: 'tiny secondary button'
+    .description.row
+      .large-12.columns
+        = current_episode.description

@@ -1,6 +1,14 @@
 class EpisodeDecorator < Draper::Decorator
   delegate_all
 
+  def video_tag
+    h.content_tag :iframe, video_tag_options, 'Connecting...'
+  end
+
+  def youtube_url
+    model.youtube_url + "?autoplay=true"
+  end
+
   def current_title
     model.future? ? 'next episode...' : 'latest episode'
   end
@@ -32,5 +40,16 @@ class EpisodeDecorator < Draper::Decorator
 
   def posted_at
     h.distance_of_time_ago_in_words model.published_at
+  end
+
+  def video_tag_options
+    {
+      id: 'stream',
+      width: 560,
+      height: 315,
+      src: youtube_url,
+      frameborder: 0,
+      allowfullscreen: true
+    }
   end
 end
