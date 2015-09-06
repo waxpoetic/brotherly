@@ -1,7 +1,7 @@
 require 'service'
 require 'eventbrite'
 
-class EventbriteService < Service
+class EventbriteService < Brotherly::Service
   remote Eventbrite::Event
   local :episode
 

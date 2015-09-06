@@ -19,9 +19,9 @@ end
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env
 
+require 'brotherly'
 require 'eventbrite'
 require 'youtube'
-require 'brotherly/version'
 
 module Brotherly
   class Application < Rails::Application
@@ -41,19 +41,20 @@ module Brotherly
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-    # Meta settings
+    # Page and podcast metadata.
     config.name = 'brother.ly'
     config.description = "A monthly electronic music showcase."
     config.keywords = "live, electronic, music, philadelphia"
+
+    # Whether the podcast is explicit or not.
     config.explicit = 'clean'
+
+    # Capacity for when new events are created.
     config.capacity = 200
 
-    config.aws_region_name = 'us-east-1a'
-    config.aws_bucket_name = 'files.brother.ly'
-
+    # Eager-load library code.
+    config.eager_load_namespaces << Brotherly
     config.eager_load_namespaces << Eventbrite
     config.eager_load_namespaces << Youtube
-
-    config.asset_host = '//files.brother.ly'
   end
 end

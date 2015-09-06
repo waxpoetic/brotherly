@@ -5,8 +5,7 @@ class Episode < ActiveRecord::Base
 
   accepts_nested_attributes_for :performances
 
-  after_create :promote!, if: :future?
-  after_create :publish!, if: :recordings_changed?
+  after_create :promote
   after_create :generate_short_url
 
   scope :latest, -> { order :starts_at }
@@ -21,11 +20,11 @@ class Episode < ActiveRecord::Base
     published_at.present?
   end
 
-  def promote!
+  def promote
     PromoteEpisodeJob.perform_later self
   end
 
-  def publish!
+  def publish
     PublishEpisodeJob.perform_later self
   end
 

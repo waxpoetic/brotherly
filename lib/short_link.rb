@@ -1,17 +1,17 @@
-class ShortLink
-  include Rails.application.routes.url_helpers
+module Brotherly
+  class ShortLink
+    include ActiveModel::Model
 
-  attr_reader :episode
+    attr_reader :url
 
-  def initialize(episode)
-    @episode = episode
-  end
+    def url
+      link.short_url
+    end
 
-  def url
-    link.short_url
-  end
+    private
 
-  def link
-    @link ||= Bitly.client.shorten episode_url(episode), history: 1
+    def link
+      @link ||= Bitly.client.shorten url, history: 1
+    end
   end
 end

@@ -1,6 +1,4 @@
-require 'service'
-
-class YoutubeService < Service
+class YoutubeService < Brotherly::Service
   remote Youtube::Video
   local :episode
 

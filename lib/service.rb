@@ -1,82 +1,86 @@
 require 'active_model'
 
-class Service
-  include ActiveModel::Model
+module Brotherly
+  # A true "Service object", this communicates with an outside service
+  # (like a social network) to promote a given future or current
+  # episode.
+  class Service
+    include ActiveModel::Model
 
-  define_model_callbacks :save, :create, :validation
+    define_model_callbacks :save, :create, :validation
 
-  extend Enumerable
+    extend Enumerable
 
-  attr_accessor :local
+    attr_accessor :local
 
-  attr_reader :remote
+    attr_reader :remote
 
-  cattr_accessor :remote_object, :local_name, :attribute_name
+    cattr_accessor :remote_object, :local_name, :attribute_name
 
-  self.attribute_name ||= "#{model_name.param_key}_url".to_sym
+    self.attribute_name ||= "#{model_name.param_key}_url".to_sym
 
-  validates :local, presence: true
+    validates :local, presence: true
 
-  def self.each
-    Dir["app/services/*_service.rb"].map { |path|
-      File.basename(path).classify.constantize
-    }.each { |klass|
-      yield klass
-    }
-  end
-
-  def self.create(from_local)
-    event = new local: local
-    event.save
-    event
-  end
-
-  def self.remote(klass)
-    self.remote_object = klass
-  end
-
-  def self.local(name)
-    self.local_name = name
-  end
-
-  def self.param(name)
-    self.attribute_name = name
-  end
-
-  def save
-    run_callbacks :save do
-      valid? && create
+    def self.each
+      Dir["app/services/*_service.rb"].map { |path|
+        File.basename(path).classify.constantize
+      }.each { |klass|
+        yield klass
+      }
     end
-  end
 
-  def persisted?
-    remote.present?
-  end
+    def self.create(from_local)
+      event = new local: local
+      event.save
+      event
+    end
 
-  delegate :url, to: :remote
+    def self.remote(klass)
+      self.remote_object = klass
+    end
 
-  delegate :attributes, to: :local
+    def self.local(name)
+      self.local_name = name
+    end
 
-  def method_missing(method, *arguments)
-    return super unless respond_to?(method)
-    local
-  end
+    def self.param(name)
+      self.attribute_name = name
+    end
 
-  def respond_to?(method)
-    self.class.local_name == method || super
-  end
+    def save
+      run_callbacks :save do
+        valid? && create
+      end
+    end
 
-  def to_param
-    self.class.attribute_name
-  end
+    def persisted?
+      remote.present?
+    end
 
-  private
+    delegate :url, to: :remote
 
-  def create
-    run_callbacks :create do
-      @remote = self.class.remote_object.new(attributes)
-      @remote.save
+    delegate :attributes, to: :local
+
+    def method_missing(method, *arguments)
+      return super unless respond_to?(method)
+      local
+    end
+
+    def respond_to?(method)
+      self.class.local_name == method || super
+    end
+
+    def to_param
+      self.class.attribute_name
+    end
+
+    private
+
+    def create
+      run_callbacks :create do
+        @remote = self.class.remote_object.new(attributes)
+        @remote.save
+      end
     end
   end
 end
-
