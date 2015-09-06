@@ -39,4 +39,6 @@ RSpec.configure do |config|
   config.after :each, type: :feature do
     Warden.test_reset!
   end
+
+  config.include WorkerHelpers, type: :worker
 end
