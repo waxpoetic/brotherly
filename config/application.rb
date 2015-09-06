@@ -57,7 +57,10 @@ module Brotherly
     config.eager_load_namespaces << Eventbrite
     config.eager_load_namespaces << Youtube
 
-    # Seed the following tables.
+    # Seed tables in development.
     config.seeds = %w(artists episodes performances)
+
+    config.redis_url = Rails.application.secrets.redis_url
+    config.asset_host = Rails.application.secrets.aws_s3_bucket_name
   end
 end

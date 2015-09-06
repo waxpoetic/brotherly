@@ -8,4 +8,4 @@ aws = {
 }
 Refile.cache = Refile::S3.new prefix: "cache", **aws
 Refile.store = Refile::S3.new prefix: "store", **aws
-Refile.host = "//#{Rails.application.secrets.aws_s3_bucket_name}"
+Refile.host = "//#{Rails.application.config.asset_host}"

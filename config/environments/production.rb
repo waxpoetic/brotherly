@@ -17,8 +17,16 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   config.action_dispatch.rack_cache = {
-    metastore: "#{config.redis_url}/1/metastore",
-    entitystore: "#{config.redis_url}/1/entitystore"
+    metastore: "redis://#{config.redis_url}:6379/0/brotherly-rack-metastore",
+    entitystore: "redis://#{config.redis_url}:6379/0/brotherly-rack-entitystore"
+  }
+
+  # Use a different cache store in production.
+  config.cache_store = :redis_store, {
+    host: config.redis_url,
+    port: 6379,
+    db: 0,
+    namespace: 'brotherly-rails-cache'
   }
 
   # Disable serving static files from the `/public` folder by default since
@@ -46,23 +54,19 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Log to syslog in production
+  # Send Rails log to syslog
   config.logger = ActiveSupport::TaggedLogging.new(
     Syslogger.new 'rails', Syslog::LOG_PID, Syslog::LOG_LOCAL0
 
   )
+
+  # Send Sidekiq log to syslog
   Sidekiq::Logging.logger = Syslogger.new(
     'sidekiq', Syslog::LOG_PID, Syslog::LOG_LOCAL0
   )
 
-  # Use a different cache store in production.
-  config.cache_store = :redis_store, "#{config.redis_url}/0/cache"
-
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = 'http://files.brother.ly'
+  config.action_controller.asset_host = "http://#{config.asset_host}"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
