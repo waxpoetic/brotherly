@@ -18,8 +18,6 @@ class TranscodeWorker < Brotherly::Worker
     )
   end
 
-  private
-
   def pipeline_id
     raise NotImplementedError
   end
@@ -41,6 +39,8 @@ class TranscodeWorker < Brotherly::Worker
       }
     )
   end
+
+  private
 
   def secrets
     Rails.application.secrets
