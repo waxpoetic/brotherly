@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+
   include Searchable
 
   searchable email: 'A', name: 'B'
+
+  friendly_id :name
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
