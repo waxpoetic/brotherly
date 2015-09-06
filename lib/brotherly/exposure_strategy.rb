@@ -1,4 +1,5 @@
 require 'decent_exposure/strong_parameters_strategy'
+require 'draper/decoratable'
 
 module Brotherly
   # A strategy for DecentExposure that automatically authorizes the
