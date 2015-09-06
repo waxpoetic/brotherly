@@ -2,6 +2,8 @@
 # full-length audio and visual recording, as well as a collection of
 # performances (with their own recordings) and metadata.
 class Episode < ActiveRecord::Base
+  extend FriendlyId
+
   include Recordable
   include Searchable
 

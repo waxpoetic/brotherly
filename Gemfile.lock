@@ -225,6 +225,8 @@ GEM
     foundation-rails (5.5.2.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -496,6 +498,7 @@ DEPENDENCIES
   draper
   eventbrite-client!
   foundation-rails
+  friendly_id
   haml-rails
   jquery-rails
   meta_request

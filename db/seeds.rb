@@ -21,6 +21,6 @@ ActiveRecord::Fixtures.create_fixtures(
 User.create(
   email: 'admin@example.com',
   password: 'admin123',
-  password_confirmation: 'admin123'
+  password_confirmation: 'admin123',
   remember_me: true
 )
