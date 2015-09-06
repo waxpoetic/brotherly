@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     sign_up: 'signup'
   }
 
+  resource :search, only: [:show]
+
   root 'episodes#latest'
 end

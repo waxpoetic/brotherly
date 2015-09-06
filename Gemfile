@@ -42,6 +42,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-commands-sidekiq'
+  gem 'rubocop'
 end
 
 group :test do

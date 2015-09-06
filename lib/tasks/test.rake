@@ -2,23 +2,31 @@ begin
   require 'rspec/core/rake_task'
   require 'rubocop/rake_task'
 
+  NOT_FEATURES = Dir["spec/*"].reject { |dir|
+    dir =~ /features/
+  }.map { |dir|
+    File.basename dir
+  }
+
   namespace :test do
-    desc 'Run all tests'
     RSpec::Core::RakeTask.new :all
 
-    desc 'Run unit tests'
-    RSpec::Core::RakeTask.new :units do |t|
-      t.pattern = 'spec/{controllers,decorators,helpers,jobs,lib,models,policies}/**/*_spec.rb'
+    desc "Run RSpec unit tests"
+    RSpec::Core::RakeTask.new :unit do |t|
+      t.pattern = "spec/{#{NOT_FEATURES}}/**/*_spec.rb"
     end
 
-    desc 'Run feature tests'
+    desc "Run RSpec feature tests"
     RSpec::Core::RakeTask.new :features do |t|
       t.pattern = 'spec/features/**/*_spec.rb'
     end
 
-    desc 'Run all lint checks'
+    desc "Run RuboCop lint checks"
     RuboCop::RakeTask.new :lint
   end
 
-  task test: %i(test:lint test:all)
+  desc "Run all RuboCop lint checks and RSpec code examples"
+  task test: %i(test:lint test:unit test:features)
+rescue LoadError
+  # ignore
 end
