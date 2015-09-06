@@ -9,10 +9,6 @@ module Recordable
     after_create :transcode_video, if: :video_recording_changed?
   end
 
-  def recordings_changed?
-    video_recording_changed? || audio_recording_changed?
-  end
-
   private
 
   def transcode_audio

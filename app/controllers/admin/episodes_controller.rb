@@ -1,8 +1,7 @@
 class Admin::EpisodesController < Admin::BaseController
-  resource :episode do
-    modify :name, :performance_attributes, :description
-    search :name
-  end
+  resource :episode, attributes: [
+    :name, :description, performance_attributes: [:artist, :file]
+  ]
 
   def index
     respond_with episodes
@@ -18,6 +17,7 @@ class Admin::EpisodesController < Admin::BaseController
 
   def create
     episode.save
+    episode.promote unless episode.future?
     respond_with episode
   end
 

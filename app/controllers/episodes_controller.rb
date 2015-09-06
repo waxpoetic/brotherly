@@ -1,5 +1,6 @@
 class EpisodesController < ApplicationController
-  resource :episode, scope: :latest
+  expose :episodes, scope: :latest, only: [:index, :latest]
+  expose :episode, only: [:show]
 
   def index
     respond_to do |format|
@@ -13,6 +14,6 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    respond_with episode, format: :rss
+    respond_with episode
   end
 end

@@ -1,5 +1,6 @@
 class Performance < ActiveRecord::Base
   include Recordable
+  include Searchable
 
   belongs_to :artist
   belongs_to :episode
@@ -10,4 +11,6 @@ class Performance < ActiveRecord::Base
 
   validates :starts_at, presence: true
   validates :ends_at,   presence: true
+
+  multisearchable against: [:name]
 end

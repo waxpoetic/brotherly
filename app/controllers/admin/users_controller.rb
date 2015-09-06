@@ -1,8 +1,7 @@
 class Admin::UsersController < Admin::BaseController
-  resource :user do
-    modify :name, :email, :password, :password_confirmation
-    search :name, :email
-  end
+  resource :user, attributes: [
+    :name, :email, :password, :password_confirmation, :is_admin
+  ]
 
   def index
     respond_with users

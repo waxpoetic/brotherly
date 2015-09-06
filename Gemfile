@@ -3,6 +3,7 @@ ruby '2.2.2'
 
 gem 'rails', '~> 4.2'
 gem 'pg'
+gem 'pg_search'
 gem 'puma'
 gem 'sidekiq'
 gem 'controller_resources'
