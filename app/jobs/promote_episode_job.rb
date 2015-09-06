@@ -1,5 +1,5 @@
 class PromoteEpisodeJob < ActiveJob::Base
-  queue_as :default
+  queue_as :promotions
 
   def perform(model)
     Service.each do |service_object|

@@ -1,5 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe TranscodeVideoJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let :episode do
+    episodes :one
+  end
+
+  before do
+    allow(TranscodeAudioWorker).to \
+      receive(:perform).with(episode.audio_recording).and_return true
+  end
+
+  it "transcodes a video" do
+    expect(subject.perform_now(episode)).to eq true
+  end
 end
