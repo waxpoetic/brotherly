@@ -1,6 +1,9 @@
 class EpisodesController < ApplicationController
-  expose :episodes, scope: :latest, only: [:index, :latest]
+  expose :episodes, scope: :latest, only: [:index]
   expose :episode, only: [:show]
+  expose :current_episode, only: [:current] do
+    Episode.current
+  end
 
   def index
     respond_to do |format|
@@ -9,8 +12,8 @@ class EpisodesController < ApplicationController
     end
   end
 
-  def latest
-    respond_with episodes.first
+  def current
+    respond_with current_episode
   end
 
   def show

@@ -7,6 +7,7 @@
     = title_tag
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body.admin
     %header
@@ -16,15 +17,15 @@
             %h1= link_to Rails.env, admin_path
         %section.top-bar-section
           %ul
+            = nav_link 'Artists',   admin_artists_path
             = nav_link 'Episodes',  admin_episodes_path
             = nav_link 'Users',     admin_users_path
         %section.top-bar-section
           %ul.right
-            = nav_link "~#{current_user.name}", admin_users_path(current_user)
+            = nav_link current_user.login, [:admin, current_user]
       %h1= page_title
     %main{ id: page_name, class: section_name }
       = yield
     %footer.admin
       %nav
         %li= link_to 'Back To Main Site', root_path
-    = javascript_include_tag "application", 'data-turbolinks-track' => true, 'data-turbolinks-permanent' => true

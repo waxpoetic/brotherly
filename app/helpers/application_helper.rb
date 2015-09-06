@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def app_title
     if controller.controller_name =~ /admin/
-      "admin (#{Rails.env})"
+      "#{config.title} admin (#{Rails.env})"
     else
       config.title
     end
