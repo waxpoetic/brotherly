@@ -1,0 +1,7 @@
+wonder_bars_at_one:
+  artist: wonder_bars
+  episode: one
+  starts_at: <%= 2.hours.ago.to_datetime %>
+  ends_at: <%= 1.hour.ago.to_datetime %>
+  audio_recording_id: 'wonderbars.mp3'
+  video_recording_id: 'wonderbars.flv'

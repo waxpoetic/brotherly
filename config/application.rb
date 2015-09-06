@@ -56,5 +56,8 @@ module Brotherly
     config.eager_load_namespaces << Brotherly
     config.eager_load_namespaces << Eventbrite
     config.eager_load_namespaces << Youtube
+
+    # Seed the following tables.
+    config.seeds = %w(artists episodes performances)
   end
 end

@@ -12,11 +12,10 @@ require 'active_record/fixtures'
 # data in one place, and reduce the amount of duplication throughout the
 # codebase.
 
-Rails.application.config.active_record.seed_tables.each do |table|
-  ActiveRecord::Fixtures.create_fixtures "spec/fixtures/#{table}.yml"
-end
+ActiveRecord::Fixtures.create_fixtures(
+  'spec/fixtures', Rails.application.config.seeds
+)
 
-=begin
 # In case you need to create objects manually, do it after fixtures are
 # loaded in.
 User.create \
@@ -24,4 +23,3 @@ User.create \
   password: 'admin123',
   password_confirmation: 'admin123'
   remember_me: true
-=end
