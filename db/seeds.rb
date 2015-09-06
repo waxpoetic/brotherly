@@ -18,8 +18,9 @@ ActiveRecord::Fixtures.create_fixtures(
 
 # In case you need to create objects manually, do it after fixtures are
 # loaded in.
-User.create \
+User.create(
   email: 'admin@example.com',
   password: 'admin123',
   password_confirmation: 'admin123'
   remember_me: true
+)
