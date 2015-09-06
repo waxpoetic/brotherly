@@ -27,7 +27,17 @@ module ApplicationHelper
     Rails.application.config
   end
 
+  def nav_link(text, href, *args)
+    content_tag :li, class: active_link?(href) do
+      link_to text, href, *args
+    end
+  end
+
   private
+
+  def active_link?(href)
+    'active' if current_page? href
+  end
 
   def app_title
     if controller.controller_name =~ /admin/
