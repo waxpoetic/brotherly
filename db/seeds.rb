@@ -1,26 +1,17 @@
 require 'active_record/fixtures'
 
-# Automatically loads data from the fixtures directory into the
-# 'development' database. Allows for faster "spin-up" of the database.
-# The seeds file can also be appended with some custom configuration,
-# such as a default User. An example way of doing this has been
-# commented out at the bottom of this file.
-#
-# It is recommended that fixtures are used to seed the database for both
-# the 'development' and 'test' environments, or environments which take
-# on characteristics of the aforementioned. This is so we can keep seed
-# data in one place, and reduce the amount of duplication throughout the
-# codebase.
+# Automatically load data from the fixtures directory into the
+# 'development' database.
+if Rails.env.development?
+  ActiveRecord::Fixtures.create_fixtures(
+    'spec/fixtures', Rails.application.config.seeds
+  )
+end
 
-ActiveRecord::Fixtures.create_fixtures(
-  'spec/fixtures', Rails.application.config.seeds
-)
-
-# In case you need to create objects manually, do it after fixtures are
-# loaded in.
+# Create an initial admin user.
 User.create(
-  email: 'admin@example.com',
-  password: 'admin123',
-  password_confirmation: 'admin123',
+  email: Rails.application.secrets.admin_email,
+  password: Rails.application.secrets.admin_password,
+  password_confirmation: Rails.application.secrets.admin_password,
   remember_me: true
 )
