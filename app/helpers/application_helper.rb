@@ -55,6 +55,12 @@ module ApplicationHelper
     )
   end
 
+  def latest_cache_key(collection_name)
+    collection = send collection_name
+    latest_update = collection.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    "footer/recent_episodes-#{latest_update}"
+  end
+
   private
 
   def active_link?(href)
