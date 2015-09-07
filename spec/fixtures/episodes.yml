@@ -1,5 +1,5 @@
 one:
-  name: brother.ly one
+  name: "Maggs Bruchez, Del, Frank Sriracha, Fernando"
   starts_at: <%= 1.hour.from_now %>
   ends_at: <%= 8.hours.from_now %>
   published_at: <%= 1.day.from_now %>
@@ -8,23 +8,32 @@ one:
   youtube_url: 'https://www.youtube.com/embed/Mg-LfxWY5hc'
   eventbrite_url: 'https://www.eventbrite.com/e/brotherly-three-tickets-17253112524'
   facebook_url: 'https://www.facebook.com/events/882630525117471/'
-  description: "You know how sometimes you listen to that music?
-You know the kind... the kind that gets intoxicating, 
-makes you feel,
-makes you want, 
-makes you love...
-It gets you going, 
-a ring in your ears, 
-a sway in your hips, 
-...yeah, that music. 
+  description: "peek through the window of the underground music scene in Philadelphia
+
+http://brother.ly/
+
+Creating an environment for music producers to showcase their talent and passion.
 
 
-You know that moment when you're dancing
-and you take a deep breath 
+Maggs Bruchez
+http://www.maggsbruchez.com/
+
+Del
+www.soundcloud.com/a-DEL-mix
+
+Frank Sriracha
+https://soundcloud.com/frank-sriracha
+
+Fernando
+www.soundcloud.com/fernando_music
 
 
+The Haunted Woods theme camp will be treating us to their many tricks. Stop by the SpookEasy where it's Halloween all the time.
 
-and everything drops at just the right moment?
+This is a BYO* party and strictly 21+.
 
-Producers of Philadelphia, you now have a new home.
-We will gather every fourth Friday."
+Bring your own fancy cups to stay sustainably swanky. 
+A chocolate fountain with fruits and other dip-ables will be supplied for your convenience. 
+
+We value your self expression- 
+While we encourage lavish attire, it is up to you what that means."
