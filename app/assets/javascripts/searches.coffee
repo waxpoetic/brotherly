@@ -5,7 +5,8 @@ jQuery ->
     .on 'ajax:before', ->
       $('#search .results')
         .css('clip', 'auto')
-        .html('<li><a class="loading" href="#">Searching...</a></li>')
+        .html('<li><label>Searching...</label></li>')
+        .show()
     .on 'ajax:success', (event, response) ->
       $('#search .results')
         .html(response)
@@ -14,4 +15,8 @@ jQuery ->
   # Autocomplete search query by submitting the form.
   submitForm = ->
     $('#search form').trigger 'submit.rails'
-  $('#search form input').on 'keydown', _.debounce(submitForm, 350)
+  $('#search form input')
+    .on 'keydown', _.debounce(submitForm, 350)
+    .on 'blur', ->
+      $('#search .results').hide()
+      $('#search form input').val ''

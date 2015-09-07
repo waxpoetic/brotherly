@@ -16,3 +16,13 @@
     }
   }
 }
+
+#episodes {
+  &.current {
+    .episode {
+      .name, .description {
+        background: $jet
+      }
+    }
+  }
+}

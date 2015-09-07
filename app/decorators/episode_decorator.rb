@@ -69,8 +69,8 @@ class EpisodeDecorator < Draper::Decorator
   def video_tag_options
     {
       id: 'stream',
-      width: 560,
-      height: 315,
+      width: 1000,
+      height: 640,
       src: youtube_url,
       frameborder: 0,
       allowfullscreen: true

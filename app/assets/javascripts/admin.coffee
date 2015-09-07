@@ -1,3 +1,5 @@
+#= require flash
+
 # Handle Rails UJS functionality on the admin level in a consistent way.
 # Forms are always shown in the `#editor` panel, and submit by
 # refreshing only the `<main>` tag, which includes a fresh editor, new
