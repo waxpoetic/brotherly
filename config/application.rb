@@ -45,6 +45,7 @@ module Brotherly
     config.name = 'brother.ly'
     config.description = "A monthly electronic music showcase."
     config.keywords = "live, electronic, music, philadelphia"
+    config.founding_year = 2015
 
     # Whether the podcast is explicit or not.
     config.explicit = 'clean'
@@ -61,6 +62,6 @@ module Brotherly
     config.seeds = %w(artists episodes performances)
 
     config.redis_url = Rails.application.secrets.redis_url
-    config.asset_host = Rails.application.secrets.aws_s3_bucket_name
+    config.s3_bucket = Rails.application.secrets.aws_s3_bucket_name
   end
 end

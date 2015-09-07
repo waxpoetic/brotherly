@@ -1,6 +1,4 @@
 class Performance < ActiveRecord::Base
-  extend FriendlyId
-
   include Recordable
   include Searchable
 
@@ -8,8 +6,6 @@ class Performance < ActiveRecord::Base
   belongs_to :episode
 
   delegate :name, to: :artist
-
-  friendly_id :name
 
   validates :starts_at, presence: true
   validates :ends_at,   presence: true

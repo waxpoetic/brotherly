@@ -1,13 +1,27 @@
 one:
   name: brother.ly one
-  eventbrite_url: http://eventbrite.com/events/brotherly-one
-  youtube_url: http://youtube.com/watch?v=12345
-  mixcloud_url: http://mixcloud.com/brotherly/one
-  facebook_url: http://facebook.com/events/12345
-  short_url: http://bit.ly/brotherly1
   starts_at: <%= 1.hour.from_now %>
   ends_at: <%= 8.hours.from_now %>
   published_at: <%= 1.day.from_now %>
-  video_recording_id: 'video'
-  audio_recording_id: 'audio'
-  description: da bestest party zomg
+  video_recording_id: 'video.flv'
+  audio_recording_id: 'audio.mp3'
+  description: "You know how sometimes you listen to that music?
+You know the kind... the kind that gets intoxicating, 
+makes you feel,
+makes you want, 
+makes you love...
+It gets you going, 
+a ring in your ears, 
+a sway in your hips, 
+...yeah, that music. 
+
+
+You know that moment when you're dancing
+and you take a deep breath 
+
+
+
+and everything drops at just the right moment?
+
+Producers of Philadelphia, you now have a new home.
+We will gather every fourth Friday."

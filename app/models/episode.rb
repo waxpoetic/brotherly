@@ -13,11 +13,15 @@ class Episode < ActiveRecord::Base
   accepts_nested_attributes_for :performances
 
   scope :latest, -> { order :starts_at }
+  scope :recent, -> { latest.where "starts_at <= ?", Time.now }
+  scope :upcoming, -> { latest.where "starts_at >= ?", Time.now }
 
   friendly_id :name
 
   searchable name: 'A'
   multisearchable against: [:name]
+
+  attachment :preview_image
 
   def self.current
     latest.first

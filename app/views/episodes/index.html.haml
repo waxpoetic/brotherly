@@ -1,4 +1,6 @@
 - title 'All Episodes'
-- cache episodes do
-  = render 'empty' unless episodes.any?
-  = render episodes
+
+.row
+  - cache episodes do
+    = render 'empty' unless episodes.any?
+    = render episodes

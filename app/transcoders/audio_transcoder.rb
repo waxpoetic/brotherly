@@ -1,4 +1,4 @@
-class TranscodeAudioWorker < TranscodeWorker
+class AudioTranscoder < Brotherly::Transcoder
   def pipeline_id
     secrets.aws_audio_pipeline_id
   end

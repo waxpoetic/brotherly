@@ -10,21 +10,17 @@ module Brotherly
     # Generate a policy scope for all collection resources, then
     # decorate the finished object relation.
     def collection_resource
-      policy_scope(super).decorate_all
+      policy_scope super
     end
 
     # Attempt to authorize a given resource using its Pundit policy,
     # then inject +Draper::Decoratable+ so that 
     def resource
-      authorized_resource = super.tap do |resource_object|
-        authorize resource_object
-
-        unless resource_object.respond_to? :decorate
-          resource_object.send :include, Draper::Decoratable
-        end
-      end
-
-      authorized_resource.decorate
+      super.tap do |r|
+        authorize r
+      end.decorate
+    rescue
+      super.decorate
     end
   end
 end

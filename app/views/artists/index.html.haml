@@ -1,5 +1,10 @@
 - title 'Artists'
 - cache artists do
-  = render 'empty' unless artists.any?
-  - cache artist do
-    = render artist
+  .row
+    .large-12.columns
+      %h1 Artists
+  .row
+    = render 'empty' unless artists.any?
+    = render artists
+  .row
+    %br

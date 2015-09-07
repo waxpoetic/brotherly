@@ -9,8 +9,6 @@ module Recordable
     after_create :transcode_video, if: :video_recording_changed?
   end
 
-  private
-
   def transcode_audio
     TranscodeAudioJob.perform_later self
   end

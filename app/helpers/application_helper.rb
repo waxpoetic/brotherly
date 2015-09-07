@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def page_title
     if content_for? :title
-      yield :title
+      content_for :title
     else
       app_title
     end
@@ -33,6 +33,14 @@ module ApplicationHelper
     end
   end
 
+  def copyright_year
+    if Time.now.year == config.founding_year
+      Time.now.year
+    else
+      "#{config.founding_year} - #{Time.now.year}"
+    end
+  end
+
   private
 
   def active_link?(href)
@@ -41,9 +49,9 @@ module ApplicationHelper
 
   def app_title
     if controller.controller_name =~ /admin/
-      "#{config.title} admin (#{Rails.env})"
+      "#{config.name} admin (#{Rails.env})"
     else
-      config.title
+      config.name
     end
   end
 end

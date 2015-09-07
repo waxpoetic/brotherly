@@ -1,17 +1,17 @@
-#current_episode
-  .splash.row
-    %h2= current_episode.current_title
-  .video.row
-    .large-12.columns
-      = episode.video_tag
+#current_episode.episode
+  .title.row
+    %h2= episode.current_title
+  = render 'video', episode: episode if episode.has_video?
   .info.row
     .name.row
       .large-8.columns
-        %h3= current_episode.title
+        %h3= episode.title
       .large-4.columns
-        - if episode.published?
-          = link_to 'Download Audio', download_episode_path(current_episode, format: 'mp3'), class: 'tiny secondary button'
-          = link_to 'Download Video', download_episode_path(current_episode, format: 'flv'), class: 'tiny secondary button'
+        = render 'navigation', episode: episode
     .description.row
       .large-12.columns
-        = current_episode.description
+        = simple_format episode.description
+        %h4= t :lineup, scope: :episodes
+        %ul.artists
+          - episode.artists.each do |artist|
+            %li= link_to artist.name, artist

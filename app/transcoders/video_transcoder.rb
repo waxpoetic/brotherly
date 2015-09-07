@@ -1,4 +1,4 @@
-class TranscodeVideoWorker < TranscodeWorker
+class VideoTranscoder < Brotherly::Transcoder
   def pipeline_id
     Rails.application.secrets.aws_video_pipeline_id
   end

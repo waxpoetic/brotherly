@@ -8,4 +8,8 @@ class EpisodePolicy < ApplicationPolicy
   def update?
     super && record.future?
   end
+
+  def current?
+    true
+  end
 end

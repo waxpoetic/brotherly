@@ -9,6 +9,7 @@ module Brotherly
   autoload :Worker
   autoload :Service
   autoload :ShortLink
+  autoload :Transcoder
 
   def self.version
     VERSION

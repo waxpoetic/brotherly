@@ -13,20 +13,47 @@
     = csrf_meta_tags
   %body.frontend
     %header
-      %nav.top-bar{ 'data-topbar' => true }
-        %ul.title-area
-          %li.name
-            %h1= link_to 'brother.ly', root_path
-        %section.top-bar-section
-          %ul.right
-            %li= nav_link 'Next Episode', root_path
-            %li= nav_link 'Past Episodes', episodes_path
-            %li= nav_link 'Artists', artists_path
+      - cache 'header/navigation', expires_in: 1.year do
+        %nav.top-bar{ 'data-topbar' => true }
+          %ul.title-area
+            %li.name
+              %h1= link_to config.name, root_path
 
+          %section.top-bar-section#search
+            %ul
+              %li.has-dropdown
+                = simple_form_for search, url: search_path, method: :get, remote: true do |f|
+                  = f.input :query, as: :search, autocomplete: 'off', label: false, placeholder: 'Search...'
+                %ul.dropdown#results
+                  / Search results go here
+          %section.top-bar-section#links
+            %ul.right
+              %li= nav_link t(:next_episode, scope: :nav), root_path
+              %li= nav_link t(:past_episode, scope: :nav), episodes_path
+              %li= nav_link t(:artists, scope: :nav), artists_path
     %main{ id: page_name, class: section_name }
       = yield
 
     %footer
-      %p.copyright
-        Copyright &copy; 2015
-        = link_to 'Wax Poetic Music', 'http://waxpoeticrecords.com'
+      .row
+        - cache 'footer/copyright', expires_in: 1.year do
+          .copyright.large-4.columns
+            %h3= t :about, scope: :footer
+            %p
+              = t :copyright, scope: :footer
+              &copy; #{copyright_year}
+              #{link_to "Wax Poetic Music", 'http://waxpoeticrecords.com'}.
+              %br
+            Created by <strong>team brother.ly</strong> in Philadelphia.
+        - cache 'footer/recent_episodes', expires_in: 1.month do
+          .recent.large-4.columns
+            %h3= t :recent, scope: :episodes
+            %ul
+            - recent_episodes.each do |episode|
+              %li= link_to episode.name, episode
+        - cache 'footer/upcoming_episodes', expires_in: 1.month do
+          .upcoming.large-4.columns
+            %h3= t :upcoming, scope: :episodes
+            %ul
+            - upcoming_episodes.limit(5).each do |episode|
+              %li= link_to episode.name, episode

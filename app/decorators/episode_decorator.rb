@@ -2,7 +2,17 @@ class EpisodeDecorator < Draper::Decorator
   delegate_all
 
   def video_tag
-    h.content_tag :iframe, video_tag_options, 'Connecting...'
+    h.content_tag :iframe, video_tag_options do
+      'Connecting...'
+    end
+  end
+
+  def performances
+    model.performances.map(&:decorate)
+  end
+
+  def preview_image_url
+    'http://placehold.it/240x320'
   end
 
   def youtube_url
@@ -11,6 +21,14 @@ class EpisodeDecorator < Draper::Decorator
 
   def current_title
     model.future? ? 'next episode...' : 'latest episode'
+  end
+
+  def has_video?
+    model.youtube_url.present?
+  end
+
+  def has_audio?
+    model.mixcloud_url.present?
   end
 
   def enclosure(kind='audio')
@@ -27,11 +45,11 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   def title
-    model.name.titleize
+    model.name
   end
 
   def subtitle
-    h.truncate model.description, length: 150
+    h.truncate model.description, length: 100
   end
 
   def published_at
@@ -39,7 +57,8 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   def posted_at
-    h.distance_of_time_ago_in_words model.published_at
+    return if model.published_at.present?
+    h.distance_of_time_in_words model.published_at
   end
 
   def video_tag_options

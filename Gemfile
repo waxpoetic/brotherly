@@ -27,7 +27,7 @@ gem 'foundation-rails'
 gem 'uglifier',         '~> 1.3'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 
 #source 'https://rails-assets.org'
 

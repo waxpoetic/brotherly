@@ -1,0 +1,24 @@
+header {
+  nav {
+    #search {
+      form {
+        input {
+          background: $oil;
+          color: $vapor;
+          width: 250px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  height: 100%;
+  background: $vapor;
+
+  .copyright {
+    p {
+      padding-top: 13px;
+    }
+  }
+}

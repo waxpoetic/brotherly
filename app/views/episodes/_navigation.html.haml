@@ -1,0 +1,12 @@
+%nav
+  - if episode.has_audio?
+    = link_to episode_path(episode, format: 'mp3'), class: 'tiny secondary button' do
+      = t :audio, scope: :episodes
+  - if episode.has_video?
+    = link_to episode_path(episode, format: 'flv'), class: 'tiny secondary button' do
+      = t :video, scope: :episodes
+  - if episode.future?
+    = link_to episode.eventbrite_url, class: 'tiny success button', target: '_blank' do
+      = t :tickets, scope: :episodes
+    = link_to episode.facebook_url, class: 'tiny button', target: '_blank' do
+      = t :share, scope: :episodes
