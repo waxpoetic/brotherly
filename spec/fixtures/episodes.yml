@@ -5,6 +5,9 @@ one:
   published_at: <%= 1.day.from_now %>
   video_recording_id: 'video.flv'
   audio_recording_id: 'audio.mp3'
+  youtube_url: 'https://www.youtube.com/embed/Mg-LfxWY5hc'
+  eventbrite_url: 'https://www.eventbrite.com/e/brotherly-three-tickets-17253112524'
+  facebook_url: 'https://www.facebook.com/events/882630525117471/'
   description: "You know how sometimes you listen to that music?
 You know the kind... the kind that gets intoxicating, 
 makes you feel,
