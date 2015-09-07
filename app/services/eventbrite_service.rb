@@ -1,6 +1,3 @@
-require 'service'
-require 'eventbrite'
-
 class EventbriteService < Brotherly::Service
   remote Eventbrite::Event
   local :episode
