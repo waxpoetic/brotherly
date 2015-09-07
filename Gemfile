@@ -21,6 +21,7 @@ gem 'youtube_it'
 gem 'bitly'
 gem 'friendly_id'
 gem 'nested_form'
+gem 'foreman'
 
 gem 'lodash-rails'
 gem 'sass-rails'
@@ -58,5 +59,6 @@ group :production do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'asset_sync'
-  gem 'syslogger'
+  # gem 'syslogger'
+  gem 'rails_12factor'
 end
