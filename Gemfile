@@ -27,17 +27,15 @@ gem 'lodash-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'foundation-rails'
-gem 'uglifier',         '~> 1.3'
+gem 'uglifier'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
-# gem 'turbolinks'
-
-#source 'https://rails-assets.org'
 
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
+  gem 'guard-livereload'
 end
 
 group :development, :test do
@@ -59,6 +57,5 @@ group :production do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'asset_sync'
-  # gem 'syslogger'
   gem 'rails_12factor'
 end

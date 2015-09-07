@@ -49,17 +49,6 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  # # Send Rails log to syslog
-  # config.logger = ActiveSupport::TaggedLogging.new(
-  #   Syslogger.new 'rails', Syslog::LOG_PID, Syslog::LOG_LOCAL0
-
-  # )
-
-  # # Send Sidekiq log to syslog
-  # Sidekiq::Logging.logger = Syslogger.new(
-  #   'sidekiq', Syslog::LOG_PID, Syslog::LOG_LOCAL0
-  # )
-
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.action_controller.asset_host = "http://#{config.s3_bucket}"
 
