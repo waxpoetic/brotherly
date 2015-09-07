@@ -6,7 +6,7 @@ AssetSync.configure do |config|
 
   # To use AWS reduced redundancy storage.
   config.aws_reduced_redundancy = true
-  config.fog_directory = Rails.application.secrets.fog_directory
+  config.fog_directory = Rails.application.secrets.aws_s3_bucket_name
 
   # Invalidate a file on a cdn after uploading files.
   config.cdn_distribution_id = Rails.application.secrets.aws_cloudfront_distro_id
