@@ -40,5 +40,6 @@
         #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
           / Dialog content goes here
     %footer
-      %nav
-        %li= link_to 'Back To Main Site', root_path
+      .row
+        .large-12.columns
+          %h4= link_to 'Back To Main Site', root_path

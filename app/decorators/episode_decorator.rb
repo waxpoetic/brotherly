@@ -20,6 +20,7 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   def youtube_url
+    return unless model.youtube_url
     model.youtube_url + "?autoplay=true"
   end
 
