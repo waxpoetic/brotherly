@@ -10,6 +10,7 @@ module Brotherly
   autoload :Service
   autoload :ShortLink
   autoload :Transcoder
+  autoload :Dotenv
 
   def self.version
     VERSION
