@@ -61,7 +61,6 @@ module Brotherly
     # Seed tables in development.
     config.seeds = %w(artists episodes performances)
 
-    config.redis_url = Rails.application.secrets.redis_url
     config.s3_bucket = Rails.application.secrets.aws_s3_bucket_name
   end
 end
