@@ -11,7 +11,7 @@
     = csrf_meta_tags
   %body#admin
     %header
-      %nav.topbar{ 'data-topbar' => true }
+      %nav.top-bar{ 'data-topbar' => true }
         %ul.title-area
           %li.name
             %h1= link_to "#{config.name} (#{Rails.env})", admin_path
@@ -22,11 +22,23 @@
             = nav_link 'Users',     admin_users_path
         %section.top-bar-section
           %ul.right
-            = nav_link current_user.login, [:admin, current_user]
+            = nav_link current_decorated_user.login, [:admin, current_user]
             = nav_link 'Log Out', destroy_user_session_path
-      %h1= page_title
+      .row
+        .large-12.columns
+          %h1= page_title
     %main{ id: page_name, class: section_name }
-      = render 'main'
+      .messages.row
+        = render 'flash'
+      .content.row
+        .large-8.columns
+          = yield
+        .large-4.columns
+          #editor
+            / Editable content from the tables go here
+      .modal.row
+        #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
+          / Dialog content goes here
     %footer
       %nav
         %li= link_to 'Back To Main Site', root_path

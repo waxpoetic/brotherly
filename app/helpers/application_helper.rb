@@ -46,8 +46,9 @@ module ApplicationHelper
   end
 
   def link_to_modal(text, href, options = {})
+    data = options[:data] || {}
     link_to text, href, options.merge(
-      data: options[:data].merge(
+      data: data.merge(
         'reveal-ajax' => true,
         'reveal-id' => '#dialog'
       )

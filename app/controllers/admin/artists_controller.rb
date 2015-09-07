@@ -1,4 +1,4 @@
-class Admin::ArtistsController < ApplicationController
+class Admin::ArtistsController < Admin::BaseController
   resource :artist, attributes: [ :name ]
 
   def index

@@ -1,0 +1,42 @@
+= simple_form_for episode do |f|
+  %fieldset
+    %legend Basic
+    = f.input :name
+    = f.input :description, as: :text
+    = f.input :starts_at, as: :datetime
+    = f.input :ends_at, as: :datetime
+
+  %fieldset
+    %legend Recordings
+    = f.input :video_recording, as: :attachment
+    = f.input :audio_recording, as: :attachment
+    = f.input :preview_image, as: :attachment
+
+  %fieldset
+    %legend Promotional
+    = f.input :eventbrite_url
+    = f.input :youtube_url
+    = f.input :mixcloud_url
+    = f.input :facebook_url
+    = f.input :short_url
+
+  %fieldset
+    %legend Performances
+    - f.fields_for :performances do |p|
+      .row
+        .large-10.columns
+          = p.input :artist, as: :autocomplete
+          = p.input :starts_at
+          = p.input :ends_at
+          = p.input :video_recording, as: :attachment
+          = p.input :audio_recording, as: :attachment
+          = p.input :preview_image, as: :attachment
+        .large-2.columns
+          = p.link_to_remove 'Remove'
+    .row
+      .large-12.columns
+        = f.link_to_add 'Add Performance'
+
+  .controls
+    = f.button :submit
+    = link_to 'Cancel', '#', class: 'close'

@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   self.responder = Brotherly::Responder
   respond_to :html
 
+  # Define a default HTML layout.
+  cattr_accessor :html_layout
+  self.html_layout = 'application'
+  layout :use_layout?
+
   # Configure DecentExposure
   decent_configuration do
     strategy Brotherly::ExposureStrategy
@@ -22,8 +27,6 @@ class ApplicationController < ActionController::Base
     Search.new
   end
 
-  layout proc { |controller| controller.request.xhr? ? false : "application" }
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -39,5 +42,13 @@ class ApplicationController < ActionController::Base
   def not_found(exception)
     logger.error exception.message
     render :not_found, status: :not_found, error: exception
+  end
+
+  def use_layout?
+    request.xhr? ? false : self.class.html_layout
+  end
+
+  def current_decorated_user
+    Admin::UserDecorator.new current_user
   end
 end

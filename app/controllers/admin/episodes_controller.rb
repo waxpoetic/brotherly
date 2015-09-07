@@ -15,6 +15,10 @@ class Admin::EpisodesController < Admin::BaseController
     render 'new'
   end
 
+  def edit
+    render 'edit'
+  end
+
   def create
     episode.save
     episode.promote unless episode.future?

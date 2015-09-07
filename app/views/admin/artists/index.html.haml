@@ -1,0 +1,19 @@
+- title 'Artists'
+
+.large-8.columns
+  %table
+    %thead
+      %tr
+        %td Name
+        %td Created
+        %td.new= link_to 'New', admin_new_artist_path, class: 'tiny button', remote: true
+    %tbody
+      - cache artists, type: 'admin' do
+        - cache artist, type: 'admin-table-row' do
+          %tr
+            %td= link_to artist.name, admin_edit_artist_path(artist), remote: true
+            %td= artist.created_at.to_format
+            %td.destroy= link_to 'Delete', admin_artist_path(artist), method: :delete, class: 'tiny alert button', remote: true, confirm: "Are you sure you wish to delete the artist '#{artist.name}'?"
+.large-4.columns
+  #editor
+    / Artist editor

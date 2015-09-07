@@ -9,7 +9,8 @@ if Rails.env.development?
 end
 
 # Create an initial admin user.
-User.create(
+User.create!(
+  name: 'admin',
   email: Rails.application.secrets.admin_email,
   password: Rails.application.secrets.admin_password,
   password_confirmation: Rails.application.secrets.admin_password,

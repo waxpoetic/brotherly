@@ -1,6 +1,10 @@
 class EpisodeDecorator < Draper::Decorator
   delegate_all
 
+  def date
+    starts_at.to_date
+  end
+
   def video_tag
     h.content_tag :iframe, video_tag_options do
       'Connecting...'

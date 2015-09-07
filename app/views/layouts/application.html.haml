@@ -32,7 +32,13 @@
               %li= nav_link t(:past_episode, scope: :nav), episodes_path
               %li= nav_link t(:artists, scope: :nav), artists_path
     %main{ id: page_name, class: section_name }
-      = render 'main'
+      .messages.row
+        = render 'flash'
+      .content.row
+        = yield
+      .modal.row
+        #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
+          / Dialog content goes here
     %footer
       .row
         - cache 'footer/copyright', expires_in: 1.year do
