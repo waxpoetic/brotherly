@@ -4,7 +4,7 @@ jQuery ->
     $('#search .results').html(response).slideDown(250)
   $('#search form')
     .on 'ajax:before', ->
-      $('#search .results').text("Searching...").show()
+      $('#search .results').html("<li><a href='#'>Searching...</a></li>").show()
     .on 'ajax:success', showResults
 
   # Autocomplete search query by submitting the form.
