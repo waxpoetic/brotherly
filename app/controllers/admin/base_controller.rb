@@ -2,9 +2,6 @@
 class Admin::BaseController < ApplicationController
   before_action :authenticate_user!
 
-  # Override default HTML layout
-  self.html_layout = 'admin'
-
   def self.resource(name, *attributes)
     model = name.to_s.classify.constantize
     collection = name.to_s.pluralize.to_sym
@@ -27,4 +24,8 @@ class Admin::BaseController < ApplicationController
     Admin::UserDecorator.new current_user
   end
   helper_method :current_decorated_user
+
+  def html_layout
+    'admin'
+  end
 end

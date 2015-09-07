@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   # Define a default HTML layout.
-  cattr_accessor :html_layout
-  self.html_layout = 'application'
   layout :use_layout?
 
   # Configure DecentExposure
@@ -45,7 +43,11 @@ class ApplicationController < ActionController::Base
   end
 
   def use_layout?
-    request.xhr? ? false : self.class.html_layout
+    request.xhr? ? false : html_layout
+  end
+
+  def html_layout
+    'application'
   end
 
   def current_decorated_user

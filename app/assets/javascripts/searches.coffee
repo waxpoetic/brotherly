@@ -1,11 +1,15 @@
 jQuery ->
-  # Populate the results dropdown with new search term results.
-  showResults = (event, response) ->
-    $('#search .results').html(response).slideDown(250)
+  # Populate the results dropdown with new search term results, and show
+  # an interstitial message while waiting for responses.
   $('#search form')
     .on 'ajax:before', ->
-      $('#search .results').html("<li><a href='#'>Searching...</a></li>").show()
-    .on 'ajax:success', showResults
+      $('#search .results')
+        .css('clip', 'auto')
+        .html('<li><a class="loading" href="#">Searching...</a></li>')
+    .on 'ajax:success', (event, response) ->
+      $('#search .results')
+        .html(response)
+        .slideDown(250)
 
   # Autocomplete search query by submitting the form.
   submitForm = ->
