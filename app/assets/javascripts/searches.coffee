@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ->
+  # Populate the results dropdown with new search term results.
+  $('.new_search')
+    .on 'ajax:success', (event, response) ->
+      $('#results').html(response)
+
+  # Autocomplete search query after 3 or more characters have been
+  # entered into the field.
+  $('.new_search input').on 'keydown', ->
+    if $(this).val().length >= 3
+      $('.new_search').trigger 'submit.rails'
