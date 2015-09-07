@@ -1,4 +1,11 @@
 en:
+  errors:
+    unauthorized:
+      title: Not Authorized
+      message: You are not authorized to perform this action.
+    not_found:
+      title: Not Found
+      message: The resource you requested could not be found.
   footer:
     about: about
     copyright: Copyright

@@ -1,11 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_self
+//= require refile
+//= require nested_form
 //= require lodash
-//= require episodes
-//= require performances
-//= require artists
-//= require searches
+//= require_self
+//= require_tree .
 
 $(function() { $(document).foundation(); });

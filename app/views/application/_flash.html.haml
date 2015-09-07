@@ -1,0 +1,7 @@
+#flash
+  - flash.each do |type, flash_message|
+    .row
+      .large-12.columns
+        %div{ class: "alert-box #{type}", data: { alert: true } }
+          = flash_message
+          = link_to '&times'.html_safe, '#', class: 'close'
