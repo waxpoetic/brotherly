@@ -1,13 +1,9 @@
 class SearchesController < ApplicationController
-  expose :search, attributes: :search_params
+  expose :search do
+    Search.create params[:search][:query]
+  end
 
   def show
     respond_with search
-  end
-
-  private
-
-  def search_params
-    params.permit :query
   end
 end

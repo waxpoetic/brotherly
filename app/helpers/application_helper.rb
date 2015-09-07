@@ -19,6 +19,10 @@ module ApplicationHelper
     end
   end
 
+  def search_result_path(result)
+    send "#{result.searchable_type.parameterize}_path", result.searchable_id
+  end
+
   def title_tag
     content_tag :title, [page_title, app_title].uniq.join(" | ")
   end

@@ -256,6 +256,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
+    lodash-rails (3.10.1)
+      railties (>= 3.1)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -495,6 +497,7 @@ DEPENDENCIES
   friendly_id
   haml-rails
   jquery-rails
+  lodash-rails
   meta_request
   pg
   pg_search

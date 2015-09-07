@@ -22,9 +22,9 @@
           %section.top-bar-section#search
             %ul
               %li.has-dropdown
-                = simple_form_for search, url: search_path, method: :get, remote: true do |f|
-                  = f.input :query, as: :search, autocomplete: 'off', label: false, placeholder: 'Search...'
-                %ul.dropdown#results
+                = simple_form_for search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
+                  = f.input :query, as: :search, label: false, placeholder: 'Search...', input_html: { autocomplete: 'off' }
+                %ul.dropdown.results{ style: 'margin-top: 10px' }
                   / Search results go here
           %section.top-bar-section#links
             %ul.right

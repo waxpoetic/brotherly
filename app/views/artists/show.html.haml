@@ -1,8 +1,8 @@
 - title artist.name
 .row
-  = image_tag artist.image.url
+  = image_tag artist.image_url
 .row
   %h2 Performances
   %ul
     - artist.performances.each do |performance|
-      %li= link_to performance.episode.name, performance
+      %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)

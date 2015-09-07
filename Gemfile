@@ -21,6 +21,7 @@ gem 'youtube_it'
 gem 'bitly'
 gem 'friendly_id'
 
+gem 'lodash-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'foundation-rails'

@@ -4,4 +4,8 @@ class ArtistDecorator < Draper::Decorator
   def image_url
     'http://placehold.it/250x250'
   end
+
+  def title
+    model.name
+  end
 end

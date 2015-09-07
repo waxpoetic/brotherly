@@ -15,3 +15,5 @@ en:
     next_episode: Next Episode
     past_episode: Past Episodes
     artists: Artists
+  search:
+    empty: No results
