@@ -1,11 +1,11 @@
 %ul{ style: 'list-style-type: none' }
   - if episode.has_audio?
     %li
-      = link_to episode_path(episode, format: 'mp3'), class: 'tiny secondary button' do
+      = link_to attachment_url(episode, :audio_recording), class: 'tiny secondary button' do
         = t :audio, scope: :episodes
   - if episode.has_video?
     %li
-      = link_to episode_path(episode, format: 'flv'), class: 'tiny secondary button' do
+      = link_to attachment_url(episode, :video_recording), class: 'tiny secondary button' do
         = t :video, scope: :episodes
   - if episode.future?
     %li
