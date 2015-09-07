@@ -45,6 +45,15 @@ module ApplicationHelper
     end
   end
 
+  def link_to_modal(text, href, options = {})
+    link_to text, href, options.merge(
+      data: options[:data].merge(
+        'reveal-ajax' => true,
+        'reveal-id' => '#dialog'
+      )
+    )
+  end
+
   private
 
   def active_link?(href)

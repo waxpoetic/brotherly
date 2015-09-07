@@ -1,0 +1,13 @@
+.messages.row
+  #flash
+    - flash.each do |type, flash_message|
+      .row
+        .large-12.columns
+          %div{ class: "alert-box #{type}", data: { alert: true } }
+            = flash_message
+            = link_to '&times'.html_safe, '#', class: 'close'
+.content.row
+  = yield
+.modal.row
+  #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
+    / Dialog content goes here

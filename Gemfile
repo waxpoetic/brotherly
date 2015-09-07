@@ -20,6 +20,7 @@ gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
 gem 'youtube_it'
 gem 'bitly'
 gem 'friendly_id'
+gem 'nested_form'
 
 gem 'lodash-rails'
 gem 'sass-rails'

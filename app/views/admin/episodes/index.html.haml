@@ -5,13 +5,13 @@
     %tr
       %th Name
       %th Date
-      %th.new= link_to 'New', admin_episodes_path
+      %th.new= link_to_modal 'New', admin_episodes_path, class: 'tiny button'
   %tbody
     - cache "admin/episodes/index" do
       - episodes.each do |episode|
         - cache "admin/episodes/#{episode.id}" do
           %tr{ itemid: episode.id }
-            %td= link_to episode.name, admin_episodes_path(episode)
+            %td= link_to_modal episode.name, edit_admin_episode_path(episode), class: 'tiny secondary button'
             %td= episode.decorate.date
-            %td.destroy= link_to 'Destroy', admin_episodes_path(episode), method: :delete, remote: true
+            %td.destroy= link_to 'Destroy', admin_episodes_path(episode), method: :delete, remote: true, class: 'tiny alert button'
 
