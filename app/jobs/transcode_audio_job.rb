@@ -1,5 +1,5 @@
 class TranscodeAudioJob < ActiveJob::Base
-  queue_as :transcode_audio
+  queue_as :default
 
   def perform(episode)
     AudioTranscoder.perform episode.audio_recording

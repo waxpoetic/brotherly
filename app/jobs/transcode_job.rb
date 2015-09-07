@@ -1,5 +1,5 @@
 class TranscodeJob < ActiveJob::Base
-  queue_as :transcodes
+  queue_as :default
 
   def perform(episode)
     TranscodeWorker.perform episode

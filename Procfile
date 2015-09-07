@@ -1,2 +1,2 @@
 web: ./bin/rails server puma --port $PORT
-worker: ./bin/sidekiq -c config/sidekiq.yml
+worker: ./bin/sidekiq --config config/sidekiq.yml
