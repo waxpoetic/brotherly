@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Episodes", type: :feature do
   let :episode do
-    episodes :one
+    episodes :four
   end
 
   scenario "listing" do

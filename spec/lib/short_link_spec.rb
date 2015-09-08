@@ -5,7 +5,7 @@ RSpec.describe ShortLink do
   fixtures :episodes
 
   let :episode do
-    episodes :one
+    episodes :four
   end
 
   subject { ShortLink.new episode }

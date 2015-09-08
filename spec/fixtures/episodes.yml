@@ -1,4 +1,4 @@
-one:
+four:
   name: "Maggs Bruchez, Del, Frank Sriracha, Fernando"
   starts_at: <%= 1.hour.from_now %>
   ends_at: <%= 8.hours.from_now %>

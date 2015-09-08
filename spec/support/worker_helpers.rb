@@ -3,7 +3,7 @@ module WorkerHelpers
 
   included do
     let :episode do
-      episodes :one
+      episodes :four
     end
 
     let :transcoder do

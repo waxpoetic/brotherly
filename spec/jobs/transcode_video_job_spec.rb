@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TranscodeVideoJob, type: :job do
   let :episode do
-    episodes :one
+    episodes :four
   end
 
   before do

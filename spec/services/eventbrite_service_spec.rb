@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe EventbriteService, type: :service do
   let :episode do
-    episodes :one
+    episodes :four
   end
 
   subject do
