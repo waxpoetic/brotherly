@@ -1,6 +1,10 @@
 class EpisodeDecorator < Draper::Decorator
   delegate_all
 
+  def artists
+    model.artists.map(&:decorate)
+  end
+
   def cache_key_for(section)
     [ model.cache_key, section ].join('/')
   end
@@ -24,8 +28,12 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   def youtube_embed_url
-    return unless model.youtube_url
-    model.youtube_url + "?autoplay=true"
+    return unless model.youtube_url.present?
+    # if Rails.env.production?
+    #   model.youtube_url + "?autoplay=true"
+    # else
+    model.youtube_url
+    # end
   end
 
   def current_title
@@ -97,7 +105,7 @@ class EpisodeDecorator < Draper::Decorator
   def video_tag_options
     {
       id: 'stream',
-      width: 1000,
+      width: 1014,
       height: 640,
       src: youtube_embed_url,
       frameborder: 0,

@@ -6,7 +6,7 @@ maggs_bruchez_at_four:
 
 
 del_at_four:
-  artist: maggs_bruchez
+  artist: del
   episode: four
   starts_at: <%= "24/Aug/2015 02:30:00 +0500".to_datetime %>
   ends_at: <%= "24/Aug/2015 01:00:00 +0500".to_datetime %>

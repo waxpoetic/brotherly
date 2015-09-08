@@ -14,17 +14,34 @@
     }
   }
 
-  &.current {
-    .episode {
-      .name, .description {
-        background: $jet
-      }
+  .video {
+    padding-bottom: 10px;
+  }
+
+  &.current, &.show {
+    .info {
+      background: $jet;
+    }
+    .info {
+      padding: 10px;
     }
   }
 
-  .performances {
+  .actions {
+    padding-top: 2px;
+  }
+
+  .artists, .performances {
+    margin: 0 auto;
+    background: $jet;
+
     ul {
       list-style-type: none;
+
+      li {
+        padding: 10px 0;
+        // width: 350px;
+      }
     }
   }
 }

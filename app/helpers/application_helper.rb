@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def icon_for(link)
+    if link == 'website'
+      :globe
+    else
+      link.to_sym
+    end
+  end
+
   def page_name
     controller.action_name.to_s
   end

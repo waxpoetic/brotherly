@@ -1,19 +1,25 @@
 - title artist.name
-.title.row
+.info.row
   .large-8.columns
     .row
       = image_tag artist.image_url
     .row
       %h1= artist.name
+    .row
+      = simple_format artist.description
   .large-4.columns
-    %ul
-      - artist.links.each do |link, href|
-        %li= link_to link.titleize, href, title: "#{artist.name} on #{link.titleize}"
-.description.row
-  .large-8.columns
-    = simple_format artist.description
-  .large-4.columns
-    %h2 Performances
-    %ul
-      - artist.performances.each do |performance|
-        %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)
+    - if artist.links.present?
+      .row
+        %h3 Links
+        %ul.links
+          - artist.links.each do |link, href|
+            %li
+              = link_to href, title: "#{artist.name} on #{link.titleize}", class: 'secondary button' do
+                = icon icon_for(link)
+                &nbsp;
+                = link.titleize
+    .row
+      %h3 Performances
+      %ul
+        - artist.performances.each do |performance|
+          %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)

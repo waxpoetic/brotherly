@@ -4,9 +4,7 @@ jQuery ->
   $('#search form')
     .on 'ajax:before', ->
       $('#search .results')
-        .css('clip', 'auto')
         .html('<li><label>Searching...</label></li>')
-        .show()
     .on 'ajax:success', (event, response) ->
       $('#search .results')
         .html(response)
@@ -17,6 +15,3 @@ jQuery ->
     $('#search form').trigger 'submit.rails'
   $('#search form input')
     .on 'keydown', _.debounce(submitForm, 350)
-    .on 'blur', ->
-      $('#search .results').hide()
-      $('#search form input').val ''

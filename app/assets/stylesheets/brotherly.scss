@@ -124,7 +124,7 @@ $warning-color: #f08a24;
 $info-color: #a0d3e8;
 
 // We use these to control various global styles
-$body-bg: image-url('drink.jpg') #222 no-repeat center center;
+$body-bg: image-url('drink.jpg') #222 no-repeat center top;
 $body-font-color: $vapor;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
@@ -1486,5 +1486,8 @@ $topbar-dropdown-bg: $topbar-bg;
 // $include-legacy-visibility-classes: true;
 
 @import 'foundation';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'layout';
 @import 'episodes';
+@import 'artists';
