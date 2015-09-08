@@ -3,7 +3,7 @@
     %li.audio
       = link_to episode.audio_url, class: 'tiny secondary button' do
         = t :audio, scope: :episodes
-  - if episode.has_video?
+  - if episode.video_recording.present?
     %li.video
       = link_to episode.video_url, class: 'tiny secondary button' do
         = t :video, scope: :episodes

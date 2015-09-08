@@ -1,28 +1,30 @@
-.episode-summary {
-  .info {
-    p {
-      font-size: 0.8rem;
-    }
-  }
-  time {
-    font-size: 0.8rem;
-  }
-}
 
-.episode {
-  .performances {
-    ul {
-      list-style-type: none;
-    }
-  }
-}
 
 #episodes {
+  &.index {
+    .episode-summary {
+      .info {
+        p {
+          font-size: 0.8rem;
+        }
+      }
+      time {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
   &.current {
     .episode {
       .name, .description {
         background: $jet
       }
+    }
+  }
+
+  .performances {
+    ul {
+      list-style-type: none;
     }
   }
 }
