@@ -18,6 +18,25 @@ header {
 
       li {
         padding: 10px 5px;
+
+        .dropdown {
+          margin-top: 42px;
+          background: $jet;
+
+          .input {
+            height: 75px;
+
+            input {
+              background: #000;
+              border: 0;
+              color: $smoke;
+
+              &::-webkit-input-placeholder {
+                color: $aluminum;
+              }
+            }
+          }
+        }
       }
       a {
         -webkit-box-sizing: border-box;

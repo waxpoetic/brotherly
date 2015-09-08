@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     sign_in:  'login',
     sign_out: 'logout',
     sign_up:  'signup'
-  }
+  }, controllers: { registrations: 'users/registrations' }
 
   resource :search, only: [:show]
 
