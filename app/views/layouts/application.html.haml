@@ -63,3 +63,5 @@
             %ul
             - upcoming_episodes.limit(5).each do |episode|
               %li= link_to episode.name, episode
+    - cache 'tracking' do
+      = render 'tracking'
