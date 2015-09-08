@@ -12,6 +12,7 @@
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
     = favicon_link_tag
+    = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
   %body.frontend
     %header
       - cache 'header/navigation', expires_in: 1.year do

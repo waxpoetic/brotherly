@@ -60,8 +60,12 @@ class EpisodeDecorator < Draper::Decorator
     !model.future? && model.mixcloud_url.present?
   end
 
-  def enclosure(kind='audio')
-    recording = model.send "#{kind}_recording"
+  def in_podcast?
+    audio_recording.present?
+  end
+
+  def enclosure
+    recording = audio_recording
     {
       url: recording.url,
       length: recording.file_size,

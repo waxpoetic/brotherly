@@ -61,6 +61,20 @@ module ApplicationHelper
     "footer/recent_episodes-#{latest_update}"
   end
 
+  def podcast_publish_date
+    episodes.last.published_at
+  end
+
+  def podcast_cache_key(section = nil)
+    last_updated_at = episodes.last.updated_at.try(:utc).try(:to_s, :number) || '0'
+
+    if section
+      "podcast/#{last_updated_at}/#{section}"
+    else
+      "podcast/#{last_updated_at}"
+    end
+  end
+
   private
 
   def active_link?(href)

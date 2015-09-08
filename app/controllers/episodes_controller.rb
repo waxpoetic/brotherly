@@ -7,8 +7,9 @@ class EpisodesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { respond_with episodes }
-      format.rss  { render :podcast }
+      format.html
+      format.json
+      format.rss
     end
   end
 
