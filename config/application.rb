@@ -63,6 +63,5 @@ module Brotherly
 
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'
-
   end
 end

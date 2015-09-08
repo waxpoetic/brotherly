@@ -80,4 +80,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
+  config.font_assets.origin = '*.brother.ly'
 end
