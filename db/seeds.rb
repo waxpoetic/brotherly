@@ -16,7 +16,8 @@ unless User.where(name: 'admin').any?
     email: Rails.application.secrets.admin_email,
     password: Rails.application.secrets.admin_password,
     password_confirmation: Rails.application.secrets.admin_password,
-    remember_me: true
+    remember_me: true,
+    is_admin: true
   )
 end
 
