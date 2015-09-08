@@ -1,2 +1,23 @@
-wonder_bars:
-  name: "The Wonder Bars"
+maggs_bruchez:
+  name: Maggs Bruchez
+  links:
+    soundcloud: https://soundcloud.com/maggsbruchez
+    facebook: https://www.facebook.com/maggsbruchez
+    website: http://www.maggsbruchez.com/
+    twitter: https://twitter.com/maggsbruchez
+  description: "We've been waiting for the right month to bring out Maggs Bruchez, the founders of Emby Music and funky house extraordinaires. Their mix of DJing and live performance was a major inspiration to the rest of Philly's live house scene, and they continue to set the example by producing amazing music and running Philly's newest (and perhaps most interesting) funky house label."
+
+del:
+  name: DEL
+  links:
+    soundcloud: https://soundcloud.com/a-del-mix
+    facebook: https://www.facebook.com/delmix
+  description: "One of Philadelphia's veteran funky house producer/DJs, DEL has been getting dancefloors pregnant since before we were all in diapers. His soulful, groovy track selection is common amongst the end-of-summer rooftop parties that currently dominate our local scene, and his collaborations with Davidson Ospina (as well as his own solo edits of old disco tracks) have earned him acclaim far past the city limits. DEL's DO YOU WANNA BOOGIE? party is a staple of the Winter Music Conference every year, and certainly gets us jealous for not being able to make it down there yet!"
+
+frank_sriracha:
+  name: Frank Sriracha
+  description: "Frank Sriracha is part of the WE PRESENT crew, and a talented psychedelic bass producer. We met him at this year's Return To Roots festival and fell in love with what he was doing, figuring his blend of bass music, psychedelic vibes and colorful imagery"
+
+fernando:
+  name: Fernando
+  description: "He rocked our first brother.ly party as the \"guitar-slingin' gent\" who accompanied MAMBISA on brother.ly's first episode, but we wanted to bring him back for a slightly different opening set. This time, he'll be laying down some sweet, sexy jazz grooves before we get started on our electronic music vibes for the night"
