@@ -1,6 +1,6 @@
 module Brotherly
   class Dotenv
-    REJECTED_SETTINGS = %w(PORT RAILS_ENV)
+    REJECTED_SETTINGS = /PORT|RAILS_ENV|PATH/
 
     attr_reader :path
 
@@ -17,8 +17,8 @@ module Brotherly
     end
 
     def configuration
-      lines.reject do |line|
-        REJECTED_SETTINGS.include? line
+      lines.select { |l| l =~ /=/ }.reject do |line|
+        line =~ REJECTED_SETTINGS
       end
     end
 

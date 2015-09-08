@@ -68,4 +68,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Use SendGrid to send email.
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    authentication: :plain,
+    user_name: Rails.application.secrets.sendgrid_username,
+    password: Rails.application.secrets.sendgrid_password,
+    domain: 'brother.ly',
+    enable_starttls_auto: true
+  }
 end
