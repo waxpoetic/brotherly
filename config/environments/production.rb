@@ -50,7 +50,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "http://#{config.s3_bucket}"
+  config.action_controller.asset_host = "http://#{Rails.application.secrets.aws_s3_bucket_name}"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -79,4 +79,5 @@ Rails.application.configure do
     domain: 'brother.ly',
     enable_starttls_auto: true
   }
+
 end

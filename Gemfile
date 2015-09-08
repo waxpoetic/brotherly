@@ -34,6 +34,7 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
+gem 'font_assets'
 
 group :development do
   gem 'meta_request'

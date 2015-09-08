@@ -61,6 +61,8 @@ module Brotherly
     # Seed tables in development.
     config.seeds = %w(artists episodes performances)
 
-    config.s3_bucket = Rails.application.secrets.aws_s3_bucket_name
+    # Configure CORS headers for font assets.
+    config.font_assets.origin = '*'
+
   end
 end
