@@ -1,0 +1,14 @@
+.info.row
+  .name.row
+    .large-12.columns
+      %h3= episode.title
+      %br
+  .description.row
+    .large-8.columns
+      = simple_format episode.description
+      %h4= t :lineup, scope: :episodes
+      %ul.artists
+        - episode.artists.each do |artist|
+          %li= link_to artist.name, artist
+    .large-4.columns
+      = render 'navigation', episode: episode

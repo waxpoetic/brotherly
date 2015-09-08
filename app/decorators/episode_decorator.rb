@@ -1,6 +1,10 @@
 class EpisodeDecorator < Draper::Decorator
   delegate_all
 
+  def cache_key_for(section)
+    [ model.cache_key, section ].join('/')
+  end
+
   def date
     starts_at.to_date
   end
@@ -19,7 +23,7 @@ class EpisodeDecorator < Draper::Decorator
     'http://placehold.it/240x320'
   end
 
-  def youtube_url
+  def youtube_embed_url
     return unless model.youtube_url
     model.youtube_url + "?autoplay=true"
   end
@@ -32,8 +36,28 @@ class EpisodeDecorator < Draper::Decorator
     model.youtube_url.present?
   end
 
+  def audio_url
+    h.attachment_url model, :audio_recording
+  end
+
+  def video_url
+    h.attachment_url model, :video_recording
+  end
+
   def has_audio?
     model.mixcloud_url.present?
+  end
+
+  def show_ticket_link?
+    model.future? && model.eventbrite_url.present?
+  end
+
+  def show_facebook_event?
+    model.future? && model.facebook_url.present?
+  end
+
+  def show_mixcloud_link?
+    !model.future? && model.mixcloud_url.present?
   end
 
   def enclosure(kind='audio')
@@ -71,7 +95,7 @@ class EpisodeDecorator < Draper::Decorator
       id: 'stream',
       width: 1000,
       height: 640,
-      src: youtube_url,
+      src: youtube_embed_url,
       frameborder: 0,
       allowfullscreen: true
     }

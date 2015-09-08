@@ -1,0 +1,9 @@
+- cache episode do
+  - cache episode.cache_key_for(:title) do
+    = render 'title', episode_title: episode.title
+  - cache episode.cache_key_for(:video) do
+    = render 'video', episode: episode if episode.has_video?
+  - cache episode.cache_key_for(:info) do
+    = render 'info', episode: episode
+  - cache episode.cache_key_for(:performances) do
+    = render 'performances', episode: episode if episode.performances.any?
