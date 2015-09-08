@@ -1,8 +1,19 @@
 - title artist.name
-.row
-  = image_tag artist.image_url
-.row
-  %h2 Performances
-  %ul
-    - artist.performances.each do |performance|
-      %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)
+.title.row
+  .large-8.columns
+    .row
+      = image_tag artist.image_url
+    .row
+      %h1= artist.name
+  .large-4.columns
+    %ul
+      - artist.links.each do |link, href|
+        %li= link_to link.titleize, href, title: "#{artist.name} on #{link.titleize}"
+.description.row
+  .large-8.columns
+    = simple_format artist.description
+  .large-4.columns
+    %h2 Performances
+    %ul
+      - artist.performances.each do |performance|
+        %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)
