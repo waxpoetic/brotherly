@@ -1,3 +1,142 @@
+one:
+  name: "brother.ly one"
+  starts_at: 2015-04-24 20:00:00
+  ends_at: 2015-04-25 03:00:00
+  facebook_url: https://www.facebook.com/events/430090893821048/
+  description: "To request an official invite to the live event visit brother.ly 
+
+  LINE UP:
+
+    THE WONDER BARS
+    MICHAEL NIGHTTIME
+    HIGHLY DESIRABLE
+    MAMBISA
+
+
+    This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky, and as always... dress to impress. 
+
+    --limited tickets available--
+
+
+
+    You know how sometimes you listen to that music?
+    You know the kind... the kind that gets intoxicating, 
+    makes you feel,
+    makes you want, 
+    makes you love...
+    It gets you going, 
+    a ring in your ears, 
+    a sway in your hips, 
+    ...yeah, that music. 
+
+
+    You know that moment when you're dancing
+    and you take a deep breath 
+
+
+
+    and everything drops at just the right moment?
+
+
+
+    Producers of Philadelphia, you now have a new home. 
+    We will gather every fourth Friday.
+
+
+
+
+
+    -----------------------------
+    brother.ly will be live streaming 
+    the inaugural fourth friday 
+    @ 10pm on April 24th
+    -----------------------------
+
+
+    There will be a BYO private party. 
+    --limited tickets available--"
+
+two:
+  name: "brother.ly two"
+  starts_at: 2015-05-22 20:00:00
+  ends_at: 2015-05-23 04:00:00
+  published_at: 2015-05-23 04:00:00
+  youtube_url: https://www.youtube.com/embed/UOXWYaFpDsY
+  eventbrite_url: https://www.eventbrite.com/e/brotherly-two-rvlvr-goldenspiral-rd-tim-the-enchanter-tickets-16967267554
+  facebook_url: https://www.facebook.com/events/1095252237158007/
+  description: "Live Stream: brother.ly
+  Tickets: http://bit.ly/1H2iMZT ($15 presale, $20 at the door)
+
+    ---limited tickets available---
+
+  LINE UP:
+
+    Tim The Enchanter
+    https://soundcloud.com/tim-the-enchanter
+
+    RVLVR 
+    https://soundcloud.com/rvlvr-music
+
+    Research & Development
+  https://soundcloud.com/resndev
+
+  goldenSpiral (GoldenSpiral)
+  https://soundcloud.com/golden-spiral
+
+  Producers of Philadelphia, you now have a new home. 
+  We will gather every fourth Friday.
+
+  This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky and as always...dress to impress. 
+
+
+  -----------------------------
+  brother.ly will be live streaming 
+  every fourth friday 
+  @ 10pm 
+  Doors @ 9pm
+  -----------------------------"
+
+three:
+  name: "brother.ly three"
+  starts_at: 2015-06-26 20:00:00
+  ends_at: 2015-06-27 04:00:00
+  published_at: 2015-06-27 11:00:00
+  youtube_url:
+  eventbrite_url: https://www.eventbrite.com/e/brotherly-three-tickets-17253112524
+  facebook_url: https://www.facebook.com/events/1407534219572801/
+  description: "Live Stream: brother.ly
+  Tickets: http://bit.ly/brotherly3 ($12 presale, $15 at the door)
+
+    ---limited tickets available---
+
+  LINE UP:
+
+    Mr Jennings
+  https://soundcloud.com/mrjennings
+
+  Phil Yeah
+https://soundcloud.com/philyeah
+
+The Wonder Bars
+https://soundcloud.com/wonderbars
+
+Sixninebot
+https://soundcloud.com/69bot
+
+Producers of Philadelphia, you now have a new home. 
+We will gather every fourth Friday.
+This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky. A chocolate fountain with fruits and other dip-ables will be supplied for your convenience. 
+
+We value your self expression- 
+While we encourage fancy pants attire, it is up to you what that means. 
+
+
+-----------------------------
+brother.ly will be live streaming 
+every fourth friday 
+@ 10pm 
+Doors @ 9pm
+-----------------------------"
 four:
   name: "brother.ly four"
   starts_at: <%= 1.hour.from_now %>
