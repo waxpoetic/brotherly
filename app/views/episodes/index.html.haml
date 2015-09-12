@@ -1,6 +1,13 @@
 - title 'All Episodes'
 
-.row
-  - cache episodes do
-    = render 'empty' unless episodes.any?
-    = render episodes
+- cache episodes do
+  %h1 Past Episodes
+
+  - episodes.in_groups_of(3, false).each do |episodes|
+    - cache "episodes/row/#{episodes}" do
+      .episode-group.row
+        %br/
+        - episodes.each do |episode|
+          - cache episode do
+            .large-4.columns
+              = render episode

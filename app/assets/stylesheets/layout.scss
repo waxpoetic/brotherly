@@ -2,8 +2,6 @@ body {
   background-size: 198% auto;
 
   header {
-    min-height: 25%;
-
     nav {
       #title {
         h1 {
@@ -87,7 +85,7 @@ body {
   }
 
   main {
-    min-height: 50%;
+    margin-bottom: 25px;
   }
 
   footer {
@@ -95,6 +93,7 @@ body {
     background: $vapor;
     color: $jet;
     opacity: 0.5;
+    height: 36%;
 
     h3 {
       color: $jet;

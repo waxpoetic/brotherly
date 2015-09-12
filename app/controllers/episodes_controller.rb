@@ -1,7 +1,7 @@
 class EpisodesController < ApplicationController
-  expose :episodes, scope: :latest, only: [:index]
-  expose :episode, only: [:show]
-  expose :episode, only: [:current] do
+  expose :episodes, scope: :latest
+  expose :episode
+  expose :current_episode do
     Episode.current.decorate
   end
 
@@ -14,7 +14,7 @@ class EpisodesController < ApplicationController
   end
 
   def current
-    respond_with episode
+    respond_with current_episode
   end
 
   def show

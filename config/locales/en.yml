@@ -26,3 +26,5 @@ en:
     subscribe: Subscribe
   search:
     empty: No results
+  users:
+    login: Log In

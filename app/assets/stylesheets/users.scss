@@ -1,0 +1,23 @@
+#users {
+  .content {
+    background: $jet;
+    padding: 15px;
+
+
+    .input {
+      input {
+        background: $oil;
+        color: $vapor;
+        border-color: darken($vapor, 20%);
+
+        &.boolean {
+          margin-right: 10px;
+        }
+      }
+      label {
+        color: $white;
+        font-size: rem-calc(18);
+      }
+    }
+  }
+}

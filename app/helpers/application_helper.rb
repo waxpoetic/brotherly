@@ -12,7 +12,9 @@ module ApplicationHelper
   end
 
   def section_name
-    File.basename(controller.controller_name.to_s)
+    controller_name = File.basename(controller.controller_name.to_s)
+    return 'users' if controller_name =~ /sessions/
+    controller_name
   end
 
   def title(new_title)
