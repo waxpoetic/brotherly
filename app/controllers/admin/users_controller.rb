@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   resource :user, attributes: [
-    :name, :email, :password, :password_confirmation, :is_admin
+    :name, :email, :password, :password_confirmation
   ]
 
   def index
@@ -16,6 +16,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
+    user.is_admin = true
     user.save
     respond_with user
   end
