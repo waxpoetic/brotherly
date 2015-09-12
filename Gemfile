@@ -25,6 +25,8 @@ gem 'foreman'
 gem 'newrelic_rpm'
 gem 'librato-rails'
 gem 'airbrake'
+gem 'email_validator'
+gem 'gibbon'
 
 gem 'lodash-rails'
 gem 'sass-rails'
@@ -59,6 +61,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'simplecov'
 end
 
 group :production do

@@ -117,3 +117,4 @@ Session.vim
 .sass-cache
 *.css.map
 .env
+/spec/examples.txt

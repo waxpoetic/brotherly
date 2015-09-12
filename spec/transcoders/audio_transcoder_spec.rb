@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe TranscodeAudioWorker, type: :worker do
+RSpec.describe AudioTranscoder, type: :worker do
   it "uses the audio pipeline id from secrets" do
     expect(worker.pipeline_id).to eq(Rails.application.secrets.aws_audio_pipeline_id)
   end

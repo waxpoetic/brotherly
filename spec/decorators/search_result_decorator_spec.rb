@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe SearchResultDecorator do
+RSpec.describe SearchResultDecorator do
 end

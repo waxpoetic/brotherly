@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Admin::EpisodeDecorator do
+RSpec.describe Admin::EpisodeDecorator do
 end

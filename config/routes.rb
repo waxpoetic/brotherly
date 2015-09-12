@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscribers
   namespace :admin do
     resources :artists
     resources :episodes do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
     sign_in:  'login',
     sign_out: 'logout',
     sign_up:  'signup'
-  }, controllers: { registrations: 'users/registrations' }
+  }
 
   resource :search, only: [:show]
 

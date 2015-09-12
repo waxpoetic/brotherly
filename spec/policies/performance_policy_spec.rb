@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe PerformancePolicy do
+RSpec.describe PerformancePolicy do
 
   let(:user) { User.new }
 
-  subject { described_class }
+  subject { RSpec.described_class }
 
   permissions ".scope" do
     pending "add some examples to (or delete) #{__FILE__}"

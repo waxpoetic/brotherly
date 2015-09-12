@@ -108,6 +108,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     draper (2.1.0)
@@ -118,6 +119,8 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     eventmachine (1.0.8)
     excon (0.45.4)
@@ -238,6 +241,9 @@ GEM
       sass (>= 3.3.0, < 3.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    gibbon (2.0.0)
+      faraday (>= 0.9.1)
+      multi_json (>= 1.11.0)
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -495,6 +501,11 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simple_oauth (0.3.1)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -560,12 +571,14 @@ DEPENDENCIES
   decent_exposure
   devise
   draper
+  email_validator
   eventbrite-client!
   font-awesome-sass
   font_assets
   foreman
   foundation-rails
   friendly_id
+  gibbon
   guard-livereload
   guard-rails
   guard-spring
@@ -597,6 +610,7 @@ DEPENDENCIES
   sass-rails
   sidekiq
   simple_form
+  simplecov
   spring
   spring-commands-rspec
   spring-commands-sidekiq

@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe PerformanceDecorator do
+RSpec.describe PerformanceDecorator do
 end

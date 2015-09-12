@@ -10,7 +10,7 @@ class WorkerGenerator < Rails::Generators::NamedBase
   end
 
   def generate_job
-    generate :job, "#{file_name}_job"
+    generate :job, file_name
   end
 
   def edit_job

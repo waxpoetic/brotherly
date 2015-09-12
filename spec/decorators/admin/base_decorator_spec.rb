@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Admin::BaseDecorator do
+RSpec.describe Admin::BaseDecorator do
 end
