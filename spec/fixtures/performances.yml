@@ -4,7 +4,6 @@ maggs_bruchez_at_four:
   starts_at: <%= "24/Aug/2015 04:00:00 +0500".to_datetime %>
   ends_at: <%= "24/Aug/2015 02:30:00 +0500".to_datetime %>
 
-
 del_at_four:
   artist: del
   episode: four
@@ -20,5 +19,77 @@ frank_sriracha_at_four:
 fernando_at_four:
   artist: fernando
   episode: four
-  starts_at: <%= "23/Aug/2015 22:00:00 +0500".to_datetime %>
-  ends_at: <%= "23/Aug/2015 23:30:00 +0500".to_datetime %>
+  starts_at: 2015-08-23 22:00:00 +0500
+  ends_at: 2015-08-23 23:30:00 +0500
+
+mr_jennings_at_three:
+  artist: mr_jennings
+  episode: three
+  starts_at: 2015-06-27 02:30:00 +0500
+  ends_at: 2015-06-27 04:00:00 +0500
+
+wonder_bars_at_three:
+  artist: wonder_bars
+  episode: three
+  starts_at: 2015-06-27 01:00:00 +0500
+  ends_at: 2015-06-27 02:30:00 +0500
+
+phil_yeah_at_three:
+  artist: phil_yeah
+  episode: three
+  starts_at: 2015-06-26 23:30:00 +0500
+  ends_at: 2015-06-27 01:00:00 +0500
+
+sixninebot_at_three:
+  artist: sixninebot
+  episode: three
+  starts_at: 2015-06-26 20:00:00 +0500
+  ends_at: 2015-06-26 23:30:00 +0500
+
+tte_at_two:
+  artist: tte
+  episode: two
+  starts_at: 2015-05-26 20:00:00 +0500
+  ends_at: 2015-05-26 23:30:00 +0500
+
+rvlvr_at_two:
+  artist: rvlvr
+  episode: two
+  starts_at: 2015-05-26 20:00:00 +0500
+  ends_at: 2015-05-26 23:30:00 +0500
+
+rnd_at_two:
+  artist: rnd
+  episode: two
+  starts_at: 2015-05-26 20:00:00 +0500
+  ends_at: 2015-05-26 23:30:00 +0500
+
+goldenspiral_at_two:
+  artist: goldenspiral
+  episode: two
+  starts_at: 2015-05-26 20:00:00 +0500
+  ends_at: 2015-05-26 23:30:00 +0500
+
+wonder_bars_at_one:
+  artist: wonder_bars
+  episode: one
+  starts_at: 2015-04-26 20:00:00 +0500
+  ends_at: 2015-04-26 23:30:00 +0500
+
+highly_desirable_at_one:
+  artist: highly_desirable
+  episode: one
+  starts_at: 2015-04-26 20:00:00 +0500
+  ends_at: 2015-04-26 23:30:00 +0500
+
+mnt_at_one:
+  artist: mnt
+  episode: one
+  starts_at: 2015-04-26 20:00:00 +0500
+  ends_at: 2015-04-26 23:30:00 +0500
+
+mambisa_at_one:
+  artist: mambisa
+  episode: one
+  starts_at: 2015-04-26 20:00:00 +0500
+  ends_at: 2015-04-26 23:30:00 +0500

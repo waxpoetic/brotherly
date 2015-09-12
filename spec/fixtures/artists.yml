@@ -22,6 +22,8 @@ fernando:
   name: Fernando
   description: "He rocked our first brother.ly party as the \"guitar-slingin' gent\" who accompanied MAMBISA on brother.ly's first episode, but we wanted to bring him back for a slightly different opening set. This time, he'll be laying down some sweet, sexy jazz grooves before we get started on our electronic music vibes for the night"
 
+# three
+
 mr_jennings:
   name: Mr. Jennings
   links:
@@ -53,3 +55,41 @@ sixninebot:
     facebook: https://www.facebook.com/sixninebot
     twitter: https://twitter.com/hotlava69
   description: "A relative newcomer to Philadelphia's house scene, Sixninebot's production style and tenacious DJ style has already earned him the respect of club and radio DJs alike. With regular performances at Medusa Lounge and on WKDU, Sixninebot's music is no stranger to the airwaves, but this will be his first video stream."
+
+# two
+
+tte:
+  name: Tim the Enchanter
+
+rvlvr:
+  name: RVLVR
+  links:
+    soundcloud: https://soundcloud.com/rvlvr
+    facebook: https://facebook.com/rvlvr
+
+rnd:
+  name: Research and Development
+  links:
+    soundcloud: https://soundcloud.com/resndev
+    facebook: https://facebook.com/giveherthatrnd
+
+goldenspiral:
+  name: goldenSpiral
+  links:
+    soundcloud: https://soundcloud.com/goldenspiral
+    facebook: https://facebook.com/goldenspiral
+
+# one
+
+mnt:
+  name: Michael NightTime
+  links:
+    soundcloud: https://soundcloud.com/thenighttime
+    facebook: https://facebook.com/michaelnighttime
+    twitter: https://twitter.com/thenighttime
+
+highly_desirable:
+  name: Highly Desirable
+
+mambisa:
+  name: "MAMBISA (ft. Fernando, the Guitar-Slingin' Gent)"
