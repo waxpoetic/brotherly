@@ -6,8 +6,6 @@
       .info.large-6.columns
         %h5
           = episode.title
-        %p
-          = episode.subtitle
-        - if episode.posted_at.present?
-          %time{ value: episode.published_at }
-            Broadcast at #{episode.posted_at}.
+        %ul
+          - episode.artists.each do |artist|
+            %li= artist.name

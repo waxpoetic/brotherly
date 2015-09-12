@@ -3,9 +3,11 @@
 #episodes {
   &.index {
     .episode-summary {
+      background: $jet;
       .info {
-        p {
+        li {
           font-size: 0.8rem;
+          color: $aluminum;
         }
       }
       time {
