@@ -6,8 +6,7 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    subscriber.save
-    subscriber.subscribe
+    subscriber.save && subscriber.subscribe
     respond_with subscriber
   end
 

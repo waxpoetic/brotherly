@@ -16,18 +16,14 @@ class SubscribeToMailchimpWorker < Brotherly::Worker
   private
 
   def list
-    @list ||= mailchimp.lists(list_id)
-  end
-
-  def list_id
-    Rails.application.config.secrets.mailchimp_list_id
-  end
-
-  def api_key
-    Rails.application.config.secrets.mailchimp_api_key
+    @list ||= mailchimp.lists(
+      Rails.application.secrets.mailchimp_list_id
+    )
   end
 
   def mailchimp
-    @mailchimp ||= Gibbon::Request.new api_key: api_key
+    @mailchimp ||= Gibbon::Request.new(
+      api_key: Rails.application.secrets.mailchimp_api_key
+    )
   end
 end
