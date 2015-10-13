@@ -2,24 +2,36 @@ require 'spec_helper'
 require 'brotherly/service'
 
 module Brotherly
+  class TestService < Service; end
+  class RemoteObject
+    attr_reader :params
+
+    def initialize(params = {})
+      @params = params
+    end
+
+    def persisted?
+      true
+    end
+  end
+
   RSpec.describe Service, type: :lib do
+    subject { TestService }
+
     it 'can set its remote class' do
-      expect(subject.remote(Object)).to eq(true)
-      expect(subject.remote_object).to eq(Object)
+      expect(subject.remote(RemoteObject)).to eq(RemoteObject)
+      expect(subject.remote_object).to eq(RemoteObject)
     end
 
     it 'can set its local name' do
-      expect(subject.local(:name)).to eq(true)
+      expect(subject.local(:name)).to eq(:name)
       expect(subject.local_name).to eq(:name)
     end
 
     it 'can set its attribute name' do
-      expect(subject.param(:attribute)).to eq(true)
-      expect(subject.attribute_name).to eq(:attribute)
-    end
-
-    it 'has a default attribute name' do
       expect(subject.attribute_name).to eq(:service_url)
+      expect(subject.param(:attribute)).to eq(:attribute)
+      expect(subject.attribute_name).to eq(:attribute)
     end
 
     context 'with an instance' do
@@ -27,12 +39,12 @@ module Brotherly
         double 'Model', attributes: { name: 'test' }
       end
 
-      subject do
-        Service.new(local)
+      before do
+        TestService.local(:episode)
       end
 
-      before do
-        allow(Service).to receive(:local_name).and_return(:episode)
+      subject do
+        TestService.new(local: local)
       end
 
       it 'validates attributes before saving' do
@@ -42,15 +54,16 @@ module Brotherly
       it 'is backed by a local record' do
         subject.local = nil
         expect(subject).not_to be_valid
+        subject.local = :episode
       end
 
       it 'uses local alias when configured' do
-        expect(subject.episode).to eq(subject.remote)
+        expect(subject.episode).to eq(subject.local)
       end
 
       it 'does not create remote record immediately' do
+        allow(subject.send :remote).to receive(:persisted?).and_return(false)
         expect(subject).not_to be_persisted
-        expect(subject.remote).not_to be_present
       end
 
       it 'delegates all attributes passed to remote to the local record' do
@@ -59,7 +72,7 @@ module Brotherly
 
       context 'when saved' do
         let :remote do
-          double 'Remote', save: true, url: 'http://example.com'
+          double 'Remote', save: true, url: 'http://example.com', persisted?: true
         end
 
         let :remote_object do
@@ -67,13 +80,13 @@ module Brotherly
         end
 
         before do
-          allow(Service).to receive(:remote_object).and_return(remote_object)
+          allow(TestService).to receive(:remote_object).and_return(remote_object)
         end
 
         before { subject.save }
 
         it 'creates the remote record' do
-          expect(subject.remote).to be_present
+          expect(subject.send :remote).to be_present
         end
 
         it 'delegates url to remote' do

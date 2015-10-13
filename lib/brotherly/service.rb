@@ -13,13 +13,23 @@ module Brotherly
 
     attr_accessor :local
 
-    attr_reader :remote
-
-    cattr_accessor :remote_object, :local_name, :attribute_name
-
-    self.attribute_name ||= "#{model_name.param_key}_url".to_sym
+    class_attribute :remote_object
+    class_attribute :local_name
+    class_attribute :attribute_name
 
     validates :local, presence: true
+    validates :remote, presence: true
+
+    delegate :url, :persisted?, to: :remote
+    delegate :attributes, to: :local, allow_nil: true
+
+    alias_method :to_param, :attribute_name
+
+    def self.default_attribute_name
+      "#{model_name.param_key}_url".gsub(/brotherly_/, '').to_sym
+    end
+
+    self.attribute_name ||= default_attribute_name
 
     def self.each
       Dir["app/services/*_service.rb"].map { |path|
@@ -30,7 +40,7 @@ module Brotherly
     end
 
     def self.create(from_local)
-      event = new local: local
+      event = new local: from_local
       event.save
       event
     end
@@ -53,33 +63,24 @@ module Brotherly
       end
     end
 
-    def persisted?
-      remote.present?
-    end
-
-    delegate :url, to: :remote
-
-    delegate :attributes, to: :local
-
     def method_missing(method, *arguments)
       return super unless respond_to?(method)
       local
     end
 
-    def respond_to?(method)
-      self.class.local_name == method || super
-    end
-
-    def to_param
-      self.class.attribute_name
+    def respond_to?(method, *args)
+      local_name == method || super
     end
 
     private
 
+    def remote
+      @remote ||= remote_object.new(attributes)
+    end
+
     def create
       run_callbacks :create do
-        @remote = self.class.remote_object.new(attributes)
-        @remote.save
+        remote.save
       end
     end
   end

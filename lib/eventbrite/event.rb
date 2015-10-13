@@ -4,6 +4,7 @@ module Eventbrite
   class Event
     attr_reader :attributes
     attr_reader :id
+    attr_reader :eventbrite_event
 
     def initialize(params = {})
       @attributes = params
@@ -24,8 +25,10 @@ module Eventbrite
     end
 
     def publish!
-      client.event_publish_post(id)
+      @eventbrite_event = client.event_publish_post(id)
     end
+
+    delegate :url, to: :eventbrite_event
 
     private
 

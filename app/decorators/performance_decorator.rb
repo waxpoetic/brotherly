@@ -12,4 +12,12 @@ class PerformanceDecorator < Draper::Decorator
   def title
     "#{artist.name} at #{episode.name}"
   end
+
+  def audio_recording_url
+    h.attachment_url model, :audio_recording
+  end
+
+  def video_recording_url
+    h.attachment_url model, :video_recording
+  end
 end

@@ -11,7 +11,7 @@ class BitlyService < Brotherly::Service
   private
 
   def update_episode
-    episode.update short_url: remote.url
+    episode.update short_url: remote.short_url
   end
 
   def url

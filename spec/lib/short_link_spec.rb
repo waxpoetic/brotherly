@@ -3,24 +3,38 @@ require 'brotherly/short_link'
 
 module Brotherly
   RSpec.describe ShortLink do
-    fixtures :episodes
-
-    let :episode do
-      episodes :four
+    let :url do
+      'http://example.com'
     end
 
-    subject { ShortLink.new episode }
+    subject do
+      ShortLink.new url: url
+    end
 
-    it 'uses an episode for the full url' do
-      expect(subject.episode).to eq(episode)
+    let :bitly do
+      double 'Bitly::Client'
+    end
+
+    let :link do
+      double 'Bitly::Link', short_url: 'http://j.mp/abcde'
+    end
+
+    before do
+      allow(bitly).to receive(:shorten).with(url, history: 1).and_return(link)
+      allow(Bitly).to receive(:client).and_return(bitly)
     end
 
     it 'generates a short link' do
-      expect(subject.link).to be_present
+      expect(subject.send :link).to be_present
+      expect(subject.send :link).to eq(link)
     end
 
     it 'finds url from short link object' do
-      expect(subject.url).to be_present
+      expect(subject.short_url).to be_present
+    end
+
+    it 'validates attributes' do
+      expect(subject).to be_valid
     end
   end
 end

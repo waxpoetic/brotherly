@@ -15,11 +15,7 @@ module WorkerHelpers
     end
 
     let :worker do
-      subject.new model: model
-    end
-
-    before do
-      allow(worker).to receive(:transcoder).and_return(transcoder)
+      subject.class.new model: model
     end
   end
 end

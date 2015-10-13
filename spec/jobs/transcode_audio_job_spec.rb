@@ -6,11 +6,11 @@ RSpec.describe TranscodeAudioJob, type: :job do
   end
 
   before do
-    allow(TranscodeAudioWorker).to \
-      receive(:perform).with(episode.audio_recording).and_rturn true
+    allow(AudioTranscoder).to \
+      receive(:perform).with(episode.audio_recording).and_return true
   end
 
   it "transcodes audio recordings" do
-    expect(subject.perform_now(episode)).to eq true
+    expect(TranscodeAudioJob.perform_now(episode)).to eq true
   end
 end

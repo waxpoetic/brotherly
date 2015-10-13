@@ -2,8 +2,8 @@ module Recordable
   extend ActiveSupport::Concern
 
   included do
-    attachment :video_recording
-    attachment :audio_recording
+    attachment :video_recording, content_type: 'video/x-flv'
+    attachment :audio_recording, content_type: 'audio/mp3'
 
     after_create :transcode_audio, if: :audio_recording_changed?
     after_create :transcode_video, if: :video_recording_changed?
@@ -15,5 +15,9 @@ module Recordable
 
   def transcode_video
     TranscodeVideoJob.perform_later self
+  end
+
+  def downloadable?
+    audio_recording.present? || video_recording.present?
   end
 end

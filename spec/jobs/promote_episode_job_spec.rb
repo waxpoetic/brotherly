@@ -6,6 +6,6 @@ RSpec.describe PromoteEpisodeJob, type: :job do
   end
 
   it 'promotes episode on all found services' do
-    expect(subject.perform_now(episode)).to eq(true)
+    expect(PromoteEpisodeJob.perform_now(episode)).to eq(true)
   end
 end

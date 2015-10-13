@@ -1,0 +1,21 @@
+- cache performance do
+  .title.row
+    .large-12.columns
+      %h1
+        = link_to performance.artist.name, performance.artist
+        at
+        = link_to performance.episode.name, performance.episode
+  .links.row
+    %nav
+      %section.social
+        - if performance.youtube_url.present?
+          = link_to icon(:youtube), performance.youtube_url
+        - if performance.mixcloud_url.present?
+          = link_to icon(:mixcloud), performance.mixcloud_url
+      - if performance.downloadable?
+        %section.downloads
+          Download:
+          - if performance.audio_recording.present?
+            = link_to icon(:speaker), performance.audio_recording_url
+          - if performance.video_recording.present?
+            = link_to icon(:television), performance.video_recording_url

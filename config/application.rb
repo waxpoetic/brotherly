@@ -44,7 +44,7 @@ module Brotherly
     # Page and podcast metadata.
     config.name = 'brother.ly'
     config.description = "A monthly electronic music showcase."
-    config.keywords = "live, electronic, music, philadelphia"
+    config.keywords = %w(live electronic music philadelphia)
     config.founding_year = 2015
 
     # Whether the podcast is explicit or not.

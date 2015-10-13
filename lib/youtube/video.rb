@@ -2,6 +2,8 @@ require 'youtube_it'
 
 module Youtube
   class Video
+    attr_reader :attributes
+
     def initialize(params = {})
       @attributes = params
     end
