@@ -11,6 +11,7 @@ module Brotherly
   autoload :ShortLink
   autoload :Transcoder
   autoload :Dotenv
+  autoload :Decoratable
 
   def self.version
     VERSION

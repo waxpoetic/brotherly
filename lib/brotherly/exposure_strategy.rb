@@ -18,9 +18,9 @@ module Brotherly
     def resource
       super.tap do |r|
         authorize r
-      end.decorate
+      end.decorate controller: controller
     rescue
-      super.decorate
+      super.decorate controller: controller
     end
   end
 end

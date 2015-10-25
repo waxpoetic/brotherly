@@ -5,7 +5,7 @@ module Brotherly
     attr_reader :path
 
     def initialize
-      @path = File.join Rails.root, '.env'
+      @path = Rails.root.join '.env'
     end
 
     def self.settings
@@ -15,6 +15,8 @@ module Brotherly
     def settings
       configuration.join "\s"
     end
+
+    private
 
     def configuration
       lines.select { |l| l =~ /=/ }.reject do |line|

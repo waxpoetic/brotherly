@@ -1,5 +1,6 @@
-# Controlled layout for admin functionality.
 class AdminController < ApplicationController
+  self.html_layout = 'admin'
+
   before_action :authenticate_user!
 
   helper_method :page_title

@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   # Define a default HTML layout.
   layout :use_layout?
+  class_attribute :html_layout
+  self.html_layout ||= 'application'
 
   # Configure DecentExposure
   decent_configuration do
@@ -42,15 +44,13 @@ class ApplicationController < ActionController::Base
     render :not_found, status: :not_found, error: exception
   end
 
+  protected
+
   def use_layout?
     request.xhr? ? false : html_layout
   end
 
-  def html_layout
-    'application'
-  end
-
   def current_decorated_user
-    Admin::UserDecorator.new current_user
+    current_user.try :decorate
   end
 end
