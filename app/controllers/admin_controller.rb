@@ -10,6 +10,10 @@ class AdminController < ApplicationController
   after_action :verify_authorized
   after_action :populate_headers
 
+  expose :query do
+    collection.ransack params[:q]
+  end
+
   def dashboard
     render :dashboard
   end

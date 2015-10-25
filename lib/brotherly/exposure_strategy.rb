@@ -5,7 +5,7 @@ module Brotherly
   # A strategy for DecentExposure that automatically authorizes the
   # resource and decorates it with a presenter object.
   class ExposureStrategy < DecentExposure::StrongParametersStrategy
-    delegate :authorize, :policy_scope, to: :controller
+    delegate :authorize, :policy_scope, :params, to: :controller
 
     # Generate a policy scope for all collection resources, then
     # decorate the finished object relation.

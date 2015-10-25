@@ -2,14 +2,17 @@
   .large-12.columns
     %table{ class: collection_name }
       %thead
-        %tr
+        %tr.pagination
+          %td{ colspan: collection.fields.size }
+            %td= paginate collection
+        %tr.fields
           - collection.fields.each do |field|
             %th{ class: field }
-              = sort_link field
+              = sort_link query, field
             %th.controls
               = link_to_modal t('.new'), new_path
-      - cache collection do
-        %tbody
+      %tbody
+        - cache collection do
           - collection.each do |item|
             %tr{ class: model_name, itemid: item.id }
               - collection.fields.each do |field|
@@ -20,3 +23,8 @@
                     = item.public_send field
                 %td.controls
                   = link_to_modal t('.edit'), edit_path(item)
+      %thead
+        %tr.pagination
+          %td{ colspan: collection.fields.size }
+            %td= paginate collection
+

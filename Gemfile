@@ -27,6 +27,7 @@ gem 'librato-rails'
 gem 'airbrake'
 gem 'email_validator'
 gem 'gibbon'
+gem 'ransack'
 
 gem 'lodash-rails'
 gem 'sass-rails'

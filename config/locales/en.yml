@@ -1,4 +1,22 @@
 en:
+  ransack:
+    asc: ascending
+    desc: descending
+    predicates:
+      cont: contains
+      not_cont: not contains
+      start: starts with
+      end: ends with
+      gt: greater than
+      lt: less than
+    models:
+      person: Passanger
+    attributes:
+      person:
+        name: Full Name
+      article:
+        title: Article Title
+        body: Main Content
   layouts:
     admin:
       navigation:
