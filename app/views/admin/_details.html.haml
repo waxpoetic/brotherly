@@ -1,0 +1,4 @@
+%dl
+  - model.fields.each do |field|
+    %dt= t field, scope: '.', suffix: ':'
+    %dd= item.public_send field
