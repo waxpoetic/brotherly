@@ -1,8 +1,6 @@
 class PerformancesController < ApplicationController
   expose :episode
-  expose :performance do
-    episode.performances.find params[:id]
-  end
+  resource :performance, ancestor: :episode
 
   def show
     respond_with performance

@@ -1,6 +1,5 @@
 class EpisodesController < ApplicationController
-  expose :episodes, scope: :latest
-  expose :episode
+  resource :episode, scope: :latest
   expose :current_episode do
     Episode.current.decorate
   end

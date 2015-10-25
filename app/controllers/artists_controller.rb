@@ -1,6 +1,5 @@
 class ArtistsController < ApplicationController
-  expose :artists, only: [:index]
-  expose :artist, only: [:show]
+  resource :artist
 
   def index
     respond_with artists

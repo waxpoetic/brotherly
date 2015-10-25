@@ -1,12 +1,14 @@
 class SubscribersController < ApplicationController
-  expose :subscriber
+  resource :subscriber do
+    permit :name, :email
+  end
 
   def new
     render :new
   end
 
   def create
-    subscriber.save && subscriber.subscribe
+    subscriber.save
     respond_with subscriber
   end
 
