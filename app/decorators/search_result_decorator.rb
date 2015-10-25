@@ -1,4 +1,4 @@
-class SearchResultDecorator < Draper::Decorator
+class SearchResultDecorator < ApplicationDecorator
   delegate_all
 
   def name

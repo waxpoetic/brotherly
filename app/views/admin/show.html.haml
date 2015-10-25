@@ -1,0 +1,6 @@
+.row
+  .large-12.columns
+    %dl
+      - model.fields.each do |field|
+        %dt #{t(".#{field}"}:
+        %dd= item.public_send field

@@ -1,4 +1,4 @@
-class SubscriberDecorator < Draper::Decorator
+class SubscriberDecorator < ApplicationDecorator
   delegate_all
 
   def thank_you_message

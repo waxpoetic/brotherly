@@ -98,6 +98,9 @@ GEM
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     connection_pool (2.2.0)
+    controller_resources (0.1.1)
+      decent_exposure (~> 2)
+      rails (~> 4)
     debug_inspector (0.0.2)
     decent_exposure (2.3.2)
     devise (3.5.2)
@@ -568,7 +571,7 @@ DEPENDENCIES
   bitly
   capybara
   coffee-rails
-  decent_exposure
+  controller_resources
   devise
   draper
   email_validator

@@ -1,4 +1,4 @@
-class ArtistDecorator < Draper::Decorator
+class ArtistDecorator < ApplicationDecorator
   delegate_all
 
   def image_url

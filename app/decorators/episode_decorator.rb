@@ -1,4 +1,4 @@
-class EpisodeDecorator < Draper::Decorator
+class EpisodeDecorator < ApplicationDecorator
   delegate_all
 
   def artists

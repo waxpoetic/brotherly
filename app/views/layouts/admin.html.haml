@@ -1,10 +1,10 @@
 !!!
-%html{:lang => "en"}
+%html{lang: I18n.locale}
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = title_tag
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= page_title
     = stylesheet_link_tag    "admin"
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application"
@@ -17,29 +17,29 @@
             %h1= link_to "#{config.name} (#{Rails.env})", admin_path
         %section.top-bar-section
           %ul
-            = nav_link 'Artists',   admin_artists_path
-            = nav_link 'Episodes',  admin_episodes_path
-            = nav_link 'Users',     admin_users_path
+            - cache do
+              - models.each do |model_class|
+                = nav_item model_class.table_name
         %section.top-bar-section
           %ul.right
             = nav_link current_decorated_user.login, [:admin, current_user]
-            = nav_link 'Log Out', destroy_user_session_path
-      .row
+            = nav_item :logout, destroy_user_session_path
+      #title.row
         .large-12.columns
-          %h1= page_title
-    %main{ id: page_name, class: section_name }
-      .messages.row
-        = render 'flash'
-      .content.row
-        .large-8.columns
-          = yield
-        .large-4.columns
-          #editor
-            / Editable content from the tables go here
-      .modal.row
-        #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
-          / Dialog content goes here
+          %h1= current_title
+      #flash.row
+        .large-12.columns
+          - flash.each do |type, message|
+            %div{ class: "alert-box #{type}", data: { alert: true } }
+              = message
+              = link_to '&times;', '#', class: 'close'
+    %main{ id: controller_name }
+      %section{ class: action_name }
+        = yield
     %footer
       .row
         .large-12.columns
           %h4= link_to 'Back To Main Site', root_path
+    #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
+      / Dialog content goes here
+

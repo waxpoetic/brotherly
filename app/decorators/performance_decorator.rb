@@ -1,4 +1,4 @@
-class PerformanceDecorator < Draper::Decorator
+class PerformanceDecorator < ApplicationDecorator
   delegate_all
 
   def cover_image_url

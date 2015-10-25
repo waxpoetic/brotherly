@@ -1,4 +1,48 @@
 en:
+  layouts:
+    admin:
+      navigation:
+        logout: Log Out
+        subscribers: Subscribers
+        artists: Artists
+        episodes: Episodes
+  admin:
+    cancel: Cancel
+    subscribers:
+      index:
+        title: Subscribers
+      show:
+        title: Subscriber
+      new:
+        title: New Subscriber
+      edit:
+        title: Edit Subscriber
+    artists:
+      index:
+        title: Artists
+        name: Name
+        image: Image
+        links: Links
+        description: Biography
+      show:
+        title: Artist
+        name: Name
+        image: Image
+        links: Links
+        description: Biography
+      new:
+        title: New Artist
+      edit:
+        title: Edit Artist
+    episodes:
+      index:
+        title: Episodes
+      show:
+        title: Episode
+      new:
+        title: New Episode
+      edit:
+        title: Edit Episode
   errors:
     unauthorized:
       title: Not Authorized

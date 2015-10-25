@@ -1,0 +1,22 @@
+.row
+  .large-12.columns
+    %table{ class: collection_name }
+      %thead
+        %tr
+          - collection.fields.each do |field|
+            %th{ class: field }
+              = sort_link field
+            %th.controls
+              = link_to_modal t('.new'), new_path
+      - cache collection do
+        %tbody
+          - collection.each do |item|
+            %tr{ class: model_name, itemid: item.id }
+              - collection.fields.each do |field|
+                %td{ class: field }
+                  - if field == :name
+                    = link_to_modal item.public_send(field), item
+                  - else
+                    = item.public_send field
+                %td.controls
+                  = link_to_modal t('.edit'), edit_path(item)

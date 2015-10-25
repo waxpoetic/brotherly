@@ -1,0 +1,10 @@
+.row
+  .large-12.columns
+    = simple_form_for model, remote: true do |f|
+      %fieldset
+        %legend= current_title
+        - fields.each do |field|
+          = f.input field
+      %nav
+        = f.button :submit
+        = link_to t('.cancel'), url_for(:back), class: 'close button'

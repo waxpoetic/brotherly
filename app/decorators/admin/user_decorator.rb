@@ -1,4 +1,4 @@
-class Admin::UserDecorator < Draper::Decorator
+class Admin::UserDecorator < ApplicationDecorator
   delegate_all
 
   def login
