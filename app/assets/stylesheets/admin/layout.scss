@@ -1,0 +1,21 @@
+#admin {
+  .notice {
+    @extend .success
+  }
+
+  table {
+    width: 100%;
+
+    .empty {
+      h4 {
+        text-align: center;
+        color: $jet;
+        font-style: italic;
+      }
+    }
+
+    .controls {
+      width: 150px;
+    }
+  }
+}

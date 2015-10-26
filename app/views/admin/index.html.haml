@@ -13,17 +13,22 @@
             = link_to_modal "#{icon('file-o')}&nbsp;&nbsp;New".html_safe, new_path, title: t('.new', name: model.model_name.human), class: 'tiny new button'
       %tbody
         - cache collection do
-          - collection.each do |item|
-            %tr{ class: model_name, itemid: item.id }
-              - collection.fields.each do |field|
-                %td{ class: field }
-                  - if field == 'name'
-                    = link_to_modal item.public_send(field), [:admin, item]
-                  - else
-                    = item.public_send field
-              %td.controls
-                = link_to_modal icon('edit'), edit_path(item), class: 'tiny secondary edit button', title: t('.edit', model: item.model_name.human, name: item.name)
-                = link_to_destroy icon('ban'), item, title: t('.edit', model: item.model_name.human, name: item.name)
+          - if collection.empty?
+            %tr
+              %td.empty{ colspan: collection.fields.size+1 }
+                %h4= t '.empty', models: collection.object.model_name.plural
+          - else
+            - collection.each do |item|
+              %tr{ class: model_name, itemid: item.id }
+                - collection.fields.each do |field|
+                  %td{ class: field }
+                    - if field == 'name'
+                      = link_to_modal item.public_send(field), [:admin, item]
+                    - else
+                      = item.public_send field
+                %td.controls
+                  = link_to_modal icon('edit'), edit_path(item), class: 'tiny secondary edit button', title: t('.edit', model: item.model_name.human, name: item.name)
+                  = link_to_destroy icon('ban'), item, title: t('.edit', model: item.model_name.human, name: item.name)
       %thead
         %tr.pagination
           %td{ colspan: collection.fields.size }

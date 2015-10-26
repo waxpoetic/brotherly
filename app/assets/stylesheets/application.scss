@@ -1486,6 +1486,10 @@ $topbar-dropdown-bg: $topbar-bg;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
 
+.notice {
+  @extend .success;
+}
+
 @import 'foundation';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

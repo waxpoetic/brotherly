@@ -34,13 +34,15 @@
                 = nav_link next_or_last_episode, root_path
               = nav_link t(:past_episode, scope: :nav), episodes_path
               = nav_link t(:artists, scope: :nav), artists_path
-              = nav_link icon('facebook'), 'https://facebook.com/brotherlyparty'
-              = nav_link icon('twitter'), 'https://twitter.com/brotherlyparty'
-              = nav_link icon('youtube'), 'http://bit.ly/brotherly-youtube'
-              = nav_link icon('instagram'), 'http://instagram.com/brother.ly'
               - unless session[:subscriber].present?
                 %li
                   = link_to_modal "#{icon('envelope')} #{t(:subscribe, scope: :nav)}".html_safe, new_subscriber_path, id: 'subscribe'
+      #flash.row
+        .large-12.columns
+          - flash.each do |type, message|
+            %div{ class: "alert-box #{type}", data: { alert: true  } }
+              = message
+              = link_to '&times;'.html_safe, '#', class: 'close'
     %main{ class: page_name, id: section_name }
       .messages.row
         = render 'flash'
@@ -66,11 +68,25 @@
             %ul
             - recent_episodes.each do |episode|
               %li= link_to episode.name, episode
-        - cache latest_cache_key('upcoming_episodes') do
-          .upcoming.large-4.columns
-            %h3= t :upcoming, scope: :episodes
+        - cache 'social' do
+          .social.large-4.columns
+            %h3= t '.social'
             %ul
-            - upcoming_episodes.limit(5).each do |episode|
-              %li= link_to episode.name, episode
+              %li
+                = link_to 'https://facebook.com/brotherlyparty' do
+                  = icon :facebook
+                  = t '.facebook'
+              %li
+                = link_to 'https://twitter.com/brotherlyparty' do
+                  = icon :twitter
+                  = t '.twitter'
+              %li
+                = link_to 'http://bit.ly/brotherly-youtube' do
+                  = icon :youtube
+                  = t '.youtube'
+              %li
+                = link_to 'http://instagram.com/brother.ly' do
+                  = icon :instagram
+                  = t '.instagram'
     - cache 'tracking' do
       = render 'tracking'

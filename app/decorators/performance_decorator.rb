@@ -9,9 +9,10 @@ class PerformanceDecorator < ApplicationDecorator
     artist.name
   end
 
-  def title
+  def name
     "#{artist.name} at #{episode.name}"
   end
+  alias_method :title, :name
 
   def audio_recording_url
     h.attachment_url model, :audio_recording

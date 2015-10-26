@@ -23,6 +23,12 @@ en:
         title: Article Title
         body: Main Content
   layouts:
+    application:
+      social: connect
+      facebook: Like on Facebook
+      twitter: Follow on Twitter
+      youtube: Subscribe to YouTube Channel
+      instagram: Follow on Instagram
     admin:
       navigation:
         login: "Logged in as <strong>%{name}</strong>"
@@ -33,6 +39,9 @@ en:
         users: Users
         performances: Performances
   admin:
+    users:
+      index:
+        title: Users
     performances:
       index:
         title: Artist Performances
@@ -40,6 +49,7 @@ en:
       edit:
         title: Edit Performance
     index:
+      empty: "There are no %{models} to display."
       new: "New %{name}"
       edit: "Edit %{model} '%{name}'"
       destroy: "Destroy %{model} '%{name}'"

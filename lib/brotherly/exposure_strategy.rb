@@ -33,8 +33,12 @@ module Brotherly
       "Admin::#{model.decorator_class.name}".constantize
     end
 
+    def admin?
+      controller.env['REQUEST_PATH'] =~ /admin/
+    end
+
     def collection_decorator
-      if controller.env['REQUEST_PATH'] =~ /admin/
+      if admin?
         "Admin::#{model.model_name.plural.capitalize}Decorator".constantize
       else
         "#{model.model_name.plural.classify}Decorator".constantize

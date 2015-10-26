@@ -12,7 +12,7 @@ class ApplicationDecorator < Draper::Decorator
   #
   # @return [String]
   def title
-    h.titleize model.name
+    model.name.titleize
   end
 
   def self.collection_decorator_class
