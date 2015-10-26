@@ -97,9 +97,9 @@ en:
     tickets: Get Tickets
     share: Share on Facebook
   nav:
-    next_episode: Next Episode
-    latest_episode: Latest Episode
-    past_episode: Past Episodes
+    next_episode: Next
+    latest_episode: Latest
+    past_episode: Archives
     artists: Artists
     subscribe: Subscribe
   search:

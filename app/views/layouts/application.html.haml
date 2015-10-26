@@ -34,9 +34,13 @@
                 = nav_link next_or_last_episode, root_path
               = nav_link t(:past_episode, scope: :nav), episodes_path
               = nav_link t(:artists, scope: :nav), artists_path
+              = nav_link icon('facebook'), 'https://facebook.com/brotherlyparty'
+              = nav_link icon('twitter'), 'https://twitter.com/brotherlyparty'
+              = nav_link icon('youtube'), 'http://bit.ly/brotherly-youtube'
+              = nav_link icon('instagram'), 'http://instagram.com/brother.ly'
               - unless session[:subscriber].present?
                 %li
-                  = link_to_modal t(:subscribe, scope: :nav), new_subscriber_path
+                  = link_to_modal "#{icon('envelope')} #{t(:subscribe, scope: :nav)}".html_safe, new_subscriber_path, id: 'subscribe'
     %main{ class: page_name, id: section_name }
       .messages.row
         = render 'flash'
