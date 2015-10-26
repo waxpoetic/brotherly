@@ -1,4 +1,5 @@
 class Admin::PerformanceDecorator < ApplicationDecorator
+  decorates Performance
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through
