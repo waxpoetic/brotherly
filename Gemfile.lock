@@ -533,6 +533,9 @@ GEM
       spring (>= 0.9.1)
     spring-commands-sidekiq (1.0.0)
       spring (>= 0.9.1)
+    spring-watcher-listen (2.0.0)
+      listen (>= 2.7, < 4.0)
+      spring (~> 1.2)
     sprockets (3.3.1)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
@@ -636,6 +639,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-commands-sidekiq
+  spring-watcher-listen
   turbolinks
   uglifier
   web-console (~> 2.0)

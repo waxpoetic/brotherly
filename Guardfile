@@ -6,14 +6,6 @@ guard 'livereload' do
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
 end
 
-guard 'spring', bundler: false do
-  watch('Gemfile.lock')
-  watch(%r{^config/})
-  watch(%r{^lib/})
-  watch(%r{^spec/(support|factories)/})
-  watch(%r{^spec/factories.rb})
-end
-
 # Guard-Rails supports a lot options with default values:
 # daemon: false                        # runs the server as a daemon.
 # debugger: false                      # enable ruby-debug gem.

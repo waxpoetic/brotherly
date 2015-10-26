@@ -85,6 +85,14 @@ module ApplicationHelper
     end
   end
 
+  def next_or_last_episode
+    if current_episode.future?
+      t(:next_episode, scope: :nav)
+    else
+      t(:latest_episode, scope: :nav)
+    end
+  end
+
   private
 
   def active_link?(href)

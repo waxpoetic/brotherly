@@ -30,7 +30,7 @@
                   / Search results go here
           %section.top-bar-section#links
             %ul.right
-              = nav_link t(:next_episode, scope: :nav), root_path
+              = nav_link next_or_last_episode, root_path
               = nav_link t(:past_episode, scope: :nav), episodes_path
               = nav_link t(:artists, scope: :nav), artists_path
               - unless session[:subscriber].present?
