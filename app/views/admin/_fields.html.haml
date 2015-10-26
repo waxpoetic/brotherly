@@ -1,4 +1,4 @@
 %fieldset
   %legend= current_title
-  - fields.each do |field|
+  - params_to_permit.each do |field|
     = f.input field

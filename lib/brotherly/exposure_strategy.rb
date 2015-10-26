@@ -10,10 +10,11 @@ module Brotherly
     # Generate a policy scope for all collection resources, then
     # decorate the finished object relation.
     def collection_resource
-      collection_decorator.decorate_collection(
+      collection_decorator.decorate(
         super.tap do |c|
           policy_scope c
-        end.page(current_page).per(per_page)
+        end.page(current_page).per(per_page),
+        with: decorator
       )
     end
 

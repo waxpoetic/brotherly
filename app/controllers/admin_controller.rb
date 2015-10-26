@@ -5,6 +5,7 @@ class AdminController < ApplicationController
 
   helper_method :page_title
   helper_method :current_title
+  helper_method :params_to_permit
 
   # after_action :verify_policy_scoped
   # after_action :verify_authorized

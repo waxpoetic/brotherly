@@ -10,7 +10,7 @@
             %th{ class: field }
               = sort_link query, field
           %th.controls
-            = link_to_modal icon('file-o'), new_path, title: t('.new', name: model.model_name.human), class: 'tiny new button'
+            = link_to_modal "#{icon('file-o')}&nbsp;&nbsp;New".html_safe, new_path, title: t('.new', name: model.model_name.human), class: 'tiny new button'
       %tbody
         - cache collection do
           - collection.each do |item|
@@ -18,7 +18,7 @@
               - collection.fields.each do |field|
                 %td{ class: field }
                   - if field == 'name'
-                    = link_to_modal item.public_send(field), item
+                    = link_to_modal item.public_send(field), [:admin, item]
                   - else
                     = item.public_send field
               %td.controls

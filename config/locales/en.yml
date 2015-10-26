@@ -33,6 +33,12 @@ en:
         users: Users
         performances: Performances
   admin:
+    performances:
+      index:
+        title: Artist Performances
+        new: New Performance
+      edit:
+        title: Edit Performance
     index:
       new: "New %{name}"
       edit: "Edit %{model} '%{name}'"

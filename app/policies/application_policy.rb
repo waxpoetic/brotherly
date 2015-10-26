@@ -26,6 +26,10 @@ class ApplicationPolicy
     true
   end
 
+  def edit?
+    update?
+  end
+
   def destroy?
     true
   end

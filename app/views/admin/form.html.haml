@@ -1,5 +1,5 @@
 .row
   .large-12.columns
-    = simple_form_for model, remote: true do |f|
+    = simple_form_for [:admin, model], remote: true do |f|
       = render 'fields', f: f
       = render 'controls', f: f
