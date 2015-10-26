@@ -37,7 +37,8 @@ en:
       new: "New %{name}"
       edit: "Edit %{model} '%{name}'"
       destroy: "Destroy %{model} '%{name}'"
-    cancel: Cancel
+    controls:
+      cancel: Cancel
     dashboard:
       title: Dashboard
     subscribers:

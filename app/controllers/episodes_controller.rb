@@ -1,8 +1,5 @@
 class EpisodesController < ApplicationController
   resource :episode, scope: :latest
-  expose :current_episode do
-    Episode.current.decorate
-  end
 
   def index
     respond_to do |format|

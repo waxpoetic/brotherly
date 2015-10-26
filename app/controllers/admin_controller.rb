@@ -23,11 +23,11 @@ class AdminController < ApplicationController
   end
 
   def new
-    render template: 'form'
+    render 'form'
   end
 
   def edit
-    render template: 'form'
+    render 'form'
   end
 
   def show

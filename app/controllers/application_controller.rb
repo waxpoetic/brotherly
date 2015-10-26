@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     strategy Brotherly::ExposureStrategy
   end
 
+  expose :current_episode do
+    Episode.current.decorate
+  end
+
   expose :recent_episodes do
     Episode.latest.limit(5)
   end

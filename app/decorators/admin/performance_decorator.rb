@@ -1,5 +1,4 @@
-class Admin::EpisodeDecorator < ApplicationDecorator
-  decorates Episode
+class Admin::PerformanceDecorator < ApplicationDecorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

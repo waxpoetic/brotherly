@@ -1,6 +1,5 @@
 class PerformancesController < ApplicationController
-  expose :episode
-  resource :performance, ancestor: :episode
+  expose :performance
 
   def show
     respond_with performance

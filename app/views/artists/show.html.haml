@@ -18,8 +18,8 @@
                 = icon icon_for(link)
                 &nbsp;
                 = link.titleize
-    .row
-      %h3 Performances
-      %ul
-        - artist.performances.each do |performance|
-          %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)
+    -# .row
+    -#   %h3 Performances
+    -#   %ul
+    -#     - artist.performances.each do |performance|
+    -#       %li= link_to performance.episode.name, episode_performance_path(performance.episode, performance)

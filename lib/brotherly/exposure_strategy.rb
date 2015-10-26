@@ -10,25 +10,38 @@ module Brotherly
     # Generate a policy scope for all collection resources, then
     # decorate the finished object relation.
     def collection_resource
-      super.tap do |c|
-        policy_scope c
-      end.page(current_page).per(per_page).decorate
+      collection_decorator.decorate(
+        super.tap do |c|
+          policy_scope c
+        end.page(current_page).per(per_page)
+      )
     end
 
     def singular_resource
-      super.tap do |r|
-        authorize r
-      end.decorate
+      decorator.decorate(
+        super.tap do |r|
+          authorize r
+        end
+      )
     end
 
-    # Attempt to authorize a given resource using its Pundit policy,
-    # then inject +Draper::Decoratable+ so that 
-    # def resource
-    #   super.tap do |r|
-    #     authorize r
-    #   end.decorate
-    # end
-    #
     private
+
+    def decorator
+      return model.decorator_class unless controller.env['REQUEST_PATH'] =~ /admin/
+      "Admin::#{model.decorator_class.name}".constantize
+    end
+
+    def collection_decorator
+      if controller.env['REQUEST_PATH'] =~ /admin/
+        "Admin::#{model.model_name.plural.capitalize}Decorator".constantize
+      else
+        "#{model.model_name.plural.classify}Decorator".constantize
+      end
+    end
+
+    def model
+      controller.model_name.to_s.classify.constantize
+    end
   end
 end
