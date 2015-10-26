@@ -20,12 +20,21 @@ en:
   layouts:
     admin:
       navigation:
+        login: "Logged in as <strong>%{name}</strong>"
         logout: Log Out
         subscribers: Subscribers
         artists: Artists
         episodes: Episodes
+        users: Users
+        performances: Performances
   admin:
+    index:
+      new: "New %{name}"
+      edit: "Edit %{model} '%{name}'"
+      destroy: "Destroy %{model} '%{name}'"
     cancel: Cancel
+    dashboard:
+      title: Dashboard
     subscribers:
       index:
         title: Subscribers

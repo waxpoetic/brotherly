@@ -1,5 +1,6 @@
 %h2= t :login, scope: :users
 = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+  = devise_error_messages!
   .form-inputs
     = f.input :name, required: true, autofocus: true
     = f.input :password, required: true

@@ -90,10 +90,14 @@ body {
 
   footer {
     min-height: 25%;
-    background: $vapor;
+    background: $footer-bg;
     color: $jet;
     opacity: 0.5;
     height: 36%;
+
+    a {
+      color: white;
+    }
 
     h3 {
       color: $jet;

@@ -59,6 +59,7 @@ module Brotherly
     config.eager_load_namespaces << Brotherly
     config.eager_load_namespaces << Eventbrite
     config.eager_load_namespaces << Youtube
+    config.autoload_paths << Rails.root.join('lib')
 
     # Seed tables in development.
     config.seeds = %w(artists episodes performances)

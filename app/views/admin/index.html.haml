@@ -1,6 +1,6 @@
 .row
   .large-12.columns
-    %table{ class: collection_name }
+    %table{ class: collection.name }
       %thead
         %tr.pagination
           %td{ colspan: collection.fields.size }
@@ -9,20 +9,21 @@
           - collection.fields.each do |field|
             %th{ class: field }
               = sort_link query, field
-            %th.controls
-              = link_to_modal t('.new'), new_path
+          %th.controls
+            = link_to_modal icon('file-o'), new_path, title: t('.new', name: model.model_name.human), class: 'tiny new button'
       %tbody
         - cache collection do
           - collection.each do |item|
             %tr{ class: model_name, itemid: item.id }
               - collection.fields.each do |field|
                 %td{ class: field }
-                  - if field == :name
+                  - if field == 'name'
                     = link_to_modal item.public_send(field), item
                   - else
                     = item.public_send field
-                %td.controls
-                  = link_to_modal t('.edit'), edit_path(item)
+              %td.controls
+                = link_to_modal icon('edit'), edit_path(item), class: 'tiny secondary edit button', title: t('.edit', model: item.model_name.human, name: item.name)
+                = link_to_destroy icon('ban'), item, title: t('.edit', model: item.model_name.human, name: item.name)
       %thead
         %tr.pagination
           %td{ colspan: collection.fields.size }

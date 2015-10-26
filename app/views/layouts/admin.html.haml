@@ -14,15 +14,15 @@
       %nav.top-bar{ 'data-topbar' => true }
         %ul.title-area
           %li.name
-            %h1= link_to "#{config.name} (#{Rails.env})", admin_path
+            %h1= link_to "#{config.name} (#{Rails.env})", admin_root_path
         %section.top-bar-section
           %ul
             - cache do
               - models.each do |model_class|
-                = nav_item model_class.table_name
+                = admin_nav_item model_class.table_name
         %section.top-bar-section
           %ul.right
-            = nav_link current_decorated_user.login, [:admin, current_user]
+            = nav_link t(:login, scope: 'layouts.admin.navigation', name: current_user.name).html_safe, [:admin, current_user]
             = nav_item :logout, destroy_user_session_path
       #title.row
         .large-12.columns

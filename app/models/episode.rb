@@ -12,7 +12,7 @@ class Episode < ActiveRecord::Base
 
   accepts_nested_attributes_for :performances
 
-  scope :latest, -> { order :starts_at }
+  scope :latest, -> { order 'starts_at DESC' }
   scope :recent, -> { latest.where "starts_at <= ?", Time.now }
   scope :upcoming, -> { latest.where "starts_at >= ?", Time.now }
 

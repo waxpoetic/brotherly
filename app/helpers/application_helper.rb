@@ -60,7 +60,7 @@ module ApplicationHelper
     link_to text, href, options.merge(
       data: data.merge(
         'reveal-ajax' => true,
-        'reveal-id' => '#dialog'
+        'reveal-id' => 'dialog'
       )
     )
   end

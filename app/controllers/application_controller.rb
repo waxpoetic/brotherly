@@ -44,6 +44,14 @@ class ApplicationController < ActionController::Base
     render :not_found, status: :not_found, error: exception
   end
 
+  def per_page
+    params[:limit] || 50
+  end
+
+  def current_page
+    params[:page] || 1
+  end
+
   protected
 
   def use_layout?

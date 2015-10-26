@@ -1,29 +1,17 @@
 module AdminHelper
-  def link_to_modal text_or_href, href_or_options, html_options = {}, &block
-    data = {
-      'reveal-ajax' => true,
-      'reveal-id' => 'dialog'
-    }
-    options = if block_given?
-                html_options.merge data: data
-              else
-                href_or_options.merge data: data
-              end
-    if block_given?
-      link_to text_or_href, options, &block
-    else
-      link_to text_or_href, href_or_options, options
-    end
-  end
-
-  def link_to_destroy text, model, size: 'tiny'
+  def link_to_destroy text, model, size: 'tiny', title: nil
     link_to(
       text,
       [:admin, model],
       method: :delete,
       remote: true,
-      class: "#{size} destroy button"
+      title: title,
+      class: "#{size} destroy alert button"
     )
+  end
+
+  def model_name
+    controller.model_name
   end
 
   def edit_path *args
@@ -49,31 +37,22 @@ module AdminHelper
   end
 
   def models
-    Module.constants.map do |constant_name|
-      eval constant_name
-    end.select do |constant|
-      constant.try :extend?, ActiveRecord::Base
-    end
+    root = Rails.root.join('app', 'models')
+    Dir["#{root.to_s}/*.rb"].map do |path|
+      path.gsub(/#{root}|\.rb/, '').classify.constantize
+    end.select do |klass|
+      klass.ancestors.include? ActiveRecord::Base
+    end.sort { |l,n| l.name <=> n.name }
+  end
+
+  def admin_nav_item(table, href = nil)
+    href ||= url_for table
+    nav_link t(table, scope: 'layouts.admin.navigation'), [:admin, href]
   end
 
   def nav_item(table, href = nil)
     href ||= url_for table
     nav_link t(table, scope: 'layouts.admin.navigation'), href
-  end
-
-  def nav_link(text, href, dropdown: false, &block)
-    css = [
-      ('active' if current_page? href),
-      ('has-dropdown' if block_given?)
-    ].compact.join("\s")
-
-    if block_given?
-      content_tag :li, class: css, title: text, &block
-    else
-      content_tag :li, class: css, title: text do
-        link_to text, href
-      end
-    end
   end
 
   private

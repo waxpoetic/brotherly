@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    admin?
+    true
   end
 
   def show?
-    exists? && admin?
+    exists?
   end
 
   def create?
-    admin?
+    true
   end
 
   def new?
@@ -23,11 +23,11 @@ class ApplicationPolicy
   end
 
   def update?
-    admin?
+    true
   end
 
   def destroy?
-    admin?
+    true
   end
 
   def scope
@@ -48,10 +48,6 @@ class ApplicationPolicy
   end
 
   protected
-
-  def admin?
-    user.is_admin?
-  end
 
   def exists?
     scope.where(id: record.id).exists?

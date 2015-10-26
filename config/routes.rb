@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :artists
-    resources :episodes do
-      resources :performances
-    end
+    resources :episodes
+    resources :performances
     resources :subscribers
     resources :users
-    root to: 'admin#index'
   end
+  get '/admin' => 'admin#dashboard', as: :admin_root
 
   resources :artists, only: [:index, :show]
   resources :episodes, only: [:index, :show] do

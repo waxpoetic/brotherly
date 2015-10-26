@@ -6,12 +6,12 @@ class AdminController < ApplicationController
   helper_method :page_title
   helper_method :current_title
 
-  after_action :verify_policy_scoped
-  after_action :verify_authorized
+  # after_action :verify_policy_scoped
+  # after_action :verify_authorized
   after_action :populate_headers
 
   expose :query do
-    collection.ransack params[:q]
+    collection.object.ransack params[:q]
   end
 
   def dashboard
@@ -59,17 +59,17 @@ class AdminController < ApplicationController
 
   def page_title
     if current_title.present?
-      "#{current_title} | #{Rails.application.config.title}"
+      "#{current_title} | #{Rails.application.config.name}"
     else
-      Rails.application.config.title
+      Rails.application.config.name
     end
   end
 
   private
 
   def populate_headers
-    request.env['X-Title'] = page_title
-    request.env['X-Page-Title'] = title_text
+    request.env['X-Title'] = current_title
+    request.env['X-Page-Title'] = page_title
     flash.each do |type, message|
       request.env["X-Flash-#{type.titleize}"] = message
     end

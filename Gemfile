@@ -28,6 +28,7 @@ gem 'airbrake'
 gem 'email_validator'
 gem 'gibbon'
 gem 'ransack'
+gem 'kaminari'
 
 gem 'lodash-rails'
 gem 'sass-rails'
@@ -38,6 +39,8 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
 
 group :development do
   gem 'meta_request'

@@ -124,8 +124,9 @@ $warning-color: #f08a24;
 $info-color: #a0d3e8;
 
 // We use these to control various global styles
-$body-bg: image-url('drink.jpg') #222 no-repeat center top;
+$body-bg: #000;
 $body-font-color: $vapor;
+$footer-bg: lighten($body-bg, 60%);
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -1421,9 +1422,9 @@ $topbar-title-font-size: rem-calc(24);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-hover: $aluminum;
-// $topbar-link-bg-color-hover: $charcoal;
+$topbar-link-bg-color-hover: $primary-color;
 $topbar-link-bg-active: $topbar-bg;
-$topbar-link-bg-active-hover: $aluminum;
+//$topbar-link-bg-active-hover: $aluminum;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
@@ -1488,4 +1489,4 @@ $topbar-dropdown-bg: $topbar-bg;
 @import 'foundation';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import 'brotherly/*';
+@import 'application/*';
