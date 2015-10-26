@@ -8,6 +8,7 @@ class SubscribersController < ApplicationController
   end
 
   def create
+    subscriber.attributes = edit_params
     subscriber.save
     respond_with subscriber
   end

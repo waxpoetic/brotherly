@@ -1,2 +1,2 @@
-- cache "episodes/current/#{current_episode.created_at.utc.to_s(:number)}" do
+- cache current_episode do
   = render 'details', episode: current_episode, episode_title: current_episode.current_title

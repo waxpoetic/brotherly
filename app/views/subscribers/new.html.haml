@@ -1,4 +1,14 @@
-= simple_form_for subscriber do |f|
-  = f.input :name
-  = f.input :email, required: true
-  = f.button :submit, value: 'Subscribe', class: 'x-large success button'
+= link_to '&times;'.html_safe, '#', class: 'close-reveal-modal' if request.xhr?
+.title.row
+  .large-12.columns
+    %h1= t '.title'
+    %p= t '.content'
+.form.row
+  .large-12.columns
+    = simple_form_for subscriber, remote: true do |f|
+      .fields
+        = f.input :name
+        = f.input :email, required: true
+      .controls
+        = f.button :submit, value: 'Subscribe', class: 'button'
+        = link_to t('.cancel'), url_for(:back), class: 'close secondary button'

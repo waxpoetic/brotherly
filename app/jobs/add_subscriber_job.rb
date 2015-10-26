@@ -1,7 +1,7 @@
 class AddSubscriberJob < ActiveJob::Base
   queue_as :subscriptions
 
-  def perform
+  def perform(subscriber)
     list.members.create(
       body: {
         email_address: subscriber.email,

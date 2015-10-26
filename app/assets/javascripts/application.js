@@ -10,5 +10,5 @@
 //= require_self
 //= require_tree .
 
-$.turbo.use('page:load', 'page:fetch', 'ajax:complete');
+$.turbo.use('page:load', 'page:fetch', 'ajax:complete', 'opened.fndtn.reveal');
 $(function() { $(document).foundation(); });

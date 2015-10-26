@@ -109,4 +109,12 @@ body {
       }
     }
   }
+
+  #dialog {
+    background: $jet;
+
+    label {
+      color: white;
+    }
+  }
 }

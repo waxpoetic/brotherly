@@ -1,6 +1,13 @@
-%h1= subscriber.thank_you_message
+= link_to '&times;'.html_safe, '#', class: 'close-reveal-modal' if request.xhr?
+.row
+  .large-12.columns
+    %h1 Thanks for signing up!
 
-%p
-  You have been subscribed to our mailing list, which means you'll be
-  the first to know about the next brother.ly broadcast. Stay tuned for
-  more updates.
+    %p
+      You have been subscribed to our mailing list, which means you'll be
+      the first to know about the next brother.ly broadcast. Stay tuned for
+      more updates.
+.row
+  .large-12.columns
+    %nav
+      = link_to 'Back', url_for(:back), class: 'close button'

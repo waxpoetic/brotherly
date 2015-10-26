@@ -1,4 +1,9 @@
 en:
+  subscribers:
+    new:
+      title: Subscribe to the brother.ly mailing list
+      content: You'll be the first to know about new events and recording uploads.
+      cancel: Go back
   ransack:
     asc: ascending
     desc: descending
