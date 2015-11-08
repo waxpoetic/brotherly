@@ -39,6 +39,4 @@ RSpec.configure do |config|
     example.run
     Warden.test_reset!
   end
-
-  config.include WorkerHelpers, type: :worker
 end

@@ -15,7 +15,7 @@ RSpec.feature "Episodes", type: :feature do
   scenario "latest (home page)" do
     visit root_path
 
-    expect(page).to have_content('latest episode')
+    expect(page).to have_content('next episode...')
     expect(page).to have_content(episode.name)
   end
 
