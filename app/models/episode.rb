@@ -22,6 +22,10 @@ class Episode < ActiveRecord::Base
   multisearchable against: [:name]
 
   attachment :preview_image
+  attachment :audio_file, extension: 'wav'
+
+  after_create :transcode!
+  after_create :promote!, if: :future?
 
   def self.current
     latest.first

@@ -2,8 +2,9 @@ require 'active_model'
 
 module Brotherly
   # A true "Service object", this communicates with an outside service
-  # (like a social network) to promote a given future or current
-  # episode.
+  # (like a social network) to either promote a given future or current
+  # episode, or in the case of the +EventbriteService+, to actually
+  # create and schedule the event to prepare for ticket sales.
   class Service
     include ActiveModel::Model
 
@@ -70,6 +71,10 @@ module Brotherly
 
     def respond_to?(method, *args)
       local_name == method || super
+    end
+
+    def to_h
+      { to_param => url }
     end
 
     private

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin::SubscribersDecorator do
+RSpec.describe Admin::SubscribersDecorator do
 end

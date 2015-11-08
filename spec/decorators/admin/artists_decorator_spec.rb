@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin::ArtistsDecorator do
+RSpec.describe Admin::ArtistsDecorator do
 end

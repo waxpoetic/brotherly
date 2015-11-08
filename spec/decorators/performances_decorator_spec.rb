@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe PerformancesDecorator do
+RSpec.describe PerformancesDecorator do
 end

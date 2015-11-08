@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe SubscriberPolicy do
+RSpec.describe SubscriberPolicy do
 
   let(:user) { User.new }
 

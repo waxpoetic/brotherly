@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ArtistsDecorator do
+RSpec.describe ArtistsDecorator do
 end

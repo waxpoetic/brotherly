@@ -1,9 +1,12 @@
-# Promote an episode by kicking off its service workers.
+# "Promotes" an episode by firing off its service workers, which either
+# post about or create the episode on our various social media and event
+# support networks.
 class PromoteEpisodeJob < ActiveJob::Base
-  queue_as :default
+  queue_as :promotions
 
-  def perform(model)
-    # SubscriberMailer.new_episode(model).deliver_later
-    ServiceWorker.perform model
+  def perform(episode)
+    Brotherly::Service.each do |service|
+      episode.update service.create(episode).to_h
+    end
   end
 end
