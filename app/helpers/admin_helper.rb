@@ -14,18 +14,6 @@ module AdminHelper
     field.keys.first.to_s.gsub(/_attributes/, '').pluralize.to_sym
   end
 
-  def model_name
-    controller.model_name
-  end
-
-  def edit_path *args
-    public_send "edit_admin_#{model_name}_path", *args
-  end
-
-  def new_path
-    public_send "new_admin_#{model_name}_path"
-  end
-
   def model_class
     model_name.to_s.classify.constantize
   end

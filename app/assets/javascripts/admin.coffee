@@ -1,4 +1,9 @@
 jQuery ->
+  $(document).on 'opened.fndtn.reveal', '[data-reveal]', ->
+    $('input.date_picker').fdatetimepicker
+      format: 'yyyy-mm-dd hh:ii',
+      startDate: new Date()
+
   $(document)
     .on 'page:fetch', ->
       $('main').addClass 'disabled'

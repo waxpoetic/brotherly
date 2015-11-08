@@ -1486,6 +1486,7 @@ $include-html-global-classes: $include-html-classes;
 // $include-legacy-visibility-classes: true;
 
 @import 'foundation';
+@import 'foundation-datetimepicker';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'admin/*';

@@ -3,11 +3,15 @@
   - params_to_permit.each do |field|
     - if field.is_a? Hash
       %fieldset
-        %legend= association(field).to_s.titleize
-        = f.fields_for association(field) do |ff|
+        %legend= nested_association(field).to_s.titleize
+        = f.fields_for nested_association(field) do |ff|
           - field.values.first.each do |nested_field|
             = ff.input nested_field
           = ff.link_to_remove 'Remove', class: 'tiny alert button'
         = f.link_to_add 'Add', association(field), class: 'tiny button'
+    - elsif "#{field}" =~ /_id\Z/
+      = f.association "#{field}".gsub(/_id\Z/, '').to_sym
+    - elsif "#{field}" =~ /_at\Z/
+      = f.input field, as: :date_picker
     - else
       = f.input field

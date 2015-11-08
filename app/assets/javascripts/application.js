@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require foundation-datetimepicker
 //= require refile
 //= require jquery_nested_form
 //= require lodash

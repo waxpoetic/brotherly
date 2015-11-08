@@ -6,6 +6,10 @@ class AdminController < ApplicationController
   helper_method :page_title
   helper_method :current_title
   helper_method :params_to_permit
+  helper_method :model_name
+  helper_method :show_path
+  helper_method :new_path
+  helper_method :edit_path
 
   # after_action :verify_policy_scoped
   # after_action :verify_authorized
@@ -37,17 +41,17 @@ class AdminController < ApplicationController
 
   def create
     model.save
-    respond_with model
+    respond_with model, location: index_path
   end
 
   def update
     model.update edit_params
-    respond_with model
+    respond_with model, location: index_path
   end
 
   def destroy
     model.destroy
-    respond_with model
+    respond_with model, location: index_path
   end
 
   protected
@@ -64,6 +68,18 @@ class AdminController < ApplicationController
     else
       Rails.application.config.name
     end
+  end
+
+  def edit_path *args
+    public_send "edit_admin_#{model_name}_path", *args
+  end
+
+  def new_path
+    public_send "new_admin_#{model_name}_path"
+  end
+
+  def index_path
+    public_send "admin_#{collection_name}_path"
   end
 
   private

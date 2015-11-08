@@ -11,7 +11,7 @@ module Brotherly
       collection_decorator.decorate(
         super.tap do |c|
           controller.policy_scope c
-        end.page(controller.current_page).per(controller.per_page),
+        end.order('updated_at DESC').page(controller.current_page).per(controller.per_page),
       with: decorator)
     end
 
