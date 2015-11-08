@@ -17,12 +17,13 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   config.action_dispatch.rack_cache = {
-    metastore: "#{Rails.application.secrets.redis_host}/1/metastore",
-    entitystore: "#{Rails.application.secrets.redis_host}/1/entitystore"
+    metastore: "#{Rails.application.secrets.redis_host}/0/brotherly-rack-metastore",
+    entitystore: "#{Rails.application.secrets.redis_host}/0/brotherly-rack-entitystore"
   }
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store, "#{Rails.application.secrets.redis_host}/0/cache"
+  config.cache_store = :redis_store, \
+    "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
