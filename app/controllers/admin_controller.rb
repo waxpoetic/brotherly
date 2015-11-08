@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  self.responder = Brotherly::AdminResponder
   self.html_layout = 'admin'
 
   before_action :authenticate_user!

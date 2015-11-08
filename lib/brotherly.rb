@@ -5,6 +5,7 @@ module Brotherly
   extend ActiveSupport::Autoload
 
   autoload :Responder
+  autoload :AdminResponder
   autoload :ExposureStrategy
   autoload :Worker
   autoload :Service
