@@ -29,11 +29,11 @@ class AdminController < ApplicationController
   end
 
   def new
-    render 'form'
+    render 'new'
   end
 
   def edit
-    render 'form'
+    render 'edit'
   end
 
   def show
