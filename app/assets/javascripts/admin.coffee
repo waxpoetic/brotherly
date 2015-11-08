@@ -1,5 +1,5 @@
 jQuery ->
-  $(document).on 'opened.fndtn.reveal', '[data-reveal]', ->
+  $(document).on 'opened.fndtn.reveal', '#admin [data-reveal]', ->
     $('input.date_picker').fdatetimepicker
       format: 'yyyy-mm-dd hh:ii',
       startDate: new Date()
@@ -31,3 +31,5 @@ jQuery ->
   $('#admin .destroy.button')
     .on 'ajax:success', ->
       $(this).closest('tr').fadeOut()
+
+

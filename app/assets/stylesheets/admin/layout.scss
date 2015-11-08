@@ -1,3 +1,7 @@
+html.turbolinks-progress-bar::before {
+  background-color: $primary-color !important;
+}
+
 #admin {
   .notice {
     @extend .success

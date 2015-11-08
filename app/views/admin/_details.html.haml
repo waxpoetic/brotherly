@@ -1,4 +1,13 @@
 %dl
   - model.fields.each do |field|
-    %dt= field.titleize
-    %dd= model.public_send field
+    - if model.public_send(field).present?
+      %dt= field.titleize
+      %dd
+        - if model.public_send(field).is_a? Hash
+          %ul
+            - model.public_send(field).each do |key, value|
+              %li
+                %strong= "#{key}:"
+                %span= value
+        - else
+          = model.public_send field
