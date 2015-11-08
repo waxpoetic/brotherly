@@ -1,5 +1,5 @@
 class Admin::PerformancesDecorator < CollectionDecorator
   def fields
-    super.unshift 'name'
+    [:name, :created_at, :updated_at]
   end
 end

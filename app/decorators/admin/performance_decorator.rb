@@ -1,8 +1,8 @@
-class Admin::PerformanceDecorator < ApplicationDecorator
+class Admin::PerformanceDecorator < AdminDecorator
   decorates Performance
   delegate_all
 
-  def name
+  def title
     "#{artist.name} at #{episode.name}"
   end
 end

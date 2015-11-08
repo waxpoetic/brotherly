@@ -2,9 +2,10 @@
   .large-12.columns
     %table{ class: collection.name }
       %thead
-        %tr.pagination
-          %td{ colspan: collection.fields.size }
-            %td= paginate collection
+        - if collection.total_pages > 1
+          %tr.pagination
+            %td{ colspan: collection.fields.size }
+              %td= paginate collection
         %tr.fields
           - collection.fields.each do |field|
             %th{ class: field }
@@ -22,15 +23,12 @@
               %tr{ class: model_name, itemid: item.id }
                 - collection.fields.each do |field|
                   %td{ class: field }
-                    - if field == 'name'
-                      = link_to_modal item.public_send(field), [:admin, item]
-                    - else
-                      = item.public_send field
+                    = item.public_send field
                 %td.controls
-                  = link_to_modal icon('edit'), edit_path(item), class: 'tiny secondary edit button', title: t('.edit', model: item.model_name.human, name: item.name)
-                  = link_to_destroy icon('ban'), item, title: t('.edit', model: item.model_name.human, name: item.name)
-      %thead
-        %tr.pagination
-          %td{ colspan: collection.fields.size }
-            %td= paginate collection
-
+                  = link_to_modal icon('edit'), edit_path(item), class: 'tiny secondary edit button', title: t('.edit', model: item.model_name.human, name: item.title)
+                  = link_to_destroy icon('ban'), item, title: t('.edit', model: item.model_name.human, name: item.title)
+      %tfoot
+        - if collection.total_pages > 1
+          %tr.pagination
+            %td{ colspan: collection.fields.size }
+              %td= paginate collection

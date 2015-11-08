@@ -1,4 +1,4 @@
-class Admin::UserDecorator < ApplicationDecorator
+class Admin::UserDecorator < AdminDecorator
   decorates User
   delegate_all
 
@@ -6,7 +6,19 @@ class Admin::UserDecorator < ApplicationDecorator
     "~" + name
   end
 
+  def title
+    model.name.downcase
+  end
+
+  def role
+    if model.is_admin?
+      'Administrator'
+    else
+      'User'
+    end
+  end
+
   def fields
-    %w(name email current_sign_in_at last_sign_in_at current_sign_in_ip last_sign_in_ip confirmed_at is_admin)
+    %w(email current_sign_in_at last_sign_in_at current_sign_in_ip last_sign_in_ip is_admin)
   end
 end

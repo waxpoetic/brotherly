@@ -10,6 +10,10 @@ module AdminHelper
     )
   end
 
+  def association(field)
+    field.keys.first.to_s.gsub(/_attributes/, '').pluralize.to_sym
+  end
+
   def model_name
     controller.model_name
   end
@@ -24,12 +28,6 @@ module AdminHelper
 
   def model_class
     model_name.to_s.classify.constantize
-  end
-
-  def fields
-    model_class.column_names.reject do |column|
-      column.to_s =~ /id/
-    end
   end
 
   def fields_cache_key

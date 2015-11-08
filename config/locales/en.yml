@@ -4,24 +4,11 @@ en:
       title: Subscribe to the brother.ly mailing list
       content: You'll be the first to know about new events and recording uploads.
       cancel: Go back
-  ransack:
-    asc: ascending
-    desc: descending
-    predicates:
-      cont: contains
-      not_cont: not contains
-      start: starts with
-      end: ends with
-      gt: greater than
-      lt: less than
-    models:
-      person: Passanger
+  activerecord:
     attributes:
-      person:
-        name: Full Name
-      article:
-        title: Article Title
-        body: Main Content
+      episode:
+        created_at: Created
+        updated_at: Updated
   layouts:
     application:
       social: connect
@@ -39,9 +26,17 @@ en:
         users: Users
         performances: Performances
   admin:
+    show:
+      edit: Edit
     users:
+      new:
+        title: Add User
+      edit:
+        title: Edit User
       index:
         title: Users
+      show:
+        title: My Profile
     performances:
       index:
         title: Artist Performances

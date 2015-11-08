@@ -1,4 +1,13 @@
 %fieldset
   %legend= current_title
   - params_to_permit.each do |field|
-    = f.input field
+    - if field.is_a? Hash
+      %fieldset
+        %legend= association(field).to_s.titleize
+        = f.fields_for association(field) do |ff|
+          - field.values.first.each do |nested_field|
+            = ff.input nested_field
+          = ff.link_to_remove 'Remove', class: 'tiny alert button'
+        = f.link_to_add 'Add', association(field), class: 'tiny button'
+    - else
+      = f.input field

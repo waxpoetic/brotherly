@@ -5,7 +5,7 @@ class CollectionDecorator < Draper::CollectionDecorator
 
   def fields
     object.column_names.select do |column|
-      column =~ /name|type|created_at|updated_at/
+      column =~ /\A(name|type|created_at|updated_at)\Z/
     end
   end
 

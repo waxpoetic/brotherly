@@ -1,6 +1,10 @@
-class Admin::EpisodeDecorator < ApplicationDecorator
+class Admin::EpisodeDecorator < AdminDecorator
   decorates Episode
   delegate_all
+
+  def title
+    model.name.downcase
+  end
 
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:

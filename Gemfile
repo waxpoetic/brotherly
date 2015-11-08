@@ -40,7 +40,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'jquery-turbolinks'
-gem 'turbolinks'
+gem 'turbolinks', github: 'rails/turbolinks'
 
 group :development do
   gem 'meta_request'

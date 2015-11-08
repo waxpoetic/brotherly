@@ -75,4 +75,12 @@ class AdminController < ApplicationController
       request.env["X-Flash-#{type.titleize}"] = message
     end
   end
+
+  def current_resource
+    if action_name == 'index'
+      collection
+    else
+      model
+    end
+  end
 end

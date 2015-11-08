@@ -1,5 +1,5 @@
 class Admin::UsersDecorator < CollectionDecorator
   def fields
-    %w(name email is_admin)
+    %w(name email role)
   end
 end

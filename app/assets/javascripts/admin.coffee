@@ -1,4 +1,10 @@
 jQuery ->
+  $(document)
+    .on 'page:fetch', ->
+      $('main').addClass 'disabled'
+      $('main input, main textarea').attr 'disabled', true
+    .on 'page:load', ->
+      $('main').removeClass 'disabled'
   $('#admin a, #admin form')
     .on 'ajax:error', (event, status, error) ->
       $('#flash').flash alert: error

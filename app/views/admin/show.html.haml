@@ -1,7 +1,12 @@
-= link_to '&times;'.html_safe, url_for(:back), class: 'close-reveal-modal'
+- if request.xhr?
+  = link_to '&times;'.html_safe, url_for(:back), class: 'close-reveal-modal'
 .title.row
   .large-12.columns
     %h2= model.title
 .details.row
   .large-12.columns
     = render 'details'
+.controls.row
+  .large-12.columns
+    .right
+      = link_to_modal t('.edit'), edit_path(model), class: 'tiny edit button'

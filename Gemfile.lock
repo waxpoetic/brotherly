@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/rails/turbolinks.git
+  revision: 90d4132be6275edd997beeb66bf3876b0207291d
+  specs:
+    turbolinks (3.0.0)
+      coffee-rails
+
+GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: 67f3fe2d15f9f008224b7117bc7d851c9fc029e6
   specs:
@@ -547,8 +554,6 @@ GEM
     tilt (1.4.1)
     timers (4.0.4)
       hitimes
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -640,10 +645,10 @@ DEPENDENCIES
   spring-commands-rspec
   spring-commands-sidekiq
   spring-watcher-listen
-  turbolinks
+  turbolinks!
   uglifier
   web-console (~> 2.0)
   youtube_it
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

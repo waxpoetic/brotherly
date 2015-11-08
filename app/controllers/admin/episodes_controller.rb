@@ -1,6 +1,6 @@
 class Admin::EpisodesController < AdminController
   resource :episode do
-    permit :name, :description, performance_attributes: [:artist, :file]
+    permit :name, :description, performance_attributes: [:artist]
   end
 
   def create

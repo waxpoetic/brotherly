@@ -1,5 +1,6 @@
+= link_to '&times;'.html_safe, url_for(:back), class: 'close-reveal-modal' if request.xhr?
 .row
   .large-12.columns
-    = simple_form_for [:admin, model], remote: true do |f|
+    = simple_nested_form_for [:admin, model.model], remote: true do |f|
       = render 'fields', f: f
       = render 'controls', f: f
