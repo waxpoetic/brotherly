@@ -47,10 +47,6 @@ group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
-  gem 'guard-livereload', require: false
-  gem 'guard-spring', require: false
-  gem 'guard-rails', require: false
-  gem 'rack-livereload'
 end
 
 group :development, :test do
