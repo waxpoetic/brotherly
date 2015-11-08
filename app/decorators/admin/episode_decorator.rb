@@ -6,13 +6,11 @@ class Admin::EpisodeDecorator < AdminDecorator
     model.name.downcase
   end
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def fields
+    super << 'sales'
+  end
 
+  def sales
+    model.event.total_sales_amount
+  end
 end

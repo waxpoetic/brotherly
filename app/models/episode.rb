@@ -43,6 +43,10 @@ class Episode < ActiveRecord::Base
     PromoteEpisodeJob.perform_later self
   end
 
+  def event
+    Eventbrite::Event.find eventbrite_event_id
+  end
+
   private
 
   def generate_short_url

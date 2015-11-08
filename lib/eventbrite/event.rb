@@ -2,12 +2,16 @@ require 'eventbrite-client'
 
 module Eventbrite
   class Event
-    attr_reader :attributes
     attr_reader :id
+    attr_reader :attributes
     attr_reader :eventbrite_event
 
+    delegate :url, to: :eventbrite_event
+
     def initialize(params = {})
-      @attributes = params
+      @id = params.delete :id
+      @eventbrite_event = client.event_get(id)
+      @attributes = @eventbrite_event.try(:attributes) || params
     end
 
     def self.create(params = {})
@@ -17,7 +21,7 @@ module Eventbrite
     end
 
     def save
-      client.event_post(attributes)
+      @id = client.event_post(attributes).id
     end
 
     def create_ticket_class(params = {})
@@ -28,15 +32,12 @@ module Eventbrite
       @eventbrite_event = client.event_publish_post(id)
     end
 
-    delegate :url, to: :eventbrite_event
+    def persisted?
+      @id.present? && @eventbrite_event.present?
+    end
 
-    private
-
-    def client
-      @client ||= EventbriteClient.new(
-        app_key: Rails.application.secrets.eventbrite_api_key,
-        user_key: Rails.application.secrets.eventbrite_user_token
-      )
+    def to_h
+      super.merge eventbrite_event_id: id
     end
   end
 end
