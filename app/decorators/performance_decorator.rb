@@ -9,10 +9,6 @@ class PerformanceDecorator < ApplicationDecorator
     artist.name
   end
 
-  def title
-    "#{artist.name} at #{episode.name}"
-  end
-
   def audio_recording_url
     h.attachment_url model, :audio_recording
   end

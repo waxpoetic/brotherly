@@ -44,7 +44,7 @@ class EpisodeDecorator < ApplicationDecorator
     model.youtube_url.present?
   end
 
-  def audio_url
+  def audio
     h.attachment_url model, :audio_recording
   end
 
