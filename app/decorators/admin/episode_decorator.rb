@@ -11,6 +11,6 @@ class Admin::EpisodeDecorator < AdminDecorator
   end
 
   def sales
-    model.event.total_sales_amount
+    '$0.00'
   end
 end
