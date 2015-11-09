@@ -1,5 +1,4 @@
 class Performance < ActiveRecord::Base
-  include Recordable
   include Searchable
 
   belongs_to :artist

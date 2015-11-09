@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
 
   searchable email: 'A', name: 'B'
 
-  # friendly_id :name
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -4,7 +4,6 @@
 class Episode < ActiveRecord::Base
   extend FriendlyId
 
-  include Recordable
   include Searchable
 
   has_many :performances
