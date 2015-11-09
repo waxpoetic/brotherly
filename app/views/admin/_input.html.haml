@@ -1,0 +1,8 @@
+- if "#{field}" =~ /_id\Z/
+  = f.association "#{field}".gsub(/_id\Z/, '').to_sym
+- elsif "#{field}" =~ /_at\Z/
+  = f.input field, as: :date_picker
+- elsif "#{field}" =~ /_file\Z/
+  = f.input field, as: :attachment
+- else
+  = f.input field

@@ -6,14 +6,9 @@
         %legend= association(field).to_s.titleize
         = f.fields_for association(field) do |ff|
           - field.values.first.each do |nested_field|
-            = ff.input nested_field
+            = render 'input', f: ff, field: nested_field
           = ff.link_to_remove 'Remove', class: 'tiny alert button'
         = f.link_to_add 'Add', association(field), class: 'tiny button'
-    - elsif "#{field}" =~ /_id\Z/
-      = f.association "#{field}".gsub(/_id\Z/, '').to_sym
-    - elsif "#{field}" =~ /_at\Z/
-      = f.input field, as: :date_picker
-    - elsif "#{field}" =~ /_file\Z/
-      = f.input field, as: :attachment
     - else
-      = f.input field
+      = render 'input', f: f, field: field
+
