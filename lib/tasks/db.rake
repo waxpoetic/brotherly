@@ -18,7 +18,3 @@ namespace :db do
     Rake::Task['db:index'].invoke
   end
 end
-
-Rake::Task['db:migrate'].enhance do
-  Rake::Task['db:index'].invoke
-end
