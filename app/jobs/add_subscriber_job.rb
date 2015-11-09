@@ -11,8 +11,6 @@ class AddSubscriberJob < ActiveJob::Base
         }
       }
     )
-  rescue
-    true
   end
 
   private
