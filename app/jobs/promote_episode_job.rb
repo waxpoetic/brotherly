@@ -2,7 +2,7 @@
 # post about or create the episode on our various social media and event
 # support networks.
 class PromoteEpisodeJob < ActiveJob::Base
-  queue_as :promotions
+  queue_as :default
 
   def perform(episode)
     Brotherly::Service.each do |service|

@@ -1,6 +1,6 @@
 # Run transcoders on the episode.
 class TranscodeEpisodeJob < ActiveJob::Base
-  queue_as :transcodes
+  queue_as :default
 
   def perform(episode)
     transcoder.create_job(

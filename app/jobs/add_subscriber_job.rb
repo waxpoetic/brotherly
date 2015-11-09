@@ -1,5 +1,5 @@
 class AddSubscriberJob < ActiveJob::Base
-  queue_as :subscriptions
+  queue_as :default
 
   def perform(subscriber)
     list.members.create(
