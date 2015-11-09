@@ -9,7 +9,7 @@ class Performance < ActiveRecord::Base
   validates :starts_at, presence: true
   validates :ends_at,   presence: true
 
-  def title
+  def name
     "#{artist.name} at #{episode.name}"
   end
 end

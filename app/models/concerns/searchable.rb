@@ -8,11 +8,12 @@ module Searchable
 
   included do
     include PgSearch
-    class_attribute :pg_search_attributes
+    cattr_accessor :pg_search_attributes
   end
 
   class_methods do
-    def searchable(&block)
+    def searchable(*arguments)
+      self.pg_search_attributes = arguments
       pg_search_scope :search, pg_search_options
     end
 

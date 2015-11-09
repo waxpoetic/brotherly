@@ -5,4 +5,8 @@ class AttachmentInput < SimpleForm::Inputs::Base
     )
     @builder.attachment_field attribute_name, merged_input_options
   end
+
+  def input_html_options
+    super.merge direct: true, presigned: true
+  end
 end
