@@ -3,8 +3,8 @@
   - params_to_permit.each do |field|
     - if field.is_a? Hash
       %fieldset
-        %legend= nested_association(field).to_s.titleize
-        = f.fields_for nested_association(field) do |ff|
+        %legend= association(field).to_s.titleize
+        = f.fields_for association(field) do |ff|
           - field.values.first.each do |nested_field|
             = ff.input nested_field
           = ff.link_to_remove 'Remove', class: 'tiny alert button'
