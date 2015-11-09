@@ -5,7 +5,6 @@ gem 'rails', '~> 4.2'
 gem 'pg'
 gem 'pg_search'
 gem 'puma'
-gem 'sidekiq'
 gem 'controller_resources'
 gem 'responders'
 gem 'active_model_serializers'
@@ -71,4 +70,6 @@ group :production do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'rails_12factor'
+  gem 'sidekiq'
+  gem 'sinatra', require: false
 end

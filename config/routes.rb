@@ -1,3 +1,5 @@
+require 'sidekiq/web' if defined? Sidekiq
+
 Rails.application.routes.draw do
   namespace :admin do
     resources :artists
@@ -20,6 +22,12 @@ Rails.application.routes.draw do
   }
 
   resource :search, only: [:show]
+
+  if defined? Sidekiq
+    authenticate :user, lambda { |u| u.is_admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
 
   root 'episodes#current'
 end
