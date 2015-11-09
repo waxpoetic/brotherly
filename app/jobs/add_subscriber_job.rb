@@ -11,6 +11,8 @@ class AddSubscriberJob < ActiveJob::Base
         }
       }
     )
+  rescue
+    true
   end
 
   private
@@ -26,5 +28,4 @@ class AddSubscriberJob < ActiveJob::Base
       api_key: Rails.application.secrets.mailchimp_api_key
     )
   end
-
 end
