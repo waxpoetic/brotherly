@@ -13,5 +13,5 @@ class Artist < ActiveRecord::Base
 
   validates :name, presence: true
 
-  attachment :image
+  attachment :image_file
 end

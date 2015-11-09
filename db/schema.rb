@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108200339) do
+ActiveRecord::Schema.define(version: 20151109021048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(version: 20151108200339) do
   create_table "artists", force: :cascade do |t|
     t.string   "name"
     t.string   "image_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "slug"
     t.hstore   "links"
     t.text     "description"
+    t.string   "image_file_id"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -36,8 +37,6 @@ ActiveRecord::Schema.define(version: 20151108200339) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.datetime "published_at"
-    t.string   "video_recording_id"
-    t.string   "audio_recording_id"
     t.text     "description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -45,6 +44,8 @@ ActiveRecord::Schema.define(version: 20151108200339) do
     t.string   "short_url"
     t.string   "preview_image_id"
     t.integer  "eventbrite_event_id"
+    t.string   "audio_file_id"
+    t.string   "flyer_file_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -67,10 +68,9 @@ ActiveRecord::Schema.define(version: 20151108200339) do
     t.datetime "ends_at"
     t.string   "youtube_url"
     t.string   "mixcloud_url"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "audio_recording_id"
-    t.string   "video_recording_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "audio_file_id"
   end
 
   add_index "performances", ["artist_id"], name: "index_performances_on_artist_id", using: :btree

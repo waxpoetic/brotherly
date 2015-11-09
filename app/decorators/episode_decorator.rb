@@ -23,8 +23,9 @@ class EpisodeDecorator < ApplicationDecorator
     model.performances.map(&:decorate)
   end
 
-  def preview_image_url
-    'http://placehold.it/240x320'
+  def flyer
+    h.attachment_url model, :flyer_file, \
+      fallback: "http://placehold.it/240x320?text=#{placeholder_text.gsub('brother.ly+', '')}"
   end
 
   def youtube_embed_url

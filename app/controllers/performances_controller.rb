@@ -1,5 +1,5 @@
 class PerformancesController < ApplicationController
-  expose :performance
+  resource :performance
 
   def show
     respond_with performance

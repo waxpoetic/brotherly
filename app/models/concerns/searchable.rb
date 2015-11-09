@@ -8,7 +8,7 @@ module Searchable
 
   included do
     include PgSearch
-    cattr_accessor :pg_search_attributes
+    class_attribute :pg_search_attributes
   end
 
   class_methods do

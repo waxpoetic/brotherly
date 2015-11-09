@@ -1,4 +1,7 @@
 - cache performance do
+  .images.row
+    .large-12.columns
+      = image_tag performance.cover_image, alt: performance.title
   .title.row
     .large-12.columns
       %h1
@@ -10,15 +13,16 @@
       = simple_format performance.artist.description
     .links.large-4.columns
       %nav
-        %section.social
+        %section
           - if performance.youtube_url.present?
-            = link_to icon(:youtube), performance.youtube_url
+            = link_to performance.youtube_url, class: 'alert button' do
+              = icon :youtube
+              = t '.youtube'
           - if performance.mixcloud_url.present?
-            = link_to icon(:mixcloud), performance.mixcloud_url
-        - if performance.downloadable?
-          %section.downloads
-            Download:
-            - if performance.audio_recording.present?
-              = link_to icon(:speaker), performance.audio_recording_url
-            - if performance.video_recording.present?
-              = link_to icon(:television), performance.video_recording_url
+            = link_to performance.mixcloud_url, class: 'button' do
+              = icon :headphones
+              = t '.mixcloud'
+          - if performance.downloadable?
+            = link_to performance.audio, class: 'secondary button' do
+              = icon :speaker
+              = t '.audio'

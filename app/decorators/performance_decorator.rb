@@ -1,19 +1,19 @@
 class PerformanceDecorator < ApplicationDecorator
   delegate_all
 
-  def cover_image_url
-    'http://placehold.it/150x150'
-  end
-
   def artist_name
     artist.name
   end
 
-  def audio_recording_url
-    h.attachment_url model, :audio_recording
+  def cover_image
+    "http://placehold.it/960x320?text=#{placeholder_text}"
   end
 
-  def video_recording_url
-    h.attachment_url model, :video_recording
+  def audio
+    h.attachment_url model, :audio_file
+  end
+
+  def downloadable?
+    model.audio_file.present?
   end
 end

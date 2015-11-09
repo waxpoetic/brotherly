@@ -5,4 +5,8 @@ class ApplicationDecorator < Draper::Decorator
   def title
     model.name.titleize
   end
+
+  def placeholder_text
+    model.name.gsub(/\s/, '+')
+  end
 end
