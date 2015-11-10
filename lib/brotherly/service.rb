@@ -34,7 +34,7 @@ module Brotherly
 
     def self.each
       Dir["app/services/*_service.rb"].map { |path|
-        File.basename(path).classify.constantize
+        File.basename(path).gsub(/\.rb/, '').classify.constantize
       }.each { |klass|
         yield klass
       }
