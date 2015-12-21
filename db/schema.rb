@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109021048) do
+ActiveRecord::Schema.define(version: 20151221195617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20151109021048) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
-    t.string   "image_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "slug"
@@ -42,7 +41,6 @@ ActiveRecord::Schema.define(version: 20151109021048) do
     t.datetime "updated_at",          null: false
     t.string   "slug"
     t.string   "short_url"
-    t.string   "preview_image_id"
     t.integer  "eventbrite_event_id"
     t.string   "audio_file_id"
     t.string   "flyer_file_id"

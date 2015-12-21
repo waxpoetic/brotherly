@@ -1,0 +1,7 @@
+<fieldset>
+  <legend><%= f.label field.attribute %></legend>
+  <% field.data.each do |site, url| %>
+    <%= text_field_tag 'site', site, class: 'site', placeholder: 'name' %>
+    <%= text_field_tag 'url', url, class: 'url', placeholder: 'https://...' %>
+  <% end %>
+</fieldset>

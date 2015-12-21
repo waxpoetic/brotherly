@@ -24,10 +24,9 @@ class EpisodeDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     slug: Field::String,
     short_url: Field::String,
-    preview_image_id: Field::String,
     eventbrite_event_id: Field::Number,
     audio_file_id: UploadField,
-    flyer_file_id: UploadField,
+    flyer_file_id: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -50,7 +49,6 @@ class EpisodeDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :performances,
     :artists,
-    :pg_search_document,
     :name,
     :eventbrite_url,
     :youtube_url,
@@ -62,7 +60,6 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :description,
     :slug,
     :short_url,
-    :preview_image_id,
     :eventbrite_event_id,
     :audio_file_id,
     :flyer_file_id,

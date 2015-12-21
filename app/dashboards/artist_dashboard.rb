@@ -15,9 +15,9 @@ class ArtistDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
-    links: Field::String.with_options(searchable: false),
+    links: HstoreField,
     description: Field::Text,
-    image_file_id: UploadField,
+    image_file_id: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -39,11 +39,9 @@ class ArtistDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :pg_search_document,
     :performances,
     :episodes,
     :name,
-    :image_id,
     :slug,
     :links,
     :description,

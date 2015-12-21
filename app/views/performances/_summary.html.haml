@@ -1,7 +1,7 @@
 .performance-summary.row
   = link_to performance do
     .large-8.columns
-      = image_tag performance.preview_image.url
+      = attachment_image_tag performance, :flyer_file
     .large-4.columns
       %p.name= performance.artist.name
       %p.duration Duration: #{performance.duration}

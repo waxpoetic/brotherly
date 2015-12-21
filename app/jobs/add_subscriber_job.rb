@@ -2,6 +2,12 @@ class AddSubscriberJob < ActiveJob::Base
   queue_as :default
 
   def perform(subscriber)
+    Mailchimp::Subscriber.create(
+      list: list,
+      email: subscriber.email,
+      name: subscriber.name
+    )
+  end
     list.members.create(
       body: {
         email_address: subscriber.email,

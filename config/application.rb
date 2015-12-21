@@ -24,6 +24,7 @@ Bundler.require :default, Rails.env
 require 'brotherly'
 require 'eventbrite'
 require 'youtube'
+require 'mailchimp'
 
 module Brotherly
   class Application < Rails::Application
