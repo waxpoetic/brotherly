@@ -69,6 +69,7 @@ end
 group :production do
   gem 'rack-cache'
   gem 'redis-rails'
+  gem 'redis-rack-cache'
   gem 'rails_12factor'
   gem 'sidekiq'
   gem 'sinatra', require: false
