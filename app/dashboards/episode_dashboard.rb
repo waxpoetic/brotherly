@@ -25,8 +25,8 @@ class EpisodeDashboard < Administrate::BaseDashboard
     slug: Field::String,
     short_url: Field::String,
     eventbrite_event_id: Field::Number,
-    audio_file_id: UploadField,
-    flyer_file_id: UploadField
+    audio_file: UploadField,
+    flyer_file: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -61,8 +61,8 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :slug,
     :short_url,
     :eventbrite_event_id,
-    :audio_file_id,
-    :flyer_file_id,
+    :audio_file,
+    :flyer_file,
   ]
 
   # Overwrite this method to customize how episodes are displayed
