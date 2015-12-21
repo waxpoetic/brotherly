@@ -8,16 +8,6 @@ class AddSubscriberJob < ActiveJob::Base
       name: subscriber.name
     )
   end
-    list.members.create(
-      body: {
-        email_address: subscriber.email,
-        status: 'subscribed',
-        merge_fields: {
-          NAME: subscriber.name
-        }
-      }
-    )
-  end
 
   private
 
