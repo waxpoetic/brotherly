@@ -14,12 +14,12 @@ class ArtistDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pg_search_document: Field::HasOne,
+    # pg_search_document: Field::HasOne,
     performances: Field::HasMany,
-    episodes: Field::HasMany,
-    id: Field::Number,
+    # episodes: Field::HasMany,
+    # id: Field::Number,
     name: Field::String,
-    image_id: Field::String,
+    # image_id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,

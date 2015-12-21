@@ -14,7 +14,7 @@ class SubscriberDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
+    # id: Field::Number,
     name: Field::String,
     email: Field::String,
     created_at: Field::DateTime,

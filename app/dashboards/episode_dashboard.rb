@@ -16,8 +16,8 @@ class EpisodeDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     performances: Field::HasMany,
     artists: Field::HasMany,
-    pg_search_document: Field::HasOne,
-    id: Field::Number,
+    # pg_search_document: Field::HasOne,
+    # id: Field::Number,
     name: Field::String,
     eventbrite_url: Field::String,
     youtube_url: Field::String,

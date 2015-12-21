@@ -14,7 +14,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pg_search_document: Field::HasOne,
+    # pg_search_document: Field::HasOne,
     artist: Field::BelongsTo,
     episode: Field::BelongsTo,
     id: Field::Number,
