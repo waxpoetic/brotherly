@@ -13,4 +13,19 @@
       width: 200px;
     }
   }
+
+  .performances {
+    margin: 0 auto;
+    background: $jet;
+
+    ul {
+      list-style-type: none;
+
+      li {
+        padding: 10px 0;
+        // width: 350px;
+      }
+    }
+  }
+
 }
