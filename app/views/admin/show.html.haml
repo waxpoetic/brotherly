@@ -1,8 +1,0 @@
-- if request.xhr?
-  = link_to '&times;'.html_safe, url_for(:back), class: 'close-reveal-modal'
-.title.row
-  .large-12.columns
-    %h2= model.title
-.details.row
-  .large-12.columns
-    = render 'details'

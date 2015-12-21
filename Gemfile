@@ -41,7 +41,7 @@ gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'jquery-turbolinks'
 gem 'turbolinks', github: 'rails/turbolinks'
-gem 'foundation-datetimepicker-rails'
+gem 'administrate'
 
 group :development do
   gem 'meta_request'
