@@ -17,7 +17,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     slug: Field::String,
     links: HstoreField,
     description: Field::Text,
-    image_file_id: UploadField
+    image_file: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -45,7 +45,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     :slug,
     :links,
     :description,
-    :image_file_id,
+    :image_file
   ]
 
   # Overwrite this method to customize how artists are displayed

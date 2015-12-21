@@ -118,3 +118,4 @@ Session.vim
 *.css.map
 .env
 /spec/examples.txt
+/db/import

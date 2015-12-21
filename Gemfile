@@ -15,7 +15,6 @@ gem 'devise'
 gem 'haml-rails'
 gem 'pundit'
 gem 'refile', require: 'refile/rails'
-gem 'refile-s3'
 gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
 gem 'youtube_it'
 gem 'bitly'
@@ -72,4 +71,5 @@ group :production do
   gem 'rails_12factor'
   gem 'sidekiq'
   gem 'sinatra', require: false
+  gem 'refile-s3'
 end
