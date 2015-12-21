@@ -2,13 +2,12 @@ require 'sidekiq/web' if defined? Sidekiq
 
 Rails.application.routes.draw do
   namespace :admin do
-    resources :artists
-    resources :episodes
-    resources :performances
-    resources :subscribers
-    resources :users
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
-  get '/admin' => 'admin#dashboard', as: :admin_root
 
   resources :artists, only: [:index, :show]
   resources :episodes, only: [:index, :show] do
