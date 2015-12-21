@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require refile
-//= require jquery_nested_form
 //= require lodash
 //= require jquery.flash
 //= require jquery.turbolinks

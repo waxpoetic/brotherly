@@ -6,6 +6,23 @@ GIT
       coffee-rails
 
 GIT
+  remote: git://github.com/thoughtbot/administrate.git
+  revision: 4eede3b15df668e3913e7edd3a018eb97dc28aa8
+  specs:
+    administrate (0.1.2)
+      autoprefixer-rails (~> 6.0)
+      datetime_picker_rails (~> 0.0.6)
+      inline_svg (~> 0.6)
+      jquery-rails (~> 4.0)
+      kaminari (~> 0.16)
+      momentjs-rails (~> 2.8)
+      neat (~> 1.1)
+      normalize-rails (~> 3.0)
+      rails (~> 4.2)
+      sass-rails (~> 5.0)
+      selectize-rails (~> 0.6)
+
+GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: 67f3fe2d15f9f008224b7117bc7d851c9fc029e6
   specs:
@@ -56,17 +73,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    administrate (0.0.12)
-      autoprefixer-rails
-      datetime_picker_rails (~> 0.0.4)
-      inline_svg (~> 0.6)
-      kaminari (~> 0.16)
-      momentjs-rails (>= 2.9.0)
-      neat (~> 1.1)
-      normalize-rails (~> 3.0)
-      rails (~> 4.2)
-      sass (~> 3.4)
-      selectize-rails (~> 0.6)
     aggregate (0.2.2)
     airbrake (4.3.1)
       builder
@@ -75,7 +81,7 @@ GEM
     ast (2.1.0)
     astrolabe (1.3.1)
       parser (~> 2.2)
-    autoprefixer-rails (5.2.1.2)
+    autoprefixer-rails (6.2.1)
       execjs
       json
     aws-sdk (2.1.35)
@@ -237,7 +243,6 @@ GEM
     neat (1.7.2)
       bourbon (>= 4.0)
       sass (>= 3.3)
-    nested_form (0.3.2)
     netrc (0.11.0)
     newrelic_rpm (3.13.0.299)
     nokogiri (1.6.7.1)
@@ -476,7 +481,7 @@ PLATFORMS
 DEPENDENCIES
   active_model-jobs
   active_model_serializers
-  administrate
+  administrate!
   airbrake
   autoprefixer-rails
   bitly
@@ -500,7 +505,6 @@ DEPENDENCIES
   librato-rails
   lodash-rails
   meta_request
-  nested_form
   newrelic_rpm
   pg
   pg_search

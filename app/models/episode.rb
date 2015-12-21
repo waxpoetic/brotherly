@@ -46,10 +46,6 @@ class Episode < ActiveRecord::Base
     Eventbrite::Event.find eventbrite_event_id
   end
 
-  def to_s
-    name
-  end
-
   private
 
   def generate_short_url

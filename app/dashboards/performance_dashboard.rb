@@ -1,12 +1,6 @@
 require "administrate/base_dashboard"
 
 class PerformanceDashboard < Administrate::BaseDashboard
-  READ_ONLY_ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
-  ]
-
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -14,7 +8,6 @@ class PerformanceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    # pg_search_document: Field::HasOne,
     artist: Field::BelongsTo,
     episode: Field::BelongsTo,
     id: Field::Number,
@@ -24,15 +17,18 @@ class PerformanceDashboard < Administrate::BaseDashboard
     mixcloud_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    audio_file_id: Field::String,
+    audio_file_id: UploadField,
   }
 
-  # TABLE_ATTRIBUTES
+  # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
   #
   # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to remove the limit or customize the returned array.
-  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  # Feel free to add, remove, or rearrange items.
+  COLLECTION_ATTRIBUTES = [
+    :episode,
+    :artist
+  ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -41,5 +37,20 @@ class PerformanceDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
+  FORM_ATTRIBUTES = [
+    :pg_search_document,
+    :artist,
+    :episode,
+    :starts_at,
+    :ends_at,
+    :youtube_url,
+    :mixcloud_url,
+    :audio_file_id,
+  ]
+
+  # Overwrite this method to customize how performances are displayed
+  # across all pages of the admin dashboard.
+  def display_resource(performance)
+    "#{performance.artist.name} at #{performance.episode.name}"
+  end
 end

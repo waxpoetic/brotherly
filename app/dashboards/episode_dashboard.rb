@@ -1,12 +1,6 @@
 require "administrate/base_dashboard"
 
 class EpisodeDashboard < Administrate::BaseDashboard
-  READ_ONLY_ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
-  ]
-
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -16,8 +10,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     performances: Field::HasMany,
     artists: Field::HasMany,
-    # pg_search_document: Field::HasOne,
-    # id: Field::Number,
+    id: Field::Number,
     name: Field::String,
     eventbrite_url: Field::String,
     youtube_url: Field::String,
@@ -26,23 +19,26 @@ class EpisodeDashboard < Administrate::BaseDashboard
     starts_at: Field::DateTime,
     ends_at: Field::DateTime,
     published_at: Field::DateTime,
-    description: Field::String,
+    description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
     short_url: Field::String,
     preview_image_id: Field::String,
     eventbrite_event_id: Field::Number,
-    audio_file_id: Field::String,
-    flyer_file_id: Field::String,
+    audio_file_id: UploadField,
+    flyer_file_id: UploadField,
   }
 
-  # TABLE_ATTRIBUTES
+  # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
   #
   # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to remove the limit or customize the returned array.
-  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  # Feel free to add, remove, or rearrange items.
+  COLLECTION_ATTRIBUTES = [
+    :name,
+    :flyer_file_id
+  ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -51,5 +47,31 @@ class EpisodeDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
+  FORM_ATTRIBUTES = [
+    :performances,
+    :artists,
+    :pg_search_document,
+    :name,
+    :eventbrite_url,
+    :youtube_url,
+    :mixcloud_url,
+    :facebook_url,
+    :starts_at,
+    :ends_at,
+    :published_at,
+    :description,
+    :slug,
+    :short_url,
+    :preview_image_id,
+    :eventbrite_event_id,
+    :audio_file_id,
+    :flyer_file_id,
+  ]
+
+  # Overwrite this method to customize how episodes are displayed
+  # across all pages of the admin dashboard.
+  #
+  def display_resource(episode)
+    episode.name
+  end
 end
