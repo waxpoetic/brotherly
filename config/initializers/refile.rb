@@ -7,5 +7,5 @@ if defined? Refile::S3
   }
   Refile.cache = Refile::S3.new prefix: "cache", **aws
   Refile.store = Refile::S3.new prefix: "store", **aws
-  Refile.cdn_host = "//#{Rails.application.secrets.aws_cloudfront_domain_name}"
+  Refile.cdn_host = '//files.brother.ly'
 end
