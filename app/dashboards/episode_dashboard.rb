@@ -36,7 +36,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :flyer_file_id
+    :starts_at
   ]
 
   # SHOW_PAGE_ATTRIBUTES
