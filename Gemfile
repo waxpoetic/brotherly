@@ -41,6 +41,7 @@ gem 'font_assets'
 gem 'jquery-turbolinks'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'administrate', github: 'thoughtbot/administrate'
+gem 'soundcloud'
 
 group :development do
   gem 'meta_request'

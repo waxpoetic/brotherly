@@ -25,6 +25,7 @@ require 'brotherly'
 require 'eventbrite'
 require 'youtube'
 require 'mailchimp'
+require 'soundcloud/track'
 
 module Brotherly
   class Application < Rails::Application
