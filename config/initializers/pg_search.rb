@@ -7,6 +7,6 @@ PgSearch.multisearch_options = {
       prefix: true,
       any_word: true
     },
-    trigram: true
+    trigram: {}
   }
 }
