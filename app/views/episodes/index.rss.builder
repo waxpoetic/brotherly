@@ -10,7 +10,7 @@ cache podcast_cache_key do
           xml.pubDate podcast_publish_date
           xml.lastBuildDate podcast_publish_date
           xml.itunes :author, config.name
-          xml.itunes :keywords, config.keywords
+          xml.itunes :keywords, config.keywords.join(', ')
           xml.itunes :explicit, config.explicit
           xml.itunes :image, href: image_url('podcast.png')
           xml.itunes :owner do

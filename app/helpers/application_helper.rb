@@ -72,8 +72,7 @@ module ApplicationHelper
   end
 
   def podcast_publish_date
-    return unless episodes.last.published_at.present?
-    episodes.last.published_at.to_s :rfc822
+    episodes.last.published_at
   end
 
   def podcast_cache_key(section = nil)

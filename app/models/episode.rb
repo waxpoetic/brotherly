@@ -22,7 +22,7 @@ class Episode < ActiveRecord::Base
   multisearchable against: [:name]
 
   attachment :flyer_file
-  attachment :audio_file, extension: 'wav'
+  attachment :audio_file, extension: 'mp3'
 
   after_create :transcode!, if: :has_audio?
   after_create :promote!, if: :future?
