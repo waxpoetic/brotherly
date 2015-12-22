@@ -12,15 +12,13 @@ cache podcast_cache_key do
           xml.itunes :author, config.name
           xml.itunes :keywords, config.keywords
           xml.itunes :explicit, config.explicit
-          xml.itunes :image, href: image_path('podcast.png')
+          xml.itunes :image, href: image_url('podcast.png')
           xml.itunes :owner do
             xml.itunes :name, config.name
             xml.itunes :email, "podcast@#{config.name}"
           end
           xml.itunes :block, 'no'
-          xml.itunes :category, text: 'Music' do
-            xml.itunes :category, text: 'Electronic'
-          end
+          xml.itunes :category, text: 'Music'
         end
 
         cache episodes.in_podcast do
