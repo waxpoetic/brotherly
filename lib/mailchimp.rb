@@ -8,13 +8,13 @@ module Mailchimp
 
   def self.gateway_class
     if Rails.env =~ /development|test/
-      Mailchimp::Gateway
+      BogusGateway
     else
-      Mailchimp::BogusGateway
+      Gateway
     end
   end
 
   def self.gateway
-    gateway_class.new Rails.application.secrets
+    gateway_class.new(Rails.application.secrets)
   end
 end

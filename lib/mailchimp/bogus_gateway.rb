@@ -1,5 +1,5 @@
 module Mailchimp
-  class BogusGateway
+  class BogusGateway < Gateway
     def create_member(params = {})
       true
     end
