@@ -23,9 +23,9 @@ cache podcast_cache_key do
           end
         end
 
-        cache podcast_cache_key(:episodes) do
-          episodes.select(&:in_podcast?).each do |episode|
-            cache episode.cache_key_for(:podcast) do
+        cache episodes.in_podcast do
+          episodes.in_podcast.each do |episode|
+            cache episode do
               xml.item do
                 xml.title episode.name
                 xml.description episode.description

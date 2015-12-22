@@ -41,20 +41,16 @@ class EpisodeDecorator < ApplicationDecorator
     model.future? ? 'next episode...' : 'latest episode'
   end
 
-  def has_video?
-    model.youtube_url.present?
-  end
-
   def audio
-    h.attachment_url model, :audio_recording
-  end
-
-  def video_url
-    h.attachment_url model, :video_recording
+    h.attachment_url model, :audio_file
   end
 
   def has_audio?
-    model.mixcloud_url.present?
+    model.audio_file_id.present?
+  end
+
+  def has_video?
+    model.youtube_url.present?
   end
 
   def show_ticket_link?
@@ -69,16 +65,11 @@ class EpisodeDecorator < ApplicationDecorator
     !model.future? && model.mixcloud_url.present?
   end
 
-  def in_podcast?
-    audio_recording.present?
-  end
-
   def enclosure
-    recording = audio_recording
     {
-      url: recording.url,
-      length: recording.file_size,
-      type: recording.content_type
+      url: audio,
+      length: audio_file.file_size,
+      type: audio_file.content_type
     }
   end
 

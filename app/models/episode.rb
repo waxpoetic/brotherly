@@ -14,6 +14,7 @@ class Episode < ActiveRecord::Base
   scope :latest, -> { order 'starts_at DESC' }
   scope :recent, -> { latest.where "starts_at <= ?", Time.now }
   scope :upcoming, -> { latest.where "starts_at >= ?", Time.now }
+  scope :in_podcast, -> { where.not audio_file_id: nil }
 
   friendly_id :name
 
