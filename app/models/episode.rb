@@ -12,8 +12,8 @@ class Episode < ActiveRecord::Base
   accepts_nested_attributes_for :performances
 
   scope :latest, -> { order 'starts_at DESC' }
-  scope :recent, -> { latest.where "starts_at <= ?", Time.now }
-  scope :upcoming, -> { latest.where "starts_at >= ?", Time.now }
+  scope :recent, -> { latest.where 'starts_at <= ?', Time.zone.now }
+  scope :upcoming, -> { latest.where 'starts_at >= ?', Time.zone.now }
   scope :in_podcast, -> { where.not audio_file_id: nil }
 
   friendly_id :number
@@ -24,7 +24,7 @@ class Episode < ActiveRecord::Base
   attachment :flyer_file
   attachment :audio_file, extension: 'mp3'
 
-  after_create :transcode!, if: :has_audio?
+  # after_create :transcode!, if: :has_audio?
   after_create :promote!, if: :future?
 
   def self.current
@@ -37,10 +37,6 @@ class Episode < ActiveRecord::Base
 
   def published?
     published_at.present?
-  end
-
-  def has_audio?
-    audio_file.present?
   end
 
   def promote

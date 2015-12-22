@@ -13,7 +13,9 @@ class Search
   # @attr_accessor [ActiveRecord::Relation]
   def results
     @results.map(&:searchable_type).map do |type|
-      ids = @results.select { |r| r.searchable_type == type }.map(&:searchable_id)
+      ids = @results.select do |r|
+        r.searchable_type == type
+      end.map(&:searchable_id)
       type.constantize.where id: ids
     end.flatten
   end

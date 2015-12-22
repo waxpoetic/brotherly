@@ -7,7 +7,7 @@ RSpec.describe EventbriteService, type: :service do
 
   let :event do
     double 'Eventbrite::Event', \
-      url: 'http://eventbrite.com/test'
+           url: 'http://eventbrite.com/test'
   end
 
   before do

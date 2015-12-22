@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class EpisodeDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -60,7 +60,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :short_url,
     :eventbrite_event_id,
     :audio_file,
-    :flyer_file,
+    :flyer_file
   ]
 
   # Overwrite this method to customize how episodes are displayed

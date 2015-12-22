@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Episodes", type: :request do
-  describe "GET /episodes.rss" do
+RSpec.describe 'Episodes', type: :request do
+  describe 'GET /episodes.rss' do
     let :episode do
       episodes :one
     end
@@ -12,7 +12,7 @@ RSpec.describe "Episodes", type: :request do
       )
     end
 
-    it "shows the podcast" do
+    it 'shows the podcast' do
       get episodes_path(format: 'rss')
 
       expect(response).to have_http_status(200)

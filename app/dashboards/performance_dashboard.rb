@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class PerformanceDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -17,7 +17,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     mixcloud_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    audio_file_id: UploadField,
+    audio_file_id: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -45,7 +45,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     :ends_at,
     :youtube_url,
     :mixcloud_url,
-    :audio_file_id,
+    :audio_file_id
   ]
 
   # Overwrite this method to customize how performances are displayed

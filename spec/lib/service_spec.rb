@@ -72,7 +72,12 @@ module Brotherly
 
       context 'when saved' do
         let :remote do
-          double 'Remote', save: true, url: 'http://example.com', persisted?: true
+          double(
+            'Remote',
+            save: true,
+            url: 'http://example.com',
+            persisted?: true
+          )
         end
 
         let :remote_object do
@@ -80,7 +85,8 @@ module Brotherly
         end
 
         before do
-          allow(TestService).to receive(:remote_object).and_return(remote_object)
+          allow(TestService).to \
+            receive(:remote_object).and_return(remote_object)
         end
 
         before { subject.save }

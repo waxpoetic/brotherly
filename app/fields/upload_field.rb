@@ -1,4 +1,4 @@
-require "administrate/fields/base"
+require 'administrate/fields/base'
 
 class UploadField < Administrate::Field::Base
   def attribute

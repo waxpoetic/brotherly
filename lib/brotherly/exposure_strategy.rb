@@ -11,8 +11,10 @@ module Brotherly
       collection_decorator.decorate(
         super.tap do |c|
           controller.policy_scope c
-        end.order('updated_at DESC').page(controller.current_page).per(controller.per_page),
-      with: decorator)
+        end.order('updated_at DESC')
+           .page(controller.current_page)
+           .per(controller.per_page),
+        with: decorator)
     end
 
     def singular_resource

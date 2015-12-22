@@ -6,7 +6,7 @@ class EpisodeDecorator < ApplicationDecorator
   end
 
   def cache_key_for(section)
-    [ model.cache_key, section ].join('/')
+    [model.cache_key, section].join('/')
   end
 
   def date
@@ -24,8 +24,11 @@ class EpisodeDecorator < ApplicationDecorator
   end
 
   def flyer
-    h.attachment_url model, :flyer_file, \
-      fallback: "http://placehold.it/240x320?text=#{placeholder_text.gsub('brother.ly+', '')}"
+    h.attachment_url(
+      model,
+      :flyer_file,
+      fallback: fallback_flyer
+    )
   end
 
   def youtube_embed_url
@@ -45,11 +48,11 @@ class EpisodeDecorator < ApplicationDecorator
     h.attachment_url model, :audio_file
   end
 
-  def has_audio?
+  def audio?
     model.audio_file_id.present?
   end
 
-  def has_video?
+  def video?
     model.youtube_url.present?
   end
 
@@ -108,5 +111,19 @@ class EpisodeDecorator < ApplicationDecorator
       frameborder: 0,
       allowfullscreen: true
     }
+  end
+
+  private
+
+  def fallback_flyer
+    URI.join(
+      'http://',
+      'placehold.it',
+      "240x320?text=#{placeholder_text}"
+    )
+  end
+
+  def placeholder_text
+    super.gsub 'brother.ly+', ''
   end
 end

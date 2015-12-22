@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -29,7 +29,7 @@ class UserDashboard < Administrate::BaseDashboard
     locked_at: Field::DateTime,
     is_admin: Field::Boolean,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }
 
   # COLLECTION_ATTRIBUTES
@@ -69,7 +69,7 @@ class UserDashboard < Administrate::BaseDashboard
     :failed_attempts,
     :unlock_token,
     :locked_at,
-    :is_admin,
+    :is_admin
   ]
 
   # Overwrite this method to customize how users are displayed

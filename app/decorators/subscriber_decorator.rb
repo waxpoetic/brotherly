@@ -5,7 +5,7 @@ class SubscriberDecorator < ApplicationDecorator
     if model.name.present?
       "Thanks #{name}!"
     else
-      "Thanks!"
+      'Thanks!'
     end
   end
 end

@@ -33,11 +33,11 @@ module Brotherly
     self.attribute_name ||= default_attribute_name
 
     def self.each
-      Dir["app/services/*_service.rb"].map { |path|
+      Dir['app/services/*_service.rb'].map do |path|
         File.basename(path).gsub(/\.rb/, '').classify.constantize
-      }.each { |klass|
+      end.each do |klass|
         yield klass
-      }
+      end
     end
 
     def self.create(from_local)

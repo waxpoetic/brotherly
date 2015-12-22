@@ -1,2 +1,4 @@
-module Admin::MetricsHelper
+module Admin
+  module MetricsHelper
+  end
 end

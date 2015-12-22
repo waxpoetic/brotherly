@@ -1,5 +1,5 @@
-require "brotherly/version"
-require "active_support/dependencies/autoload"
+require 'brotherly/version'
+require 'active_support/dependencies/autoload'
 
 module Brotherly
   extend ActiveSupport::Autoload

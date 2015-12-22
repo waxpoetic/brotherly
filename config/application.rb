@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 
-require "rails"
+require 'rails'
 
 %w(
   active_record
@@ -46,7 +46,7 @@ module Brotherly
 
     # Page and podcast metadata.
     config.name = 'brother.ly'
-    config.description = "A monthly electronic music showcase."
+    config.description = 'A monthly electronic music showcase.'
     config.keywords = %w(live electronic music philadelphia)
     config.founding_year = 2015
 

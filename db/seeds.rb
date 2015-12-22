@@ -2,15 +2,15 @@ require 'active_record/fixtures'
 
 puts "-- seed '#{Rails.env}'"
 
-#if Rails.env.development?
-  puts "   add fixtures"
-  ActiveRecord::Fixtures.create_fixtures(
-    'spec/fixtures', Rails.application.config.seeds
-  )
-#end
+# if Rails.env.development?
+puts '   add fixtures'
+ActiveRecord::Fixtures.create_fixtures(
+  'spec/fixtures', Rails.application.config.seeds
+)
+# end
 
 unless User.where(name: 'admin').any?
-  puts "   add initial admin user"
+  puts '   add initial admin user'
   User.create!(
     name: 'admin',
     email: Rails.application.secrets.admin_email,
@@ -21,4 +21,4 @@ unless User.where(name: 'admin').any?
   )
 end
 
-puts "   -> done"
+puts '   -> done'

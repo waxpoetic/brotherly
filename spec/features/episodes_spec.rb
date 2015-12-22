@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-RSpec.feature "Episodes", type: :feature do
+RSpec.feature 'Episodes', type: :feature do
   let :episode do
     episodes :four
   end
 
-  scenario "listing" do
+  scenario 'listing' do
     visit episodes_path
 
     expect(page).to have_content('All Episodes')
     expect(page).to have_content(episode.name)
   end
 
-  scenario "latest (home page)" do
+  scenario 'latest (home page)' do
     visit root_path
 
     expect(page).to have_content('next episode...')
@@ -26,7 +26,7 @@ RSpec.feature "Episodes", type: :feature do
     expect(page).to have_content('Get Tickets')
   end
 
-  scenario "details" do
+  scenario 'details' do
     visit episodes_path(episode)
 
     expect(page).to have_content(episode.name)

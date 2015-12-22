@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resource :search, only: [:show]
 
   if defined? Sidekiq
-    authenticate :user, lambda { |u| u.is_admin? } do
+    authenticate :user, ->(u) { u.is_admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
   end

@@ -1,5 +1,7 @@
-class Admin::MetricsController < Admin::ApplicationController
-  def index
-    render :index
+module Admin
+  class MetricsController < ApplicationController
+    def index
+      render :index
+    end
   end
 end

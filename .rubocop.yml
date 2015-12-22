@@ -1,0 +1,58 @@
+AllCops:
+  RunRailsCops: true
+
+# Offense count: 1
+# Configuration parameters: AllowSafeAssignment.
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'bin/spring'
+
+# Offense count: 6
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/rails'
+    - 'bin/rake'
+    - 'bin/rspec'
+    - 'bin/sidekiq'
+    - 'config/application.rb'
+    - 'lib/tasks/test.rake'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*.rb'
+
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*.rb'
+    - 'app/services/eventbrite_service.rb'
+
+# Offense count: 92
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Exclude:
+    - 'config/**/*.rb'
+    - 'spec/rails_helper.rb'
+    - 'bin/spring'
+    - db/schema.rb
+
+# Offense count: 4
+# Configuration parameters: Include.
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+
+# Offense count: 1
+Style/ClassVars:
+  Exclude:
+    - 'spec/support/share_db_connection.rb'
+
+# Offense count: 97
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 2
+Style/MultilineBlockChain:
+  Exclude:
+    - 'lib/brotherly/service.rb'
+    - 'lib/tasks/test.rake'

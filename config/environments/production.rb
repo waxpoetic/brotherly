@@ -23,7 +23,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :redis_store, \
-    "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
+                       "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.

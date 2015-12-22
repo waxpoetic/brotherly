@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def title_tag
-    content_tag :title, [page_title, app_title].uniq.join(" | ")
+    content_tag :title, [page_title, app_title].uniq.join(' | ')
   end
 
   def config
@@ -48,10 +48,10 @@ module ApplicationHelper
   end
 
   def copyright_year
-    if Time.now.year == config.founding_year
-      Time.now.year
+    if Time.zone.now.year == config.founding_year
+      Time.zone.now.year
     else
-      "#{config.founding_year} - #{Time.now.year}"
+      "#{config.founding_year} - #{Time.zone.now.year}"
     end
   end
 
@@ -67,7 +67,8 @@ module ApplicationHelper
 
   def latest_cache_key(collection_name)
     collection = send collection_name
-    latest_update = collection.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    max_updated_at = collection.maximum(:updated_at).try(:utc)
+    latest_update = max_updated_at.try(:to_s, :number)
     "footer/recent_episodes-#{latest_update}"
   end
 
@@ -76,7 +77,8 @@ module ApplicationHelper
   end
 
   def podcast_cache_key(section = nil)
-    last_updated_at = episodes.last.updated_at.try(:utc).try(:to_s, :number) || '0'
+    max_updated_at = episodes.last.updated_at.try(:utc)
+    last_updated_at = max_updated_at.try(:to_s, :number) || '0'
 
     if section
       "podcast/#{last_updated_at}/#{section}"
