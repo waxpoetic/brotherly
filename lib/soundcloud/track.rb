@@ -7,18 +7,12 @@ module SoundCloud
     validates :title,       presence: true
     validates :asset_data,  presence: true
 
-    def self.create(params = {})
-      track = new(params)
-      track.save
-      track
-    end
-
     def save
-      valid? && create && persisted?
+      valid? && create
     end
 
     def persisted?
-      @track.present?
+      @track.try(:id).present?
     end
 
     def attributes
@@ -32,7 +26,9 @@ module SoundCloud
 
     def create
       @track = client.post '/tracks', track: attributes
-    rescue
+      persisted?
+    rescue StandardError => exception
+      errors.add :base, exception.message
       false
     end
 
