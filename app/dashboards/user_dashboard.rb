@@ -30,7 +30,6 @@ class UserDashboard < Administrate::BaseDashboard
     is_admin: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    slug: Field::String,
   }
 
   # COLLECTION_ATTRIBUTES

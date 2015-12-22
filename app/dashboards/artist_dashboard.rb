@@ -14,7 +14,6 @@ class ArtistDashboard < Administrate::BaseDashboard
     name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    slug: Field::String,
     links: HstoreField,
     description: Field::Text,
     image_file: UploadField
