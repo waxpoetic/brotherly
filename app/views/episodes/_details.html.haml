@@ -22,7 +22,7 @@
           .large-12.columns
             .actions
               %ul{ style: 'list-style-type: none' }
-                - if episode.has_audio?
+                - if episode.audio?
                   %li.audio
                     = link_to episode.audio, class: 'secondary button' do
                       = icon :music
