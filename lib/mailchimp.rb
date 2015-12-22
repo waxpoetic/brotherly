@@ -15,6 +15,6 @@ module Mailchimp
   end
 
   def self.gateway
-    gateway_class.new(Rails.application.secrets)
+    gateway_class.new
   end
 end
