@@ -1,6 +1,7 @@
 class BitlyService < Brotherly::Service
   remote Brotherly::ShortLink
   local :episode
+  param :short_url
 
   after_create :update_episode
 
@@ -15,6 +16,6 @@ class BitlyService < Brotherly::Service
   end
 
   def url
-    Rails.application.routes.episodes_path episode
+    Rails.application.routes.url_helpers.episodes_path episode
   end
 end

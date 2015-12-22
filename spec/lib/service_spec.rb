@@ -29,7 +29,7 @@ module Brotherly
     end
 
     it 'can set its attribute name' do
-      expect(subject.attribute_name).to eq(:service_url)
+      expect(subject.attribute_name).to be nil
       expect(subject.param(:attribute)).to eq(:attribute)
       expect(subject.attribute_name).to eq(:attribute)
     end

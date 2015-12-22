@@ -10,8 +10,7 @@ module Eventbrite
 
     def initialize(params = {})
       @id = params.delete :id
-      @eventbrite_event = client.event_get(id)
-      @attributes = @eventbrite_event.try(:attributes) || params
+      @attributes = event.try(:attributes) || params
     end
 
     def self.create(params = {})
@@ -29,15 +28,32 @@ module Eventbrite
     end
 
     def publish!
-      @eventbrite_event = client.event_publish_post(id)
+      @event = client.event_publish_post(id)
     end
 
     def persisted?
-      @id.present? && @eventbrite_event.present?
+      id.present? && event.present?
     end
 
     def to_h
       super.merge eventbrite_event_id: id
+    end
+
+    private
+
+    def event
+      @event ||= begin
+                   client.event_get(id)
+                 rescue
+                   nil
+                 end
+    end
+
+    def client
+      @client ||= EventbriteClient.new(
+        app_key: Rails.application.secrets.eventbrite_app_key,
+        user_key: Rails.application.secrets.eventbrite_user_key
+      )
     end
   end
 end

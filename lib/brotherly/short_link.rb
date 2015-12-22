@@ -4,10 +4,9 @@ module Brotherly
 
     attr_accessor :url
 
-    delegate :short_url, to: :link
+    delegate :short_url, to: :@link
 
     validates :url, presence: true
-    validates :link, presence: true
     validates :short_url, presence: true
 
     def self.create(params = {})
@@ -16,10 +15,16 @@ module Brotherly
       link
     end
 
-    private
+    def save
+      @link = create
+    end
 
-    def link
-      @link ||= Bitly.client.shorten url, history: 1
+    def persisted?
+      @link.present?
+    end
+
+    def create
+      Bitly.client.shorten url, history: 1
     end
   end
 end

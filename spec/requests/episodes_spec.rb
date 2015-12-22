@@ -16,9 +16,7 @@ RSpec.describe 'Episodes', type: :request do
       get episodes_path(format: 'rss')
 
       expect(response).to have_http_status(200)
-      expect(response.body).to match(/<rss (.*)>/)
-      expect(response.body).to include('<channel>')
-      expect(response.body).to include('<item>')
+      expect(response.content_type).to eq 'application/rss+xml'
     end
   end
 end

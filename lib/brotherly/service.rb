@@ -26,12 +26,6 @@ module Brotherly
 
     alias_method :to_param, :attribute_name
 
-    def self.default_attribute_name
-      "#{model_name.param_key}_url".gsub(/brotherly_/, '').to_sym
-    end
-
-    self.attribute_name ||= default_attribute_name
-
     def self.each
       Dir['app/services/*_service.rb'].map do |path|
         File.basename(path).gsub(/\.rb/, '').classify.constantize
@@ -71,6 +65,10 @@ module Brotherly
 
     def respond_to?(method, *args)
       local_name == method || super
+    end
+
+    def to_param
+      attribute_name
     end
 
     def to_h

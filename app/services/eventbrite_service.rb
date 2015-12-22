@@ -1,6 +1,7 @@
 class EventbriteService < Brotherly::Service
   remote Eventbrite::Event
   local :episode
+  param :eventbrite_url
 
   VENUE_ID = 0
   FORMAT_ID = 0

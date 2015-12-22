@@ -1,6 +1,7 @@
 class YoutubeService < Brotherly::Service
   remote Youtube::Video
   local :episode
+  param :youtube_url
 
   CATEGORY = 'Music'
 
