@@ -50,9 +50,8 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = \
-  #   "//#{Rails.application.secrets.aws_cloudfront_domain_name}"
+  # Serve static assets over the CDN
+  config.action_controller.asset_host = '//files.brother.ly'
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -82,7 +81,9 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
+  # Enable CORS headers for Google fonts
   config.font_assets.origin = '*.brother.ly'
 
+  # Use Sidekiq as the adapter for our background job queue
   config.active_job.queue_adapter = :sidekiq
 end
