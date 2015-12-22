@@ -12,6 +12,12 @@ engines:
     enabled: true
   scss-lint:
     enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - ruby
+        - javascript
 ratings:
   paths:
   - Gemfile.lock

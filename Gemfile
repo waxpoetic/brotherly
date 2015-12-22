@@ -45,6 +45,8 @@ group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
+  gem 'rubocop'
+  gem 'scss_lint'
 end
 
 group :development, :test do
@@ -54,7 +56,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'spring-commands-sidekiq'
   gem 'spring-watcher-listen'
-  gem 'rubocop'
 end
 
 group :test do
