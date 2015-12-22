@@ -1,7 +1,7 @@
 - cache episode do
   - cache [episode, :title] do
     = render 'title', episode_title: episode_title
-    - if episode.has_video?
+    - if episode.video?
       = render 'video', episode: episode
     - else
       = attachment_image_tag episode, :flyer_file, :fill, 950, 600
