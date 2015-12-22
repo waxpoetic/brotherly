@@ -24,10 +24,10 @@ GIT
 
 GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
-  revision: 67f3fe2d15f9f008224b7117bc7d851c9fc029e6
+  revision: c51dee6492c465e29561fbd42db56cdaf37de53c
   specs:
     eventbrite-client (0.1.3)
-      httparty (~> 0.8.0)
+      httparty (~> 0)
       tzinfo (~> 1)
 
 GEM
@@ -189,9 +189,9 @@ GEM
       ruby_parser (~> 3.5)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    httparty (0.8.3)
-      multi_json (~> 1.0)
-      multi_xml
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inline_svg (0.6.1)
       activesupport (>= 4.0.4)
