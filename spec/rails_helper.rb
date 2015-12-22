@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
-require 'pundit/rspec'
 
 # Load support files
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
