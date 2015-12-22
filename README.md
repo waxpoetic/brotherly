@@ -1,6 +1,9 @@
 # brother.ly
 
 [![Build Status](https://travis-ci.org/waxpoetic/brotherly.svg?branch=master)](https://travis-ci.org/waxpoetic/brotherly)
+[![Code Climate](https://codeclimate.com/github/waxpoetic/brotherly/badges/gpa.svg)](https://codeclimate.com/github/waxpoetic/brotherly)
+[![Test Coverage](https://codeclimate.com/github/waxpoetic/brotherly/badges/coverage.svg)](https://codeclimate.com/github/waxpoetic/brotherly/coverage)
+[![Issue Count](https://codeclimate.com/github/waxpoetic/brotherly/badges/issue_count.svg)](https://codeclimate.com/github/waxpoetic/brotherly)
 
 The official site and content repository for the **brother.ly** event
 series in Philadelphia.
