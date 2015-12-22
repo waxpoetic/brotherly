@@ -1,5 +1,7 @@
 # brother.ly
 
+[![Build Status](https://travis-ci.org/waxpoetic/brotherly.svg?branch=master)](https://travis-ci.org/waxpoetic/brotherly)
+
 The official site and content repository for the **brother.ly** event
 series in Philadelphia.
 
