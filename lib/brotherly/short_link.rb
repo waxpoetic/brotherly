@@ -3,8 +3,9 @@ module Brotherly
     include ActiveModel::Model
 
     attr_accessor :url
+    attr_reader :link
 
-    delegate :short_url, to: :@link
+    delegate :short_url, to: :link
 
     validates :url, presence: true
     validates :short_url, presence: true

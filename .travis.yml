@@ -1,3 +1,12 @@
 language: ruby
 rvm: 2.1.2
 before_script: bin/rake db
+deploy:
+  provider: heroku
+  api_key:
+    secure: BPfVRn6F4y+UQkpFuG/4eie29T5Rodyw6KuG6dUAqBTBzXUxWjT/takZsgHyN46FN5ldexG7MpFC2ossnkmnToIkKVT9UIjIskWqZTaB9Kg2Uynykg6S761HoBL0to0Y96ljw2BpUnQXlSZ7kNFwT59WfE06KCBULYHuLpIaBqXum97tgeNZBalvdHSxLIKy79NiDOIlJYjcGDip6b2WpBUheqipXln/mC0q2sdhZiA16YX7VlsznHgIeaJGtoen8GPByJZ5PNYyo1HunjG7q1UZVyapMVkPGPnASFR9OD5/dRqq3vNVET5zob7wq+u7SF1HpGHd2WYRwaJXSlhwt0WoDRfY4olemc/uhit8TTPg2/Ns6LdBhSWhjr2bt+T5OPO7P4gOhCqdKbRz3Fucmpe7CCbOjgMNBFelioqNHCzfosUzgRNGGuIPry/qdhzSLn2zFaAaQsgsdd+BbLMoJ37kK4csJ4ggazGgzIvib+Z5DCmIQLUs7YgevuBv82KsDytjQAPTNBAWKtdWEQwE/VEh2MvV4R+h2B9OgDzQc5OPfkmIyvOtNtTtvObrvA9MZOOIYJJ1mQOFs7NnSBWwowFc2wQ4LZzRsfdMDJmAUqiD1RhY7ERhcjgiqVcJ+HLTWdXDOpJ1yfB2QxYYgEWSA2rTnKXQaUmj3+6x8i7RrsU=
+  app: brotherly
+  on:
+    repo: waxpoetic/brotherly
+    all_branches: true
+    tags: true

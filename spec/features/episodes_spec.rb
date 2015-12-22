@@ -8,7 +8,7 @@ RSpec.feature 'Episodes', type: :feature do
   scenario 'listing' do
     visit episodes_path
 
-    expect(page).to have_content('All Episodes')
+    expect(page).to have_content('Past Episodes')
     expect(page).to have_content(episode.name)
   end
 
@@ -27,10 +27,10 @@ RSpec.feature 'Episodes', type: :feature do
   end
 
   scenario 'details' do
-    visit episodes_path(episode)
+    visit episodes_path(episode, format: 'html')
 
     expect(page).to have_content(episode.name)
     expect(page).to have_content('Artists')
-    expect(page).to have_content(episode.performances.first.name)
+    expect(page).to have_content(episode.artists.first.name)
   end
 end

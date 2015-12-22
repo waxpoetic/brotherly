@@ -5,46 +5,29 @@ module Brotherly
   # A strategy for DecentExposure that automatically authorizes the
   # resource and decorates it with a presenter object.
   class ExposureStrategy < DecentExposure::StrongParametersStrategy
+    delegate :current_page, :per_page, to: :controller
+
     # Generate a policy scope for all collection resources, then
     # decorate the finished object relation.
     def collection_resource
       collection_decorator.decorate(
-        super.tap do |c|
-          controller.policy_scope c
-        end.order('updated_at DESC')
-           .page(controller.current_page)
-           .per(controller.per_page),
-        with: decorator)
+        super.page(current_page).per(per_page),
+        with: decorator
+      )
     end
 
     def singular_resource
-      decorator.decorate(
-        super.tap do |m|
-          controller.authorize m
-        end
-      )
+      decorator.decorate super
     end
 
     private
 
     def decorator
-      if admin?
-        "Admin::#{model.decorator_class.name}".constantize
-      else
-        model.decorator_class
-      end
-    end
-
-    def admin?
-      controller.request.env['PATH_INFO'] =~ /admin/
+      model.decorator_class
     end
 
     def collection_decorator
-      if admin?
-        "Admin::#{model.model_name.plural.capitalize}Decorator".constantize
-      else
-        "#{model.model_name.plural.capitalize}Decorator".constantize
-      end
+      "#{model.model_name.plural.capitalize}Decorator".constantize
     end
 
     def model

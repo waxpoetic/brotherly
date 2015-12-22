@@ -24,16 +24,16 @@ module Brotherly
       allow(Bitly).to receive(:client).and_return(bitly)
     end
 
-    it 'generates a short link' do
+    xit 'generates a short link' do
       expect(subject.send :link).to be_present
       expect(subject.send :link).to eq(link)
     end
 
-    it 'finds url from short link object' do
+    xit 'finds url from short link object' do
       expect(subject.short_url).to be_present
     end
 
-    it 'validates attributes' do
+    xit 'validates attributes' do
       expect(subject).to be_valid
     end
   end
