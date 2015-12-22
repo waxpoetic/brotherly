@@ -83,4 +83,6 @@ Rails.application.configure do
   }
 
   config.font_assets.origin = '*.brother.ly'
+
+  config.active_job.queue_adapter = :sidekiq
 end

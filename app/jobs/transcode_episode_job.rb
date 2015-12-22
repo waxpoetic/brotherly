@@ -1,3 +1,4 @@
+require 'aws/elastic_transcoder'
 # Run transcoders on the episode.
 class TranscodeEpisodeJob < ActiveJob::Base
   queue_as :default
