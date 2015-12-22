@@ -6,7 +6,7 @@ begin
     dir =~ /features/
   end.map do |dir|
     File.basename dir
-  end
+  end.join(',')
 
   namespace :test do
     RSpec::Core::RakeTask.new :all
