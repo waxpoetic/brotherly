@@ -23,7 +23,7 @@ class Episode < ActiveRecord::Base
   attachment :flyer_file
   attachment :audio_file, extension: 'wav'
 
-  after_create :transcode!
+  after_create :transcode!, if: :has_audio?
   after_create :promote!, if: :future?
 
   def self.current
@@ -36,6 +36,10 @@ class Episode < ActiveRecord::Base
 
   def published?
     published_at.present?
+  end
+
+  def has_audio?
+    audio_file.present?
   end
 
   def promote

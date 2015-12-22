@@ -1,4 +1,3 @@
-require 'aws/elastic_transcoder'
 # Run transcoders on the episode.
 class TranscodeEpisodeJob < ActiveJob::Base
   queue_as :default
@@ -14,7 +13,7 @@ class TranscodeEpisodeJob < ActiveJob::Base
   private
 
   def transcoder
-    @transcoder ||= AWS::ElasticTranscoder::Client.new(
+    @transcoder ||= Aws::ElasticTranscoder::Client.new(
       region: secrets.aws_region,
       credentials: {
         aws_access_key_id: secrets.aws_access_key_id,
