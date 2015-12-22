@@ -68,13 +68,17 @@ class EpisodeDecorator < ApplicationDecorator
   def enclosure
     {
       url: audio,
-      length: audio_file.file_size,
-      type: audio_file.content_type
+      length: audio_file.download.size,
+      type: 'audio/mp3'
     }
   end
 
   def explicit
-    model.is_explicit? ? 'yes' : 'no'
+    'no'
+  end
+
+  def duration
+    360
   end
 
   def title
@@ -86,6 +90,7 @@ class EpisodeDecorator < ApplicationDecorator
   end
 
   def published_at
+    return unless model.published_at
     model.published_at.to_s(:rfc822)
   end
 

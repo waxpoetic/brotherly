@@ -24,7 +24,7 @@ cache podcast_cache_key do
         end
 
         cache episodes.in_podcast do
-          episodes.in_podcast.each do |episode|
+          episodes.in_podcast.map(&:decorate).each do |episode|
             cache episode do
               xml.item do
                 xml.title episode.name
