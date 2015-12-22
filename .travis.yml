@@ -1,3 +1,4 @@
 language: ruby
 rvm: 2.1.2
-before_script: bundle exec rake db
+before_script: bin/rake db
+script: bin/rake

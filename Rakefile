@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+# Lint code and run tests when `rake` is called with no arguments.
+task default: [:lint, :test]
