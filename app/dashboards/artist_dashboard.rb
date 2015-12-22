@@ -40,7 +40,6 @@ class ArtistDashboard < Administrate::BaseDashboard
     :performances,
     :episodes,
     :name,
-    :slug,
     :links,
     :description,
     :image_file

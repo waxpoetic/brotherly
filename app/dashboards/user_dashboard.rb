@@ -70,7 +70,6 @@ class UserDashboard < Administrate::BaseDashboard
     :unlock_token,
     :locked_at,
     :is_admin,
-    :slug,
   ]
 
   # Overwrite this method to customize how users are displayed

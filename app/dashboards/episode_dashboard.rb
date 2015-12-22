@@ -57,7 +57,6 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :ends_at,
     :published_at,
     :description,
-    :slug,
     :short_url,
     :eventbrite_event_id,
     :audio_file,
