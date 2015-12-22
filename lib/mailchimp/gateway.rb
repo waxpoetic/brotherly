@@ -7,7 +7,7 @@ module Mailchimp
     end
 
     def create_member(params = {})
-      list.members.create(params)
+      list.members.create(body: params)
     end
 
     def list
