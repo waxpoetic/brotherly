@@ -16,7 +16,7 @@ class Episode < ActiveRecord::Base
   scope :upcoming, -> { latest.where "starts_at >= ?", Time.now }
   scope :in_podcast, -> { where.not audio_file_id: nil }
 
-  friendly_id :name
+  friendly_id :number
 
   searchable name: 'A'
   multisearchable against: [:name]
@@ -49,6 +49,10 @@ class Episode < ActiveRecord::Base
 
   def event
     Eventbrite::Event.find eventbrite_event_id
+  end
+
+  def number
+    name.gsub(/brother\.ly\s/, '')
   end
 
   private
