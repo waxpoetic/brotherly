@@ -1,6 +1,7 @@
-require 'simplecov'
+require 'codeclimate-test-reporter'
 
-SimpleCov.start 'rails'
+# Start test coverage reporting
+CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

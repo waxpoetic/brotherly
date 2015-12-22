@@ -113,6 +113,8 @@ GEM
     celluloid (0.16.0)
       timers (~> 4.0.0)
     cliver (0.3.2)
+    codeclimate-test-reporter (0.4.8)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -419,7 +421,7 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simple_oauth (0.3.1)
-    simplecov (0.10.0)
+    simplecov (0.11.1)
       docile (~> 1.1.0)
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
@@ -490,6 +492,7 @@ DEPENDENCIES
   autoprefixer-rails
   bitly
   capybara
+  codeclimate-test-reporter
   coffee-rails
   controller_resources
   devise
@@ -532,7 +535,6 @@ DEPENDENCIES
   sass-rails
   sidekiq
   simple_form
-  simplecov
   sinatra
   spring
   spring-commands-rspec

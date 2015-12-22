@@ -61,7 +61,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'simplecov'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :production do

@@ -11,3 +11,7 @@ deploy:
     repo: waxpoetic/brotherly
     all_branches: true
     tags: true
+addons:
+  code_climate:
+    repo_token:
+      secure: fLGa9MDyumKmP456c6AFXcj3pi7vT8YADduUhISexe/N938HFjta1oxGb0JdN8iG/hWGEDr5lY4cvYoGsCjzR3pqkylMtKZGd0kgiSAiNEKZg3uqUa5duGcsQyT5ZJUrNjl641G1RIwFfVhwJda4JPPhMMSskvk/YWunaEbFgHgjPEagHmEcCSltdfetJ53afGAIDE85CrFThHTVeIqfRo9Zkw40vXL8YBflf9CMVNXslXSYgp8WAZ8FEKZmyzyCkB0KRv+4UOI084SNF9qqsH6RyZymk0y9BCc6uknXH2ZvXQOrZsrlF2dO+uzLa+8vg0ibW6T/q9hjxYHm1bODwjvgpQdYBQWraCbSt8ve1WjK+mh4zyQp30VwZuHPiwXgr19yEmQXn78gC6fyk5rjnKXsUNq5chanvkCeC6a75FGe3XYXNW4dleM8WEiuhRWwLjDPyN8w3+7Z5FfFDPgkeN7G46vL+o9xUnveuJ3NFUFLpur7e+aJvdB8Yj+rcN+qhHm7uohPUlXeDGM8EZWjhn+Ga1NZyQFFG/H4GoG9xCFWRxV1oaPSvi0dq4hgxtmVgNlfs9jSpBgYeI669w980UWMXQ/nJZTecT6xARV/TPH7qJY+fdYKc0nX/sOuGMNXA965vOWLXkUHv9WVBSPAidjcxj6mzktHNb+BAb7+DDo=
