@@ -2,5 +2,11 @@
 # Configure PgSearch multi-search options
 #
 PgSearch.multisearch_options = {
-  using: [:tsearch, :trigram]
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    },
+    trigram: true
+  }
 }
