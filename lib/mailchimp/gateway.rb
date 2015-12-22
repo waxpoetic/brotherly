@@ -1,5 +1,7 @@
 module Mailchimp
   class Gateway
+    attr_reader :config
+
     def initialize(config)
       @config = config
     end
