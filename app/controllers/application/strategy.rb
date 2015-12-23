@@ -1,10 +1,10 @@
 require 'decent_exposure/strong_parameters_strategy'
 require 'draper/decoratable'
 
-module Brotherly
+module Application
   # A strategy for DecentExposure that automatically authorizes the
   # resource and decorates it with a presenter object.
-  class ExposureStrategy < DecentExposure::StrongParametersStrategy
+  class Strategy < DecentExposure::StrongParametersStrategy
     delegate :current_page, :per_page, to: :controller
 
     # Generate a policy scope for all collection resources, then

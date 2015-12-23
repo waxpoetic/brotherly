@@ -1,4 +1,4 @@
-module Brotherly
+module Application
   # Standard HTTP responses for the entire application.
   class Responder < ActionController::Responder
     include Responders::FlashResponder
