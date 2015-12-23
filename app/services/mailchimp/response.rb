@@ -16,11 +16,11 @@ module Mailchimp
 
     def method_missing(method, *arguments)
       return super unless respond_to? method
-      self[method]
+      self[method.to_s]
     end
 
     def respond_to?(method)
-      @request.keys.include?(method) || super
+      @request.keys.include?(method.to_s) || super
     end
   end
 end

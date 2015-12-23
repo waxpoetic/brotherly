@@ -23,16 +23,18 @@ module Bitly
       allow(Bitly).to receive(:client).and_return(bitly)
     end
 
-    xit 'generates a short link' do
+    it 'generates a short link' do
+      expect(subject.save).to be true
       expect(subject.send :link).to be_present
       expect(subject.send :link).to eq(link)
     end
 
-    xit 'finds url from short link object' do
+    it 'finds url from short link object' do
+      expect(subject.save).to be true
       expect(subject.short_url).to be_present
     end
 
-    xit 'validates attributes' do
+    it 'validates attributes' do
       expect(subject).to be_valid
     end
   end

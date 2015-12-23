@@ -20,15 +20,7 @@ module Eventbrite
     end
 
     def save
-      @id = client.event_post(attributes).id
-    end
-
-    def create_ticket_class(params = {})
-      client.event_ticket_classes_post(params)
-    end
-
-    def publish!
-      @event = client.event_publish_post(id)
+      valid? && create.success?
     end
 
     def persisted?
@@ -41,19 +33,24 @@ module Eventbrite
 
     private
 
-    def event
-      @event ||= begin
-                   client.event_get(id)
+    def create
+      @response ||= begin
+                      res = gateway.create_event(self)
+                      @id = res.id if res.success?
+                      res
+                    end
+    end
+
+    def data
+      @data ||= begin
+                   gateway.event_get(id)
                  rescue
-                   nil
+                   fail NotFound, id
                  end
     end
 
-    def client
-      @client ||= EventbriteClient.new(
-        app_key: Rails.application.secrets.eventbrite_app_key,
-        user_key: Rails.application.secrets.eventbrite_user_key
-      )
+    def gateway
+      @gateway ||= Gateway.new
     end
   end
 end
