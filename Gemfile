@@ -21,7 +21,6 @@ gem 'friendly_id'
 gem 'foreman'
 gem 'newrelic_rpm'
 gem 'librato-rails'
-gem 'airbrake'
 gem 'email_validator'
 gem 'gibbon'
 gem 'ransack'
@@ -29,24 +28,29 @@ gem 'kaminari'
 gem 'semver'
 
 gem 'lodash-rails'
+gem 'sass', '~> 3.3'
 gem 'sass-rails'
 gem 'coffee-rails'
-gem 'foundation-rails'
+# gem 'foundation-rails', '5.5.2.1'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'jquery-turbolinks'
-gem 'turbolinks', github: 'rails/turbolinks'
-gem 'administrate', github: 'thoughtbot/administrate'
+gem 'turbolinks' #, github: 'rails/turbolinks'
+gem 'administrate' #, github: 'thoughtbot/administrate'
+gem 'sprockets-rails', '~> 2'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-foundation', '~> 5'
+end
 
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
-  gem 'scss_lint'
 end
 
 group :development, :test do
@@ -73,4 +77,5 @@ group :production do
   gem 'sidekiq'
   gem 'sinatra', require: false
   gem 'refile-s3'
+  gem 'airbrake'
 end
