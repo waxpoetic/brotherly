@@ -6,4 +6,11 @@ module Brotherly
   extend ActiveSupport::Autoload
 
   autoload :Service
+
+  # Return the version of this application.
+  #
+  # @return [SemVer]
+  def self.version
+    @version ||= SemVer.find
+  end
 end
