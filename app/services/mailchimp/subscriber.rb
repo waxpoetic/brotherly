@@ -2,32 +2,56 @@ module Mailchimp
   class Subscriber
     include ActiveModel::Model
 
-    attr_accessor :list, :email, :name
+    # Name of the new subscriber
+    #
+    # @attr_accessor [String]
+    attr_accessor :name
 
-    validates :list, presence: true
+    # Email of the new subscriber
+    #
+    # @attr_accessor [String]
+    attr_accessor :email
+
     validates :email, presence: true
-    validates :name, presence: true
 
-    def self.create(params = {})
-      subscriber = new(params)
+    # Subscribe a user to the list on Mailchimp.
+    #
+    # @option [String] email
+    # @option [String] name
+    # @return [Mailchimp::Subscriber]
+    def self.create(email: '', name: '')
+      subscriber = new email: email, name: name
       subscriber.save
       subscriber
     end
 
+    # Subscribe to Mailchimp after validating.
+    #
+    # @return [Boolean]
     def save
       valid? && create
     end
 
+    # Test if the response succeeded.
+    #
+    # @return [Boolean]
+    def persisted?
+      @response.try :success?
+    end
+
     private
 
+    # @private
+    # @return [Mailchimp::Response]
     def create
-      Mailchimp.gateway.create_member(
+      @response = Mailchimp.gateway.create_member(
         email_address: email,
         status: 'subscribed',
         merge_fields: {
           NAME: name
         }
       )
+      persisted?
     end
   end
 end

@@ -1,7 +1,11 @@
 module Mailchimp
+  # A wrapper for Gibbon that acts as our gateway to the Mailchimp
+  # service. Although Gibbon actually performs the HTTP requests related
+  # to Mailchimp, this class is responsible for putting them together
+  # and then returning responses in a consistent manner.
   class Gateway
     def create_member(params = {})
-      list.members.create(body: params)
+      Response.new list.members.create(body: params)
     end
 
     def list
