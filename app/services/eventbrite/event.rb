@@ -2,6 +2,8 @@ require 'eventbrite-client'
 
 module Eventbrite
   class Event
+    include ActiveModel::Model
+
     attr_reader :id
     attr_reader :attributes
     attr_reader :eventbrite_event
@@ -9,8 +11,9 @@ module Eventbrite
     delegate :url, to: :eventbrite_event
 
     def initialize(params = {})
-      @id = params.delete :id
-      @attributes = event.try(:attributes) || params
+      @id = params[:id]
+      @params = params
+      @data = {}
     end
 
     def self.create(params = {})
@@ -24,11 +27,15 @@ module Eventbrite
     end
 
     def persisted?
-      id.present? && event.present?
+      id.present? && data.any?
     end
 
     def to_h
-      super.merge eventbrite_event_id: id
+      { eventbrite_event_id: id }
+    end
+
+    def [](key)
+      data[key]
     end
 
     private

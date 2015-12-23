@@ -7,15 +7,19 @@ module Eventbrite
     end
 
     it 'creates event on eventbrite' do
+      allow(subject.send :gateway).to receive(:create_event).and_return(
+        Response.new id: '12345'
+      )
       expect(subject.save).to be true
     end
 
     it 'is saved when id is present' do
+      allow(subject).to receive(:data).and_return(foo: 'bar')
       expect(subject).to be_persisted
     end
 
     it 'converts event response data into a hash' do
-      expect(subject.to_h).to include('id')
+      expect(subject.to_h).to include(:eventbrite_event_id)
     end
   end
 end

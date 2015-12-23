@@ -8,14 +8,22 @@ module Eventbrite
     end
 
     def create_event(event)
-      id = client.event_post(event.attributes).id
+      id = post_event(event.attributes).id
       return Response.new(success: false) unless id.present?
-      tickets = client.event_ticket_classes_post(params.merge(id: id))
-      event = client.event_publish_post(id)
-      Response.new id: id, event: event, tickets: tickets
+      # tickets = client.event_ticket_classes_post
+      event = publish_event(id)
+      Response.new id: id, event: event
     end
 
     private
+
+    def post_event(attributes)
+      client.event_post(event.attributes)
+    end
+
+    def publish_event(id)
+      client.event_publish_post(id)
+    end
 
     def client
       @client ||= EventbriteClient.new(
