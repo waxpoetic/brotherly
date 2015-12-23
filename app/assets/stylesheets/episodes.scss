@@ -1,19 +1,14 @@
+.episodes {
+  .episode-summary {
+    background: $jet;
 
+    .artist-name {
+      color: $aluminum;
+      font-size: .8rem;
+    }
 
-#episodes {
-  &.index {
-    .episode-summary {
-      background: $jet;
-
-      .info {
-        li {
-          font-size: 0.8rem;
-          color: $aluminum;
-        }
-      }
-      time {
-        font-size: 0.8rem;
-      }
+    time {
+      font-size: .8rem;
     }
   }
 
@@ -21,29 +16,26 @@
     padding-bottom: 10px;
   }
 
-  &.current, &.show {
-    .info {
-      background: $jet;
-      padding: 10px;
-      margin-top: 20px;
-    }
+  .info {
+    background: $jet;
+    margin-top: 20px;
+    padding: 10px;
   }
 
   .actions {
     padding-top: 19px;
   }
+}
 
-  .artists, .performances {
-    margin: 0 auto;
-    background: $jet;
+.collection {
+  background: $jet;
+  margin: 0 auto;
 
-    ul {
-      list-style-type: none;
+  ul {
+    list-style-type: none;
 
-      li {
-        padding: 10px 0;
-        // width: 350px;
-      }
+    li {
+      padding: 10px 0;
     }
   }
 }

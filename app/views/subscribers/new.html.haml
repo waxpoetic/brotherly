@@ -5,7 +5,7 @@
     %p= t '.content'
 .form.row
   .large-12.columns
-    = simple_form_for subscriber, remote: true do |f|
+    = simple_form_for subscriber, class: 'new-subscriber', remote: true do |f|
       .fields
         = f.input :name
         = f.input :email, required: true

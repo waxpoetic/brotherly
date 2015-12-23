@@ -1,4 +1,4 @@
-#artists {
+.artists {
   &.show {
     .info.row {
       background: $jet;
@@ -13,19 +13,18 @@
       width: 200px;
     }
   }
+}
 
-  .performances {
-    margin: 0 auto;
-    background: $jet;
+.performances {
+  background: $jet;
+  margin: 0 auto;
 
-    ul {
-      list-style-type: none;
+  ul {
+    list-style-type: none;
 
-      li {
-        padding: 10px 0;
-        // width: 350px;
-      }
+    li {
+      padding: 10px 0;
+      // width: 350px;
     }
   }
-
 }

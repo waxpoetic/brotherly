@@ -95,31 +95,34 @@ $include-html-global-classes: $include-html-classes;
 $font-weight-normal: normal;
 $font-weight-bold: bold;
 
-$white: #FFF;
-$ghost: #FAFAFA;
-$snow: #F9F9F9;
-$vapor: #F6F6F6;
-$white-smoke : #F5F5F5;
-$silver      : #EFEFEF;
-$smoke       : #EEE;
-$gainsboro   : #DDD;
-$iron        : #CCC;
-$base        : #AAA;
-$aluminum    : #999;
-$jumbo       : #888;
-$monsoon     : #777;
-$steel       : #666;
-$charcoal    : #555;
-$tuatara     : #444;
-$oil         : #333;
-$jet         : #222;
-$black       : #000;
+$white: #fff;
+$ghost: #fafafa;
+$snow: #f9f9f9;
+$vapor: #f6f6f6;
+$white-smoke: #f5f5f5;
+$silver: #efefef;
+$smoke: #eee;
+$gainsboro: #ddd;
+$iron: #ccc;
+$base: #aaa;
+$aluminum: #999;
+$jumbo: #888;
+$monsoon: #777;
+$steel: #666;
+$charcoal: #555;
+$tuatara: #444;
+$oil: #333;
+$jet: #222;
+$black: #000;
+
+$nav-link-hover-border-color: #bfc8cd;
+$nav-link-hover-color: #9eabb3;
 
 // We use these as default colors throughout
-$primary-color: #008CBA;
+$primary-color: #008cba;
 $secondary-color: #e7e7e7;
 $alert-color: #f04124;
-$success-color: #43AC6A;
+$success-color: #43ac6a;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
 
@@ -1486,8 +1489,10 @@ $topbar-dropdown-bg: $topbar-bg;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
 
-// .notice {
-//   @extend .success;
+// .alert-box {
+//   &.notice {
+//     @include alert-style($success-color);
+//   }
 // }
 
 @import 'foundation';

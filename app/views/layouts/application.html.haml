@@ -12,13 +12,13 @@
     = csrf_meta_tags
     = favicon_link_tag
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
-  %body
+  %body{ class: section_name }
     = render 'tags' if Rails.env.production?
     %header
       - cache 'header/navigation', expires_in: 1.year do
         %nav.top-bar{ 'data-topbar' => true }
           %ul.title-area
-            %li#title.name
+            %li#nav-title.name
               %h1= link_to config.name, root_path
 
           %section.top-bar-section#search
@@ -43,7 +43,7 @@
             %div{ class: "alert-box #{type}", data: { alert: true  } }
               = message
               = link_to '&times;'.html_safe, '#', class: 'close'
-    %main{ class: page_name, id: section_name }
+    %main{ class: page_name }
       .messages.row
         = render 'flash'
       .content.row

@@ -52,7 +52,7 @@
                       = t :mixcloud, scope: :episodes
         - cache [episode, :lineup] do
           - if episode.future?
-            .artists.row
+            .collection.artists.row
               .large-12.columns
                 %h4= t :lineup, scope: :episodes
                 %ul
@@ -64,7 +64,7 @@
                         .large-8.columns
                           %h5= artist.name
           - else
-            .performances.row
+            .collection.performances.row
               .large-12.columns
                 %h2= t :performances, scope: :episodes
                 %ul.performances

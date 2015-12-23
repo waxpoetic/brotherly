@@ -1,120 +1,115 @@
 body {
   background-size: 198% auto;
+}
 
-  header {
-    nav {
-      #title {
-        h1 {
-          a {
-            font-weight: bold;
-            padding-top: 6px;
-            font-size: 32px;
-          }
-        }
-      }
-      #links {
-        margin-right: 15px;
-
-        li {
-          padding: 10px 5px;
-
-          .dropdown {
-            margin-top: 42px;
-            background: $jet;
-
-            .input {
-              height: 75px;
-
-              input {
-                background: #000;
-                border: 0;
-                color: $smoke;
-
-                &::-webkit-input-placeholder {
-                  color: $aluminum;
-                }
-              }
-            }
-          }
-        }
-        a {
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          display: inline-block;
-          float: right;
-          height: 38px;
-          padding: 0 20px;
-          border: $vapor 1px solid;
-          color: $vapor;
-          text-align: center;
-          font-size: 12px;
-          text-transform: uppercase;
-          line-height: 35px;
-          white-space: nowrap;
-          border-radius: 3px;
-          transition: all ease 0.3s;
-
-
-          &:hover {
-            border-color: #bfc8cd;
-            color: #9EABB3;
-          }
-        }
-      }
-
-      #search {
-        form {
-          input {
-            border-radius: 3px;
-            border: $vapor 1px solid;
-            background: transparent;
-            font-size: 18px;
-            padding: 19px;
-            color: $vapor;
-            width: 500px;
-
-            &:focus {
-              background: $silver;
-              color: $jet;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  main {
-    margin-bottom: 25px;
-  }
-
-  footer {
-    min-height: 25%;
-    background: $footer-bg;
-    color: $jet;
-    opacity: 0.5;
-    height: 36%;
-
+.nav-title {
+  h1 {
     a {
-      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      padding-top: 6px;
     }
+  }
+}
 
-    h3 {
+.search-form {
+  .input {
+    height: 75px;
+  }
+
+  input {
+    background: $black;
+    border: 0;
+    color: $smoke;
+
+    &::-webkit-input-placeholder {
+      color: $aluminum;
+    }
+  }
+}
+
+.links {
+  margin-right: 15px;
+
+  li {
+    padding: 10px 5px;
+
+    .dropdown {
+      background: $jet;
+      margin-top: 42px;
+    }
+  }
+
+  a {
+    border: $vapor 1px solid;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: $vapor;
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+    height: 38px;
+    line-height: 35px;
+    padding: 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all ease .3s;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $nav-link-hover-border-color;
+      color: $nav-link-hover-color;
+    }
+  }
+}
+
+.search {
+  input {
+    background: transparent;
+    border: $vapor 1px solid;
+    border-radius: 3px;
+    color: $vapor;
+    font-size: 18px;
+    padding: 19px;
+    width: 500px;
+
+    &:focus {
+      background: $silver;
       color: $jet;
     }
+  }
+}
 
-    .copyright {
-      p {
-        padding-top: 13px;
-      }
-    }
+main {
+  margin-bottom: 25px;
+}
+
+footer {
+  background: $footer-bg;
+  color: $jet;
+  height: 36%;
+  min-height: 25%;
+  opacity: .5;
+
+  a {
+    color: $white;
   }
 
-  #dialog {
-    background: $jet;
+  h3 {
+    color: $jet;
+  }
 
-    label {
-      color: white;
+  .copyright {
+    p {
+      padding-top: 13px;
     }
+  }
+}
+
+.dialog {
+  background: $jet;
+
+  label {
+    color: $white;
   }
 }
