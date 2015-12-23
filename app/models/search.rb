@@ -1,4 +1,5 @@
-# Temporary model object for use with the multi-search system.
+# Performs a multi-search against all of the models included within the
+# pg_search multisearch index. Although 
 class Search
   include ActiveModel::Model
   include Draper::Decoratable
@@ -8,38 +9,57 @@ class Search
   # @attr_accessor [String]
   attr_accessor :query
 
-  # Collection of results that came back in the query.
+  # A collection of documents that are returned after performing the
+  # search query
   #
-  # @attr_accessor [ActiveRecord::Relation]
-  def results
-    @results.map(&:searchable_type).map do |type|
-      ids = @results.select do |r|
-        r.searchable_type == type
-      end.map(&:searchable_id)
-      type.constantize.where id: ids
-    end.flatten
-  end
+  # @attr_reader [Array<PgSearch::Multisearch::Document>]
+  attr_reader :documents
 
   validates :query, presence: true
 
   def initialize(params = {})
-    @results = []
+    @documents = []
     super
   end
 
+  # Perform a new search with the given query
+  #
+  # @param [String] query
+  # @return [Search]
   def self.create(query)
     search = new query: query
     search.save
     search
   end
 
+  # Validate the query given and perform the multisearch with
+  # +PgSearch+ if valid.
+  #
+  # @return [Boolean] +true+ if the search was performed
   def save
     valid? && create
   end
 
+  # Collection of results that came back in the query.
+  #
+  # @return [Array<ActiveRecord::Base>]
+  def results
+    models.map do |model|
+      Results.new(documents, model).records
+    end.flatten.uniq
+  end
+
   private
 
+  # @private
+  # @return [Boolean]
   def create
-    @results = PgSearch.multisearch(query) || []
+    @documents = PgSearch.multisearch(query) || []
+  end
+
+  # @private
+  # @return [Array<Class>]
+  def models
+    documents.map(&:searchable_type)
   end
 end

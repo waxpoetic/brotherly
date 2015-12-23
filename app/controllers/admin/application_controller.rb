@@ -1,17 +1,18 @@
-# All Administrate controllers inherit from this `Admin::ApplicationController`,
-# making it the ideal place to put authentication logic or other
-# before_filters.
-#
-# If you want to add pagination or other controller-level concerns,
-# you're free to overwrite the RESTful controller actions.
 module Admin
+  using Search
+
+  # Base controller for the admin panel, using the +Admin::Search+
+  # refinement to +Administrate::Search+. This controller is also
+  # responsible for authenticating admin users and setting default
+  # options, such as the records shown per page, for all admin
+  # controllers.
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_user!
 
-    # Override this value to specify the number of elements to display at a time
-    # on index pages. Defaults to 20.
-    # def records_per_page
-    #   params[:per_page] || 20
-    # end
+    protected
+
+    def records_per_page
+      params[:per_page] || 36
+    end
   end
 end
