@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # Use the default app responder object.
-  self.responder = Brotherly::Responder
+  self.responder = Application::Responder
   respond_to :html
 
   # Define a default HTML layout.
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   # Configure DecentExposure
   decent_configuration do
-    strategy Brotherly::ExposureStrategy
+    strategy Application::Strategy
   end
 
   expose :current_episode do

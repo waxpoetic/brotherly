@@ -1,7 +1,6 @@
 require 'spec_helper'
-require 'brotherly/short_link'
 
-module Brotherly
+module Bitly
   RSpec.describe ShortLink do
     let :url do
       'http://example.com'

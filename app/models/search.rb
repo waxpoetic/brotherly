@@ -1,5 +1,7 @@
 # Performs a multi-search against all of the models included within the
-# pg_search multisearch index. Although 
+# pg_search multisearch index. Wraps the +PgSearch.multisearch+ call and
+# presents its results as a series of +ActiveRecord+ models rather than
+# the raw document objects returned by the search query.
 class Search
   include ActiveModel::Model
   include Draper::Decoratable

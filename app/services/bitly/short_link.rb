@@ -1,4 +1,4 @@
-module Brotherly
+module Bitly
   class ShortLink
     include ActiveModel::Model
 

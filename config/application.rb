@@ -22,9 +22,6 @@ end
 Bundler.require :default, Rails.env
 
 require 'brotherly'
-require 'eventbrite'
-require 'youtube'
-require 'mailchimp'
 
 module Brotherly
   class Application < Rails::Application
@@ -56,10 +53,8 @@ module Brotherly
     # Capacity for when new events are created.
     config.capacity = 200
 
-    # Eager-load library code.
+    # Eager-load application library code.
     config.eager_load_namespaces << Brotherly
-    config.eager_load_namespaces << Eventbrite
-    config.eager_load_namespaces << Youtube
     config.autoload_paths << Rails.root.join('lib')
 
     # Seed tables in development.
@@ -76,6 +71,5 @@ module Brotherly
       },
       trigram: {}
     }
-
   end
 end

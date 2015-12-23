@@ -25,7 +25,7 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*.rb'
-    - 'app/services/eventbrite_service.rb'
+    - 'app/services/eventbrite/service.rb'
 
 # Offense count: 92
 # Configuration parameters: AllowURI, URISchemes.
