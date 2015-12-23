@@ -22,6 +22,6 @@ begin
   end
 
   desc 'Run all RuboCop lint checks and RSpec code examples'
-  task test: %i(test:unit test:features)
+  task test: %w(test:all)
 rescue LoadError
 end
