@@ -26,6 +26,7 @@ gem 'email_validator'
 gem 'gibbon'
 gem 'ransack'
 gem 'kaminari'
+gem 'semver'
 
 gem 'lodash-rails'
 gem 'sass-rails'
