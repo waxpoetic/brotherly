@@ -1,5 +1,5 @@
 namespace :release do
-  task :bump, [:type] do |task, type|
+  task :bump, [:type] do |task, type = 'patch'|
     system "bin/semver increment #{type}"
   end
 
@@ -8,7 +8,7 @@ namespace :release do
   end
 
   task :push do
-    system 'git push origin master'
+    system 'git push --all'
   end
 end
 
