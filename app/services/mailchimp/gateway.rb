@@ -4,6 +4,18 @@ module Mailchimp
   # to Mailchimp, this class is responsible for putting them together
   # and then returning responses in a consistent manner.
   class Gateway
+    def self.class_for_env
+      if Rails.env =~ /development|test/
+        BogusGateway
+      else
+        Gateway
+      end
+    end
+
+    def self.for_env
+      @for_env ||= class_for_env.new
+    end
+
     def create_member(params = {})
       Response.new list.members.create(body: params)
     end

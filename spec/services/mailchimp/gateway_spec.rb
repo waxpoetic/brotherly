@@ -15,7 +15,7 @@ module Mailchimp
     end
 
     it 'finds the configured list on mailchimp' do
-      expect(subject.list).to be_a(APIRequest)
+      expect(subject.list).to be_a(Gibbon::APIRequest)
     end
 
     it 'creates a new member on the list' do

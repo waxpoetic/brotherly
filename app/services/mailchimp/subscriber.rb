@@ -36,7 +36,7 @@ module Mailchimp
     #
     # @return [Boolean]
     def persisted?
-      @response.try :success?
+      @response && @response.success?
     end
 
     private
@@ -44,7 +44,7 @@ module Mailchimp
     # @private
     # @return [Mailchimp::Response]
     def create
-      @response = Mailchimp.gateway.create_member(
+      @response = Mailchimp::Gateway.for_env.create_member(
         email_address: email,
         status: 'subscribed',
         merge_fields: {
@@ -52,6 +52,9 @@ module Mailchimp
         }
       )
       persisted?
+    rescue Gibbon::GibbonError, Gibbon::MailChimpError => exception
+      errors.add :base, exception.message
+      false
     end
   end
 end

@@ -1,5 +1,9 @@
 module Mailchimp
   RSpec.describe Subscriber do
+    let :described_class do
+      Mailchimp::Subscriber
+    end
+
     let :email do
       'lester.tester@example.com'
     end
@@ -24,7 +28,7 @@ module Mailchimp
 
     context 'when the mailchimp gateway accepts the request' do
       before do
-        allow(Mailchimp.gateway).to receive(:create_member).and_return(
+        allow(Mailchimp::Gateway.for_env).to receive(:create_member).and_return(
           Response.new request: { 'id' => SecureRandom.hex }
         )
       end
@@ -34,7 +38,7 @@ module Mailchimp
         expect(subject).to be_persisted
       end
 
-      it 'can be created' do
+      it 'is created in memory and persisted' do
         subscriber = described_class.create(email: email, name: name)
         expect(subscriber).to be_a(Subscriber)
         expect(subscriber).to be_persisted
@@ -43,7 +47,7 @@ module Mailchimp
 
     context 'when the mailchimp gateway denies the request' do
       before do
-        allow(Mailchimp.gateway).to receive(:create_member).and_return(
+        allow(Mailchimp::Gateway.for_env).to receive(:create_member).and_return(
           Response.new
         )
       end
@@ -53,7 +57,7 @@ module Mailchimp
         expect(subject).not_to be_persisted
       end
 
-      it 'can be created' do
+      it 'is created in memory but not persisted' do
         subscriber = described_class.create(email: email, name: name)
         expect(subscriber).to be_a(Subscriber)
         expect(subscriber).not_to be_persisted

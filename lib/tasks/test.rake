@@ -2,7 +2,7 @@ begin
   require 'rspec/core/rake_task'
 
   NOT_FEATURES = Dir['spec/*'].reject do |dir|
-    dir =~ /features|\.rb/
+    dir =~ /features|\./
   end.map do |dir|
     File.basename dir
   end.join(',')
