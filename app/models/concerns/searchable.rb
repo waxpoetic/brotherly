@@ -27,7 +27,7 @@ module Searchable
     end
 
     def pg_search_types
-      { tsearch: { prefix: true } }
+      Rails.application.config.search
     end
   end
 end

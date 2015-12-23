@@ -2,11 +2,5 @@
 # Configure PgSearch multi-search options
 #
 PgSearch.multisearch_options = {
-  using: {
-    tsearch: {
-      prefix: true,
-      any_word: true
-    },
-    trigram: {}
-  }
+  using: Rails.application.config.search
 }
