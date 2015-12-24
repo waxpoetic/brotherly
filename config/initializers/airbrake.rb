@@ -1,5 +1,6 @@
 if defined? Airbrake
   Airbrake.configure do |config|
-    config.api_key = Rails.application.secrets.airbrake_api_key
+    config.project_id = Rails.application.secrets.airbrake_project_id
+    config.project_key = Rails.application.secrets.airbrake_api_key
   end
 end
