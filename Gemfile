@@ -38,8 +38,8 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'jquery-turbolinks'
-gem 'turbolinks' #, github: 'rails/turbolinks'
-gem 'administrate' #, github: 'thoughtbot/administrate'
+gem 'turbolinks', github: 'rails/turbolinks'
+gem 'administrate', github: 'thoughtbot/administrate'
 gem 'sprockets-rails', '~> 2'
 
 source 'https://rails-assets.org' do
@@ -51,6 +51,7 @@ group :development do
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
+  gem 'scss_lint'
 end
 
 group :development, :test do

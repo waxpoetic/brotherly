@@ -27,68 +27,6 @@ en:
         episodes: Episodes
         users: Users
         performances: Performances
-  admin:
-    show:
-      edit: Edit
-    users:
-      new:
-        title: Add User
-      edit:
-        title: Edit User
-      index:
-        title: Users
-      show:
-        title: My Profile
-    performances:
-      index:
-        title: Artist Performances
-        new: New Performance
-      edit:
-        title: Edit Performance
-    index:
-      empty: "There are no %{models} to display."
-      new: "New %{name}"
-      edit: "Edit %{model} '%{name}'"
-      destroy: "Destroy %{model} '%{name}'"
-    controls:
-      cancel: Cancel
-    dashboard:
-      title: Dashboard
-    subscribers:
-      index:
-        title: Subscribers
-      show:
-        title: Subscriber
-      new:
-        title: New Subscriber
-      edit:
-        title: Edit Subscriber
-    artists:
-      index:
-        title: Artists
-        name: Name
-        image: Image
-        links: Links
-        description: Biography
-      show:
-        title: Artist
-        name: Name
-        image: Image
-        links: Links
-        description: Biography
-      new:
-        title: New Artist
-      edit:
-        title: Edit Artist
-    episodes:
-      index:
-        title: Episodes
-      show:
-        title: Episode
-      new:
-        title: New Episode
-      edit:
-        title: Edit Episode
   errors:
     unauthorized:
       title: Not Authorized
@@ -99,7 +37,10 @@ en:
   footer:
     about: about
     copyright: Copyright
+  artists:
+    listing: artists
   episodes:
+    listing: past episodes
     actions: Take Action
     recent: recent episodes
     upcoming: upcoming episodes

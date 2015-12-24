@@ -41,9 +41,14 @@ module ApplicationHelper
     Rails.application.config
   end
 
-  def nav_link(text, href, *args)
-    content_tag :li, class: active_link?(href) do
-      link_to text, href, *args
+  def subscribe_text
+    "#{icon('envelope')} #{t(:subscribe, scope: :nav)}"
+  end
+
+  def nav_link(text, href, id: nil, modal: false)
+    link_method = modal ? :link_to_modal : :link_to
+    content_tag :li, class: [active_link?(href), 'nav-item'].join("\s") do
+      send link_method, text, href, class: 'nav-link', id: id
     end
   end
 

@@ -8,7 +8,7 @@
     %meta{name: 'keywords', content: config.keywords.join(", ")}
     = title_tag
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'vendor/modernizr', 'application', media: 'all'
+    = javascript_include_tag 'modernizr', 'application', media: 'all'
     = csrf_meta_tags
     = favicon_link_tag
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
@@ -18,26 +18,23 @@
       - cache 'header/navigation', expires_in: 1.year do
         %nav.top-bar{ 'data-topbar' => true }
           %ul.title-area
-            %li#nav-title.name
-              %h1= link_to config.name, root_path
+            %li.name
+              %h1= link_to config.name, root_path, class: 'logo'
 
-          %section.top-bar-section#search
+          %section.top-bar-section#search.search
             %ul
               %li.has-dropdown
                 = simple_form_for search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
                   = f.input :query, as: :search, label: false, placeholder: 'Search...', input_html: { autocomplete: 'off' }
                 %ul.dropdown.results{ style: 'margin-top: 10px' }
                   / Search results go here
-          %section.top-bar-section#links
+          %section.top-bar-section.links
             %ul.right
-              - cache current_episode.cache_key do
-                = nav_link next_or_last_episode, root_path
+              = nav_link next_or_last_episode, root_path
               = nav_link t(:past_episode, scope: :nav), episodes_path
               = nav_link t(:artists, scope: :nav), artists_path
-              - unless session[:subscriber].present?
-                %li
-                  = link_to_modal "#{icon('envelope')} #{t(:subscribe, scope: :nav)}".html_safe, new_subscriber_path, id: 'subscribe'
-      #flash.row
+              = nav_link subscribe_text, new_subscriber_path, modal: true
+      #flash.flash.row
         .large-12.columns
           - flash.each do |type, message|
             %div{ class: "alert-box #{type}", data: { alert: true  } }
@@ -49,7 +46,7 @@
       .content.row
         = yield
       .modal.row
-        #dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
+        #dialog.dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
           / Dialog content goes here
     %footer
       .row

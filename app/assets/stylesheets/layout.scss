@@ -2,12 +2,14 @@ body {
   background-size: 198% auto;
 }
 
-.nav-title {
-  h1 {
-    a {
+.top-bar {
+  .name {
+    position: relative;
+    top: 5px;
+
+    .logo {
       font-size: 32px;
-      font-weight: bold;
-      padding-top: 6px;
+      font-weight: 900;
     }
   }
 }
@@ -28,19 +30,31 @@ body {
   }
 }
 
+@mixin navigation-item {
+  padding: 10px 5px;
+
+  .dropdown {
+    background: $jet;
+    margin-top: 42px;
+  }
+
+  a:not(.button) {
+    line-height: 35px;
+  }
+}
+
 .links {
   margin-right: 15px;
 
-  li {
-    padding: 10px 5px;
-
-    .dropdown {
-      background: $jet;
-      margin-top: 42px;
-    }
+  .nav-item.active:not(.has-form) {
+    @include navigation-item;
   }
 
-  a {
+  .nav-item:not(.has-form) {
+    @include navigation-item;
+  }
+
+  .nav-link {
     border: $vapor 1px solid;
     border-radius: 3px;
     box-sizing: border-box;
@@ -49,7 +63,6 @@ body {
     float: right;
     font-size: 12px;
     height: 38px;
-    line-height: 35px;
     padding: 0 20px;
     text-align: center;
     text-transform: uppercase;
@@ -74,8 +87,8 @@ body {
     width: 500px;
 
     &:focus {
-      background: $silver;
-      color: $jet;
+      background: $jet;
+      color: $aluminum;
     }
   }
 }

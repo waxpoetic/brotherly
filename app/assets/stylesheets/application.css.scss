@@ -1424,10 +1424,10 @@ $topbar-title-font-size: rem-calc(24);
 // $topbar-link-font-size: rem-calc(13);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: $aluminum;
+$topbar-link-bg-hover: $jet;
 $topbar-link-bg-color-hover: $primary-color;
 $topbar-link-bg-active: $topbar-bg;
-//$topbar-link-bg-active-hover: $aluminum;
+$topbar-link-bg-active-hover: $oil;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
@@ -1499,3 +1499,10 @@ $topbar-dropdown-bg: $topbar-bg;
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import '*';
+
+// Override to handle spacing bug
+.row {
+  .row {
+    width: 100%;
+  }
+}

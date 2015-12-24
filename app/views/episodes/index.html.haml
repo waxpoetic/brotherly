@@ -1,7 +1,7 @@
-- title 'All Episodes'
+- title 'Episodes'
 
 - cache episodes do
-  %h1 Past Episodes
+  %h1= t :listing, scope: :episodes
 
   - episodes.in_groups_of(3, false).each do |episodes|
     - cache "episodes/row/#{episodes}" do

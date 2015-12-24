@@ -11,7 +11,7 @@ class SubscribersController < ApplicationController
     subscriber.attributes = edit_params
     subscriber.save
     session[:subscriber] = subscriber.id
-    respond_with subscriber
+    respond_with subscriber, change: '#dialog'
   end
 
   def show
