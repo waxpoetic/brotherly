@@ -57,6 +57,7 @@ class Search
   # @return [Boolean]
   def create
     @documents = PgSearch.multisearch(query) || []
+    true
   end
 
   # @private
