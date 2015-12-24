@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe AddSubscriberJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let :subscriber do
+    Subscriber.new name: 'test', email: 'test@example.com'
+  end
+
+  it 'creates a subscriber on mailchimp' do
+    expect(subject.perform(subscriber)).to be_a Mailchimp::Subscriber
+  end
 end

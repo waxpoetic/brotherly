@@ -3,11 +3,14 @@ class TranscodeEpisodeJob < ActiveJob::Base
   queue_as :default
 
   def perform(episode)
-    transcoder.create_job(
-      pipeline_id: secrets.aws_audio_pipeline_id,
-      input: { key: episode.audio_file_url },
-      output: { key: episode.audio_file_url.gsub(/wav/, 'm3u8') }
-    )
+    if episode.audio_file_url.present?
+      transcoder.create_job(
+        pipeline_id: secrets.aws_audio_pipeline_id,
+        input: { key: episode.audio_file_url },
+        output: { key: episode.audio_file_url.gsub(/wav/, 'm3u8') }
+      )
+      episode.update transcoded: true
+    end
   end
 
   private

@@ -487,6 +487,7 @@ DEPENDENCIES
   administrate!
   airbrake
   autoprefixer-rails
+  aws-sdk
   bitly
   capybara
   codeclimate-test-reporter

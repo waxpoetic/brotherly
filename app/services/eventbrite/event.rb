@@ -23,6 +23,12 @@ module Eventbrite
       event
     end
 
+    def self.find(id)
+      event = new id: id
+      return unless event.persisted?
+      event
+    end
+
     def save
       valid? && create.success?
     end

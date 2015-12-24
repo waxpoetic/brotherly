@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature 'Performances', type: :feature do
-  pending "add some scenarios (or delete) #{__FILE__}"
+  let :performance do
+    performances :del_at_four
+  end
+
+  scenario 'go to a performance by its episode' do
+    visit episodes_path(performance.episode, format: 'html')
+    click_link performance.artist.name
+    expect(page).to have_content(performance.artist.name)
+    expect(page).to have_content(performance.episode.name)
+  end
 end

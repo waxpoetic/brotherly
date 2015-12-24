@@ -3,7 +3,7 @@ class Artist < ActiveRecord::Base
 
   include Searchable
 
-  searchable name: 'A'
+  searchable :name
   multisearchable against: [:name]
 
   friendly_id :name

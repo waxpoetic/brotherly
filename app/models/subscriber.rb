@@ -1,7 +1,7 @@
 class Subscriber < ActiveRecord::Base
   include Searchable
 
-  searchable name: 'A', email: 'B'
+  searchable :name, :email
 
   validates :email, presence: true, email: true
 

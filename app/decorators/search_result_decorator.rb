@@ -12,6 +12,6 @@ class SearchResultDecorator < ApplicationDecorator
   private
 
   def route
-    "#{model.searchable_type.downcase}_path"
+    "#{model.searchable_type.downcase}_url"
   end
 end

@@ -16,9 +16,9 @@ RSpec.describe SearchResultDecorator do
   end
 
   it 'finds the route to the model' do
-    expect(subject.href).to eq("/episodes/#{episode.id}")
+    expect(subject.href).to include("/episodes/#{episode.id}")
   end
   it 'finds the route method for the model' do
-    expect(subject.send :route).to eq('episode_path')
+    expect(subject.send :route).to eq('episode_url')
   end
 end

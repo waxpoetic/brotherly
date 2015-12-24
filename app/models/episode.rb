@@ -18,7 +18,7 @@ class Episode < ActiveRecord::Base
 
   friendly_id :number
 
-  searchable name: 'A'
+  searchable :name
   multisearchable against: [:name]
 
   attachment :flyer_file
@@ -37,10 +37,6 @@ class Episode < ActiveRecord::Base
 
   def published?
     published_at.present?
-  end
-
-  def promote
-    PromoteEpisodeJob.perform_later self
   end
 
   def event

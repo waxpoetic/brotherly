@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  searchable name: 'A'
+  searchable :name
 
   # Use ActiveJob to send mails in the background
   #

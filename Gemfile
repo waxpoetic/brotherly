@@ -26,6 +26,7 @@ gem 'gibbon'
 gem 'ransack'
 gem 'kaminari'
 gem 'semver'
+gem 'aws-sdk'
 
 gem 'lodash-rails'
 gem 'sass', '~> 3.3'
