@@ -15,7 +15,7 @@
         .video.row
           .large-12.columns
             - if episode.video?
-              = render 'video', episode: episode
+              = episode.video_tag
             - else
               = attachment_image_tag episode, :flyer_file, :fill, 950, 600
     - cache [episode, :sidebar] do
