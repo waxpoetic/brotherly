@@ -52,7 +52,6 @@ group :development do
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
-  gem 'scss_lint'
 end
 
 group :development, :test do

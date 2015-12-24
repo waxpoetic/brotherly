@@ -46,19 +46,14 @@ class EpisodeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :performances,
-    :artists,
     :name,
-    :eventbrite_url,
     :youtube_url,
-    :mixcloud_url,
     :facebook_url,
+    :eventbrite_url,
     :starts_at,
     :ends_at,
     :published_at,
     :description,
-    :short_url,
-    :eventbrite_event_id,
     :audio_file,
     :flyer_file
   ]

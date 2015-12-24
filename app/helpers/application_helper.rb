@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def subscribe_text
-    "#{icon('envelope')} #{t(:subscribe, scope: :nav)}"
+    "#{icon('envelope')} #{t(:subscribe, scope: :nav)}".html_safe
   end
 
   def nav_link(text, href, id: nil, modal: false)

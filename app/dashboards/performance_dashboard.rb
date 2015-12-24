@@ -14,10 +14,9 @@ class PerformanceDashboard < Administrate::BaseDashboard
     starts_at: Field::DateTime,
     ends_at: Field::DateTime,
     youtube_url: Field::String,
-    mixcloud_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    audio_file_id: UploadField
+    audio_file: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -38,14 +37,12 @@ class PerformanceDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :pg_search_document,
     :artist,
     :episode,
     :starts_at,
     :ends_at,
     :youtube_url,
-    :mixcloud_url,
-    :audio_file_id
+    :audio_file
   ]
 
   # Overwrite this method to customize how performances are displayed
