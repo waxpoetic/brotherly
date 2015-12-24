@@ -1,10 +1,6 @@
 - cache episode do
   - cache [episode, :title] do
     = render 'title', episode_title: episode_title
-    - if episode.video?
-      = render 'video', episode: episode
-    - else
-      = attachment_image_tag episode, :flyer_file, :fill, 950, 600
   .row
     - cache [episode, :info] do
       .large-8.columns
@@ -16,9 +12,15 @@
           .description.row
             .large-8.columns
               = simple_format episode.description
-    - cache [episode, :navigation] do
+        .video.row
+          .large-12.columns
+            - if episode.video?
+              = render 'video', episode: episode
+            - else
+              = attachment_image_tag episode, :flyer_file, :fill, 950, 600
+    - cache [episode, :sidebar] do
       .large-4.columns
-        .row
+        .buttons.row
           .large-12.columns
             .actions
               %ul{ style: 'list-style-type: none' }
@@ -50,28 +52,26 @@
                   %li.mixcloud
                     = link_to episode.mixcloud_url, class: 'info button', target: '_blank' do
                       = t :mixcloud, scope: :episodes
-        - cache [episode, :lineup] do
-          - if episode.future?
-            .collection.artists.row
-              .large-12.columns
-                %h4= t :lineup, scope: :episodes
-                %ul
-                  - episode.artists.each do |artist|
-                    %li.row
-                      = link_to artist, title: artist.name do
-                        .large-4.columns
-                          = attachment_image_tag artist, :image_file
-                        .large-8.columns
-                          %h5= artist.name
-          - else
-            .collection.performances.row
-              .large-12.columns
-                %h2= t :performances, scope: :episodes
-                %ul.performances
-                  - episode.performances.each do |performance|
-                    %li.row
-                      = link_to episode_performance_path(episode, performance), title: performance.title do
-                        .large-4.columns
-                          = performance.artist.decorate.image
-                        .large-8.columns
-                          %h5= performance.artist_name
+        .collection.artists.row
+          .large-12.columns
+            %h2= t :lineup, scope: :episodes
+            %ul
+              - episode.artists.each do |artist|
+                %li.row
+                  = link_to artist, title: artist.name do
+                    .large-4.columns
+                      = attachment_image_tag artist, :image_file
+                    .large-8.columns
+                      %h5= artist.name
+          -# - else
+          -#   .collection.performances.row
+          -#     .large-12.columns
+          -#       %h2= t :performances, scope: :episodes
+          -#       %ul.performances
+          -#         - episode.performances.each do |performance|
+          -#           %li.row
+          -#             = link_to episode_performance_path(episode, performance), title: performance.title do
+          -#               .large-4.columns
+          -#                 = performance.artist.decorate.image
+          -#               .large-8.columns
+          -#                 %h5= performance.artist_name
