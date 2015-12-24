@@ -21,8 +21,8 @@ module Searchable
 
     def pg_search_options
       {
-        attributes: pg_search_attributes,
-        types: pg_search_types
+        against: pg_search_attributes,
+        using: pg_search_types
       }
     end
 
