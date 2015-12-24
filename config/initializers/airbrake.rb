@@ -1,3 +1,3 @@
-Airbrake.configure do |config|
-  config.api_key = Rails.application.secrets.airbrake_api_key
-end if Rails.env.production?
+if defined? Airbrake
+  Airbrake.api_key = Rails.application.secrets.airbrake_api_key
+end
