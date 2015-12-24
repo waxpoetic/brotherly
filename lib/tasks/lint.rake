@@ -1,7 +1,25 @@
-begin
-  require 'rubocop/rake_task'
+namespace :lint do
+  begin
+    require 'rubocop/rake_task'
+    desc 'Run RuboCop lint checks'
+    RuboCop::RakeTask.new :ruby
+  rescue LoadError
+    task :ruby do
+      p 'RuboCop is not installed, Ruby lint checks will not run.'
+    end
+  end
 
-  desc 'Run RuboCop lint checks'
-  RuboCop::RakeTask.new :lint
-rescue LoadError
+  desc 'Run SCSS lint checks'
+  task :scss do
+    sh 'bin/scss-lint'
+  end
+
+  desc 'Run CoffeeScript lint checks'
+  task :coffee do
+    files = Dir['app/assets/javascripts/**/*.coffee'].join("\s")
+    sh "coffeelint #{files}"
+  end
 end
+
+desc 'Run code linters'
+task lint: %w(lint:ruby lint:scss lint:coffee)
