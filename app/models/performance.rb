@@ -14,4 +14,6 @@ class Performance < ActiveRecord::Base
   def name
     "#{artist.name} at #{episode.name}"
   end
+
+  alias_method :title, :name
 end
