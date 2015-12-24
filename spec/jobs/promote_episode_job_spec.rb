@@ -5,10 +5,7 @@ RSpec.describe PromoteEpisodeJob, type: :job do
     episodes :four
   end
 
-  xit 'promotes episode on all found services' do
-    allow_any_instance_of(Brotherly::ShortLink).to receive(:create).and_return(
-      double('Link', short_url: 'test')
-    )
-    expect(PromoteEpisodeJob.perform_now(episode)).to eq true
+  it 'promotes episode on all found services' do
+    expect(PromoteEpisodeJob.perform_now(episode)).to eq []
   end
 end

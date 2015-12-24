@@ -6,6 +6,12 @@ class SearchResultDecorator < ApplicationDecorator
   end
 
   def href
-    h.send "#{model.searchable_type.downcase}_path", model.searchable_id
+    h.send route, model.searchable_id
+  end
+
+  private
+
+  def route
+    "#{model.searchable_type.downcase}_path"
   end
 end
