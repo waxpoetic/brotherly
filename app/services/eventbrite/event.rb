@@ -34,7 +34,7 @@ module Eventbrite
     end
 
     def persisted?
-      id.present? && data.any?
+      id.present?
     end
 
     def to_h

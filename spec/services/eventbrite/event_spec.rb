@@ -2,14 +2,32 @@ require 'rails_helper'
 
 module Eventbrite
   RSpec.describe Event do
+    let :id do
+      '12345'
+    end
+
+    let :name do
+      'test'
+    end
+
+    let :gateway do
+      double(
+        create_event: double(success?: true, id: id),
+        event_get: double(success?: true, event: { foo: 'bar' })
+      )
+    end
+
     subject do
-      described_class.new id: '12345', name: 'test'
+      described_class.new id: id, name: name
+    end
+
+    before do
+      allow_any_instance_of(Gateway).to receive(:create_event).and_return(
+        double(success?: true, id: id)
+      )
     end
 
     it 'creates event on eventbrite' do
-      allow(subject.send :gateway).to receive(:create_event).and_return(
-        Response.new id: '12345'
-      )
       expect(subject.save).to be true
     end
 
@@ -20,6 +38,16 @@ module Eventbrite
 
     it 'converts event response data into a hash' do
       expect(subject.to_h).to include(:eventbrite_event_id)
+    end
+
+    it 'can be found' do
+      expect(described_class.find(id)).to be_present
+    end
+
+    it 'can be created' do
+      event = described_class.create(name: name)
+      expect(event.id).to be_present
+      expect(event).to be_persisted
     end
   end
 end
