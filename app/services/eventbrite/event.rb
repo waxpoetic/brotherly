@@ -8,8 +8,8 @@ module Eventbrite
     attr_reader :attributes
     attr_reader :eventbrite_event
 
-    delegate :url, to: :eventbrite_event
-    delgeate :[], to: :data
+    delegate :url, to: :eventbrite_event, allow_nil: true
+    delegate :[], to: :data, allow_nil: true
 
     def initialize(params = {})
       @id = params[:id]

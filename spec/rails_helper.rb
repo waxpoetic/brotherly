@@ -33,6 +33,8 @@ RSpec.configure do |config|
   # Use the same admin login helper in all front-end tests
   config.include AdminLoginHelper, type: [:controller, :request, :feature]
 
+  config.include Translations
+
   config.around type: :feature do |example|
     Warden.test_mode!
     example.run

@@ -38,9 +38,12 @@ en:
     about: about
     copyright: Copyright
   artists:
+    title: Artists
     listing: artists
   episodes:
     listing: past episodes
+    next: next episode...
+    latest: latest episode
     actions: Take Action
     recent: recent episodes
     upcoming: upcoming episodes

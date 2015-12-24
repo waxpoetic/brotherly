@@ -1,4 +1,6 @@
 class ApplicationDecorator < Draper::Decorator
+  delegate :t, to: I18n
+
   # Default title of every show and edit page.
   #
   # @return [String]
