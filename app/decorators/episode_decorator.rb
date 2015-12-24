@@ -105,8 +105,8 @@ class EpisodeDecorator < ApplicationDecorator
   def video_tag_options
     {
       id: 'stream',
-      width: 480,
-      height: 640,
+      width: 640,
+      height: 400,
       src: youtube_embed_url,
       frameborder: 0,
       allowfullscreen: true
