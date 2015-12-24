@@ -29,7 +29,7 @@ module Mailchimp
     #
     # @return [Boolean]
     def save
-      valid? && create
+      valid? && create.success?
     end
 
     # Test if the response succeeded.
@@ -51,10 +51,9 @@ module Mailchimp
           NAME: name
         }
       )
-      persisted?
     rescue Gibbon::GibbonError, Gibbon::MailChimpError => exception
       errors.add :base, exception.message
-      false
+      Response.new 'gibbon_error' => exception.message
     end
   end
 end

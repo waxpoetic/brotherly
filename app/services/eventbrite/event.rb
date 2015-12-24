@@ -9,6 +9,7 @@ module Eventbrite
     attr_reader :eventbrite_event
 
     delegate :url, to: :eventbrite_event
+    delgeate :[], to: :data
 
     def initialize(params = {})
       @id = params[:id]
@@ -34,10 +35,6 @@ module Eventbrite
       { eventbrite_event_id: id }
     end
 
-    def [](key)
-      data[key]
-    end
-
     private
 
     def create
@@ -51,8 +48,8 @@ module Eventbrite
     def data
       @data ||= begin
                    gateway.event_get(id)
-                 rescue
-                   fail NotFound, id
+                 rescue Gibbon::Error
+                   raise NotFound, id
                  end
     end
 

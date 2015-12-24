@@ -1,5 +1,5 @@
 namespace :release do
-  task :bump, [:type] do |task, type = 'patch'|
+  task :bump, [:type] do |_, type = 'patch'|
     system "bin/semver increment #{type}"
   end
 

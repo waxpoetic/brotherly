@@ -1,7 +1,7 @@
 module Mailchimp
   class BogusGateway < Gateway
-    def create_member(_params = {})
-      Response.new request: _params.merge('id' => SecureRandom.hex)
+    def create_member(params = {})
+      Response.new request: params.merge('id' => SecureRandom.hex)
     end
   end
 end

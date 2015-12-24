@@ -3,7 +3,7 @@ module Eventbrite
     attr_reader :app_key, :user_key
 
     def initialize
-      @app_key = Rails.application.secrets.eventbrite_app_key,
+      @app_key = Rails.application.secrets.eventbrite_app_key
       @user_key = Rails.application.secrets.eventbrite_user_key
     end
 
@@ -18,7 +18,7 @@ module Eventbrite
     private
 
     def post_event(attributes)
-      client.event_post(event.attributes)
+      client.event_post(attributes)
     end
 
     def publish_event(id)
