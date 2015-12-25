@@ -13,9 +13,9 @@ class EpisodeDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     eventbrite_url: Field::String,
-    youtube_url: Field::String,
     mixcloud_url: Field::String,
     facebook_url: Field::String,
+    youtube_id: Field::String,
     starts_at: Field::DateTime,
     ends_at: Field::DateTime,
     published_at: Field::DateTime,
@@ -47,9 +47,9 @@ class EpisodeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :youtube_url,
     :facebook_url,
     :eventbrite_url,
+    :youtube_id,
     :starts_at,
     :ends_at,
     :published_at,

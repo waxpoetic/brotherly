@@ -13,7 +13,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     starts_at: Field::DateTime,
     ends_at: Field::DateTime,
-    youtube_url: Field::String,
+    youtube_id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     audio_file: UploadField
@@ -41,7 +41,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     :episode,
     :starts_at,
     :ends_at,
-    :youtube_url,
+    :youtube_id,
     :audio_file
   ]
 

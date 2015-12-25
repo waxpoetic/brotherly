@@ -32,12 +32,12 @@ class EpisodeDecorator < ApplicationDecorator
   end
 
   def youtube_embed_url
-    return unless model.youtube_url.present?
-    # if Rails.env.production?
-    #   model.youtube_url + "?autoplay=true"
-    # else
-    model.youtube_url
-    # end
+    return unless model.youtube_id.present?
+    "http://www.youtube.com/embed/#{model.youtube_id}"
+  end
+
+  def youtube_url
+    "http://www.youtube.com/?v=#{model.youtube_id}"
   end
 
   def current_title
@@ -53,7 +53,7 @@ class EpisodeDecorator < ApplicationDecorator
   end
 
   def video?
-    model.youtube_url.present?
+    model.youtube_id.present?
   end
 
   def show_ticket_link?
