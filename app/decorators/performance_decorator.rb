@@ -14,4 +14,8 @@ class PerformanceDecorator < ApplicationDecorator
   def downloadable?
     model.audio_file.present?
   end
+
+  def title
+    model.name
+  end
 end
