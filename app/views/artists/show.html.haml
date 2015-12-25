@@ -15,7 +15,7 @@
           - artist.links.each do |link|
             %li
               = link_to link.href, title: "#{artist.name} on #{link.title}", class: 'secondary button' do
-                = link.icon
+                = icon link.icon
                 &nbsp;
                 = link.title
     .performances.row
