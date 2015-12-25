@@ -24,7 +24,7 @@
         %ul.performances
           - artist.performances.each do |performance|
             %li.row
-              = link_to episode_performance_path(performance.episode, performance), title: performance.name do
+              = link_to performance.episode, title: performance.name do
                 .large-4.columns
                   = attachment_image_tag performance.episode, :flyer_file
                 .large-8.columns
