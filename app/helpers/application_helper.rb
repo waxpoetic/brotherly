@@ -39,7 +39,7 @@ module ApplicationHelper
   def nav_link(text, href, modal: false)
     link_method = modal ? :link_to_modal : :link_to
     content_tag :li, class: [active_link?(href), 'nav-item'].join("\s") do
-      send link_method, text, href, class: 'nav-link', id: id
+      send link_method, text, href, class: 'nav-link'
     end
   end
 
@@ -75,7 +75,7 @@ module ApplicationHelper
   #
   # @return [String::SafeBuffer]
   def og(name, content)
-    content_tag :meta, property: "og:#{name}", content: content
+    tag :meta, property: "og:#{name}", content: content
   end
 
   private

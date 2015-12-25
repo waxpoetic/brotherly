@@ -44,6 +44,10 @@ class EpisodeDecorator < ApplicationDecorator
     model.future? ? t(:next, scope: :episodes) : t(:latest, scope: :episodes)
   end
 
+  def button_title
+    current_title.gsub(/ episode/, '')
+  end
+
   def audio
     h.attachment_url model, :audio_file
   end
