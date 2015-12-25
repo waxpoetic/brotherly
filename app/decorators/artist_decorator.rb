@@ -9,6 +9,20 @@ class ArtistDecorator < ApplicationDecorator
     )
   end
 
+  def links
+    model.links.map do |name, href|
+      Link.new name: name, href: href
+    end
+  end
+
+  def link_icon(link_name)
+    if link_name == 'website'
+      :globe
+    else
+      link_name.to_sym
+    end
+  end
+
   def title
     model.name
   end

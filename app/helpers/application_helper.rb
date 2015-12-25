@@ -1,65 +1,66 @@
+# Helper methods that pertain to the entire application.
 module ApplicationHelper
-  def icon_for(link)
-    if link == 'website'
-      :globe
-    else
-      link.to_sym
-    end
-  end
-
+  # Name of the current action.
+  #
+  # @return [String]
   def page_name
     controller.action_name.to_s
   end
 
+  # Name of the current controller.
+  #
+  # @return [String]
   def section_name
     controller_name = File.basename(controller.controller_name.to_s)
     return 'users' if controller_name =~ /sessions/
     controller_name
   end
 
-  def title(new_title)
-    content_for :title, new_title
-  end
-
-  def page_title
-    if content_for? :title
-      content_for :title
-    else
-      app_title
-    end
-  end
-
-  def search_result_path(result)
-    send "#{result.searchable_type.parameterize}_path", result.searchable_id
-  end
-
-  def title_tag
-    content_tag :title, [page_title, app_title].uniq.join(' | ')
-  end
-
+  # Configuration options set in the Rails config.
+  #
+  # @return [ActiveSupport::OrderedOptions]
   def config
-    Rails.application.config
+    Rails.configuration
   end
 
+  # The navigation subscribe text in addition to its icon.
+  #
+  # @return [String::SafeBuffer]
   def subscribe_text
     "#{icon('envelope')} #{t(:subscribe, scope: :nav)}".html_safe
   end
 
-  def nav_link(text, href, id: nil, modal: false)
+  # Create an +<li>+ and +<a>+ tag fragment that is used in the
+  # navigation as a link button.
+  #
+  # @param [String] text
+  # @param [String] href
+  # @option [Boolean] modal - +true+ to open in a modal dialog
+  def nav_link(text, href, modal: false)
     link_method = modal ? :link_to_modal : :link_to
     content_tag :li, class: [active_link?(href), 'nav-item'].join("\s") do
       send link_method, text, href, class: 'nav-link', id: id
     end
   end
 
+  # Return the year or range of years the copyright in the footer is
+  # good for.
+  #
+  # @return [String]
   def copyright_year
     if Time.zone.now.year == config.founding_year
-      Time.zone.now.year
+      Time.zone.now.year.to_s
     else
       "#{config.founding_year} - #{Time.zone.now.year}"
     end
   end
 
+  # Open the link at +href+ in a modal dialog.
+  #
+  # @param [String] text
+  # @param [String] href
+  # @param [Hash] options
+  # @return [String::SafeBuffer]
   def link_to_modal(text, href, options = {})
     data = options[:data] || {}
     link_to text, href, options.merge(
@@ -70,47 +71,16 @@ module ApplicationHelper
     )
   end
 
-  def latest_cache_key(collection_name)
-    collection = send collection_name
-    max_updated_at = collection.maximum(:updated_at).try(:utc)
-    latest_update = max_updated_at.try(:to_s, :number)
-    "footer/recent_episodes-#{latest_update}"
-  end
-
-  def podcast_publish_date
-    episodes.last.published_at
-  end
-
-  def podcast_cache_key(section = nil)
-    max_updated_at = episodes.last.updated_at.try(:utc)
-    last_updated_at = max_updated_at.try(:to_s, :number) || '0'
-
-    if section
-      "podcast/#{last_updated_at}/#{section}"
-    else
-      "podcast/#{last_updated_at}"
-    end
-  end
-
-  def next_or_last_episode
-    if current_episode.future?
-      t(:next_episode, scope: :nav)
-    else
-      t(:latest_episode, scope: :nav)
-    end
+  # Create an open graph +<meta>+ tag.
+  #
+  # @return [String::SafeBuffer]
+  def og(name, content)
+    content_tag :meta, property: "og:#{name}", content: content
   end
 
   private
 
   def active_link?(href)
     'active' if current_page? href
-  end
-
-  def app_title
-    if controller.controller_name =~ /admin/
-      "#{config.name} admin (#{Rails.env})"
-    else
-      config.name
-    end
   end
 end

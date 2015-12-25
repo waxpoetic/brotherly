@@ -12,12 +12,12 @@
       .row
         %h3 Links
         %ul.links
-          - artist.links.each do |link, href|
+          - artist.links.each do |link|
             %li
-              = link_to href, title: "#{artist.name} on #{link.titleize}", class: 'secondary button' do
-                = icon icon_for(link)
+              = link_to link.href, title: link.about, class: 'secondary button' do
+                = link.icon
                 &nbsp;
-                = link.titleize
+                = link.title
     .performances.row
       .large-12.columns
         %h2= t :performances, scope: :episodes
