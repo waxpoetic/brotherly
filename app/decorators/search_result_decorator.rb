@@ -16,6 +16,10 @@ class SearchResultDecorator < ApplicationDecorator
   end
 
   def kind
+    searchable_type == 'performance' ? 'episode_performance' : searchable_type
+  end
+
+  def searchable_type
     model.searchable_type.downcase
   end
 end
