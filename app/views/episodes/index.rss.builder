@@ -12,7 +12,7 @@ cache podcast_cache_key do
           xml.itunes :author, config.name
           xml.itunes :keywords, config.keywords.join(', ')
           xml.itunes :explicit, config.explicit
-          xml.itunes :image, href: image_url('podcast.png')
+          xml.itunes :image, href: image_url('logo.png')
           xml.itunes :owner do
             xml.itunes :name, config.name
             xml.itunes :email, "podcast@#{config.name}"

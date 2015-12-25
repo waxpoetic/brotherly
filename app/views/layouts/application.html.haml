@@ -15,8 +15,14 @@
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
     = og :title, (page_title || app_title)
     = og :type, 'website'
-    = og :image, image_path('podcast.png')
+    = og :image, image_url('logo.png')
     = og :url, 'http://brother.ly'
+    %meta{ name: 'twitter:card', content: 'summary_large_image' }
+    %meta{ name: 'twitter:site', content: '@brotherlyparty' }
+    %meta{ name: 'twitter:creator', content: '@brotherlyparty' }
+    %meta{ name: 'twitter:title', content: 'brother.ly' }
+    %meta{ name: 'twitter:description', content: config.description }
+    %meta{ name: 'twitter:image', content: image_url('logo.png') }
   %body{ class: section_name }
     = render 'tags' if Rails.env.production?
     %header
