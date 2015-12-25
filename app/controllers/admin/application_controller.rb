@@ -7,6 +7,8 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     using Admin::Search
 
+    helper TitleHelper
+
     before_action :authenticate_user!
 
     protected

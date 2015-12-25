@@ -36,10 +36,10 @@ module TitleHelper
   # @private
   # @return [String]
   def app_title
-    if controller.controller_name =~ /admin/
-      "#{config.name} admin (#{Rails.env})"
+    if admin?
+      "#{Rails.configuration.name} admin (#{Rails.env})"
     else
-      config.name
+      Rails.configuration.name
     end
   end
 
@@ -49,5 +49,9 @@ module TitleHelper
   # @return [String]
   def page_title
     content_for :title
+  end
+
+  def admin?
+    request.original_fullpath =~ /admin/
   end
 end
