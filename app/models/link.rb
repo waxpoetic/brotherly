@@ -1,10 +1,9 @@
 class Link
-  attr_reader :name, :href, :artist
+  attr_reader :name, :href
 
-  def initialize(name: '', href: '', artist: nil)
+  def initialize(name: '', href: '')
     @name = name
     @href = href
-    @artist = artist
   end
 
   def icon
@@ -13,10 +12,6 @@ class Link
     else
       name.to_sym
     end
-  end
-
-  def about
-    "#{artist.name} on #{link.titleize}"
   end
 
   def title
