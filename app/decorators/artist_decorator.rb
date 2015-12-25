@@ -11,7 +11,7 @@ class ArtistDecorator < ApplicationDecorator
 
   def links
     model.links.map do |name, href|
-      Link.new name: name, href: href
+      Link.new name: name, href: href, artist: self
     end
   end
 
