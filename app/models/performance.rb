@@ -1,7 +1,7 @@
 class Performance < ActiveRecord::Base
   include Searchable
 
-  multisearchable against: [:title]
+  # multisearchable against: [:title]
 
   belongs_to :artist
   belongs_to :episode
