@@ -2,7 +2,7 @@ class EpisodeDecorator < ApplicationDecorator
   delegate_all
 
   def artists
-    model.performances.order('starts_at DESC').map(&:artist).map(&:decorate)
+    model.performances.play_order.map(&:artist).map(&:decorate)
   end
 
   def cache_key_for(section)

@@ -56,7 +56,7 @@
           .large-12.columns
             %h2= t :lineup, scope: :episodes
             %ul
-              - episode.performances.play_order.map(&:artist).each do |artist|
+              - episode.artists.each do |artist|
                 %li.row
                   = link_to artist, title: artist.name do
                     .large-4.columns
