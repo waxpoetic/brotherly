@@ -3,11 +3,11 @@
 - cache episodes do
   %h1= t :listing, scope: :episodes
 
-  - episodes.in_groups_of(3, false).each do |episodes|
+  - episodes.order('starts_at DESC').in_groups_of(3, false).each do |episodes|
     - cache "episodes/row/#{episodes}" do
       .episode-group.row
         %br/
-        - episodes.each do |episode|
+        - episodes.map(&:decorate).each do |episode|
           - cache episode do
             .large-4.columns
               = render episode
