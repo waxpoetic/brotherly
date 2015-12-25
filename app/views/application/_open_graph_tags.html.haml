@@ -1,7 +1,0 @@
-- if content_for? :open_graph_tags
-  = yield :open_graph_tags
-- else
-  %meta{property: 'og:title', content: app_title}
-  %meta{property: 'og:type', content: 'website'}
-  %meta{property: 'og:image', content: image_path('podcast.png')}
-  %meta{property: 'og:url', content: 'http://brother.ly'}

@@ -1,18 +1,22 @@
 !!!
-%html{:lang => "en"}
+%html{lang: I18n.locale.to_s}
   %head
+    %link{ rel: 'canonical', href: 'http://brother.ly' }
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{charset: "utf-8"}
     %meta{name: 'viewport', content: "width=device-width, initial-scale=1.0"}
     %meta{name: 'description', content: config.description}
     %meta{name: 'keywords', content: config.keywords.join(", ")}
-    = render 'open_graph_tags'
     = title_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'modernizr', 'application', media: 'all'
     = csrf_meta_tags
     = favicon_link_tag
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
+    = og :title, (page_title || app_title)
+    = og :type, 'website'
+    = og :image, image_path('podcast.png')
+    = og :url, 'http://brother.ly'
   %body{ class: section_name }
     = render 'tags' if Rails.env.production?
     %header
