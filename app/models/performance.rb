@@ -11,6 +11,8 @@ class Performance < ActiveRecord::Base
 
   attachment :audio_file, extension: 'wav'
 
+  scope :play_order, -> { order 'starts_at DESC' }
+
   def name
     "#{artist.name} at #{episode.name}"
   end
