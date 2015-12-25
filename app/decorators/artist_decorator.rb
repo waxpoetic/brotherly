@@ -11,15 +11,7 @@ class ArtistDecorator < ApplicationDecorator
 
   def links
     model.links.map do |name, href|
-      Link.new name: name, href: href, artist: self
-    end
-  end
-
-  def link_icon(link_name)
-    if link_name == 'website'
-      :globe
-    else
-      link_name.to_sym
+      Link.new name: name, href: href
     end
   end
 
