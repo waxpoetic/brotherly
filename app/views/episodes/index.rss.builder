@@ -7,8 +7,8 @@ cache podcast_cache_key do
           xml.link "http://#{config.name}"
           xml.description config.description
           xml.language 'en'
-          xml.pubDate podcast_publish_date
-          xml.lastBuildDate podcast_publish_date
+          xml.pubDate episodes.last.published_at
+          xml.lastBuildDate episodes.last.published_at
           xml.itunes :author, config.name
           xml.itunes :keywords, config.keywords.join(', ')
           xml.itunes :explicit, config.explicit
