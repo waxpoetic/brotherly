@@ -1506,3 +1506,9 @@ $topbar-dropdown-bg: $topbar-bg;
     width: 100%;
   }
 }
+
+// Turbolinks progress bar
+html.turbolinks-progress-bar::before {
+  background-color: $primary-color !important;
+  height: 3px !important;
+}
