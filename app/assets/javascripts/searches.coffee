@@ -12,7 +12,6 @@ jQuery ->
 
   # Autocomplete search query by submitting the form.
   submitForm = ->
-    fbq 'track', 'Search'
     $('#search form').trigger 'submit.rails'
   $('#search form input')
     .on 'keydown', _.debounce(submitForm, 350)
