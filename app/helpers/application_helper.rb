@@ -78,6 +78,11 @@ module ApplicationHelper
     tag :meta, property: "og:#{name}", content: content
   end
 
+  # @return [String::SafeBuffer]
+  def cloudcast_player_for(model)
+    tag :iframe, data: { 'cloudcast-key' => model.cloudcast_key }
+  end
+
   private
 
   def active_link?(href)

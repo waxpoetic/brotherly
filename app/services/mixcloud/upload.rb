@@ -36,15 +36,19 @@ module Mixcloud
       UploadIO.new @picture, 'image/png', "#{name}.png"
     end
 
-    def id
-      return unless persisted?
-      @id ||= @response['key']
+    def method_missing(method, *arguments)
+      return super unless respond_to? method
+      @response.send method, *arguments
+    end
+
+    def respond_to?(method)
+      @response.respond_to?(method) || super
     end
 
     private
 
     def create
-      @response = gateway.upload attributes
+      @response = gateway.upload(attributes)
     end
 
     def gateway

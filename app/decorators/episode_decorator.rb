@@ -1,4 +1,6 @@
 class EpisodeDecorator < ApplicationDecorator
+  include Media
+
   delegate_all
 
   def artists
@@ -11,12 +13,6 @@ class EpisodeDecorator < ApplicationDecorator
 
   def date
     starts_at.to_date
-  end
-
-  def video_tag
-    h.content_tag :iframe, video_tag_options do
-      'Connecting...'
-    end
   end
 
   def performances
@@ -48,28 +44,12 @@ class EpisodeDecorator < ApplicationDecorator
     current_title.gsub(/ episode/, '')
   end
 
-  def audio
-    h.attachment_url model, :audio_file
-  end
-
-  def audio?
-    model.audio_file_id.present?
-  end
-
-  def video?
-    model.youtube_id.present?
-  end
-
   def show_ticket_link?
     model.future? && model.eventbrite_url.present?
   end
 
   def show_facebook_event?
     model.future? && model.facebook_url.present?
-  end
-
-  def show_mixcloud_link?
-    !model.future? && model.mixcloud_url.present?
   end
 
   def enclosure
@@ -104,17 +84,6 @@ class EpisodeDecorator < ApplicationDecorator
   def posted_at
     return if model.published_at.present?
     h.distance_of_time_in_words model.published_at
-  end
-
-  def video_tag_options
-    {
-      id: 'stream',
-      width: 640,
-      height: 400,
-      src: youtube_embed_url,
-      frameborder: 0,
-      allowfullscreen: true
-    }
   end
 
   private

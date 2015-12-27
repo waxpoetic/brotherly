@@ -7,7 +7,9 @@
         .video.row
           .large-12.columns
             - if episode.video?
-              = episode.video_tag
+              = episode.video_player
+            - elsif episode.audio?
+              = episode.audio_player
             - else
               = attachment_image_tag episode, :flyer_file, :fill, 950, 600
         .info.row
