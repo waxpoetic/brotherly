@@ -28,25 +28,25 @@
   %body{ class: section_name }
     = render 'tags' if Rails.env.production?
     %header
-      - cache 'header/navigation', expires_in: 1.year do
-        %nav.top-bar{ 'data-topbar' => true }
-          %ul.title-area
-            %li.name
-              %h1= link_to config.name, root_path, class: 'logo'
+      %nav.top-bar{ 'data-topbar' => true }
+        %ul.title-area
+          %li.name
+            %h1= link_to config.name, root_path, class: 'logo'
 
-          %section.top-bar-section#search.search
-            %ul
-              %li.has-dropdown
-                = simple_form_for search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
-                  = f.input :query, as: :search, label: false, placeholder: 'Search...', input_html: { autocomplete: 'off' }
-                %ul.dropdown.results{ style: 'margin-top: 10px' }
-                  / Search results go here
-          %section.top-bar-section.links
-            %ul.right
+        %section.top-bar-section#search.search
+          %ul
+            %li.has-dropdown
+              = simple_form_for search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
+                = f.input :query, as: :search, label: false, placeholder: 'Search...', input_html: { autocomplete: 'off' }
+              %ul.dropdown.results{ style: 'margin-top: 10px' }
+                / Search results go here
+        %section.top-bar-section.links
+          %ul.right
+            - cache [recent_episodes, :current] do
               = nav_link current_episode.button_title, root_path
-              = nav_link t(:past_episode, scope: :nav), episodes_path
-              = nav_link t(:artists, scope: :nav), artists_path
-              = nav_link subscribe_text, new_subscriber_path, modal: true
+            = nav_link t(:past_episode, scope: :nav), episodes_path
+            = nav_link t(:artists, scope: :nav), artists_path
+            = nav_link subscribe_text, new_subscriber_path, modal: true
       #flash.flash.row
         .large-12.columns
           - flash.each do |type, message|
@@ -63,40 +63,37 @@
           / Dialog content goes here
     %footer
       .row
-        - cache 'footer/copyright' do
-          .copyright.large-4.columns
-            %h3= t :about, scope: :footer
-            %p
-              = t :copyright, scope: :footer
-              &copy; #{copyright_year}
-              #{link_to "Wax Poetic Music", 'http://waxpoeticrecords.com'}.
-              %br
-            Created by <strong>team brother.ly</strong> in Philadelphia.
+        .copyright.large-4.columns
+          %h3= t :about, scope: :footer
+          %p
+            = t :copyright, scope: :footer
+            &copy; #{copyright_year}
+            #{link_to "Wax Poetic Music", 'http://waxpoeticrecords.com'}.
+            %br
+          Created by <strong>team brother.ly</strong> in Philadelphia.
         - cache [recent_episodes, :list] do
           .recent.large-4.columns
             %h3= t :recent, scope: :episodes
             %ul
             - recent_episodes.each do |episode|
               %li= link_to episode.name, episode
-        - cache 'social' do
-          .social.large-4.columns
-            %h3= t '.social'
-            %ul
-              %li
-                = link_to 'https://facebook.com/brotherlyparty' do
-                  = icon :facebook
-                  = t '.facebook'
-              %li
-                = link_to 'https://twitter.com/brotherlyparty' do
-                  = icon :twitter
-                  = t '.twitter'
-              %li
-                = link_to 'http://bit.ly/brotherly-youtube' do
-                  = icon :youtube
-                  = t '.youtube'
-              %li
-                = link_to 'http://instagram.com/brother.ly' do
-                  = icon :instagram
-                  = t '.instagram'
-    - cache 'tracking' do
-      = render 'tracking'
+        .social.large-4.columns
+          %h3= t '.social'
+          %ul
+            %li
+              = link_to 'https://facebook.com/brotherlyparty' do
+                = icon :facebook
+                = t '.facebook'
+            %li
+              = link_to 'https://twitter.com/brotherlyparty' do
+                = icon :twitter
+                = t '.twitter'
+            %li
+              = link_to 'http://bit.ly/brotherly-youtube' do
+                = icon :youtube
+                = t '.youtube'
+            %li
+              = link_to 'http://instagram.com/brother.ly' do
+                = icon :instagram
+                = t '.instagram'
+    = render 'tracking'
