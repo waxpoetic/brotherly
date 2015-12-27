@@ -9,9 +9,9 @@ SitemapGenerator::Sitemap.create do
   Episode.all.each do |episode|
     add "/episodes/#{episode.slug}"
 
-    episode.performances.each do |performance|
-      add "/episodes/#{episode.slug}/performances/#{performance.slug}"
-    end
+    # episode.performances.each do |performance|
+    #   add "/episodes/#{episode.slug}/performances/#{performance.slug}"
+    # end
 
     episode.artists.each do |artist|
       add "/artists/#{artist.slug}"
