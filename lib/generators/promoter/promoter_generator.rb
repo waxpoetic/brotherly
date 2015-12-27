@@ -4,11 +4,11 @@ class ServiceGenerator < Rails::Generators::NamedBase
   argument :remote, type: :string, required: true
   argument :local, type: :string, required: true
 
-  def copy_service
-    template 'service.rb.erb', "app/services/#{file_name}_service.rb"
+  def copy_promoter
+    template 'promoter.rb.erb', "app/promoters/#{file_name}_promoter.rb"
   end
 
   def copy_test
-    template 'spec.rb.erb', "spec/services/#{file_name}_service_spec.rb"
+    template 'spec.rb.erb', "spec/promoters/#{file_name}_promoter_spec.rb"
   end
 end

@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'brotherly/service'
+require 'brotherly/promoter'
 
 module Brotherly
-  class TestService < Service; end
+  class TestPromoter < Promoter; end
   class RemoteObject
     attr_reader :params
 
@@ -15,8 +15,8 @@ module Brotherly
     end
   end
 
-  RSpec.describe Service, type: :lib do
-    subject { TestService }
+  RSpec.describe Promoter, type: :lib do
+    subject { TestPromoter }
 
     it 'can set its remote class' do
       expect(subject.remote(RemoteObject)).to eq(RemoteObject)
@@ -40,11 +40,11 @@ module Brotherly
       end
 
       before do
-        TestService.local(:episode)
+        TestPromoter.local(:episode)
       end
 
       subject do
-        TestService.new(local: local)
+        TestPromoter.new(local: local)
       end
 
       it 'validates attributes before saving' do
@@ -85,7 +85,7 @@ module Brotherly
         end
 
         before do
-          allow(TestService).to \
+          allow(TestPromoter).to \
             receive(:remote_object).and_return(remote_object)
         end
 

@@ -1,5 +1,5 @@
 module Eventbrite
-  class Service < Brotherly::Service
+  class Promoter < Brotherly::Promoter
     remote Event
     local :episode
     param :eventbrite_url

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Eventbrite
-  RSpec.describe Service, type: :service do
+  RSpec.describe Promoter, type: :promoter do
     let :episode do
       episodes :four
     end

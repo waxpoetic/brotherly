@@ -25,7 +25,7 @@ class Episode < ActiveRecord::Base
   attachment :flyer_file
   attachment :audio_file, extension: 'mp3'
 
-  after_create :promote!, if: :future?
+  after_create :promote!, if: :promotable?
 
   def self.current
     latest.first
@@ -37,6 +37,10 @@ class Episode < ActiveRecord::Base
 
   def published?
     published_at.present?
+  end
+
+  def promotable?
+    future? && published?
   end
 
   def event

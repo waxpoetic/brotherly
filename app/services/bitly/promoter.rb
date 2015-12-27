@@ -1,5 +1,5 @@
 module Bitly
-  class Service < Brotherly::Service
+  class Promoter < Brotherly::Promoter
     remote ShortLink
     local :episode
     param :short_url

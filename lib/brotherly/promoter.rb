@@ -1,11 +1,7 @@
 require 'active_model'
 
 module Brotherly
-  # A true "Service object", this communicates with an outside service
-  # (like a social network) to either promote a given future or current
-  # episode, or in the case of the +EventbriteService+, to actually
-  # create and schedule the event to prepare for ticket sales.
-  class Service
+  class Promoter
     include ActiveModel::Model
 
     define_model_callbacks :save, :create, :validation
@@ -26,12 +22,12 @@ module Brotherly
 
     alias_method :to_param, :attribute_name
 
-    def self.each
-      Dir['app/services/*_service.rb'].map do |path|
-        File.basename(path).gsub(/\.rb/, '').classify.constantize
-      end.each do |klass|
-        yield klass
-      end
+    def self.inherited(klass)
+      Brotherly.promoters << klass
+    end
+
+    def self.promote(model)
+      create(model).to_h
     end
 
     def self.create(from_local)

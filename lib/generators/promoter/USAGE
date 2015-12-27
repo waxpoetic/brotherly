@@ -2,7 +2,7 @@ Description:
     Explain the generator
 
 Example:
-    rails generate service Thing
+    rails generate promoter Thing
 
     This will create:
         what/will/it/create
