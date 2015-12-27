@@ -38,7 +38,7 @@ module Mixcloud
 
     def id
       return unless persisted?
-      @id ||= @response
+      @id ||= @response['key']
     end
 
     private

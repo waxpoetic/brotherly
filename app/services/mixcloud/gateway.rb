@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Mixcloud
   class Gateway
     def initialize
