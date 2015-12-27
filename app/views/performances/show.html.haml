@@ -23,6 +23,6 @@
               = icon :headphones
               = t '.mixcloud'
           - if performance.downloadable?
-            = link_to performance.audio, class: 'secondary button' do
+            = link_to performance.audio_url, class: 'secondary button' do
               = icon :speaker
               = t '.audio'
