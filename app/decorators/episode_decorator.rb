@@ -122,8 +122,4 @@ class EpisodeDecorator < ApplicationDecorator
       "240x320?text=#{placeholder_text}"
     )
   end
-
-  def placeholder_text
-    super.gsub 'brother.ly+', ''
-  end
 end

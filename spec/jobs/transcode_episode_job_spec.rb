@@ -5,6 +5,6 @@ RSpec.describe TranscodeEpisodeJob, type: :job do
   subject { described_class }
 
   it 'runs the transcode worker in the background' do
-    expect{ subject.perform_now(episode) }.not_to raise_error
+    expect { subject.perform_now(episode) }.not_to raise_error
   end
 end

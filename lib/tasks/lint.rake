@@ -11,13 +11,13 @@ namespace :lint do
 
   desc 'Run SCSS lint checks'
   task :scss do
-    sh 'bin/scss-lint'
+    system 'bin/scss-lint'
   end
 
   desc 'Run CoffeeScript lint checks'
   task :coffee do
     files = Dir['app/assets/javascripts/**/*.coffee'].join("\s")
-    sh "coffeelint #{files}"
+    system "coffeelint #{files}"
   end
 end
 

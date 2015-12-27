@@ -25,11 +25,11 @@ series in Philadelphia.
 Clone this repo and run the following command to install dependencies
 and set up the database:
 
-    ./bin/setup
+    bin/setup
 
 Then, run the following command to start the server:
 
-    ./bin/rails server
+    bin/rails server
 
 ## Development
 
@@ -42,19 +42,15 @@ tests) are accepted as contributions to the site.
 Run the following command to bump the version, create a new Git tag, and
 push to GitHub which automatically deploys to Heroku.
 
-```bash
-$ bin/rake release
-```
+    bin/rake release
 
 By default, this will bump the **patch** version of the `.semver` file.
 To bump other parts of the version string, specify the type as the
 argument to the Rake task:
 
-```bash
-$ bin/rake release[major]
-$ bin/rake release[minor]
-$ bin/rake release[special]
-```
+    bin/rake release[major]
+    bin/rake release[minor]
+    bin/rake release[special]
 
 Note that all tag pushes to GitHub will result in a deployment to
 Heroku, which as of now is the only deployment of the application on the

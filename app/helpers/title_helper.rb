@@ -8,7 +8,6 @@ module TitleHelper
     content_for :title, new_title
   end
 
-
   # Title tag of the application including the current title.
   #
   # @return [String::SafeBuffer] the +<title>+ tag.

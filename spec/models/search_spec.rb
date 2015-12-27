@@ -10,7 +10,7 @@ RSpec.describe Search, type: :model do
   end
 
   let :documents do
-    [ double(searchable_id: artist.id, searchable_type: artist.class.name) ]
+    [double(searchable_id: artist.id, searchable_type: artist.class.name)]
   end
 
   subject do

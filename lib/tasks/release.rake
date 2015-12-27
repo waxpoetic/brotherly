@@ -17,4 +17,6 @@ namespace :release do
 end
 
 desc 'Deploy and release a new version of this application'
-task :release, [:type] => ['release:bump', 'release:commit', 'release:tag', 'release:push']
+task :release, [:type] => [
+  'release:bump', 'release:commit', 'release:tag', 'release:push'
+]

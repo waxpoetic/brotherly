@@ -12,8 +12,10 @@ class Episode < ActiveRecord::Base
   accepts_nested_attributes_for :performances
 
   scope :latest, -> { order 'starts_at DESC' }
-  scope :recent, -> { latest.where('starts_at <= ?', Time.zone.now).order('starts_at DESC') }
-  scope :upcoming, -> { latest.where 'starts_at >= ?', Time.zone.now }
+  scope :past, -> { where 'starts_at <= ?', Time.zone.now }
+  scope :recent, -> { past.latest }
+  scope :future, -> { where 'starts_at >= ?', Time.zone.now }
+  scope :upcoming, -> { future.latest }
   scope :in_podcast, -> { where.not audio_file_id: nil }
 
   friendly_id :number

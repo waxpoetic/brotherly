@@ -48,11 +48,8 @@ module ApplicationHelper
   #
   # @return [String]
   def copyright_year
-    if Time.zone.now.year == config.founding_year
-      Time.zone.now.year.to_s
-    else
-      "#{config.founding_year} - #{Time.zone.now.year}"
-    end
+    return current_year.to_s if current_year == config.founding_year
+    "#{config.founding_year} - #{current_year}"
   end
 
   # Open the link at +href+ in a modal dialog.
@@ -82,5 +79,9 @@ module ApplicationHelper
 
   def active_link?(href)
     'active' if current_page? href
+  end
+
+  def current_year
+    Time.zone.now.year
   end
 end

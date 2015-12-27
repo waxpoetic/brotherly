@@ -11,7 +11,8 @@ module Application
     end
 
     it 'caches json responses in http cache' do
-      expect(described_class.ancestors).to include(Responders::HttpCacheResponder)
+      expect(described_class.ancestors).to \
+        include(Responders::HttpCacheResponder)
     end
   end
 end

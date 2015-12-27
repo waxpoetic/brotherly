@@ -5,7 +5,7 @@ RSpec.describe SearchDecorator do
     double(
       'Search',
       query: 'test',
-      results: [ Subscriber.new(email: 'test@example.com') ]
+      results: [Subscriber.new(email: 'test@example.com')]
     )
   end
 
