@@ -13,7 +13,6 @@ class EpisodeDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     eventbrite_url: Field::String,
-    mixcloud_url: Field::String,
     facebook_url: Field::String,
     youtube_id: Field::String,
     starts_at: Field::DateTime,

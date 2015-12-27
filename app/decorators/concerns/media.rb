@@ -1,20 +1,18 @@
 module Media
-  extend ActiveSupport::Concern
-
-  included do
-    delegate :cloudcast_key
+  def audio?
+    model.audio_file.present?
   end
 
   def video?
     model.youtube_id.present?
   end
 
-  def youtube_url
+  def video_url
     "http://www.youtube.com/?v=#{model.youtube_id}"
   end
 
-  def youtube_embed_url
-    "http://www.youtube.com/embed/#{model.youtube_id}"
+  def audio_url
+    h.attachment_url model, :audio_file, extension: 'mp3'
   end
 
   def downloadable?
@@ -38,7 +36,7 @@ module Media
       id: 'stream',
       width: 640,
       height: 400,
-      src: youtube_embed_url,
+      src: "http://www.youtube.com/embed/#{model.youtube_id}",
       frameborder: 0,
       allowfullscreen: true
     }

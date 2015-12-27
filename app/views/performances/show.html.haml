@@ -20,14 +20,10 @@
       %nav
         %section
           - if performance.video?
-            = link_to performance.youtube_url, class: 'alert button' do
+            = link_to performance.video_url, class: 'alert button' do
               = icon :youtube
               = t '.youtube'
           - if performance.audio?
-            = link_to performance.mixcloud_url, class: 'button' do
-              = icon :headphones
-              = t '.mixcloud'
-          - if performance.downloadable?
             = link_to performance.audio_url, class: 'secondary button' do
               = icon :speaker
               = t '.audio'

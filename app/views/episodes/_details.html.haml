@@ -28,7 +28,7 @@
               %ul{ style: 'list-style-type: none' }
                 - if episode.audio?
                   %li.audio
-                    = link_to episode.mixcloud_url, class: 'secondary button' do
+                    = link_to episode.audio_file_Url, class: 'secondary button' do
                       = icon :music
                       &nbsp;
                       = t :audio, scope: :episodes
@@ -50,10 +50,6 @@
                       = icon :facebook
                       &nbsp;
                       = t :share, scope: :episodes
-                - if episode.show_mixcloud_link?
-                  %li.mixcloud
-                    = link_to episode.mixcloud_url, class: 'info button', target: '_blank' do
-                      = t :mixcloud, scope: :episodes
         - if episode.future?
           .collection.artists.row
             .large-12.columns

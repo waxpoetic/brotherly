@@ -56,7 +56,6 @@ en:
     share: Share on Facebook
   performances:
     show:
-      mixcloud: Listen on MixCloud
       youtube: Watch on YouTube
       audio: Download Audio
   nav:
