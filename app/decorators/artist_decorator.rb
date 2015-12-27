@@ -10,6 +10,7 @@ class ArtistDecorator < ApplicationDecorator
   end
 
   def links
+    return [] unless model.links.present?
     model.links.map do |name, href|
       Link.new name: name, href: href
     end
