@@ -11,6 +11,10 @@ module AudioFile
     audio_file.present?
   end
 
+  def mixcloud_url
+    "http://mixcloud.com/#{cloudcast_key}"
+  end
+
   protected
 
   def upload_to_mixcloud!
