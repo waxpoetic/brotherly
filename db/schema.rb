@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227052736) do
+ActiveRecord::Schema.define(version: 20151227061440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20151227052736) do
   create_table "episodes", force: :cascade do |t|
     t.string   "name"
     t.string   "eventbrite_url"
-    t.string   "youtube_url"
     t.string   "cloudcast_key"
     t.string   "facebook_url"
     t.datetime "starts_at"
@@ -67,7 +66,6 @@ ActiveRecord::Schema.define(version: 20151227052736) do
     t.integer  "episode_id"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.string   "youtube_url"
     t.string   "cloudcast_key"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

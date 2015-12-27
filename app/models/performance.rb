@@ -18,12 +18,19 @@ class Performance < ActiveRecord::Base
   validates :ends_at,   presence: true
 
   attachment :audio_file, extension: 'mp3'
+  attachment :video_file, extension: 'flv'
 
   alias_attribute :title, :name
 
   scope :play_order, -> { order 'starts_at DESC' }
 
   friendly_id :artist_name
+
+  after_create :upload!, if: :uploadable?
+
+  def uploadable?
+    video_file.present? && youtube_id.blank?
+  end
 
   private
 
