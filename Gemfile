@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'semver'
 gem 'aws-sdk'
 gem 'youtube_it'
+gem 'twitter'
 
 gem 'lodash-rails'
 gem 'sass', '~> 3.3'
