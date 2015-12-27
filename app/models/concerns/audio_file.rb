@@ -12,7 +12,7 @@ module AudioFile
   end
 
   def mixcloud_url
-    "http://mixcloud.com/#{cloudcast_key}"
+    "http://mixcloud.com/#{cloudcast_key}" if cloudcast_key.present?
   end
 
   protected
