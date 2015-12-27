@@ -4,3 +4,4 @@ production:
   :concurrency: 7
 :queues:
   - default
+  - uploads
