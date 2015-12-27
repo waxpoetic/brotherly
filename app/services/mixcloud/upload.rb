@@ -36,6 +36,11 @@ module Mixcloud
       UploadIO.new @picture, 'image/png', "#{name}.png"
     end
 
+    def id
+      return unless persisted?
+      @id ||= @response
+    end
+
     private
 
     def create

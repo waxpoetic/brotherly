@@ -26,7 +26,7 @@
               %ul{ style: 'list-style-type: none' }
                 - if episode.audio?
                   %li.audio
-                    = link_to episode.audio, class: 'secondary button' do
+                    = link_to episode.mixcloud_url, class: 'secondary button' do
                       = icon :music
                       &nbsp;
                       = t :audio, scope: :episodes
@@ -52,27 +52,27 @@
                   %li.mixcloud
                     = link_to episode.mixcloud_url, class: 'info button', target: '_blank' do
                       = t :mixcloud, scope: :episodes
-        .collection.artists.row
-          .large-12.columns
-            %h2= t :lineup, scope: :episodes
-            %ul
-              - episode.artists.each do |artist|
-                %li.row
-                  = link_to artist, title: artist.name do
-                    .large-4.columns
-                      = attachment_image_tag artist, :image_file
-                    .large-8.columns
-                      %h5= artist.name
-          -# TODO: Add performance pages when we have data for them.
-          -# - else
-          -#   .collection.performances.row
-          -#     .large-12.columns
-          -#       %h2= t :performances, scope: :episodes
-          -#       %ul.performances
-          -#         - episode.performances.each do |performance|
-          -#           %li.row
-          -#             = link_to episode_performance_path(episode, performance), title: performance.title do
-          -#               .large-4.columns
-          -#                 = performance.artist.decorate.image
-          -#               .large-8.columns
-          -#                 %h5= performance.artist_name
+        - if episode.future?
+          .collection.artists.row
+            .large-12.columns
+              %h2= t :lineup, scope: :episodes
+              %ul
+                - episode.artists.each do |artist|
+                  %li.row
+                    = link_to artist, title: artist.name do
+                      .large-4.columns
+                        = attachment_image_tag artist, :image_file
+                      .large-8.columns
+                        %h5= artist.name
+          - else
+            .collection.performances.row
+              .large-12.columns
+                %h2= t :performances, scope: :episodes
+                %ul.performances
+                  - episode.performances.each do |performance|
+                    %li.row
+                      = link_to [episode, performance], title: performance.title do
+                        .large-4.columns
+                          = performance.artist.decorate.image
+                        .large-8.columns
+                          %h5= performance.artist_name

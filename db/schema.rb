@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225045337) do
+ActiveRecord::Schema.define(version: 20151227052736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20151225045337) do
     t.string   "name"
     t.string   "eventbrite_url"
     t.string   "youtube_url"
-    t.string   "mixcloud_url"
+    t.string   "cloudcast_key"
     t.string   "facebook_url"
     t.datetime "starts_at"
     t.datetime "ends_at"
@@ -68,11 +68,12 @@ ActiveRecord::Schema.define(version: 20151225045337) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.string   "youtube_url"
-    t.string   "mixcloud_url"
+    t.string   "cloudcast_key"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "audio_file_id"
     t.string   "youtube_id"
+    t.string   "name"
   end
 
   add_index "performances", ["artist_id"], name: "index_performances_on_artist_id", using: :btree

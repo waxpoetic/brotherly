@@ -19,10 +19,6 @@ class PerformanceDecorator < ApplicationDecorator
     model.youtube_id.present?
   end
 
-  def audio?
-    model.mixcloud_url.present?
-  end
-
   def youtube_url
     "http://www.youtube.com/?v=#{model.youtube_id}"
   end

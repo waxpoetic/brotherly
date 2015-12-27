@@ -1,4 +1,6 @@
 class Performance < ActiveRecord::Base
+  extend FriendlyId
+
   include Searchable
   include AudioFile
 
@@ -21,9 +23,18 @@ class Performance < ActiveRecord::Base
 
   scope :play_order, -> { order 'starts_at DESC' }
 
+  friendly_id :artist_name
+
   private
 
   def generate_name
-    self.name = "#{artist.name} at #{episode.name}" if artist && episode
+    return unless artist.present? && episode.present?
+    self.name = "#{artist.name} at #{episode.name}"
+  end
+
+  # Used as the slug for friendly_id, generating urls such as
+  # +/episodes/one/performances/the-wonder-bars+.
+  def artist_name
+    artist.name
   end
 end
