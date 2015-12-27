@@ -24,6 +24,7 @@
     %meta{ name: 'twitter:title', content: 'brother.ly' }
     %meta{ name: 'twitter:description', content: config.description }
     %meta{ name: 'twitter:image', content: image_url('logo.png') }
+    = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
   %body{ class: section_name }
     = render 'tags' if Rails.env.production?
     %header
