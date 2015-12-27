@@ -70,7 +70,7 @@ group :test do
   gem 'codeclimate-test-reporter', require: nil
 end
 
-group :production do
+group :production, :staging do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'redis-rack-cache'
