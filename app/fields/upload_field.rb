@@ -8,4 +8,8 @@ class UploadField < Administrate::Field::Base
   def to_s
     data
   end
+
+  def url(model)
+    Refile.attachment_url model, attribute
+  end
 end

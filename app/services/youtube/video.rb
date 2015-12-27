@@ -1,5 +1,6 @@
 module Youtube
   class Video
+    attr_accessor :id
     attr_accessor :name
     attr_accessor :file
     attr_accessor :description
@@ -17,11 +18,15 @@ module Youtube
     end
 
     def save
-      valid? && create.success?
+      valid? && create.present?
+    end
+
+    def destroy
+      delete
     end
 
     def persisted?
-      @response.present?
+      id.present?
     end
 
     def attributes
@@ -32,26 +37,22 @@ module Youtube
       }
     end
 
-    def id
-      return unless persisted?
-      @id ||= @response.video_id
-    end
-
     private
 
     def create
-      @response ||= client.video_upload url, attributes
+      @id = client.upload self
+    rescue
+      nil
     end
 
-    def client
-      @client ||= YouTubeIt::OAuth2Client.new(
-        client_access_token: "access_token",
-        client_refresh_token: "refresh_token",
-        client_id: "client_id",
-        client_secret: "client_secret",
-        dev_key: "dev_key",
-        expires_at: "expiration time"
-      )
+    def delete
+      client.destroy id
+    rescue
+      false
+    end
+
+    def gateway
+      @gateway ||= Gateway.new Rails.application.secrets
     end
   end
 end

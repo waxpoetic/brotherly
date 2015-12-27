@@ -1,5 +1,18 @@
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
+  # Create the proper embed tag for the given field and its
+  # corresponding model.
+  def attachment_embed_tag(field, model)
+    case field.attribute
+    when :audio_file
+      audio_tag field.url(model)
+    when :video_file
+      video_tag field.url(model)
+    else # assume image
+      attachment_image_tag model, field.attribute
+    end
+  end
+
   # Name of the current action.
   #
   # @return [String]

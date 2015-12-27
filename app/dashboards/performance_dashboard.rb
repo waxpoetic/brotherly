@@ -16,7 +16,8 @@ class PerformanceDashboard < Administrate::BaseDashboard
     youtube_id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    audio_file: UploadField
+    audio_file: UploadField,
+    video_file: UploadField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -31,7 +32,15 @@ class PerformanceDashboard < Administrate::BaseDashboard
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :artist,
+    :episode,
+    :starts_at,
+    :ends_at,
+    :youtube_id,
+    :audio_file,
+    :video_file
+  ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -41,8 +50,8 @@ class PerformanceDashboard < Administrate::BaseDashboard
     :episode,
     :starts_at,
     :ends_at,
-    :youtube_id,
-    :audio_file
+    :audio_file,
+    :video_file
   ]
 
   # Overwrite this method to customize how performances are displayed
