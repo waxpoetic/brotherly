@@ -3,6 +3,10 @@ namespace :release do
     system "bin/semver increment #{arguments[:type]}"
   end
 
+  task commit: :environment do
+    system "git commit -am '#{Brotherly.version}'"
+  end
+
   task :tag do
     system 'git tag $(bin/semver tag)'
   end
@@ -13,4 +17,4 @@ namespace :release do
 end
 
 desc 'Deploy and release a new version of this application'
-task :release, [:type] => ['release:bump', 'release:tag', 'release:push']
+task :release, [:type] => ['release:bump', 'release:commit', 'release:tag', 'release:push']
