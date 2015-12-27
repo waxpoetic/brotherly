@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'wisper/rspec/matchers'
 
 # Load support files
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -40,4 +41,8 @@ RSpec.configure do |config|
     example.run
     Warden.test_reset!
   end
+
+  config.include Wisper::Rspec::BroadcastMatcher
+
+  config.after { Wisper.clear }
 end

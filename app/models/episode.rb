@@ -5,6 +5,7 @@ class Episode < ActiveRecord::Base
   extend FriendlyId
 
   include Searchable
+  include Listenable
 
   has_many :performances
   has_many :artists, through: :performances
@@ -23,9 +24,6 @@ class Episode < ActiveRecord::Base
 
   attachment :flyer_file
   attachment :audio_file, extension: 'mp3'
-
-  # after_create :transcode!, if: :has_audio?
-  after_create :promote!, if: :future?
 
   def self.current
     latest.first

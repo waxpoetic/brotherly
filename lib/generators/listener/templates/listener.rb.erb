@@ -1,0 +1,8 @@
+class <%= class_name %>Listener < Brotherly::Listener
+  on :created, :destroyed, :updated, :saved
+
+  def perform
+    # TODO: Perform your action here using `model` to reference the
+    # given record.
+  end
+end

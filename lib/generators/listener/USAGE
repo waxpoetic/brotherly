@@ -1,0 +1,10 @@
+Description:
+    Generate a new listener which listens for ActiveRecord events
+    when database actions are performed.
+
+Example:
+    rails generate listener BustCache
+
+    This will create:
+        app/listeners/bust_cache_listener.rb
+        spec/listeners/bust_cache_listener_spec.rb

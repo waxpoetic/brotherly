@@ -6,6 +6,7 @@ module Brotherly
   extend ActiveSupport::Autoload
 
   autoload :Service
+  autoload :Listener
 
   # Return the version of this application.
   #

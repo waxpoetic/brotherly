@@ -27,6 +27,9 @@ gem 'ransack'
 gem 'kaminari'
 gem 'semver'
 gem 'aws-sdk'
+gem 'sitemap_generator'
+gem 'wisper'
+gem 'wisper-activejob'
 
 gem 'lodash-rails'
 gem 'sass', '~> 3.3'
@@ -68,6 +71,7 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'wisper-rspec'
 end
 
 group :production do
