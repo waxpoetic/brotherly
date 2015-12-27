@@ -30,7 +30,7 @@
                       = icon :music
                       &nbsp;
                       = t :audio, scope: :episodes
-                - unless episode.future?
+                - if episode.video? && !episode.future?
                   %li.video
                     = link_to episode.youtube_url, class: 'alert button', target: '_blank' do
                       = icon :youtube
