@@ -1,6 +1,6 @@
 namespace :release do
-  task :bump, [:type] do |_, type = 'patch'|
-    system "bin/semver increment #{type}"
+  task :bump, [:type] do |_, arguments|
+    system "bin/semver increment #{arguments[:type]}"
   end
 
   task :tag do
@@ -8,7 +8,7 @@ namespace :release do
   end
 
   task :push do
-    system 'git push --all'
+    system 'git push && git push --tags'
   end
 end
 
