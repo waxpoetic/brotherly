@@ -68,10 +68,6 @@ class EpisodeDecorator < ApplicationDecorator
     model.future? && model.facebook_url.present?
   end
 
-  def show_mixcloud_link?
-    !model.future? && model.mixcloud_url.present?
-  end
-
   def enclosure
     {
       url: audio,

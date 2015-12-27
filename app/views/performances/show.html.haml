@@ -18,10 +18,6 @@
             = link_to performance.youtube_url, class: 'alert button' do
               = icon :youtube
               = t '.youtube'
-          - if performance.mixcloud_url.present?
-            = link_to performance.mixcloud_url, class: 'button' do
-              = icon :headphones
-              = t '.mixcloud'
           - if performance.downloadable?
             = link_to performance.audio, class: 'secondary button' do
               = icon :speaker
