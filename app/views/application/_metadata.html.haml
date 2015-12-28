@@ -11,11 +11,11 @@
 %meta{name: 'twitter:creator', content: '@brotherlyparty'}
 %meta{name: 'twitter:title', content: app_title}
 %meta{name: 'twitter:description', content: config.description}
-%meta{name: 'twitter:image', content: image_url('logo.png')}
+%meta{name: 'twitter:image', content: image_url('logo.png', host: Rails.configuration.action_controller.asset_host)}
 / Open Graph
 %meta{property: 'og:title', content: app_title}
 %meta{property: 'og:type', content: 'website'}
-%meta{property: 'og:image', content: image_url('logo.png')}
+%meta{property: 'og:image', content: image_url('logo.png', host: Rails.configuration.action_controller.asset_host)}
 %meta{property: 'og:url', content: config.domain}
 %meta{property: "fb:admins", content: Rails.application.secrets.facebook_admin_id}
 / Rails
