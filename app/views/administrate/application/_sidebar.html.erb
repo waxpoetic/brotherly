@@ -1,0 +1,13 @@
+<ul class="sidebar__list">
+  <% DashboardManifest::DASHBOARDS.each do |resource| %>
+    <li>
+      <%= link_to(
+        display_resource_name(resource),
+        [namespace, resource],
+        class: "sidebar__link sidebar__link--#{nav_link_state(resource)}"
+      ) %>
+    </li>
+  <% end %>
+
+  <li><%= link_to 'Sidekiq', sidekiq.root_path, class: 'sidebar__link' %></li>
+</ul>
