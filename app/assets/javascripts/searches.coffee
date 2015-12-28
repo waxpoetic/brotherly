@@ -1,4 +1,7 @@
-jQuery ->
+# Implements an autocomplete when users type 3 or more characters into
+# the search bar by leveraging Rails remote forms and layout-free
+# responses.
+$(document).ready ->
   # Populate the results dropdown with new search term results, and show
   # an interstitial message while waiting for responses.
   $('#search form')
@@ -10,8 +13,10 @@ jQuery ->
         .html(response)
         .slideDown(250)
 
-  # Autocomplete search query by submitting the form.
-  submitForm = ->
-    $('#search form').trigger 'submit.rails'
+  # Autocomplete form by submitting it with rails ujs
+  submitForm = (event) ->
+    $(event.currentTarget).closest('form').trigger 'submit.rails'
+
+  # Bind autocomplete function to search form.
   $('#search form input')
     .on 'keydown', _.debounce(submitForm, 350)
