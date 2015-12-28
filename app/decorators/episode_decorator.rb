@@ -116,10 +116,6 @@ class EpisodeDecorator < ApplicationDecorator
   private
 
   def fallback_flyer
-    URI.join(
-      'http://',
-      'placehold.it',
-      "240x320?text=#{placeholder_text}"
-    )
+    "http://placehold.it/240x320?text=#{placeholder_text}"
   end
 end
