@@ -19,6 +19,7 @@ en:
       twitter: Follow on Twitter
       youtube: Subscribe to YouTube Channel
       instagram: Follow on Instagram
+      github: See a problem? Let us know about it!
     admin:
       navigation:
         login: "Logged in as <strong>%{name}</strong>"
