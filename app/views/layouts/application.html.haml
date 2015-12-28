@@ -10,7 +10,7 @@
     = og :type, 'website'
     = og :image, image_url('logo.png')
     = og :url, 'http://brother.ly'
-    %meta{ property: "fb:admins", content: "1473930052" }
+    %meta{ property: "fb:admins", content: Rails.application.secrets.facebook_admin_id }
     %meta{ name: 'twitter:card', content: 'summary_large_image' }
     %meta{ name: 'twitter:site', content: '@brotherlyparty' }
     %meta{ name: 'twitter:creator', content: '@brotherlyparty' }
