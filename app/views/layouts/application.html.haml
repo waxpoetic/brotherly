@@ -1,28 +1,12 @@
 !!!
 %html{lang: I18n.locale.to_s}
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %meta{charset: "utf-8"}
-    %meta{name: 'viewport', content: "width=device-width, initial-scale=1.0"}
-    %meta{name: 'description', content: config.description}
-    %meta{name: 'keywords', content: config.keywords.join(", ")}
-    = og :title, (page_title || app_title)
-    = og :type, 'website'
-    = og :image, image_url('logo.png')
-    = og :url, 'http://brother.ly'
-    %meta{ property: "fb:admins", content: Rails.application.secrets.facebook_admin_id }
-    %meta{ name: 'twitter:card', content: 'summary_large_image' }
-    %meta{ name: 'twitter:site', content: '@brotherlyparty' }
-    %meta{ name: 'twitter:creator', content: '@brotherlyparty' }
-    %meta{ name: 'twitter:title', content: 'brother.ly' }
-    %meta{ name: 'twitter:description', content: config.description }
-    %meta{ name: 'twitter:image', content: image_url('logo.png') }
-    = csrf_meta_tags
+    = render 'metadata'
     = title_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = favicon_link_tag
+    = stylesheet_link_tag asset_url('application.css', host: Rails.configuration.action_controller.asset_host)
+    = favicon_link_tag asset_url('favicon.ico', host: Rails.configuration.action_controller.asset_host)
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
-    = javascript_include_tag 'modernizr', 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag asset_url('modernizr.js', host: Rails.configuration.action_controller.asset_host)
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
   %body{ class: section_name }
     = render 'tags' if Rails.env.production?
@@ -96,3 +80,4 @@
                 = icon :instagram
                 = t '.instagram'
     = render 'tracking'
+    = javascript_include_tag asset_url('application.js', host: Rails.configuration.action_controller.asset_host)
