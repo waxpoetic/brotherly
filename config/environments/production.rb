@@ -51,7 +51,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Configure domain this app is running on
-  config.domain = 'beta.brother.ly'
+  config.domain = 'brother.ly'
 
   # Enable CORS headers for Google fonts
   config.font_assets.origin = "http://#{config.domain}"

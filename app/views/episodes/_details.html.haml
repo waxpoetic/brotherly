@@ -9,7 +9,7 @@
             - if episode.video?
               = episode.video_tag
             - else
-              = attachment_image_tag episode, :flyer_file, :fill, 950, 600
+              = episode.flyer
         .info.row
           .name.row
             .large-12.columns

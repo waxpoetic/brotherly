@@ -24,10 +24,13 @@ class EpisodeDecorator < ApplicationDecorator
   end
 
   def flyer
-    h.attachment_url(
+    h.attachment_image_tag(
       model,
       :flyer_file,
-      fallback: fallback_flyer
+      fallback: fallback_flyer,
+      id: 'flyer',
+      title: 'Flyer',
+      alt: 'Flyer'
     )
   end
 
@@ -109,11 +112,16 @@ class EpisodeDecorator < ApplicationDecorator
       height: 400,
       src: youtube_embed_url,
       frameborder: 0,
-      allowfullscreen: true
+      allowfullscreen: true,
+      autoplay: ('autoplay' if autoplay?)
     }
   end
 
   private
+
+  def autoplay?
+    model.starts_at <= Time.current && model.ends_at >= Time.current
+  end
 
   def fallback_flyer
     "http://placehold.it/240x320?text=#{placeholder_text}"
