@@ -51,7 +51,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Serve static assets over the CDN
-  config.action_controller.asset_host = "//" + Rails.application.secrets.cdn_domain_name
+  config.action_controller.asset_host = Rails.application.secrets.cdn_domain_name
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
