@@ -2,7 +2,7 @@
   .episode-summary
     = link_to episode, title: episode.title, class: 'row' do
       .preview.large-6.columns
-        = image_tag episode.flyer, alt: episode.name
+        = episode.flyer
       .info.large-6.columns
         %h5
           = episode.title
