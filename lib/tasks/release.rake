@@ -9,11 +9,11 @@ namespace :release do
   end
 
   task :tag do
-    system 'git tag $(bin/semver tag)'
+    system "git tag #{Brotherly.version} -m '#{Brotherly.version}'"
   end
 
   task :push do
-    system 'git push && git push --tags'
+    system 'git push origin master && git push origin --tags'
   end
 
   [:major, :minor, :patch, :special].each do |level|
