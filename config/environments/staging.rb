@@ -82,7 +82,7 @@ Rails.application.configure do
   }
 
   # Enable CORS headers for Google fonts
-  config.font_assets.origin = 'http://files.beta.brother.ly'
+  config.font_assets.origin = 'http://beta.brother.ly'
 
   # Use Sidekiq as the adapter for our background job queue
   config.active_job.queue_adapter = :sidekiq
