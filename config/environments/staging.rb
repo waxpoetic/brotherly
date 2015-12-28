@@ -86,4 +86,6 @@ Rails.application.configure do
 
   # Use Sidekiq as the adapter for our background job queue
   config.active_job.queue_adapter = :sidekiq
+
+  config.domain = 'http://beta.brother.ly'
 end
