@@ -27,13 +27,16 @@ By default, it renders:
 <body class="administrate">
   <main class="main">
     <div class="sidebar">
-      <section>
+      <section id="app">
         <p>
           <strong>brother.ly</strong> <%= Brotherly.version.to_s %><br>
           <%= content_tag :small, Rails.env unless Rails.env.production? %>
         </p>
       </section>
       <%= render "sidebar" -%>
+      <section id="user">
+        <ul class="sidebar__list">
+        </ul>
     </div>
 
     <div class="container">
