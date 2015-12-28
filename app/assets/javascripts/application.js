@@ -3,7 +3,6 @@
 //= require foundation
 //= require refile
 //= require lodash
-//= require jquery.flash
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_self
