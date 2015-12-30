@@ -4,18 +4,13 @@
 //= require refile
 //= require lodash
 //= require turbolinks
+//= require loader
+//= require_tree .
 //= require_self
 
-import $ from 'jquery';
-import autocompleteSearch from 'searches';
-import inlineFormResponse from 'subscribers';
+const DOM_READY = 'page:load page:fetch page:update opened.fndtn.reveal';
 
-const DOM_READY = 'ready page:load page:fetch page:update opened.fndtn.reveal';
-
-export default function() {
-  $(document).on(DOM_READY, function() {
-    $(this).foundation();
-    autocompleteSearch();
-    inlineFormResponse();
-  });
-}
+$(document).on(DOM_READY, function() {
+  $(this).foundation();
+  module.exports.forEach((module) => module());
+});

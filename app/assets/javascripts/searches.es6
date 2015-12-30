@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 // Show an interstitial message while waiting for responses.
 let showSearchingMessage = function() {
   $('#search .results')
@@ -8,7 +6,7 @@ let showSearchingMessage = function() {
 };
 
 // Populate the results dropdown with new search term results.
-let populateSearchResults = function() {
+let populateSearchResults = function(event, response) {
   $('#search .results').html(response).slideDown(250);
 };
 
