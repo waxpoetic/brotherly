@@ -1,15 +1,17 @@
+DEFAULT_LEVEL = 'patch'
+
 namespace :release do
   task :bump, [:level] do |_, arguments|
-    level = arguments[:level] || 'patch'
+    level = arguments[:level] || DEFAULT_LEVEL
     system "bin/semver increment #{level}"
   end
 
-  task commit: :environment do
-    system "git commit -am '#{Brotherly.version}'"
+  task :commit do
+    system 'git commit -am "$(bin/semver tag)"'
   end
 
   task :tag do
-    system "git tag #{Brotherly.version} -m '#{Brotherly.version}'"
+    system 'git tag -a "$(bin/semver tag)" -m "$(bin/semver tag)"'
   end
 
   task :push do
@@ -17,14 +19,14 @@ namespace :release do
   end
 
   [:major, :minor, :patch, :special].each do |level|
-    desc "Deploy and release a new #{level} version to brother.ly"
+    desc "Deploy and release a new #{level} version"
     task level do
       Rake::Task[:release].invoke level
     end
   end
 end
 
-# Deploy and release a new version of this application
-task :release, [:level] => [
-  'release:bump', 'release:commit', 'release:tag', 'release:push'
-]
+desc "Deploy and release a new version (default level: #{DEFAULT_LEVEL})"
+task :release, [:level] => %w(
+  release:bump release:commit release:tag release:push
+)
