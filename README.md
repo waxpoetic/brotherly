@@ -48,9 +48,9 @@ By default, this will bump the **patch** version of the `.semver` file.
 To bump other parts of the version string, specify the type as the
 argument to the Rake task:
 
-    bin/rake release[major]
-    bin/rake release[minor]
-    bin/rake release[special]
+    bin/rake release:major
+    bin/rake release:minor
+    bin/rake release:patch
 
 Note that all tag pushes to GitHub will result in a deployment to
 Heroku, which as of now is the only deployment of the application on the
