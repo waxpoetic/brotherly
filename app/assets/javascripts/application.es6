@@ -1,16 +1,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require refile
 //= require lodash
 //= require turbolinks
-//= require loader
-//= require_tree .
+//= require modules
 //= require_self
 
-const DOM_READY = 'page:load page:fetch page:update opened.fndtn.reveal';
-
-$(document).on(DOM_READY, function() {
+// Bind javascript code on any page load event
+$(document).on('ready page:load', function(event) {
+  // Initialize Foundation
   $(this).foundation();
-  module.exports.forEach((module) => module());
+
+  // Call the default export function on all modules
+  module.each(function(ready) {
+    if (typeof(ready) === 'function') {
+      ready(event);
+    }
+  });
 });

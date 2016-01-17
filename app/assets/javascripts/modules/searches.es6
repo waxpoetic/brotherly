@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import _ from 'lodash';
+
 // Show an interstitial message while waiting for responses.
 let showSearchingMessage = function() {
   $('#search .results')
