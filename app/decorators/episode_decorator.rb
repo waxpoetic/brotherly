@@ -117,9 +117,9 @@ class EpisodeDecorator < ApplicationDecorator
     }
   end
 
-  private
-
   def autoplay?
+    return false unless model.starts_at.present?
+    return true unless model.ends_at.present?
     model.starts_at <= Time.current && model.ends_at >= Time.current
   end
 
