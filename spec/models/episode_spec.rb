@@ -28,4 +28,13 @@ RSpec.describe Episode, type: :model do
   it 'has a number' do
     expect(subject.number).to eq 'zero'
   end
+
+  it 'regenerates sitemap when saved' do
+    expect(subject.save).to be true
+    expect(ActiveJob::Base.queue_adapter.enqueued_jobs).to include(
+      job: GenerateSitemapJob,
+      args: [],
+      queue: 'default'
+    )
+  end
 end

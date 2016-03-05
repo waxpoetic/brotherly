@@ -2,6 +2,7 @@ class Artist < ActiveRecord::Base
   extend FriendlyId
 
   include Searchable
+  include SitemapGeneration
 
   searchable :name
   multisearchable against: [:name]
