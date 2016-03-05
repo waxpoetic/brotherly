@@ -52,6 +52,6 @@ argument to the Rake task:
     bin/rake release:minor
     bin/rake release:patch
 
-Note that all tag pushes to GitHub will result in a deployment to
-Heroku, which as of now is the only deployment of the application on the
-Web.
+All tag pushes to GitHub result in a deployment to the production
+server, which should be configured on the app using the 'heroku' remote
+Git repo `git@heroku.com:brotherly.git`.
