@@ -5,6 +5,7 @@ class Episode < ActiveRecord::Base
   extend FriendlyId
 
   include Searchable
+  include SitemapGeneration
 
   has_many :performances
   has_many :artists, through: :performances
@@ -34,6 +35,7 @@ class Episode < ActiveRecord::Base
   end
 
   def future?
+    return true if starts_at.blank?
     starts_at >= Time.current
   end
 

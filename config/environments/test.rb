@@ -31,6 +31,10 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  # Use the :test queue adapter to track status of background jobs and
+  # also run them inline when testing.
+  config.active_job.queue_adapter = :test
+
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
 

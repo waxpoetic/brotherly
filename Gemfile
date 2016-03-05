@@ -27,6 +27,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'semver'
 gem 'aws-sdk'
+gem 'sitemap_generator'
 
 gem 'lodash-rails'
 gem 'sass', '~> 3.3'
