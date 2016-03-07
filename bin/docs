@@ -1,0 +1,11 @@
+#!/bin/zsh
+#
+# Publish inline documentation
+
+bin/rake doc
+mv doc /tmp/app-docs
+git checkout gh-pages
+mv /tmp/app-docs/**/* .
+git add .
+git commit -am 'Regenerate inline documentation'
+git push
