@@ -1,11 +1,4 @@
 - cache episode do
   .episode-summary
     = link_to episode, title: episode.title, class: 'row' do
-      .preview.large-6.columns
-        = episode.flyer
-      .info.large-6.columns
-        %h5
-          = episode.title
-        %ul
-          - episode.artists.each do |artist|
-            %li.artist-name= artist.name
+      = episode.flyer
