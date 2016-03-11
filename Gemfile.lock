@@ -517,7 +517,7 @@ DEPENDENCIES
   puma
   quiet_assets
   rack-cache
-  rails (~> 4.2)
+  rails (~> 4.2.5.1)
   rails-assets-foundation (~> 5)!
   rails_12factor
   ransack
