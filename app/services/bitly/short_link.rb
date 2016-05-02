@@ -5,14 +5,12 @@ module Bitly
     attr_accessor :url
     attr_reader :link
 
-    delegate :short_url, to: :@link, allow_nil: true
+    delegate :short_url, to: :link, allow_nil: true
 
     validates :url, presence: true
 
     def self.create(params = {})
-      link = new(params)
-      link.save
-      link
+      yield new(params).tap(&:save)
     end
 
     def save
@@ -20,7 +18,7 @@ module Bitly
     end
 
     def persisted?
-      @link.present?
+      link.present?
     end
 
     def create

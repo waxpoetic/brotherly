@@ -1,5 +1,12 @@
 class EpisodeDecorator < ApplicationDecorator
+  VIDEO_WIDTH = 640
+  VIDEO_HEIGHT = 480
+
   delegate_all
+
+  def eventbrite_url
+    model.short_link_url || model.eventbrite_url
+  end
 
   def artists
     model.performances.play_order.map(&:artist).map(&:decorate)
@@ -11,12 +18,6 @@ class EpisodeDecorator < ApplicationDecorator
 
   def date
     starts_at.to_date
-  end
-
-  def video_tag
-    h.content_tag :iframe, video_tag_options do
-      'Connecting...'
-    end
   end
 
   def performances
@@ -34,13 +35,16 @@ class EpisodeDecorator < ApplicationDecorator
     )
   end
 
-  def youtube_embed_url
+  def autoplay
+    'autoplay' if autoplay?
+  end
+
+  def stream_url
     return unless model.youtube_id.present?
     "http://www.youtube.com/embed/#{model.youtube_id}"
   end
 
-  def youtube_url
-    "http://www.youtube.com/?v=#{model.youtube_id}"
+  def archive_url
   end
 
   def current_title
@@ -59,8 +63,12 @@ class EpisodeDecorator < ApplicationDecorator
     model.audio_file_id.present?
   end
 
+  def video
+    video_file_url.gsub(/\.(flv|mp4)/, '.m3u8')
+  end
+
   def video?
-    model.youtube_id.present?
+    model.video_file_id.present?
   end
 
   def show_ticket_link?
@@ -105,18 +113,6 @@ class EpisodeDecorator < ApplicationDecorator
     h.distance_of_time_in_words model.published_at
   end
 
-  def video_tag_options
-    {
-      id: 'stream',
-      width: 640,
-      height: 400,
-      src: youtube_embed_url,
-      frameborder: 0,
-      allowfullscreen: true,
-      autoplay: ('autoplay' if autoplay?)
-    }
-  end
-
   def autoplay?
     return false unless model.starts_at.present?
     return true unless model.ends_at.present?
@@ -126,4 +122,11 @@ class EpisodeDecorator < ApplicationDecorator
   def fallback_flyer
     "http://placehold.it/240x320?text=#{placeholder_text}"
   end
+
+  private
+
+  def video_file_url
+    h.attachment_url model, :video_file
+  end
+
 end

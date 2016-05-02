@@ -1,5 +1,6 @@
 class Performance < ActiveRecord::Base
   include Searchable
+  include Media
 
   # multisearchable against: [:title]
 

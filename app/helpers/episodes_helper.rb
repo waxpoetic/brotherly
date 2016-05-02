@@ -1,4 +1,15 @@
 module EpisodesHelper
+  def youtube_stream(src: '', autoplay: 'autoplay')
+    tag :iframe, \
+      id: 'stream',
+      width: EpisodeDecorator::VIDEO_WIDTH,
+      height: EpisodeDecorator::VIDEO_HEIGHT,
+      src: src,
+      frameborder: 0,
+      allowfullscreen: true,
+      autoplay: autoplay
+  end
+
   def podcast_cache_key(section = nil)
     max_updated_at = episodes.last.updated_at.try(:utc)
     last_updated_at = max_updated_at.try(:to_s, :number) || '0'

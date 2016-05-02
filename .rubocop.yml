@@ -1,5 +1,9 @@
 AllCops:
   RunRailsCops: true
+  Exclude:
+    - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
+    - 'bin/**/*'
 
 Lint/AssignmentInCondition:
   Exclude:
@@ -23,7 +27,6 @@ Metrics/AbcSize:
   Exclude:
     - 'db/migrate/**/*.rb'
 
-
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*.rb'
@@ -34,7 +37,7 @@ Metrics/LineLength:
     - 'config/**/*.rb'
     - 'spec/rails_helper.rb'
     - 'bin/spring'
-    - db/schema.rb
+    - 'db/schema.rb'
 
 Rails/Output:
   Exclude:
@@ -53,5 +56,4 @@ Style/MultilineBlockChain:
     - 'lib/tasks/test.rake'
 
 Style/StringLiterals:
-  Exclude:
-    - bin/**/*
+  Enabled: false
