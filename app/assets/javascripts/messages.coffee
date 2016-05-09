@@ -1,4 +1,9 @@
 jQuery ->
-  # Clear out the form on a new submission
-  $('#new_message_form').on 'ajax:success', ->
-    $(this).find('input[name="body"]').val ''
+  $('#new_message_form').on 'submit', ->
+    form = $(this)
+    App.chat.sendMessage(
+      id: parseInt(Date.now()),
+      type: 'message'
+      author: form.find('input[name="message[author]"').val()
+      body: form.find('input[name="message[body]"').val()
+    )
