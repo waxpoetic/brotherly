@@ -40,6 +40,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'administrate', github: 'thoughtbot/administrate', branch: 'master'
 gem 'lodash-rails'
+gem 'ruby-haml-js'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-foundation', '~> 5'
@@ -75,7 +76,7 @@ end
 group :production, :staging do
   gem 'rack-cache'
   gem 'redis'
-  gem 'redis-rails', github: 'redis-store/redis-rails', branch: 'master'
+  gem 'redis-rails', '~> 5.0.0.pre' #github: 'redis-store/redis-rails', branch: 'master'
   gem 'redis-actionpack', github: 'redis-store/redis-actionpack', ref: 'v5.0.0.pre'
   gem 'rails_12factor'
   gem 'sidekiq'

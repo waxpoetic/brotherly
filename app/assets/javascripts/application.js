@@ -6,6 +6,7 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_self
+//= require_tree ../templates
 //= require_tree .
 
 $.turbo.use('page:load', 'page:fetch', 'page:update', 'opened.fndtn.reveal');
