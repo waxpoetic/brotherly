@@ -1,4 +1,6 @@
 Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -11,6 +13,44 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+
+  # Disable serving static files from the `/public` folder by default since
+  # Apache or NGINX already handles this.
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
+  # Compress JavaScripts and CSS.
+  config.assets.js_compressor = :uglifier
+  config.assets.css_compressor = :sass
+
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
+
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  config.action_controller.asset_host = 'http://files.brother.ly'
+  config.font_assets.origin = config.action_controller.asset_host
+
+  # Specifies the header that your server uses for sending files.
+  # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+
+  # Action Cable endpoint configuration
+  config.action_cable.url = 'wss://example.com/cable'
+  config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+
+  # Don't mount Action Cable in the main server process.
+  # config.action_cable.mount_path = nil
+
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # config.force_ssl = true
+
+  # Use the lowest log level to ensure availability of diagnostic information
+  # when problems arise.
+  config.log_level = :debug
+
+  # Prepend all log lines with the following tags.
+  config.log_tags = [ :request_id ]
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
@@ -25,39 +65,14 @@ Rails.application.configure do
   config.cache_store = :redis_store, \
                        "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
 
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
-  config.serve_static_files = true
+  # Use a real queuing backend for Active Job (and separate queues per environment)
+  config.active_job.queue_adapter     = :sidekiq
+  config.active_job.queue_name_prefix = "brotherly_#{Rails.env}"
+  config.action_mailer.perform_caching = false
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
-  config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
-  # yet still be able to expire them through the digest params.
-  config.assets.digest = true
-
-  # Specifies the header that your server uses for sending files.
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
-
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
-
-  # Use the lowest log level to ensure availability of diagnostic information
-  # when problems arise.
-  config.log_level = :debug
-
-  # Configure domain this app is running on
-  config.domain = 'brother.ly'
-
-  # Enable CORS headers for Google fonts
-  config.font_assets.origin = "http://#{config.domain}"
-
-  # Serve static assets over the CDN
-  config.action_controller.asset_host = "files.#{config.domain}"
+  # Ignore bad email addresses and do not raise email delivery errors.
+  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+  # config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -69,8 +84,18 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  # Log to STDOUT
+  config.logger = ActiveSupport::TaggedLogging.new(
+    ActiveSupport::Logger.new(STDOUT).tap do |logger|
+      logger.formatter = config.log_Formatter
+    end
+  )
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Cosmetic settings
+  config.domain = 'brother.ly'
 
   # Use SendGrid to send email.
   ActionMailer::Base.smtp_settings = {
@@ -82,7 +107,4 @@ Rails.application.configure do
     domain: config.domain,
     enable_starttls_auto: true
   }
-
-  # Use Sidekiq as the adapter for our background job queue
-  config.active_job.queue_adapter = :sidekiq
 end
