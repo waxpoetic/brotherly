@@ -1,0 +1,28 @@
+#chat {
+  // Title bar
+  .title {
+  }
+
+  // All messages in the chat
+  .messages {
+
+    // Any chat message
+    .message {
+      .author {
+        text-align: right;
+      }
+
+      .content {
+      }
+
+      // Special notice messages
+      &.notice {
+        color: yellow;
+      }
+    }
+  }
+
+  // Where users enter their information and new messages
+  .prompt {
+  }
+}
