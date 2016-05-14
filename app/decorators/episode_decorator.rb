@@ -1,6 +1,10 @@
 class EpisodeDecorator < ApplicationDecorator
   delegate_all
 
+  def buttons?
+    audio? || video? || show_ticket_link? || show_facebook_event?
+  end
+
   def artists
     model.performances.play_order.map(&:artist).map(&:decorate)
   end

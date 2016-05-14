@@ -1,0 +1,15 @@
+#chat
+  .title.row
+    .large-12.columns
+      %h1 Chat
+  .messages.row
+    #messages.large-12.columns
+      Loading...
+  .input.row
+    = form_for Message.new do |f|
+      .large-4.columns
+        = f.text_field :author, placeholder: 'enter username'
+      .large-6.columns
+        = f.text_field :body
+      .large-2.columns
+        = f.submit :send

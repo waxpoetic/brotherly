@@ -6,6 +6,7 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_self
+//= require cable
 //= require_tree ../templates
 //= require_tree .
 

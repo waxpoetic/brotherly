@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Use the default app responder object.
-  self.responder = Application::Responder
+  include ControllerResources::Extension
+  include ActionController::RespondWith
+
+  extend Responders::ControllerMethod
+
+  responders :flash, :http_cache
   respond_to :html
 
   # Define a default HTML layout.
@@ -14,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   expose :current_episode do
-    Episode.current.decorate
+    Episode.current
   end
 
   expose :recent_episodes do

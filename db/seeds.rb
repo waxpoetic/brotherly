@@ -4,7 +4,7 @@ puts "-- seed '#{Rails.env}'"
 
 # if Rails.env.development?
 puts '   add fixtures'
-ActiveRecord::Fixtures.create_fixtures(
+ActiveRecord::FixtureSet.create_fixtures(
   'spec/fixtures', Rails.application.config.seeds
 )
 # end

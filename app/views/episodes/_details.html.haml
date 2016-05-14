@@ -20,55 +20,59 @@
               = simple_format episode.description
     - cache [episode, :sidebar] do
       .large-4.columns
-        .buttons.row
-          .large-12.columns
-            .actions
-              %ul{ style: 'list-style-type: none' }
-                - if episode.audio?
-                  %li.audio
-                    = link_to episode.audio, class: 'secondary button' do
-                      = icon :music
-                      &nbsp;
-                      = t :audio, scope: :episodes
-                - if episode.video? && !episode.future?
-                  %li.video
-                    = link_to episode.youtube_url, class: 'alert button', target: '_blank' do
-                      = icon :youtube
-                      &nbsp;
-                      = t :video, scope: :episodes
-                - if episode.show_ticket_link?
-                  %li.eventbrite
-                    = link_to episode.eventbrite_url, class: 'success button', target: '_blank' do
-                      = icon :ticket
-                      &nbsp;
-                      = t :tickets, scope: :episodes
-                - if episode.show_facebook_event?
-                  %li.facebook
-                    = link_to episode.facebook_url, class: 'button', target: '_blank' do
-                      = icon :facebook
-                      &nbsp;
-                      = t :share, scope: :episodes
-        .collection.artists.row
-          .large-12.columns
-            %h2= t :lineup, scope: :episodes
-            %ul
-              - episode.artists.each do |artist|
-                %li.row
-                  = link_to artist, title: artist.name do
-                    .large-4.columns
-                      = attachment_image_tag artist, :image_file
-                    .large-8.columns
-                      %h5= artist.name
-          -# TODO: Add performance pages when we have data for them.
-          -# - else
-          -#   .collection.performances.row
-          -#     .large-12.columns
-          -#       %h2= t :performances, scope: :episodes
-          -#       %ul.performances
-          -#         - episode.performances.each do |performance|
-          -#           %li.row
-          -#             = link_to episode_performance_path(episode, performance), title: performance.title do
-          -#               .large-4.columns
-          -#                 = performance.artist.decorate.image
-          -#               .large-8.columns
-          -#                 %h5= performance.artist_name
+        - if episode.streaming?
+          .discussion.row
+            = render 'chat'
+        - if episode.buttons?
+          .buttons.row
+            .large-12.columns
+              .actions
+                %ul{ style: 'list-style-type: none' }
+                  - if episode.audio?
+                    %li.audio
+                      = link_to episode.audio, class: 'secondary button' do
+                        = icon :music
+                        &nbsp;
+                        = t :audio, scope: :episodes
+                  - if episode.video? && !episode.future?
+                    %li.video
+                      = link_to episode.youtube_url, class: 'alert button', target: '_blank' do
+                        = icon :youtube
+                        &nbsp;
+                        = t :video, scope: :episodes
+                  - if episode.show_ticket_link?
+                    %li.eventbrite
+                      = link_to episode.eventbrite_url, class: 'success button', target: '_blank' do
+                        = icon :ticket
+                        &nbsp;
+                        = t :tickets, scope: :episodes
+                  - if episode.show_facebook_event?
+                    %li.facebook
+                      = link_to episode.facebook_url, class: 'button', target: '_blank' do
+                        = icon :facebook
+                        &nbsp;
+                        = t :share, scope: :episodes
+        - if episode.artists?
+          .collection.artists.row
+            .large-12.columns
+              %h2= t :lineup, scope: :episodes
+              %ul
+                - episode.artists.each do |artist|
+                  %li.row
+                    = link_to artist, title: artist.name do
+                      .large-4.columns
+                        = attachment_image_tag artist, :image_file
+                      .large-8.columns
+                        %h5= artist.name
+        - if episode.performances?
+          .collection.performances.row
+            .large-12.columns
+              %h2= t :performances, scope: :episodes
+              %ul.performances
+                - episode.performances.each do |performance|
+                  %li.row
+                    = link_to episode_performance_path(episode, performance), title: performance.title do
+                      .large-4.columns
+                        = performance.artist.decorate.image
+                      .large-8.columns
+                        %h5= performance.artist_name
