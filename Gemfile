@@ -41,7 +41,7 @@ gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'jquery-turbolinks'
 gem 'turbolinks', github: 'rails/turbolinks'
-gem 'administrate', github: 'thoughtbot/administrate'
+gem 'administrate'
 gem 'sprockets-rails', '~> 2'
 
 source 'https://rails-assets.org' do
