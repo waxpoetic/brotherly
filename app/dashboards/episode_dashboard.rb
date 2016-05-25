@@ -24,7 +24,8 @@ class EpisodeDashboard < Administrate::BaseDashboard
     short_url: Field::String,
     eventbrite_event_id: Field::Number,
     audio_file: UploadField,
-    flyer_file: UploadField
+    flyer_file: UploadField,
+    video_file: UploadField
   }
 
   # COLLECTION_ATTRIBUTES

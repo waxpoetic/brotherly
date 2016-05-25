@@ -14,7 +14,8 @@ class DashboardManifest
     :artists,
     :episodes,
     :performances,
-    :subscribers
+    :subscribers,
+    :metrics
   ]
 
   # `ROOT_DASHBOARD`
