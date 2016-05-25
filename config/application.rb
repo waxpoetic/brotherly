@@ -71,7 +71,5 @@ module Brotherly
       },
       trigram: {}
     }
-
-    config.domain = 'http://brotherly.dev'
   end
 end

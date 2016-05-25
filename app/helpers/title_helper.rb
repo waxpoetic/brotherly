@@ -36,7 +36,7 @@ module TitleHelper
   # @return [String]
   def app_title
     if admin?
-      "#{Rails.configuration.name} admin (#{Rails.env})"
+      Rails.application.secrets.app_name
     else
       Rails.configuration.name
     end

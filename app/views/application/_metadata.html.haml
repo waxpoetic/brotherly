@@ -16,7 +16,7 @@
 %meta{property: 'og:title', content: app_title}
 %meta{property: 'og:type', content: 'website'}
 %meta{property: 'og:image', content: image_url('logo.png', host: Rails.configuration.action_controller.asset_host)}
-%meta{property: 'og:url', content: config.domain}
+%meta{property: 'og:url', content: Rails.application.secrets.domain_name}
 %meta{property: "fb:admins", content: Rails.application.secrets.facebook_admin_id}
 / Rails
 = csrf_meta_tags

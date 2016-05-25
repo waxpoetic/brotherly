@@ -50,14 +50,11 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  # Configure domain this app is running on
-  config.domain = 'brother.ly'
-
   # Enable CORS headers for Google fonts
-  config.font_assets.origin = "http://#{config.domain}"
+  config.font_assets.origin = "http://#{Rails.application.secrets.domain_name}"
 
   # Serve static assets over the CDN
-  config.action_controller.asset_host = "files.#{config.domain}"
+  config.action_controller.asset_host = Rails.application.secrets.cdn_domain_name
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -79,7 +76,7 @@ Rails.application.configure do
     authentication: :plain,
     user_name: Rails.application.secrets.sendgrid_username,
     password: Rails.application.secrets.sendgrid_password,
-    domain: config.domain,
+    domain: Rails.application.secrets.domain_name,
     enable_starttls_auto: true
   }
 
