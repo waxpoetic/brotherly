@@ -3,6 +3,11 @@
     background: $jet;
     min-height: 260px;
 
+    .flyer_file {
+      position: relative;
+      left: 2em;
+    }
+
     ul {
       margin-left: 0;
     }

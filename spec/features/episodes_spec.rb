@@ -44,7 +44,7 @@ RSpec.feature 'Episodes', type: :feature do
     expect(page).to have_content(episode.name)
     expect(page).to have_content(t(:title, scope: :artists))
     expect(page).to have_content(episode.artists.first.name)
-    expect(page).to have_css('#flyer')
+    expect(page).to have_css('.flyer_file')
   end
 
   scenario 'details for current episode' do

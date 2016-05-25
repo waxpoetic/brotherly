@@ -29,7 +29,6 @@ class EpisodeDecorator < ApplicationDecorator
       model,
       :flyer_file,
       fallback: fallback_flyer,
-      id: 'flyer',
       title: 'Flyer',
       alt: 'Flyer'
     )
