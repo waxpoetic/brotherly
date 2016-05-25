@@ -13,7 +13,11 @@ gem 'draper'
 gem 'simple_form'
 gem 'devise'
 gem 'haml-rails'
-gem 'refile', require: 'refile/rails'
+gem \
+  'refile',
+  github: 'refile/refile',
+  require: 'refile/rails',
+  ref: 'e844cc96ed5d07d07f6bde96b6429c01cd291b9a'
 gem 'refile-mini_magick'
 gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
 gem 'bitly'
@@ -28,6 +32,7 @@ gem 'kaminari'
 gem 'semver'
 gem 'aws-sdk'
 gem 'sitemap_generator'
+gem 'videojs_rails'
 
 gem 'lodash-rails'
 gem 'sass', '~> 3.3'
@@ -69,6 +74,8 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production, :staging do

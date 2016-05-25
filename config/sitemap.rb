@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.brother.ly"
+SitemapGenerator::Sitemap.default_host = 'http://www.brother.ly'
 
 SitemapGenerator::Sitemap.create do
   add episodes_path, changefreq: 'monthly'

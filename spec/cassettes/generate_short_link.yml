@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api-ssl.bitly.com/v3/shorten?access_token=33dc3b8a187907eaf5643592a173ca36d910ac90&history=1&longUrl=https://www.eventbrite.com/e/brotherly-three-tickets-17253112524
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 22 May 2016 19:13:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '234'
+      Connection:
+      - keep-alive
+      Mime-Version:
+      - '1.0'
+    body:
+      encoding: UTF-8
+      string: '{ "status_code": 200, "status_txt": "OK", "data": { "long_url": "https:\/\/www.eventbrite.com\/e\/brotherly-three-tickets-17253112524",
+        "url": "http:\/\/bit.ly\/1H1Komg", "hash": "1H1Komg", "global_hash": "1H1Komh",
+        "new_hash": 0 } }
+
+'
+    http_version: 
+  recorded_at: Sun, 22 May 2016 19:13:00 GMT
+recorded_with: VCR 3.0.3

@@ -1,8 +1,15 @@
 require 'rails_helper'
+require 'refile/file_double'
 
 RSpec.feature 'Episodes', type: :feature do
   let :episode do
     episodes :four
+  end
+
+  let :video do
+    Refile::FileDouble.new(
+      'archive', 'video.mp4', content_type: 'video/mp4'
+    )
   end
 
   scenario 'listing' do
@@ -48,6 +55,7 @@ RSpec.feature 'Episodes', type: :feature do
     )
     visit episode_path(episode, format: 'html')
 
+    expect(episode.decorate).to be_streaming
     expect(page).to have_content(episode.name)
     expect(page).to have_content(t(:title, scope: :artists))
     expect(page).to have_content(episode.artists.first.name)
@@ -58,13 +66,16 @@ RSpec.feature 'Episodes', type: :feature do
   scenario 'details for past episode' do
     episode.update(
       youtube_id: 'Mg-LfxWY5hc',
-      starts_at: 2.hours.ago
+      starts_at: 2.hours.ago,
+      ends_at: 1.hour.ago,
+      video_file: video
     )
     visit episode_path(episode, format: 'html')
 
+    expect(episode.decorate).to be_archived
     expect(page).to have_content(episode.name)
     expect(page).to have_content(t(:title, scope: :artists))
     expect(page).to have_content(episode.artists.first.name)
-    expect(page).to have_css('#stream')
+    expect(page).to have_css('#archive')
   end
 end

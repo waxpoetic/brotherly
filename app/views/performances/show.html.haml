@@ -14,11 +14,11 @@
     .links.large-4.columns
       %nav
         %section
-          - if performance.youtube_url.present?
-            = link_to performance.youtube_url, class: 'alert button' do
+          - if performance.video?
+            = link_to performance.video, class: 'alert button' do
               = icon :youtube
               = t '.youtube'
-          - if performance.downloadable?
+          - if performance.audio?
             = link_to performance.audio, class: 'secondary button' do
               = icon :speaker
               = t '.audio'

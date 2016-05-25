@@ -8,4 +8,13 @@ Rails.application.config.assets.paths << 'administrate'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w(administrate/application.css administrate/application.js modernizr.js)
+Rails.application.config.assets.precompile += %w(
+  administrate/application.css
+  administrate/application.js
+  modernizr.js
+  video-js.swf
+  vjs.eot
+  vjs.svg
+  vjs.ttf
+  vjs.woff
+)

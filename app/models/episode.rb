@@ -6,6 +6,7 @@ class Episode < ActiveRecord::Base
 
   include Searchable
   include SitemapGeneration
+  include Media
 
   has_many :performances
   has_many :artists, through: :performances
@@ -25,10 +26,9 @@ class Episode < ActiveRecord::Base
   multisearchable against: [:name]
 
   attachment :flyer_file
-  attachment :audio_file, extension: 'mp3'
 
-  # after_create :transcode!, if: :has_audio?
   after_create :promote!, if: :future?
+  after_create :shorten!, unless: :short_url?
 
   def self.current
     latest.first
@@ -37,6 +37,18 @@ class Episode < ActiveRecord::Base
   def future?
     return true if starts_at.blank?
     starts_at >= Time.current
+  end
+
+  def streaming?
+    Time.current.between? starts_at, ends_at
+  end
+
+  def past?
+    !future?
+  end
+
+  def archived?
+    past? && video_file_id.present?
   end
 
   def published?
@@ -53,7 +65,11 @@ class Episode < ActiveRecord::Base
 
   private
 
-  def generate_short_url
-    GenerateEpisodeLink.perform_later self
+  def promote!
+    PromoteEpisodeJob.perform_later self
+  end
+
+  def shorten!
+    GenerateShortLinkJob.perform_later self
   end
 end
