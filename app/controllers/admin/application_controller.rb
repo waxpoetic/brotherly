@@ -11,6 +11,8 @@ module Admin
 
     before_action :authenticate_user!
 
+    layout 'administrate/application'
+
     protected
 
     def records_per_page
