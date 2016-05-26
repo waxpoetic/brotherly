@@ -2,7 +2,6 @@
 class Transcode
   include ActiveModel::Model
 
-  ORIGINAL_EXTENSIONS = /mp3|mp4|flv|wav\Z/
   EXTENSION = 'm3u8'
   AUDIO_PRESET = '1351620000001-200071'
   VIDEO_PRESETS = {
@@ -15,8 +14,6 @@ class Transcode
   FORMAT = 'HLSv3'
   PREFIX = 'videos/'
   SEGMENT_DURATION = '2'
-
-  delegate :logger, to: Rails
 
   # @attribute! [rw]
   #   @return [String] File to be transcoded.
@@ -37,8 +34,45 @@ class Transcode
   # this pipeline.
   #
   # @return [String] Input filename URL with extension subsituted.
-  def output
-    @output ||= Digest::SHA256.hexdigest input.encode('UTF-8')
+  def output_id
+    @output ||= input.gsub(/flv|mp4/, EXTENSION)
+  end
+
+  # Parameters for each individual preset.
+  #
+  # @return [Array<Hash>] presets for transcoding
+  def outputs
+    VIDEO_PRESETS.map do |variant, preset_id|
+      {
+        key: "hls#{variant}/#{output_id}",
+        preset_id: preset_id,
+        segment_duration: SEGMENT_DURATION
+      }
+    end
+  end
+
+  # Parameters for the HLS playlist.
+  #
+  # @return [Hash] HLS playlist contents
+  def playlist
+    {
+      name: output_id,
+      format: FORMAT,
+      output_keys: outputs.map { |output| output[:key] }
+    }
+  end
+
+  # Parameters sent to the transcoder pipeline as a job.
+  #
+  # @return [Hash] job params
+  def attributes
+    {
+      pipeline_id: Rails.application.secrets.aws_transcoder_pipeline_id,
+      input: { key: input },
+      output_key_prefix: PREFIX,
+      outputs: outputs,
+      playlists: [playlist]
+    }
   end
 
   # Run validators and log errors if they exist.
@@ -54,6 +88,12 @@ class Transcode
     end
   end
 
+  # @return [Boolean] whether the job was created and a successful
+  # request.
+  def persisted?
+    @persisted ||= false
+  end
+
   # Start the transcode process after validating attributes.
   #
   # @return [Boolean] whether the transcode has begun.
@@ -61,43 +101,11 @@ class Transcode
     valid? && create && persisted?
   end
 
-  def persisted?
-    @job.success?
-  end
-
-  def outputs
-    PRESETS.map do |variant, preset_id|
-      {
-        key: "hls#{variant}/#{output}",
-        preset_id: preset_id,
-        segment_duration: SEGMENT_DURATION
-      }
-    end
-  end
-
-  def playlist
-    {
-      name: output_key,
-      format: FORMAT,
-      output_keys: outputs.map { |output| output[:key] }
-    }
-  end
-
-  def attributes
-    {
-      pipeline_id: Rails.application.secrets.aws_transcoder_pipeline_id,
-      input: { key: input },
-      output_key_prefix: prefix,
-      outputs: outputs,
-      playlists: [playlist]
-    }
-  end
-
   private
 
   # @private
   def create
-    @job = transcoder.create_job(attributes)
+    @persisted = transcoder.create_job(attributes).success?
   end
 
   # @private

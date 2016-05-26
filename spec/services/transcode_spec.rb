@@ -2,69 +2,44 @@ require 'spec_helper'
 require './app/services/transcode'
 
 RSpec.describe Transcode, type: :service do
-  subject { described_class.new }
-
-  context 'audio' do
-    let :pipeline_id do
-      Rails.application.secrets.aws_audio_pipeline_id
-    end
-
-    before do
-      subject.pipeline = :audio
-      subject.input = 'audio.wav'
-    end
-
-    it 'reads pipeline id from secrets' do
-      expect(subject.pipeline_id).to eq pipeline_id
-    end
-
-    it 'determines new extension' do
-      subject.pipeline = :audio
-      expect(subject.extension).to eq 'mp3'
-    end
-
-    it 'substitutes output key extension for determined one' do
-      expect(subject.output).to eq(subject.input.gsub(/wav/, 'mp3'))
-    end
-
-    it 'creates audio transcoder job' do
-      allow(subject.send(:transcoder)).to \
-        receive(:create_job)
-        .with(subject.params)
-        .and_return(double(success?: true))
-      expect(subject.save).to be true
-    end
+  subject do
+    described_class.new input: 'video.mp4'
   end
 
-  context 'video' do
-    let :pipeline_id do
-      Rails.application.secrets.aws_video_pipeline_id
-    end
+  it 'substitutes output key extension for determined one' do
+    expect(subject.output_id).to eq('video.m3u8')
+  end
 
-    before do
-      subject.pipeline = :video
-      subject.input = 'video.flv'
-    end
+  it 'turns presets into output params' do
+    output = subject.outputs.first
+    expect(output).to be_a(Hash)
+    expect(output[:key]).to eq("hls#{Transcode::VIDEO_PRESETS.keys.first}/#{subject.output_id}")
+    expect(output[:preset_id]).to eq(Transcode::VIDEO_PRESETS.values.first)
+    expect(output[:segment_duration]).to eq(Transcode::SEGMENT_DURATION)
+  end
 
-    it 'reads pipeline id from secrets' do
-      expect(subject.pipeline_id).to eq pipeline_id
-    end
+  it 'builds playlist params' do
+    expect(subject.playlist[:name]).to eq subject.output_id
+    expect(subject.playlist[:format]).to eq Transcode::FORMAT
+    expect(subject.playlist[:output_keys].first).to include(Transcode::VIDEO_PRESETS.keys.first)
+  end
 
-    it 'determines new extension' do
-      subject.pipeline = :video
-      expect(subject.extension).to eq 'm3u8'
-    end
+  it 'tests validation' do
+    expect(subject).to be_valid
+  end
 
-    it 'substitutes output key extension for determined one' do
-      expect(subject.output).to eq(subject.input.gsub(/flv/, 'm3u8'))
-    end
+  it 'tests persistence' do
+    subject.instance_variable_set '@persisted', true
+    expect(subject).to be_persisted
+  end
 
-    it 'creates audio transcoder job' do
-      allow(subject.send(:transcoder)).to \
-        receive(:create_job)
-        .with(subject.params)
-        .and_return(double(success?: true))
-      expect(subject.save).to be true
-    end
+  it 'creates elastic transcoder job and tests persistence' do
+    subject.instance_variable_set '@persisted', nil
+    allow(subject.send(:transcoder)).to \
+      receive(:create_job)
+      .with(subject.attributes)
+      .and_return(double(success?: true))
+    expect(subject.save).to be true
+    expect(subject).to be_persisted
   end
 end
