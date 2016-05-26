@@ -55,7 +55,8 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :published_at,
     :description,
     :audio_file,
-    :flyer_file
+    :flyer_file,
+    :video_file
   ]
 
   # Overwrite this method to customize how episodes are displayed
