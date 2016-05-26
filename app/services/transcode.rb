@@ -2,21 +2,26 @@
 class Transcode
   include ActiveModel::Model
 
-  PIPELINES = %i(audio video)
-  EXTENSIONS = /mp3|mp4|flv|wav\Z/
+  ORIGINAL_EXTENSIONS = /mp3|mp4|flv|wav\Z/
+  EXTENSION = 'm3u8'
+  AUDIO_PRESET = '1351620000001-200071'
+  VIDEO_PRESETS = {
+    '400k' => '1351620000001-200050',
+    '600k' => '1351620000001-200040',
+    '1000k' => '1351620000001-200030',
+    '1500k' => '1351620000001-200020',
+    '2000k' => '1351620000001-200010'
+  }
+  FORMAT = 'HLSv3'
+  PREFIX = 'videos/'
+  SEGMENT_DURATION = '2'
 
   delegate :logger, to: Rails
-
-  # @attribute! [rw]
-  #   @return [Symbol] Pipeline to add transcode job to.
-  attr_accessor :pipeline
 
   # @attribute! [rw]
   #   @return [String] File to be transcoded.
   attr_accessor :input
 
-  validates :pipeline, presence: true, inclusion: { in: PIPELINES }
-  validates :pipeline_id, presence: true
   validates :input, presence: true
 
   # Kick off a new transcode process.
@@ -28,31 +33,12 @@ class Transcode
     new(params).tap(&:save)
   end
 
-  # Read Rails secrets to determine AWS pipeline ID.
-  #
-  # @return [String] Configured AWS pipeline ID for given pipeline.
-  def pipeline_id
-    @pipeline_id ||= Rails.application.secrets["aws_#{pipeline}_pipeline_id"]
-  end
-
   # Substitute input filename extension with the chosen extension for
   # this pipeline.
   #
   # @return [String] Input filename URL with extension subsituted.
   def output
-    @output ||= input.gsub EXTENSIONS, extension
-  end
-
-  # Determine extension based on given pipeline.
-  #
-  # @return [String] Extension for the output filename.
-  def extension
-    case pipeline
-    when :audio
-      'mp3'
-    when :video
-      'm3u8'
-    end
+    @output ||= Digest::SHA256.hexdigest input.encode('UTF-8')
   end
 
   # Run validators and log errors if they exist.
@@ -61,7 +47,9 @@ class Transcode
   def valid?
     super.tap do |result|
       unless result
-        logger.debug "Transcode failed: #{errors.messages.to_a.to_sentence}"
+        Rails.logger.debug(
+          "Transcode failed: #{errors.messages.to_a.to_sentence}"
+        )
       end
     end
   end
@@ -70,26 +58,46 @@ class Transcode
   #
   # @return [Boolean] whether the transcode has begun.
   def save
-    valid? && create
+    valid? && create && persisted?
   end
 
-  # Job params for elastic transcoder.
-  #
-  # @return [Hash]
-  def params
+  def persisted?
+    @job.success?
+  end
+
+  def outputs
+    PRESETS.map do |variant, preset_id|
+      {
+        key: "hls#{variant}/#{output}",
+        preset_id: preset_id,
+        segment_duration: SEGMENT_DURATION
+      }
+    end
+  end
+
+  def playlist
     {
-      pipeline_id: pipeline_id,
+      name: output_key,
+      format: FORMAT,
+      output_keys: outputs.map { |output| output[:key] }
+    }
+  end
+
+  def attributes
+    {
+      pipeline_id: Rails.application.secrets.aws_transcoder_pipeline_id,
       input: { key: input },
-      output: { key: output }
+      output_key_prefix: prefix,
+      outputs: outputs,
+      playlists: [playlist]
     }
   end
 
   private
 
   # @private
-  # @return [Boolean] whether the transcode has begun.
   def create
-    transcoder.create_job(params).success?
+    @job = transcoder.create_job(attributes)
   end
 
   # @private
