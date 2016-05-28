@@ -33,6 +33,7 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*.rb'
     - 'app/services/eventbrite/service.rb'
+    - 'app/controllers/episodes_controller.rb'
 
 Metrics/LineLength:
   Exclude:

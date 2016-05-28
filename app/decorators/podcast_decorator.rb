@@ -8,7 +8,7 @@ class PodcastDecorator < EpisodesDecorator
   end
 
   def channel
-    id = Digest::SHA1.new [name, link, published_at, author, keywords, explicicity].join('')
+    id = Digest::SHA1.new pieces.join('')
     "podcast/channel/#{id}"
   end
 
@@ -46,5 +46,9 @@ class PodcastDecorator < EpisodesDecorator
 
   def category
     'Music'
+  end
+
+  def pieces
+    [name, link, published_at, author, keywords, explicicity]
   end
 end

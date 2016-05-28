@@ -12,17 +12,24 @@ module Transcode
     end
 
     it 'turns presets into output params' do
+      key =
+        "hls#{Transcode::Job::VIDEO_PRESETS.keys.first}/#{subject.output_id}"
       output = subject.outputs.first
       expect(output).to be_a(Hash)
-      expect(output[:key]).to eq("hls#{Transcode::Job::VIDEO_PRESETS.keys.first}/#{subject.output_id}")
-      expect(output[:preset_id]).to eq(Transcode::Job::VIDEO_PRESETS.values.first)
-      expect(output[:segment_duration]).to eq(Transcode::Job::SEGMENT_DURATION)
+      expect(output[:key]).to \
+        eq(key)
+      expect(output[:preset_id]).to \
+        eq(Transcode::Job::VIDEO_PRESETS.values.first)
+      expect(output[:segment_duration]).to \
+        eq(Transcode::Job::SEGMENT_DURATION)
     end
 
     it 'builds playlist params' do
       expect(subject.playlist[:name]).to eq subject.output_id
-      expect(subject.playlist[:format]).to eq Transcode::Job::FORMAT
-      expect(subject.playlist[:output_keys].first).to include(Transcode::Job::VIDEO_PRESETS.keys.first)
+      expect(subject.playlist[:format]).to \
+        eq(Transcode::Job::FORMAT)
+      expect(subject.playlist[:output_keys].first).to \
+        include(Transcode::Job::VIDEO_PRESETS.keys.first)
     end
 
     it 'tests validation' do
