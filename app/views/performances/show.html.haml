@@ -1,8 +1,7 @@
 - cache @performance do
-  - if @performance.cover_image?
-    .images.row
-      .large-12.columns
-        = image_tag @performance.cover_image, alt: @performance.title
+  .images.row
+    .large-12.columns
+      = image_tag @performance.cover_image, alt: @performance.title
   .title.row
     .large-12.columns
       %h1
