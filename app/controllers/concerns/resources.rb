@@ -18,9 +18,9 @@ module Resources
 
   def find_resource
     if collection_action?
-      instance_variable_set "@#{collection_name}", collection
+      instance_variable_set "@#{collection_name}", collection.decorate
     else
-      instance_variable_set "@#{model_name}", model
+      instance_variable_set "@#{model_name}", model.decorate
     end
   end
 

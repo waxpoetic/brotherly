@@ -1,2 +1,2 @@
-- cache current_episode do
-  = render 'details', episode: current_episode, episode_title: current_episode.current_title
+- cache @episode do
+  = render 'details', episode: @episode, episode_title: @episode.current_title

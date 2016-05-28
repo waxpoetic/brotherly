@@ -8,27 +8,6 @@ class ApplicationController < ActionController::Base
   class_attribute :html_layout
   self.html_layout ||= 'application'
 
-  # Configure DecentExposure
-  decent_configuration do
-    strategy Application::Strategy
-  end
-
-  expose :current_episode do
-    Episode.current.decorate
-  end
-
-  expose :recent_episodes do
-    Episode.latest.limit(5)
-  end
-
-  expose :upcoming_episodes do
-    Episode.upcoming.limit(5)
-  end
-
-  expose :search do
-    Search.new
-  end
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
