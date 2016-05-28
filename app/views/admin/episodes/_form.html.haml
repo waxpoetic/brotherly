@@ -1,0 +1,31 @@
+= simple_form_for [namespace, page.resource], class: 'form' do |f|
+  %fieldset
+    %legend Basic
+    = f.input :name
+    = f.input :starts_at, as: :date_picker
+    = f.input :ends_at, as: :date_picker
+    = f.input :published_at, as: :date_picker
+    = f.input :description
+
+  %fieldset
+    %legend Artists
+    - f.simple_nested_fields_for :artists do |a|
+      = a.input :artist, as: :auto_complete
+      = a.input :starts_at, as: :date_picker
+      = a.input :ends_at, as: :date_picker
+      = a.link_to_destroy unless a.object.new_record?
+    = f.link_to_add :artist
+
+  %fieldset
+    %legend Services
+    = f.input :facebook_url
+    = f.input :eventbrite_url
+    = f.input :youtube_id
+
+  %fieldset
+    %legend Files
+    = f.input :audio_file, as: :upload
+    = f.input :flyer_file, as: :upload
+    = f.input :video_file, as: :upload
+
+  = f.submit

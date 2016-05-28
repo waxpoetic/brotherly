@@ -11,6 +11,7 @@ gem 'active_model_serializers'
 gem 'active_model-jobs'
 gem 'draper'
 gem 'simple_form'
+gem 'nested_form'
 gem 'devise'
 gem 'haml-rails'
 gem \
