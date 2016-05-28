@@ -65,6 +65,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-commands-sidekiq'
+  gem 'spring-commands-rubocop'
   gem 'spring-watcher-listen'
 end
 
