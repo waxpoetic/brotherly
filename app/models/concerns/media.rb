@@ -11,20 +11,22 @@ module Media
     attachment :audio_file, extension: AUDIO_EXTENSIONS
     attachment :video_file, extension: VIDEO_EXTENSIONS
 
-    after_save :transcode_video!, if: :needs_video_transcode?
+    before_validation :clear_transcoded_at, if: :video_file_id_changed?
+
+    after_save :transcode_video!, if: :needs_transcode?
   end
 
-  def needs_video_transcode?
-    video_file_id_changed? || !video_transcoded?
-  end
-
-  def video_transcoded?
-    video_transcoded_at.present?
+  def needs_transcode?
+    video_transcoded_at.blank?
   end
 
   protected
 
   def transcode_video!
     TranscodeVideoJob.perform_later self
+  end
+
+  def clear_transcoded_at
+    self.transcoded_at = nil
   end
 end

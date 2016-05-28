@@ -2,7 +2,7 @@ class Performance < ActiveRecord::Base
   include Searchable
   include Media
 
-  # multisearchable against: [:title]
+  multisearchable against: [:name]
 
   belongs_to :artist
   belongs_to :episode
@@ -10,13 +10,13 @@ class Performance < ActiveRecord::Base
   validates :starts_at, presence: true
   validates :ends_at,   presence: true
 
-  attachment :audio_file, extension: 'wav'
+  before_save :ensure_name
 
   scope :play_order, -> { order 'starts_at DESC' }
 
-  def name
-    "#{artist.name} at #{episode.name}"
-  end
+  private
 
-  alias_method :title, :name
+  def ensure_name
+    self.name ||= "#{artist.name} at #{episode.name}"
+  end
 end
