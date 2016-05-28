@@ -1,0 +1,34 @@
+- cache @podcast
+  %rss{ "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd",  "xmlns:media" => "http://search.yahoo.com/mrss/", 'xmlns:atom' => "http://www.w3.org/2005/Atom", version: "2.0" }
+    - cache @podcast.channel do
+      %channel{'atom:link' => 'self'}
+        %title= @podcast.name
+        %link= @podcast.link
+        %description= @podcast.description
+        %language= @podcast.language
+        %pubDate= @podcast.published_at
+        %lastBuildDate= @podcast.published_at
+        %itunes:author= @podcast.author
+        %itunes:keywords= @podcast.keywords
+        %itunes:explicit no
+        %itunes:image{ href: image_url('logo.png') }/
+        %itunes:owner
+          %itunes:name= @podcast.author
+          %itunes:email= @podcast.email
+        %itunes:block no
+        %itunes:category= @podcast.category
+        %atom:link{ href: episodes_url(format: :rss), rel: 'self', type: 'application/rss+xml' }/
+      - @podcast.each do |episode|
+        - cache [@podcast, episode] do
+          %item
+            %title= episode.name
+            %description= episode.description
+            %pubDate= episode.published_at
+            %enclosure{ href: episode.audio, type: 'audio/mp3', length: episode.length }/
+            %link= url_for(episode)
+            %guid{ isPermaLink: false }= url_for(episode)
+            %itunes:author= @podcast.author
+            %itunes:subtitle= episode.subtitle
+            %itunes:summary= episode.summary
+            %itunes:explicit no
+            %itunes:duration= episode.duration

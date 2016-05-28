@@ -1,4 +1,6 @@
 class PerformanceDecorator < ApplicationDecorator
+  include MediaDecoration
+
   delegate_all
 
   delegate :name, to: :artist, prefix: true

@@ -1,20 +1,19 @@
 class SubscribersController < ApplicationController
-  resource :subscriber do
-    permit :name, :email
-  end
+  resource :subscriber
 
   def new
+    @subscriber = Subscriber.new
     render :new
   end
 
   def create
-    subscriber.attributes = edit_params
-    subscriber.save
-    session[:subscriber] = subscriber.id
-    respond_with subscriber, change: '#dialog'
+    @subscriber = Subscriber.new params.permit(:name, :email)
+    @subscriber.save
+    session[:subscriber] = @subscriber.try(:id)
+    respond_with @subscriber
   end
 
   def show
-    respond_with subscriber
+    respond_with @subscriber
   end
 end

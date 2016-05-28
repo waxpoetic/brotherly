@@ -2,11 +2,16 @@ class EpisodesController < ApplicationController
   resource :episode
 
   def index
-    @episodes = @episodes.latest
     respond_to do |format|
-      format.html
-      format.json
-      format.rss
+      format.html do
+        @episodes = @episodes.latest
+      end
+      format.json { render json: @episodes }
+      format.rss do
+        @podcast = PodcastDecorator.decorate(
+          collection.latest.in_podcast
+        )
+      end
     end
   end
 

@@ -1,4 +1,6 @@
 class EpisodeDecorator < ApplicationDecorator
+  include MediaDecoration
+
   VIDEO_WIDTH = 640
   VIDEO_HEIGHT = 480
 
@@ -54,57 +56,12 @@ class EpisodeDecorator < ApplicationDecorator
     current_title.gsub(/ episode/, '')
   end
 
-  def audio
-    h.attachment_url model, :audio_file
-  end
-
-  def audio?
-    model.audio_file_id.present?
-  end
-
-  def video
-    video_file_url.gsub(/\.(flv|mp4)/, '.m3u8')
-  end
-
-  def video?
-    model.video_file_id.present?
-  end
-
   def show_ticket_link?
     model.future? && model.eventbrite_url.present?
   end
 
   def show_facebook_event?
     model.future? && model.facebook_url.present?
-  end
-
-  def enclosure
-    {
-      url: audio,
-      length: audio_file.download.size,
-      type: 'audio/mp3'
-    }
-  end
-
-  def explicit
-    'no'
-  end
-
-  def duration
-    360
-  end
-
-  def title
-    model.name
-  end
-
-  def subtitle
-    h.truncate model.description, length: 100
-  end
-
-  def published_at
-    return unless model.published_at
-    model.published_at.to_s(:rfc822)
   end
 
   def posted_at
@@ -121,11 +78,4 @@ class EpisodeDecorator < ApplicationDecorator
   def fallback_flyer
     "http://placehold.it/240x320?text=#{placeholder_text}"
   end
-
-  private
-
-  def video_file_url
-    h.attachment_url model, :video_file
-  end
-
 end
