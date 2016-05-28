@@ -1,9 +1,11 @@
 AllCops:
-  RunRailsCops: true
   Exclude:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
     - 'bin/**/*'
+
+Rails:
+  Enabled: true
 
 Lint/AssignmentInCondition:
   Exclude:

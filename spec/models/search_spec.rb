@@ -38,10 +38,10 @@ RSpec.describe Search, type: :model do
 
   it 'finds all model classes' do
     allow(subject).to receive(:documents).and_return(documents)
-    expect(subject.send :models).to include(artist.class.name)
+    expect(subject.send(:models)).to include(artist.class.name)
   end
 
   it 'runs multisearch on query to find documents' do
-    expect(subject.send :create).to be true
+    expect(subject.send(:create)).to be true
   end
 end

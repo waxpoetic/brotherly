@@ -1,13 +1,13 @@
 module EpisodesHelper
   def youtube_stream(src: '', autoplay: 'autoplay')
     tag :iframe, \
-      id: 'stream',
-      width: EpisodeDecorator::VIDEO_WIDTH,
-      height: EpisodeDecorator::VIDEO_HEIGHT,
-      src: src,
-      frameborder: 0,
-      allowfullscreen: true,
-      autoplay: autoplay
+        id: 'stream',
+        width: EpisodeDecorator::VIDEO_WIDTH,
+        height: EpisodeDecorator::VIDEO_HEIGHT,
+        src: src,
+        frameborder: 0,
+        allowfullscreen: true,
+        autoplay: autoplay
   end
 
   def podcast_cache_key(section = nil)

@@ -3,18 +3,18 @@ module Transcode
   class Job
     include ActiveModel::Model
 
-    EXTENSION = 'm3u8'
-    AUDIO_PRESET = '1351620000001-200071'
+    EXTENSION = 'm3u8'.freeze
+    AUDIO_PRESET = '1351620000001-200071'.freeze
     VIDEO_PRESETS = {
       '400k' => '1351620000001-200050',
       '600k' => '1351620000001-200040',
       '1000k' => '1351620000001-200030',
       '1500k' => '1351620000001-200020',
       '2000k' => '1351620000001-200010'
-    }
-    FORMAT = 'HLSv3'
-    PREFIX = 'videos/'
-    SEGMENT_DURATION = '2'
+    }.freeze
+    FORMAT = 'HLSv3'.freeze
+    PREFIX = 'videos/'.freeze
+    SEGMENT_DURATION = '2'.freeze
 
     # @attribute! [rw]
     #   @return [String] File to be transcoded.

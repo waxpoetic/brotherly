@@ -26,7 +26,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
     audio_file: UploadField,
     flyer_file: UploadField,
     video_file: UploadField
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -36,7 +36,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :starts_at
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -57,7 +57,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :audio_file,
     :flyer_file,
     :video_file
-  ]
+  ].freeze
 
   # Overwrite this method to customize how episodes are displayed
   # across all pages of the admin dashboard.

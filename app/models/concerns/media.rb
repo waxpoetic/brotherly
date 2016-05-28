@@ -4,8 +4,8 @@
 module Media
   extend ActiveSupport::Concern
 
-  AUDIO_EXTENSIONS = %w(mp3 wav)
-  VIDEO_EXTENSIONS = %w(m3u8 mp4 flv)
+  AUDIO_EXTENSIONS = %w(mp3 wav).freeze
+  VIDEO_EXTENSIONS = %w(m3u8 mp4 flv).freeze
 
   included do
     attachment :audio_file, extension: AUDIO_EXTENSIONS

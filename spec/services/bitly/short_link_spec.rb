@@ -25,8 +25,8 @@ module Bitly
 
     it 'generates a short link' do
       expect(subject.save).to be true
-      expect(subject.send :link).to be_present
-      expect(subject.send :link).to eq(link)
+      expect(subject.send(:link)).to be_present
+      expect(subject.send(:link)).to eq(link)
     end
 
     it 'finds url from short link object' do

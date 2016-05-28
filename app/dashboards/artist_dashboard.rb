@@ -17,7 +17,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     links: HstoreField,
     description: Field::Text,
     image_file: UploadField
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -27,7 +27,7 @@ class ArtistDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :performances
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -41,7 +41,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     :links,
     :description,
     :image_file
-  ]
+  ].freeze
 
   # Overwrite this method to customize how artists are displayed
   # across all pages of the admin dashboard.

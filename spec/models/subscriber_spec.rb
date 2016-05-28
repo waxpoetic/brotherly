@@ -15,6 +15,6 @@ RSpec.describe Subscriber, type: :model do
 
   it 'subscribes the user to mailchimp' do
     expect(subject.save).to eq true
-    expect(subject.send :add!).to be_a(AddSubscriberJob)
+    expect(subject.send(:add!)).to be_a(AddSubscriberJob)
   end
 end
