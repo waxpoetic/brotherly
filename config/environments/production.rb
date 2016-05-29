@@ -54,10 +54,10 @@ Rails.application.configure do
   config.domain = 'brother.ly'
 
   # Enable CORS headers for Google fonts
-  config.font_assets.origin = "http://#{config.domain}"
+  config.font_assets.origin = "http://www.brother.ly"
 
   # Serve static assets over the CDN
-  config.action_controller.asset_host = "files.#{config.domain}"
+  config.action_controller.asset_host = Rails.application.secrets.cdn_domain_name
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
