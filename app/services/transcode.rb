@@ -105,7 +105,7 @@ class Transcode
 
   # @private
   def create
-    @persisted = transcoder.create_job(attributes).success?
+    @persisted = transcoder.create_job(attributes).successful?
   end
 
   # @private
