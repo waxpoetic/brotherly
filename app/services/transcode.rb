@@ -44,7 +44,7 @@ class Transcode
   def outputs
     VIDEO_PRESETS.map do |variant, preset_id|
       {
-        key: "hls#{variant}/#{output_id}",
+        key: "#{output_id}/hls#{variant}",
         preset_id: preset_id,
         segment_duration: SEGMENT_DURATION
       }
