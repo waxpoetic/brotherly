@@ -13,4 +13,8 @@ module Brotherly
   def self.version
     @version ||= SemVer.find
   end
+
+  def self.secrets
+    Rails.application.secrets
+  end
 end

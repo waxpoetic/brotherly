@@ -1,7 +1,6 @@
-class Artist < ActiveRecord::Base
+class Artist < ApplicationRecord
   extend FriendlyId
 
-  include Searchable
   include SitemapGeneration
 
   searchable :name
