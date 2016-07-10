@@ -26,7 +26,6 @@
 /bower_components
 /lib/bundler/man/
 *.bowerrc
-bower.json
 .powenv
 
 ## Rails
