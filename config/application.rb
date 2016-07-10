@@ -77,5 +77,7 @@ module Brotherly
 
     # Use the current process for ActionCable requests.
     config.action_cable.url = "ws://#{Brotherly.secrets.domain_name}:28080"
+
+    config.presenters.helpers << Refile::AttachmentHelper
   end
 end
