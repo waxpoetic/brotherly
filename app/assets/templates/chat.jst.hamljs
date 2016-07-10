@@ -1,0 +1,5 @@
+%article.message{ class: type }
+  %header
+    %h6= author
+  %main
+    %p= content

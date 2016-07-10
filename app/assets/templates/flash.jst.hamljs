@@ -1,0 +1,4 @@
+.message{ class: type }
+  %p= message
+  %nav
+    %a{href: '#', class: 'close', title: 'Close'} &times;

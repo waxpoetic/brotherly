@@ -1,0 +1,11 @@
+%article#dialog
+  %header
+    %h1= title
+    %nav
+      %button{ href: '#' class: 'close', title: 'Close'} &times;
+  %main
+    = content
+  %footer
+    %p Click on the 'X' to close this window.
+.dialog-shadow
+  / shadows the rest of the page

@@ -28,26 +28,18 @@ gem 'kaminari'
 gem 'semver'
 gem 'aws-sdk'
 gem 'sitemap_generator'
-gem 'videojs_rails'
 gem 'sass-rails', github: 'rails/sass-rails'
+gem 'videojs_rails'
 gem 'uglifier'
-gem 'jquery-rails'
-gem 'autoprefixer-rails'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', github: 'FortAwesome/font-awesome-sass'
 gem 'font_assets'
-gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'administrate', github: 'tubbo/administrate', branch: 'rails-5'
 gem 'halt', github: 'tubbo/halt', branch: 'master'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-foundation', '~> 5'
-  gem 'rails-assets-lodash'
-end
+gem 'hamljs'
 
 group :development do
   # gem 'meta_request'
-  gem 'web-console', '~> 2.0'
   gem 'rubocop'
 end
 
