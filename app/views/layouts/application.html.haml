@@ -30,12 +30,12 @@
             = nav_link t(:past_episode, scope: :nav), episodes_path
             = nav_link t(:artists, scope: :nav), artists_path
             = nav_link subscribe_text, new_subscriber_path, modal: true
-      #flash.flash.row
-        .large-12.columns
-          - flash.each do |type, message|
-            %div{ class: "alert-box #{type}", data: { alert: true  } }
-              = message
-              = link_to '&times;'.html_safe, '#', class: 'close'
+      #flash
+        - flash.each do |type, message|
+          .message{ class: type }
+            %p= message
+            %nav
+              %a.close{ href: '#', title: 'Close' } &times;
     %main{ class: page_name }
       .messages.row
         = render 'flash'

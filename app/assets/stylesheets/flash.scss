@@ -1,0 +1,11 @@
+#flash {
+  .message {
+    &.notice {
+      background: lighten($success-color, 40%);
+    }
+
+    &.alert {
+      background: lighten($alert-color, 40%);
+    }
+  }
+}
