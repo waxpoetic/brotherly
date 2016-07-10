@@ -1,0 +1,23 @@
+#dialog {
+  header {
+    @include outer-container;
+
+    h1 {
+      @include span-columns(10);
+    }
+
+    nav {
+      @include span-columns(2);
+
+      button {
+      }
+    }
+  }
+
+  main {
+  }
+
+  footer {
+    display: none;
+  }
+}

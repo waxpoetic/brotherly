@@ -1,13 +1,12 @@
 //= require jquery
-//= require jquery_ujs
-//= require foundation
+//= require jquery-ujs
 //= require refile
 //= require lodash
-//= require video
-//= require jquery.turbolinks
+//= require videojs
+//= require rewire
 //= require turbolinks
-//= require_self
+//= require_tree ./templates
 //= require_tree .
+//= require_self
 
-$.turbo.use('page:load', 'page:fetch', 'page:update', 'opened.fndtn.reveal');
-$(function() { $(document).foundation(); });
+$(document).rewire();
