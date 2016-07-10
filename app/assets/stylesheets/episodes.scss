@@ -1,4 +1,28 @@
 .episodes {
+  .details {
+    header {
+    }
+    main {
+      .content {
+      }
+      aside {
+        .chat {
+        }
+      }
+    }
+    footer {
+      nav {
+        display: flex;
+
+        a {
+          flex: 1
+        }
+      }
+    }
+  }
+}
+
+.episodes {
   .episode-summary {
     background: $jet;
     min-height: 260px;

@@ -1,2 +1,45 @@
-- title episode.title
-= render 'details', episode: episode, episode_title: episode.title
+- cache @episode do
+  %article.details
+    %header
+      %h1= @episode.title
+    %main
+      .content
+        .video
+          - if @episode.streaming?
+            = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
+          - elsif @episode.archived?
+            = videojs_rails sources: { m3u8: @episode.video }, width: EpisodeDecorator::VIDEO_WIDTH, id: 'archive'
+          - else
+            = @episode.flyer
+        .description
+          = simple_format @episode.description
+      %aside
+        %section.lineup
+          %h2= t :lineup, scope: :episodes
+          - if @episode.current?
+            = render @episode.artists
+          - else
+            = render @episode.performances
+        - if @episode.current?
+          %section.chat
+            %h2= t :chat, scope: :episodes
+            %textarea#chat-output{ editable: false }
+              / chat output
+            %form#chat-input
+              = text_field_tag :author, placeholder: 'nickname'
+              = text_field_tag :content, placeholder: 'enter message..'
+              = submit_tag value: 'Send'
+    %footer
+      %nav
+        - if @episode.audio?
+          = button_to @episode.audio, class: 'audio' do
+            = icon :music
+            = t :audio, scope: :episodes
+        - if @episode.show_ticket_link?
+          = button_to @episode.eventbrite_url, class: 'ticket', target: '_blank' do
+            = icon :ticket
+            = t :tickets, scope: :episodes
+        - if @episode.show_facebook_event?
+          = button_to @episode.facebook_url, class: 'facebook', target: '_blank' do
+            = icon :facebook
+            = t :share, scope: :episodes

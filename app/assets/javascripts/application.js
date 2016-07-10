@@ -4,6 +4,7 @@
 //= require lodash
 //= require videojs
 //= require rewire
+//= require cable
 //= require turbolinks
 //= require_tree ./templates
 //= require_tree .

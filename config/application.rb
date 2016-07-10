@@ -17,6 +17,7 @@ require 'rails'
   rescue LoadError
   end
 end
+require 'action_cable/engine'
 
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env

@@ -28,5 +28,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'episodes#current'
+  root to: 'episodes#show', id: 'current'
 end
