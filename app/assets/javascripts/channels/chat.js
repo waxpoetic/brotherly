@@ -1,9 +1,11 @@
 App.chat = App.cable.subscriptions.create("ChatChannel", {
   connected: function() {
+    let channel = this;
+
     $('#chat-output').append(
       JST['chat']({
         type: 'system',
-        content: 'You have joined the chat.'
+        content: '* You have joined the chat.'
       })
     );
 
@@ -12,7 +14,8 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
           author = form.find('input[name="author"]'),
           content = form.find('input[name="content"]');
 
-      App.chat.send({
+      channel.send({
+        type: 'message',
         author: author.val(),
         content: content.val()
       });
@@ -26,7 +29,7 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
     $('#chat-output').append(
       JST['chat']({
         type: 'system',
-        content: 'You have been disconnected.'
+        content: '* You have been disconnected.'
       })
     );
   },
