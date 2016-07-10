@@ -1,0 +1,9 @@
+Description:
+    Generates a presentation view model object for your model or PORO.
+
+Example:
+    rails generate presenter Artist
+
+    This will create:
+        app/presenters/artist_presenter.rb
+        spec/presenters/artist_presenter_spec.rb
