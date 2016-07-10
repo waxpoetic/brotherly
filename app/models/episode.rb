@@ -34,6 +34,10 @@ class Episode < ActiveRecord::Base
     latest.first
   end
 
+  def current?
+    Episode.current == self
+  end
+
   def future?
     return true if starts_at.blank?
     starts_at >= Time.current
