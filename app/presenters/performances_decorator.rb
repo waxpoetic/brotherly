@@ -1,0 +1,2 @@
+class PerformancesPresenter < CollectionPresenter
+end

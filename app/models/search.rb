@@ -4,7 +4,7 @@
 # the raw document objects returned by the search query.
 class Search
   include ActiveModel::Model
-  include Draper::Decoratable
+  include Presenters::Presentable
 
   # Raw search query presented to the engine.
   #
