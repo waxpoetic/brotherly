@@ -5,6 +5,7 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   include Searchable
+  include Draper::Decoratable
 
   extend Refile::ActiveRecord::Attachment
 end

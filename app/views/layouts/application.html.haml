@@ -6,6 +6,7 @@
     = stylesheet_link_tag asset_url('application.css', host: Rails.configuration.action_controller.asset_host)
     = favicon_link_tag asset_url('favicon.ico', host: Rails.configuration.action_controller.asset_host)
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
+    = action_cable_meta_tag
     = javascript_include_tag asset_url('modernizr.js', host: Rails.configuration.action_controller.asset_host)
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
   %body{ class: section_name }

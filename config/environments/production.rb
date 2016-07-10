@@ -28,10 +28,9 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.action_controller.asset_host = "http://#{Brotherly.secrets.cdn_domain_name}"
 
-  # Mount Action Cable outside main process or domain
-  # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  # Only allow locally-originated clients to request ActionCable
+  # resources.
+  config.action_cable.allowed_request_origins = ["http://#{Brotherly.secrets.domain_name}"]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -79,6 +78,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Use Rack::Cache as an HTTP cache with a Redis backend
   config.action_dispatch.rack_cache = {
     metastore: "redis://#{Brotherly.secrets.redis_url}/0/brotherly-rack-metastore",
     entitystore: "redis://#{Brotherly.secrets.redis_url}/0/brotherly-rack-entitystore",

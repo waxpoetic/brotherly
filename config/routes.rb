@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   if defined? Sidekiq
     authenticate :user, ->(u) { u.is_admin? } do
-      mount Sidekiq::Web => '/sidekiq'
+      mount Sidekiq::Web, to: '/sidekiq'
     end
   end
 

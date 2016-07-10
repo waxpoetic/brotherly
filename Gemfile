@@ -9,7 +9,7 @@ gem 'controller_resources', github: 'tubbo/controller_resources', branch: 'maste
 gem 'responders'
 gem 'active_model_serializers'
 gem 'active_model-jobs'
-gem 'draper'
+# gem 'draper'
 gem 'activemodel-serializers-xml'
 gem 'simple_form'
 gem 'devise'
@@ -36,7 +36,7 @@ gem 'font_assets'
 gem 'turbolinks'
 gem 'administrate', github: 'tubbo/administrate', branch: 'rails-5'
 gem 'halt', github: 'tubbo/halt', branch: 'master'
-gem 'hamljs'
+# gem 'hamljs'
 
 group :development do
   # gem 'meta_request'

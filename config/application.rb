@@ -23,6 +23,7 @@ require 'action_cable/engine'
 Bundler.require :default, Rails.env
 
 require 'brotherly'
+require 'draper'
 
 module Brotherly
   class Application < Rails::Application
@@ -74,5 +75,8 @@ module Brotherly
     }
 
     config.domain = 'http://brotherly.dev'
+
+    # Use the current process for ActionCable requests.
+    config.action_cable.url = "ws://#{Brotherly.secrets.domain_name}:28080"
   end
 end
