@@ -1,6 +1,9 @@
 require 'bundler/setup'
 require 'codeclimate-test-reporter'
 
+# Turn off SitemapGenerator output
+ENV['VERBOSE'] = 'false'
+
 # Start test coverage reporting
 CodeClimate::TestReporter.start
 

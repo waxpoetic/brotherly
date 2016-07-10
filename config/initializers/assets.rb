@@ -4,17 +4,17 @@
 Rails.application.config.assets.version = Brotherly.version.format '%M.%m.%p%s'
 
 # Add additional assets to the asset load path
-Rails.application.config.assets.paths << 'administrate'
+# Rails.application.config.assets.paths << 'administrate'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w(
-  administrate/application.css
-  administrate/application.js
-  modernizr.js
-  video-js.swf
-  vjs.eot
-  vjs.svg
-  vjs.ttf
-  vjs.woff
-)
+# Rails.application.config.assets.precompile += %w(
+#   administrate/application.css
+#   administrate/application.js
+#   modernizr.js
+#   video-js.swf
+#   vjs.eot
+#   vjs.svg
+#   vjs.ttf
+#   vjs.woff
+# )

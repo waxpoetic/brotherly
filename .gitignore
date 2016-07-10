@@ -23,7 +23,7 @@
 # Environment normalisation
 /.bundle/
 /vendor/bundle
-/vendor/assets/bower_components
+/bower_components
 /lib/bundler/man/
 *.bowerrc
 bower.json

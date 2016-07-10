@@ -12,7 +12,7 @@ RSpec.describe 'Episodes', type: :request do
       )
     end
 
-    it 'shows the podcast' do
+    xit 'shows the podcast' do
       get episodes_path(format: 'rss')
 
       expect(response).to have_http_status(200)

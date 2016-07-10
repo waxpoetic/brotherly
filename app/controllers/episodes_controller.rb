@@ -1,5 +1,5 @@
 class EpisodesController < ApplicationController
-  resource :episode, scope: :latest
+  resource :episode
 
   def index
     respond_to do |format|
@@ -7,10 +7,6 @@ class EpisodesController < ApplicationController
       format.json
       format.rss
     end
-  end
-
-  def current
-    respond_with current_episode
   end
 
   def show

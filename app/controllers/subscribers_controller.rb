@@ -1,7 +1,5 @@
 class SubscribersController < ApplicationController
-  resource :subscriber do
-    permit :name, :email
-  end
+  resource :subscriber
 
   def new
     render :new
