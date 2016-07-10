@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   halt ActiveRecord::RecordNotFound, with: :not_found
 
+  after_action :populate_headers
+
   protected
 
   def use_layout?
@@ -21,5 +23,12 @@ class ApplicationController < ActionController::Base
 
   def model
     super.decorate
+  end
+
+  private
+
+  def populate_headers
+    response.headers['X-Flash'] = flash.to_json
+    response.headers['X-Title'] = page_title
   end
 end
