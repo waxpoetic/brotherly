@@ -136,6 +136,14 @@ GIT
       actionpack
 
 GIT
+  remote: git://github.com/tubbo/presenters.git
+  revision: 433e31394ec7b836a210cd47b77fd893d17da667
+  branch: master
+  specs:
+    presenters (0.1.0)
+      rails
+
+GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: c51dee6492c465e29561fbd42db56cdaf37de53c
   specs:
@@ -536,6 +544,7 @@ DEPENDENCIES
   pg
   pg_search
   poltergeist
+  presenters!
   pry-byebug
   pry-rails
   puma

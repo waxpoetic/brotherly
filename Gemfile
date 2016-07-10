@@ -36,6 +36,7 @@ gem 'font_assets'
 gem 'turbolinks'
 gem 'administrate', github: 'tubbo/administrate', branch: 'rails-5'
 gem 'halt', github: 'tubbo/halt', branch: 'master'
+gem 'presenters', github: 'tubbo/presenters', branch: 'master'
 # gem 'hamljs'
 
 group :development do

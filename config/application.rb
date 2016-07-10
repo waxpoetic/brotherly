@@ -23,7 +23,6 @@ require 'action_cable/engine'
 Bundler.require :default, Rails.env
 
 require 'brotherly'
-require 'presenters'
 
 module Brotherly
   class Application < Rails::Application
