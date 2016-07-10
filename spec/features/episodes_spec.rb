@@ -55,7 +55,7 @@ RSpec.feature 'Episodes', type: :feature do
     )
     visit episode_path(episode, format: 'html')
 
-    expect(episode.decorate).to be_streaming
+    expect(episode.present).to be_streaming
     expect(page).to have_content(episode.name)
     expect(page).to have_content(t(:title, scope: :artists))
     expect(page).to have_content(episode.artists.first.name)
@@ -72,7 +72,7 @@ RSpec.feature 'Episodes', type: :feature do
     )
     visit episode_path(episode, format: 'html')
 
-    expect(episode.decorate).to be_archived
+    expect(episode.present).to be_archived
     expect(page).to have_content(episode.name)
     expect(page).to have_content(t(:title, scope: :artists))
     expect(page).to have_content(episode.artists.first.name)

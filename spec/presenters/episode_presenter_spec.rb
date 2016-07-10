@@ -4,7 +4,7 @@ RSpec.describe EpisodePresenter do
   let(:episode) { episodes :one }
 
   context '#autoplay?' do
-    subject { episode.decorate }
+    subject { episode.present }
 
     it 'allows for youtube autoplay when currently streaming' do
       episode.ends_at = 1.hour.from_now

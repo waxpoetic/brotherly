@@ -19,6 +19,6 @@ class EpisodesController < ApplicationController
 
   def model
     return super unless params[:id] == 'current'
-    Episode.current.decorate
+    Episode.current.present
   end
 end

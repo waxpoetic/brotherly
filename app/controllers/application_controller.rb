@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
     'application' if request.xhr?
   end
 
-  def current_decorated_user
-    current_user.try :decorate
+  def current_presentd_user
+    current_user.try :present
   end
 
   def model
-    super.decorate
+    super.present
   end
 
   private

@@ -1,8 +1,8 @@
 - search.results.each do |result|
   - if result.is_a? Performance
-    %li= link_to result.decorate.title, result.episode
+    %li= link_to result.present.title, result.episode
   - else
-    %li= link_to result.decorate.title, result
+    %li= link_to result.present.title, result
 - unless search.results.any?
   %li
     %label= t :empty, scope: :search

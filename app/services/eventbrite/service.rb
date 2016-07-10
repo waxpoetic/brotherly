@@ -23,11 +23,11 @@ module Eventbrite
         category_id: CATEGORY_ID,
         subcategory_id: SUBCATEGORY_ID,
         start: {
-          utc: episode.decorate.starts_at,
+          utc: episode.present.starts_at,
           timezone: Time.zone
         },
         end: {
-          utc: episode.decorate.ends_at,
+          utc: episode.present.ends_at,
           timezone: Time.zone
         }
       )

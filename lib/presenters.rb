@@ -8,8 +8,8 @@ module Presenters
   autoload :Relation
   autoload :Helpers
 
-  def decorate(model, **options)
-    model.decorator.new(model, **options)
+  def present(model, **options)
+    model.present.new(model, **options)
   end
 end
 

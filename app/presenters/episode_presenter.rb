@@ -9,7 +9,7 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def artists
-    model.performances.play_order.map(&:artist).map(&:decorate)
+    model.performances.play_order.map(&:artist).map(&:present)
   end
 
   def cache_key_for(section)
@@ -21,7 +21,7 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def performances
-    model.performances.map(&:decorate)
+    model.performances.map(&:present)
   end
 
   def flyer
