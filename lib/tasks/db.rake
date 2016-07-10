@@ -18,29 +18,33 @@ namespace :db do
     Rake::Task['db:index'].invoke
   end
 
-  def import_database(app, to: '')
+  def import_database(app: '', env: '')
     db = Rails.configuration.database_configuration[Rails.env].with_indifferent_access
-    unless File.exist? Rails.root.join(to).to_s
+    path = Rails.root.join('db', 'import', "#{env}.dump").to_s
+    unless File.exist? path
       sh "heroku pg:backups capture --app=#{app}"
-      sh "curl -o #{to} `heroku pg:backups public-url --app=#{app}`"
+      sh [
+        "curl -o #{path}",
+        "`heroku pg:backups public-url --app=#{app}`"
+      ].join("\s")
     end
     sh [
       'pg_restore',
       '--verbose --clean --no-acl --no-owner',
       "-d #{db[:database]}",
-      to
+      path
     ].join("\s")
   end
 
   namespace :import do
     desc 'Pull production data into the local database'
     task production: :environment do
-      import_database 'brotherly', to: 'db/import/production.dump'
+      import_database app: 'brotherly', env: 'production'
     end
 
     desc 'Pull staging data into the local database'
     task staging: :environment do
-      import_database 'brotherly-staging', to: 'db/import/staging.dump'
+      import_database app: 'brotherly-staging', env: 'staging'
     end
   end
 end
