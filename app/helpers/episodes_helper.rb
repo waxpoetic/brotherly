@@ -3,7 +3,6 @@ module EpisodesHelper
     tag :iframe, \
         id: 'stream',
         width: EpisodeDecorator::VIDEO_WIDTH,
-        height: EpisodeDecorator::VIDEO_HEIGHT,
         src: src,
         frameborder: 0,
         allowfullscreen: true,

@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'codeclimate-test-reporter'
+require 'vcr'
 
 # Start test coverage reporting
 CodeClimate::TestReporter.start

@@ -6,7 +6,7 @@ RSpec.feature 'Performances', type: :feature do
   end
 
   scenario 'go to a performance by its episode' do
-    skip
+    skip 'not yet implemented'
     visit episodes_path(performance.episode, format: 'html')
     click_link performance.artist.name
     expect(page).to have_content(performance.artist.name)
