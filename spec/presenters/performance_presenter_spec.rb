@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PerformanceDecorator do
+RSpec.describe PerformancePresenter do
   let :performance do
     performances :del_at_four
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SubscriberDecorator do
+RSpec.describe SubscriberPresenter do
   let(:subscriber) { Subscriber.new email: 'test@example.com' }
   subject { described_class.new subscriber }
 

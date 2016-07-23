@@ -1,4 +1,4 @@
-class ArtistDecorator < ApplicationDecorator
+class ArtistPresenter < ApplicationPresenter
   delegate_all
 
   def image

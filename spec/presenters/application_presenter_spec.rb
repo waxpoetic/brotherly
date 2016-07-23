@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationDecorator, type: :decorator do
+RSpec.describe ApplicationPresenter, type: :presenter do
   let(:artist) { artists :del }
   subject { described_class.new artist }
 

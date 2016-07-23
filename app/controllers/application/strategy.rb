@@ -1,5 +1,4 @@
 require 'decent_exposure/strong_parameters_strategy'
-require 'draper/decoratable'
 
 module Application
   # A strategy for DecentExposure that automatically authorizes the
@@ -10,24 +9,24 @@ module Application
     # Generate a policy scope for all collection resources, then
     # decorate the finished object relation.
     def collection_resource
-      collection_decorator.decorate(
+      collection_presenter.new(
         super.page(current_page).per(per_page),
-        with: decorator
+        with: presenter
       )
     end
 
     def singular_resource
-      decorator.decorate super
+      presenter.new super
     end
 
     private
 
-    def decorator
-      model.decorator_class
+    def presenter
+      "#{model.model_name.name}Presenter".constantize
     end
 
-    def collection_decorator
-      "#{model.model_name.plural.capitalize}Decorator".constantize
+    def collection_presenter
+      "#{model.model_name.plural.capitalize}Presenter".constantize
     end
 
     def model

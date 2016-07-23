@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ArtistDecorator do
+RSpec.describe ArtistPresenter do
   let :artist do
     artists :rnd
   end

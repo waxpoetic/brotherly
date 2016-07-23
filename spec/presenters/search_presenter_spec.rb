@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SearchDecorator do
+RSpec.describe SearchPresenter do
   let :search do
     double(
       'Search',
@@ -13,6 +13,6 @@ RSpec.describe SearchDecorator do
 
   it 'decorates results' do
     expect(subject.results).not_to be_empty
-    expect(subject.results.first).to be_a SearchResultDecorator
+    expect(subject.results.first).to be_a SearchResultPresenter
   end
 end

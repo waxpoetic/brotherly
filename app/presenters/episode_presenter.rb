@@ -1,4 +1,4 @@
-class EpisodeDecorator < ApplicationDecorator
+class EpisodePresenter < ApplicationPresenter
   # Hard-set width of videos.
   VIDEO_WIDTH = 640
 

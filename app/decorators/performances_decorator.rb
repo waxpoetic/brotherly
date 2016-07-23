@@ -1,2 +1,0 @@
-class PerformancesDecorator < CollectionDecorator
-end

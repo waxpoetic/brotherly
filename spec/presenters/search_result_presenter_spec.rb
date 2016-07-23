@@ -1,11 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe SearchResultDecorator do
+RSpec.describe SearchResultPresenter do
   let(:episode) { episodes :one }
   let(:result) do
     double(
       searchable_id: episode.id,
       searchable_type: 'Episode',
+      searchable: episode,
       content: episode.name
     )
   end

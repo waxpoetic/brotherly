@@ -73,5 +73,7 @@ module Brotherly
     }
 
     config.domain = 'http://brotherly.dev'
+
+    config.makeover.helpers << Refile::AttachmentHelper
   end
 end

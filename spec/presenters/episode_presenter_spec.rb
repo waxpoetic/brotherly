@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe EpisodeDecorator do
+RSpec.describe EpisodePresenter do
   let(:episode) { episodes :one }
   subject { described_class.new episode }
 
