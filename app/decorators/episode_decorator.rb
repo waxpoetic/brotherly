@@ -2,6 +2,9 @@ class EpisodeDecorator < ApplicationDecorator
   # Hard-set width of videos.
   VIDEO_WIDTH = 640
 
+  # Content type of video streams.
+  VIDEO_TYPE = 'application/x-mpegURL'
+
   # Protocol used for transcode streams.
   TRANSCODE_PROTOCOL = 'https://'.freeze
 
