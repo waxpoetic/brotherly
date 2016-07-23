@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
-  # Use the default app responder object.
-  self.responder = Application::Responder
+  include ControllerResources
+  include Makeover::Presentable
+
+  # Respond to HTML only
+  responders :flash, :http_cache
   respond_to :html
 
   # Define a default HTML layout.
@@ -11,22 +14,6 @@ class ApplicationController < ActionController::Base
   # Configure DecentExposure
   decent_configuration do
     strategy Application::Strategy
-  end
-
-  expose :current_episode do
-    Episode.current.decorate
-  end
-
-  expose :recent_episodes do
-    Episode.latest.limit(5)
-  end
-
-  expose :upcoming_episodes do
-    Episode.upcoming.limit(5)
-  end
-
-  expose :search do
-    Search.new
   end
 
   # Prevent CSRF attacks by raising an exception.
@@ -55,6 +42,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_decorated_user
-    current_user.try :decorate
+    present current_user
+  end
+
+  def model
+    present super
+  end
+
+  def collection
+    present super
   end
 end

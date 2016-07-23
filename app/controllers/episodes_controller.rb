@@ -9,11 +9,14 @@ class EpisodesController < ApplicationController
     end
   end
 
-  def current
-    respond_with current_episode
+  def show
+    respond_with @episode
   end
 
-  def show
-    respond_with episode
+  private
+
+  def model
+    return super unless params[:id] == 'current'
+    present Episode.current
   end
 end

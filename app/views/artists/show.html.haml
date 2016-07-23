@@ -1,20 +1,20 @@
-- title artist.name
+- title @artist.name
 .info.row
   .large-8.columns
     .row
-      = attachment_image_tag artist, :image_file, :fill, 500, 500
+      = attachment_image_tag @artist, :image_file, :fill, 500, 500
     .row
-      %h1= artist.name
+      %h1= @artist.name
     .row
-      = simple_format artist.description
+      = simple_format @artist.description
   .large-4.columns
-    - if artist.links.present?
+    - if @artist.links.present?
       .row
         %h3 Links
         %ul.links
-          - artist.links.each do |link|
+          - @artist.links.each do |link|
             %li
-              = link_to link.href, title: "#{artist.name} on #{link.title}", class: 'secondary button' do
+              = link_to link.href, title: "#{@artist.name} on #{link.title}", class: 'secondary button' do
                 = icon link.icon
                 &nbsp;
                 = link.title
@@ -22,7 +22,7 @@
       .large-12.columns
         %h2= t :performances, scope: :episodes
         %ul.performances
-          - artist.performances.each do |performance|
+          - @artist.performances.each do |performance|
             %li.row
               = link_to performance.episode, title: performance.name do
                 .large-4.columns

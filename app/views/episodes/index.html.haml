@@ -1,9 +1,9 @@
 - title 'Episodes'
 
-- cache episodes do
+- cache @episodes do
   %h1= t :listing, scope: :episodes
 
-  - episodes.order('starts_at DESC').in_groups_of(3, false).each do |episodes|
+  - @episodes.order('starts_at DESC').in_groups_of(3, false).each do |episodes|
     - cache "episodes/row/#{episodes}" do
       .episode-group.row
         %br/

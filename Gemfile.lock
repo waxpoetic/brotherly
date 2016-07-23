@@ -16,6 +16,14 @@ GIT
       sinatra (>= 1.4.5)
 
 GIT
+  remote: git://github.com/tubbo/controller_resources.git
+  revision: 2154f6e59b02d7717194e1733e9f7bc2e67ba0d2
+  branch: master
+  specs:
+    controller_resources (1.0.0)
+      rails
+
+GIT
   remote: git://github.com/tubbo/makeover.git
   revision: a651abf26eb067c602156d2f702347bbede8c2c6
   specs:
@@ -135,15 +143,11 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
-    controller_resources (0.1.2)
-      decent_exposure (~> 2)
-      rails (~> 4)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.2)
-    decent_exposure (2.3.3)
     devise (4.1.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -239,7 +243,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.99.2)
     mini_magick (4.5.1)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.1.0)
     minitest (5.9.0)
     momentjs-rails (2.11.1)
       railties (>= 3.1)
@@ -251,8 +255,9 @@ GEM
       sass (>= 3.3)
     netrc (0.11.0)
     newrelic_rpm (3.15.2.317)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     normalize-rails (3.0.3)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -268,6 +273,7 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
+    pkg-config (1.1.7)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -341,7 +347,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
-    rake (11.1.2)
+    rake (11.2.2)
     ransack (1.7.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -448,7 +454,7 @@ GEM
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
       spring (~> 1.2)
-    sprockets (3.6.0)
+    sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -499,7 +505,7 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter
   coffee-rails
-  controller_resources
+  controller_resources!
   devise
   email_validator
   eventbrite-client!
