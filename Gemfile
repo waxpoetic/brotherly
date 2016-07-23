@@ -12,11 +12,7 @@ gem 'makeover'
 gem 'simple_form'
 gem 'devise'
 gem 'haml-rails'
-gem \
-  'refile',
-  github: 'refile/refile',
-  require: 'refile/rails',
-  ref: 'e844cc96ed5d07d07f6bde96b6429c01cd291b9a'
+gem 'refile', github: 'refile/refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
 gem 'bitly'
@@ -82,6 +78,6 @@ group :production do
   gem 'rails_12factor'
   gem 'sidekiq'
   gem 'sinatra', github: 'sinatra/sinatra', require: false
-  gem 'refile-s3'
+  gem 'refile-s3', github: 'refile/refile-s3'
   gem 'airbrake'
 end
