@@ -17,7 +17,7 @@ RSpec.describe TranscodeVideoJob, type: :job do
 
   it 'starts a transcode for video' do
     VCR.use_cassette :transcode_three do
-      allow(episode).to receive(:video_file).and_return(video)
+      allow(episode).to receive(:video_file_id).and_return(video.id)
       expect(subject.perform(episode)).to be true
       expect { episode.reload }.not_to raise_error
       expect(episode.video_transcoded_at).to be_present

@@ -5,9 +5,7 @@ http_interactions:
     uri: https://elastictranscoder.us-east-1.amazonaws.com/2012-09-25/jobs
     body:
       encoding: UTF-8
-      string: '{"PipelineId":"1464279176808-397ul7","Input":{"Key":"store/#[Double
-        (anonymous)]"},"Outputs":[{"Key":"400k","PresetId":"1351620000001-200050","SegmentDuration":"2"},{"Key":"600k","PresetId":"1351620000001-200040","SegmentDuration":"2"},{"Key":"1000k","PresetId":"1351620000001-200030","SegmentDuration":"2"},{"Key":"1500k","PresetId":"1351620000001-200020","SegmentDuration":"2"},{"Key":"2000k","PresetId":"1351620000001-200010","SegmentDuration":"2"}],"OutputKeyPrefix":"episodes/#[Double
-        (anonymous)]","Playlists":[{"Name":"brother-ly-three","Format":"HLSv3","OutputKeys":["400k","600k","1000k","1500k","2000k"]}]}'
+      string: '{"PipelineId":"1464279176808-397ul7","Input":{"Key":"store/be7d09b6045c20c7c1bfdd6c6f4e97cd"},"Outputs":[{"Key":"400k","PresetId":"1351620000001-200050","SegmentDuration":"2"},{"Key":"600k","PresetId":"1351620000001-200040","SegmentDuration":"2"},{"Key":"1000k","PresetId":"1351620000001-200030","SegmentDuration":"2"},{"Key":"1500k","PresetId":"1351620000001-200020","SegmentDuration":"2"},{"Key":"2000k","PresetId":"1351620000001-200010","SegmentDuration":"2"}],"OutputKeyPrefix":"episodes/be7d09b6045c20c7c1bfdd6c6f4e97cd","Playlists":[{"Name":"brother-ly-three","Format":"HLSv3","OutputKeys":["400k","600k","1000k","1500k","2000k"]}]}'
     headers:
       Content-Type:
       - ''
@@ -16,16 +14,16 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby2/2.3.7 ruby/2.3.0 x86_64-darwin14
       X-Amz-Date:
-      - 20160723T001226Z
+      - 20160723T003407Z
       Host:
       - elastictranscoder.us-east-1.amazonaws.com
       X-Amz-Content-Sha256:
-      - a16455ed1df37e9a853b05cdd41d4e2c0d8e58243d3adbd84ed53c25cdf4f392
+      - 7c84a8fb922f9d041ee222a5cfa1972edd514402f1269225a06e1edf24f824f7
       Authorization:
       - AWS4-HMAC-SHA256 Credential=AKIAI57VQFC5DHAJXT5Q/20160723/us-east-1/elastictranscoder/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=900a6555200b8b0c700b8589cd51c8859236444154644403043693e82b36a651
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7564edc3e658f3881687f70b43d0917d48f9e27d1602bed6ccc94c8c89962d30
       Content-Length:
-      - '616'
+      - '638'
       Accept:
       - "*/*"
   response:
@@ -34,18 +32,16 @@ http_interactions:
       message: Created
     headers:
       X-Amzn-Requestid:
-      - 233a7d87-506a-11e6-8319-737cfa4d5afb
+      - 2ab82f9f-506d-11e6-aaeb-5b19f0403412
       Content-Type:
       - application/json
       Content-Length:
-      - '3178'
+      - '3200'
       Date:
-      - Sat, 23 Jul 2016 00:12:26 GMT
+      - Sat, 23 Jul 2016 00:34:07 GMT
     body:
       encoding: UTF-8
-      string: '{"Job":{"Arn":"arn:aws:elastictranscoder:us-east-1:353425564027:job/1469232746936-ccbia6","Id":"1469232746936-ccbia6","Input":{"AspectRatio":null,"Container":null,"DetectedProperties":null,"Encryption":null,"FrameRate":null,"Interlaced":null,"Key":"store/#[Double
-        (anonymous)]","Resolution":null},"Output":{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"1","Key":"400k","PresetId":"1351620000001-200050","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},"OutputKeyPrefix":"episodes/#[Double
-        (anonymous)]","Outputs":[{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"1","Key":"400k","PresetId":"1351620000001-200050","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"2","Key":"600k","PresetId":"1351620000001-200040","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"3","Key":"1000k","PresetId":"1351620000001-200030","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"4","Key":"1500k","PresetId":"1351620000001-200020","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"5","Key":"2000k","PresetId":"1351620000001-200010","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null}],"PipelineId":"1464279176808-397ul7","Playlists":[{"Format":"HLSv3","HlsContentProtection":null,"Name":"brother-ly-three","OutputKeys":["400k","600k","1000k","1500k","2000k"],"PlayReadyDrm":null,"Status":"Submitted","StatusDetail":null}],"Status":"Submitted","Timing":{"FinishTimeMillis":null,"StartTimeMillis":null,"SubmitTimeMillis":1469232747044},"UserMetadata":null}}'
+      string: '{"Job":{"Arn":"arn:aws:elastictranscoder:us-east-1:353425564027:job/1469234048003-0nkrw1","Id":"1469234048003-0nkrw1","Input":{"AspectRatio":null,"Container":null,"DetectedProperties":null,"Encryption":null,"FrameRate":null,"Interlaced":null,"Key":"store/be7d09b6045c20c7c1bfdd6c6f4e97cd","Resolution":null},"Output":{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"1","Key":"400k","PresetId":"1351620000001-200050","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},"OutputKeyPrefix":"episodes/be7d09b6045c20c7c1bfdd6c6f4e97cd","Outputs":[{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"1","Key":"400k","PresetId":"1351620000001-200050","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"2","Key":"600k","PresetId":"1351620000001-200040","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"3","Key":"1000k","PresetId":"1351620000001-200030","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"4","Key":"1500k","PresetId":"1351620000001-200020","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null},{"AlbumArt":null,"AppliedColorSpaceConversion":null,"Captions":null,"Composition":null,"Duration":null,"DurationMillis":null,"Encryption":null,"FileSize":null,"FrameRate":null,"Height":null,"Id":"5","Key":"2000k","PresetId":"1351620000001-200010","Rotate":null,"SegmentDuration":"2.0","Status":"Submitted","StatusDetail":null,"ThumbnailEncryption":null,"ThumbnailPattern":null,"Watermarks":[],"Width":null}],"PipelineId":"1464279176808-397ul7","Playlists":[{"Format":"HLSv3","HlsContentProtection":null,"Name":"brother-ly-three","OutputKeys":["400k","600k","1000k","1500k","2000k"],"PlayReadyDrm":null,"Status":"Submitted","StatusDetail":null}],"Status":"Submitted","Timing":{"FinishTimeMillis":null,"StartTimeMillis":null,"SubmitTimeMillis":1469234048082},"UserMetadata":null}}'
     http_version: 
-  recorded_at: Sat, 23 Jul 2016 00:12:27 GMT
+  recorded_at: Sat, 23 Jul 2016 00:34:08 GMT
 recorded_with: VCR 3.0.3
