@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 5'
 gem 'pg'
 gem 'pg_search'
 gem 'puma'
-gem 'controller_resources'
+gem 'controller_resources', github: 'tubbo/controller_resources', branch: 'release/0.1'
 gem 'responders'
 gem 'active_model_serializers'
 gem 'active_model-jobs'
@@ -35,18 +35,15 @@ gem 'videojs_rails'
 gem 'titleist'
 
 gem 'lodash-rails'
-gem 'sass', '~> 3.3'
 gem 'sass-rails'
 gem 'coffee-rails'
-# gem 'foundation-rails', '5.5.2.1'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
-gem 'jquery-turbolinks'
-gem 'turbolinks', github: 'rails/turbolinks'
-gem 'administrate'
+gem 'turbolinks'
+gem 'administrate', github: 'thoughtbot/administrate', branch: 'rails-5'
 gem 'sprockets-rails', '~> 2'
 gem 'rack-env-notifier'
 
@@ -56,7 +53,6 @@ end
 
 group :development do
   gem 'meta_request'
-  gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
 end
@@ -71,7 +67,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
   gem 'poltergeist'
   gem 'codeclimate-test-reporter', require: nil
@@ -81,11 +77,11 @@ end
 
 group :production do
   gem 'rack-cache'
-  gem 'redis-rails'
-  gem 'redis-rack-cache'
+  gem 'redis-rails', '~> 5'
+  gem 'redis-rack-cache', '2.0.0.pre'
   gem 'rails_12factor'
   gem 'sidekiq'
-  gem 'sinatra', require: false
+  gem 'sinatra', github: 'sinatra/sinatra', require: false
   gem 'refile-s3'
   gem 'airbrake'
 end
