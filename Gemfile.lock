@@ -16,26 +16,10 @@ GIT
       sinatra (>= 1.4.5)
 
 GIT
-  remote: git://github.com/tubbo/controller_resources.git
-  revision: 2154f6e59b02d7717194e1733e9f7bc2e67ba0d2
-  branch: master
-  specs:
-    controller_resources (1.0.0)
-      rails
-
-GIT
   remote: git://github.com/tubbo/makeover.git
   revision: a651abf26eb067c602156d2f702347bbede8c2c6
   specs:
     makeover (1.0.0.rc2)
-      rails
-
-GIT
-  remote: git://github.com/tubbo/titleist.git
-  revision: 570f0c0f2862398d0162a194c381b9efc3c83539
-  branch: master
-  specs:
-    titleist (0.1.0)
       rails
 
 GIT
@@ -151,6 +135,8 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
+    controller_resources (1.0.0)
+      rails
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     datetime_picker_rails (0.0.7)
@@ -472,6 +458,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.4)
+    titleist (0.1.0)
+      rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -513,7 +501,7 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter
   coffee-rails
-  controller_resources!
+  controller_resources
   devise
   email_validator
   eventbrite-client!
@@ -563,7 +551,7 @@ DEPENDENCIES
   spring-commands-sidekiq
   spring-watcher-listen
   sprockets-rails (~> 2)
-  titleist!
+  titleist
   turbolinks!
   uglifier
   vcr
