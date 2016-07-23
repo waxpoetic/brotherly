@@ -16,6 +16,13 @@ GIT
       sinatra (>= 1.4.5)
 
 GIT
+  remote: git://github.com/tubbo/makeover.git
+  revision: a651abf26eb067c602156d2f702347bbede8c2c6
+  specs:
+    makeover (1.0.0.rc2)
+      rails
+
+GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: c51dee6492c465e29561fbd42db56cdaf37de53c
   specs:
@@ -147,11 +154,6 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
-    draper (2.1.0)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0)
     email_validator (1.6.0)
       activemodel
     erubis (2.7.0)
@@ -375,7 +377,6 @@ GEM
     refile-s3 (0.2.0)
       aws-sdk (~> 2.0)
       refile (~> 0.6.0)
-    request_store (1.3.1)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (1.8.0)
@@ -500,7 +501,6 @@ DEPENDENCIES
   coffee-rails
   controller_resources
   devise
-  draper
   email_validator
   eventbrite-client!
   font-awesome-sass
@@ -514,6 +514,7 @@ DEPENDENCIES
   kaminari
   librato-rails
   lodash-rails
+  makeover!
   meta_request
   newrelic_rpm
   pg
@@ -555,8 +556,5 @@ DEPENDENCIES
   web-console (~> 2.0)
   webmock
 
-RUBY VERSION
-   ruby 2.3.0p0
-
 BUNDLED WITH
-   1.12.3
+   1.12.5

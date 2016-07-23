@@ -1,0 +1,2 @@
+class SubscribersPresenter < CollectionPresenter
+end

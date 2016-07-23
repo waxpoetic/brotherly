@@ -1,4 +1,4 @@
-class SubscriberDecorator < ApplicationDecorator
+class SubscriberPresenter < ApplicationPresenter
   delegate_all
 
   def thank_you_message

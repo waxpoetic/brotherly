@@ -2,7 +2,7 @@ module EpisodesHelper
   def youtube_stream(src: '', autoplay: 'autoplay')
     tag :iframe, \
         id: 'stream',
-        width: EpisodeDecorator::VIDEO_WIDTH,
+        width: EpisodePresenter::VIDEO_WIDTH,
         src: src,
         frameborder: 0,
         allowfullscreen: true,

@@ -1,4 +1,4 @@
-class SearchResultDecorator < ApplicationDecorator
+class SearchResultPresenter < ApplicationPresenter
   delegate_all
 
   def name
@@ -6,7 +6,7 @@ class SearchResultDecorator < ApplicationDecorator
   end
 
   def href
-    h.send route, model.searchable_id
+    h.url_for model.searchable
   end
 
   private

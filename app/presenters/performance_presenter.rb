@@ -1,4 +1,4 @@
-class PerformanceDecorator < ApplicationDecorator
+class PerformancePresenter < ApplicationPresenter
   delegate_all
 
   delegate :name, to: :artist, prefix: true

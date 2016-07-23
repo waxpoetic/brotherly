@@ -1,0 +1,2 @@
+class EpisodesPresenter < CollectionPresenter
+end

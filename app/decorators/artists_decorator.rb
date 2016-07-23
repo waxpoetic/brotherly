@@ -1,2 +1,0 @@
-class ArtistsDecorator < CollectionDecorator
-end
