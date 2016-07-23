@@ -1,8 +1,6 @@
 en:
-  title: brother.ly
   subscribers:
     new:
-      title: Subscribe to the brother.ly mailing list
       content: You'll be the first to know about new events and recording uploads.
       cancel: Go back
   activerecord:
@@ -40,7 +38,6 @@ en:
     about: about
     copyright: Copyright
   artists:
-    title: Artists
     listing: artists
   episodes:
     listing: past episodes

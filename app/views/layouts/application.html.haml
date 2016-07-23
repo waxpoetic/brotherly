@@ -3,13 +3,13 @@
   %head
     = render 'metadata'
     = title_tag
-    = stylesheet_link_tag asset_url('application.css', host: Rails.configuration.action_controller.asset_host)
-    = favicon_link_tag asset_url('favicon.ico', host: Rails.configuration.action_controller.asset_host)
-    = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: 'brother.ly podcast'
-    = javascript_include_tag asset_url('modernizr.js', host: Rails.configuration.action_controller.asset_host)
+    = favicon_link_tag
+    = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t(:title, scope: :podcast)
+    = javascript_include_tag 'modernizr', 'application'
+    = stylesheet_link_tag 'application'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
   %body{ class: section_name }
-    = render 'tags' if Rails.env.production?
+    = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
     %header
       %nav.top-bar{ 'data-topbar' => true }
         %ul.title-area
@@ -19,14 +19,14 @@
         %section.top-bar-section#search.search
           %ul
             %li.has-dropdown
-              = simple_form_for search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
+              = simple_form_for @search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
                 = f.input :query, as: :search, label: false, placeholder: 'Search...', input_html: { autocomplete: 'off' }
               %ul.dropdown.results{ style: 'margin-top: 10px' }
                 / Search results go here
         %section.top-bar-section.links
           %ul.right
-            - cache [recent_episodes, :current] do
-              = nav_link current_episode.button_title, root_path
+            - cache [@recent_episodes, :current] do
+              = nav_link @current_episode.button_title, root_path
             = nav_link t(:past_episode, scope: :nav), episodes_path
             = nav_link t(:artists, scope: :nav), artists_path
             = nav_link subscribe_text, new_subscriber_path, modal: true
@@ -54,11 +54,11 @@
             #{link_to "Wax Poetic Music", 'http://waxpoeticrecords.com'}.
             %br
           Created by <strong>team brother.ly</strong> in Philadelphia.
-        - cache [recent_episodes, :list] do
+        - cache [@recent_episodes, :list] do
           .recent.large-4.columns
             %h3= t :recent, scope: :episodes
             %ul
-            - recent_episodes.each do |episode|
+            - @recent_episodes.each do |episode|
               %li= link_to episode.name, episode
         .social.large-4.columns
           %h3= t '.social'
@@ -83,5 +83,3 @@
               = link_to 'http://github.com/waxpoetic/brotherly/issues/new' do
                 = icon :github
                 = t '.github'
-    = render 'tracking'
-    = javascript_include_tag asset_url('application.js', host: Rails.configuration.action_controller.asset_host)
