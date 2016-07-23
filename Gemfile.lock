@@ -16,6 +16,13 @@ GIT
       sinatra (>= 1.4.5)
 
 GIT
+  remote: git://github.com/tubbo/makeover.git
+  revision: a651abf26eb067c602156d2f702347bbede8c2c6
+  specs:
+    makeover (1.0.0.rc2)
+      rails
+
+GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: c51dee6492c465e29561fbd42db56cdaf37de53c
   specs:
@@ -225,8 +232,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    makeover (1.0.0.rc1)
-      rails
     meta_request (0.4.0)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -509,7 +514,7 @@ DEPENDENCIES
   kaminari
   librato-rails
   lodash-rails
-  makeover
+  makeover!
   meta_request
   newrelic_rpm
   pg
@@ -550,9 +555,6 @@ DEPENDENCIES
   videojs_rails
   web-console (~> 2.0)
   webmock
-
-RUBY VERSION
-   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
