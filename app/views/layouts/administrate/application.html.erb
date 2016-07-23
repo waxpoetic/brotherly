@@ -30,7 +30,7 @@ By default, it renders:
       <section>
         <p>
           <strong>brother.ly</strong> <%= Brotherly.version.to_s %><br>
-          <%= content_tag :small, Rails.env unless Rails.env.production? %>
+          <%= content_tag :small, 'staging' if Brotherly.secrets.domain_name =~ /beta/ %>
         </p>
       </section>
       <%= render "sidebar" -%>
