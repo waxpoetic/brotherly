@@ -1,4 +1,4 @@
-class Subscriber < ActiveRecord::Base
+class Subscriber < ApplicationRecord
   include Searchable
 
   searchable :name, :email

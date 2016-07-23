@@ -1,4 +1,4 @@
-class Artist < ActiveRecord::Base
+class Artist < ApplicationRecord
   extend FriendlyId
 
   include Searchable

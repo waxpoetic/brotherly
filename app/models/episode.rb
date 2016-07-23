@@ -1,7 +1,7 @@
 # A full-length episode of a brother.ly live broadcast. Contains the
 # full-length audio and visual recording, as well as a collection of
 # performances (with their own recordings) and metadata.
-class Episode < ActiveRecord::Base
+class Episode < ApplicationRecord
   extend FriendlyId
 
   include Searchable

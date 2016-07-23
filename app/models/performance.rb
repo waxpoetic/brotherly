@@ -1,4 +1,4 @@
-class Performance < ActiveRecord::Base
+class Performance < ApplicationRecord
   include Searchable
   include Media
 
