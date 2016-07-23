@@ -30,7 +30,7 @@ class UserDashboard < Administrate::BaseDashboard
     is_admin: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -41,7 +41,7 @@ class UserDashboard < Administrate::BaseDashboard
     :name,
     :email,
     :is_admin
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -70,7 +70,7 @@ class UserDashboard < Administrate::BaseDashboard
     :unlock_token,
     :locked_at,
     :is_admin
-  ]
+  ].freeze
 
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.

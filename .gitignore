@@ -120,3 +120,4 @@ Session.vim
 .env
 /spec/examples.txt
 /db/import
+bower_components

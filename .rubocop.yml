@@ -1,9 +1,12 @@
 AllCops:
-  RunRailsCops: true
   Exclude:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
     - 'bin/**/*'
+    - 'bower_components/**/*'
+
+Rails:
+  Enabled: true
 
 Lint/AssignmentInCondition:
   Exclude:
@@ -38,6 +41,8 @@ Metrics/LineLength:
     - 'spec/rails_helper.rb'
     - 'bin/spring'
     - 'db/schema.rb'
+    - 'app/decorators/episode_decorator.rb'
+    - 'spec/decorators/episode_decorator_spec.rb'
 
 Rails/Output:
   Exclude:

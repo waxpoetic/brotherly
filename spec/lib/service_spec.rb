@@ -62,7 +62,7 @@ module Brotherly
       end
 
       it 'does not create remote record immediately' do
-        allow(subject.send :remote).to receive(:persisted?).and_return(false)
+        allow(subject.send(:remote)).to receive(:persisted?).and_return(false)
         expect(subject).not_to be_persisted
       end
 
@@ -92,7 +92,7 @@ module Brotherly
         before { subject.save }
 
         it 'creates the remote record' do
-          expect(subject.send :remote).to be_present
+          expect(subject.send(:remote)).to be_present
         end
 
         it 'delegates url to remote' do

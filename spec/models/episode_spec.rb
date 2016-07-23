@@ -37,4 +37,8 @@ RSpec.describe Episode, type: :model do
       queue: 'default'
     )
   end
+
+  it 'derives playlist name from episode name' do
+    expect(subject.playlist_name).to eq('brother-ly-zero')
+  end
 end

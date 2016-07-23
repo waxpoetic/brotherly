@@ -24,7 +24,7 @@ module Brotherly
     delegate :url, :persisted?, to: :remote
     delegate :attributes, to: :local, allow_nil: true
 
-    alias_method :to_param, :attribute_name
+    alias to_param attribute_name
 
     def self.each
       Dir['app/services/*_service.rb'].map do |path|

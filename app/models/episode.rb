@@ -55,12 +55,20 @@ class Episode < ActiveRecord::Base
     published_at.present?
   end
 
+  def transcoded?
+    video_transcoded_at.present?
+  end
+
   def event
     Eventbrite::Event.find eventbrite_event_id
   end
 
   def number
     name.gsub(/brother\.ly\s/, '')
+  end
+
+  def playlist_name
+    name.parameterize
   end
 
   private

@@ -35,7 +35,7 @@ module Eventbrite
     end
 
     it 'delegates url to remote record' do
-      expect(subject.send :remote).to eq(event)
+      expect(subject.send(:remote)).to eq(event)
       expect(subject.url).to eq(subject.send(:remote).url)
     end
   end

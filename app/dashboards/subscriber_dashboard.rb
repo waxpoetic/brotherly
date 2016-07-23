@@ -13,7 +13,7 @@ class SubscriberDashboard < Administrate::BaseDashboard
     email: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -24,7 +24,7 @@ class SubscriberDashboard < Administrate::BaseDashboard
     :name,
     :email,
     :created_at
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -36,7 +36,7 @@ class SubscriberDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :email
-  ]
+  ].freeze
 
   # Overwrite this method to customize how subscribers are displayed
   # across all pages of the admin dashboard.

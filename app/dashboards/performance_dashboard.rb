@@ -17,7 +17,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     audio_file: UploadField
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -27,7 +27,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :episode,
     :artist
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -43,7 +43,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     :ends_at,
     :youtube_id,
     :audio_file
-  ]
+  ].freeze
 
   # Overwrite this method to customize how performances are displayed
   # across all pages of the admin dashboard.

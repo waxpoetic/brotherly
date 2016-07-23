@@ -29,7 +29,7 @@ module Mailchimp
     context 'when the mailchimp gateway accepts the request' do
       before do
         allow(Mailchimp::Gateway.for_env).to receive(:create_member).and_return(
-          Response.new request: { 'id' => SecureRandom.hex }
+          Response.new(request: { 'id' => SecureRandom.hex })
         )
       end
 

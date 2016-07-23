@@ -3,34 +3,31 @@ require './app/services/transcode'
 
 RSpec.describe Transcode, type: :service do
   subject do
-    described_class.new input: 'video.mp4'
-  end
-
-  it 'substitutes output key extension for determined one' do
-    expect(subject.output_id).to eq('video.m3u8')
+    described_class.new SecureRandom.hex, 'episode-name'
   end
 
   it 'turns presets into output params' do
     output = subject.outputs.first
     expect(output).to be_a(Hash)
-    expect(output[:key]).to eq("hls#{Transcode::VIDEO_PRESETS.keys.first}/#{subject.output_id}")
+    expect(output[:key]).to eq(Transcode::VIDEO_PRESETS.keys.first)
     expect(output[:preset_id]).to eq(Transcode::VIDEO_PRESETS.values.first)
     expect(output[:segment_duration]).to eq(Transcode::SEGMENT_DURATION)
   end
 
   it 'builds playlist params' do
-    expect(subject.playlist[:name]).to eq subject.output_id
+    expect(subject.playlist[:name]).to eq subject.name
     expect(subject.playlist[:format]).to eq Transcode::FORMAT
-    expect(subject.playlist[:output_keys].first).to include(Transcode::VIDEO_PRESETS.keys.first)
+    expect(subject.playlist[:output_keys]).to eq(Transcode::VIDEO_PRESETS.keys)
   end
 
-  it 'tests validation' do
-    expect(subject).to be_valid
-  end
-
-  it 'tests persistence' do
-    subject.instance_variable_set '@persisted', true
-    expect(subject).to be_persisted
+  it 'builds full set of attributes' do
+    expect(subject.attributes[:pipeline_id]).to eq(
+      Rails.application.secrets.aws_transcoder_pipeline_id
+    )
+    expect(subject.attributes[:input][:key]).to eq(subject.input)
+    expect(subject.attributes[:output_key_prefix]).to eq(subject.output_prefix)
+    expect(subject.attributes[:outputs]).to eq(subject.outputs)
+    expect(subject.attributes[:playlists]).to include(subject.playlist)
   end
 
   it 'creates elastic transcoder job and tests persistence' do
@@ -38,8 +35,7 @@ RSpec.describe Transcode, type: :service do
     allow(subject.send(:transcoder)).to \
       receive(:create_job)
       .with(subject.attributes)
-      .and_return(double(success?: true))
+      .and_return(double(successful?: true))
     expect(subject.save).to be true
-    expect(subject).to be_persisted
   end
 end

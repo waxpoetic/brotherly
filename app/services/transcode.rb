@@ -1,41 +1,40 @@
-# Creates a new transcode job on AWS Elastic Transcoder.
+# Converts a given +Refile::Attachment+ to HLS with AWS Elastic Transcoder.
+# This allows videos to be streamed on the web application without
+# causing too much strain on the client. We convert videos to HLS via
+# this class and then conventionally work out URLs on the frontend based
+# on whether a transcode was recorded.
 class Transcode
-  include ActiveModel::Model
-
-  EXTENSION = 'm3u8'
-  AUDIO_PRESET = '1351620000001-200071'
+  # Preset IDs and variants for each video transcode output.
   VIDEO_PRESETS = {
     '400k' => '1351620000001-200050',
     '600k' => '1351620000001-200040',
     '1000k' => '1351620000001-200030',
     '1500k' => '1351620000001-200020',
     '2000k' => '1351620000001-200010'
-  }
-  FORMAT = 'HLSv3'
-  PREFIX = 'videos/'
-  SEGMENT_DURATION = '2'
+  }.freeze
 
-  # @attribute! [rw]
-  #   @return [String] File to be transcoded.
-  attr_accessor :input
+  # Video format we will be transcoding to.
+  FORMAT = 'HLSv3'.freeze
 
-  validates :input, presence: true
+  # How long HLS segments will be (in seconds).
+  SEGMENT_DURATION = '2'.freeze
 
-  # Kick off a new transcode process.
+  # Folder prefix for transcoded files.
+  PREFIX = 'episodes'.freeze
+
+  attr_reader :id, :name, :input, :output_prefix
+
+  # Derive input name and output prefixes from refile video attachment.
   #
-  # @param [Hash] params
-  # @option [Symbol] :pipeline
-  # @option [String] :input
-  def self.create(params = {})
-    new(params).tap(&:save)
-  end
-
-  # Substitute input filename extension with the chosen extension for
-  # this pipeline.
-  #
-  # @return [String] Input filename URL with extension subsituted.
-  def output_id
-    @output ||= input.gsub(/flv|mp4/, EXTENSION)
+  # @param id [String] Identifier to video file which is being transcoded.
+  # @param name [String] Name of the HLS playlist.
+  def initialize(id, name)
+    @id = id
+    @name = name
+    raise ArgumentError, "Video cannot be blank" unless @id.present?
+    raise ArgumentError, "Name cannot be blank" unless @name.present?
+    @input = "store/#{@id}"
+    @output_prefix = [PREFIX, @id].join('/')
   end
 
   # Parameters for each individual preset.
@@ -44,7 +43,7 @@ class Transcode
   def outputs
     VIDEO_PRESETS.map do |variant, preset_id|
       {
-        key: "#{output_id}/hls#{variant}",
+        key: variant,
         preset_id: preset_id,
         segment_duration: SEGMENT_DURATION
       }
@@ -56,9 +55,9 @@ class Transcode
   # @return [Hash] HLS playlist contents
   def playlist
     {
-      name: output_id,
+      name: @name,
       format: FORMAT,
-      output_keys: outputs.map { |output| output[:key] }
+      output_keys: VIDEO_PRESETS.keys
     }
   end
 
@@ -68,46 +67,25 @@ class Transcode
   def attributes
     {
       pipeline_id: Rails.application.secrets.aws_transcoder_pipeline_id,
-      input: { key: input },
-      output_key_prefix: PREFIX,
+      input: { key: @input },
+      output_key_prefix: @output_prefix,
       outputs: outputs,
       playlists: [playlist]
     }
   end
 
-  # Run validators and log errors if they exist.
+  # Create the job on AWS Elastic Transcoder.
   #
-  # @return [Boolean] whether attributes are valid.
-  def valid?
-    super.tap do |result|
-      unless result
-        Rails.logger.debug(
-          "Transcode failed: #{errors.messages.to_a.to_sentence}"
-        )
-      end
-    end
-  end
-
-  # @return [Boolean] whether the job was created and a successful
-  # request.
-  def persisted?
-    @persisted ||= false
-  end
-
-  # Start the transcode process after validating attributes.
-  #
-  # @return [Boolean] whether the transcode has begun.
+  # @private
+  # @return [Boolean] whether the request was successful.
   def save
-    valid? && create && persisted?
+    transcoder.create_job(attributes).successful?
   end
 
   private
 
-  # @private
-  def create
-    @persisted = transcoder.create_job(attributes).successful?
-  end
-
+  # AWS Elastic Transcoder client instance.
+  #
   # @private
   # @return [Aws::ElasticTranscoder::Client]
   def transcoder

@@ -1,6 +1,9 @@
 class EpisodeDecorator < ApplicationDecorator
+  # Hard-set width of videos.
   VIDEO_WIDTH = 640
-  VIDEO_HEIGHT = 480
+
+  # Protocol used for transcode streams.
+  TRANSCODE_PROTOCOL = 'https://'.freeze
 
   delegate_all
 
@@ -62,12 +65,15 @@ class EpisodeDecorator < ApplicationDecorator
     model.audio_file_id.present?
   end
 
+  # Build the HLS playlist URL from video file ID and CDN domain name.
+  #
+  # @return [String] URL to transcoded video file.
   def video
-    video_file_url.gsub(/\.(flv|mp4)/, '.m3u8')
+    "http://#{Rails.application.secrets.cdn_domain_name}/episodes/#{model.video_file_id}/#{model.playlist_name}.m3u8"
   end
 
   def video?
-    model.video_file_id.present?
+    model.video_file_id.present? && model.transcoded?
   end
 
   def show_ticket_link?
@@ -121,11 +127,4 @@ class EpisodeDecorator < ApplicationDecorator
   def fallback_flyer
     "http://placehold.it/240x320?text=#{placeholder_text}"
   end
-
-  private
-
-  def video_file_url
-    h.attachment_url model, :video_file
-  end
-
 end

@@ -16,7 +16,7 @@ class DashboardManifest
     :performances,
     :subscribers,
     :metrics
-  ]
+  ].freeze
 
   # `ROOT_DASHBOARD`
   # the name of the dashboard that will be displayed
