@@ -51,10 +51,10 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Configure domain this app is running on
-  config.domain = 'brother.ly'
+  config.domain = Rails.application.secrets.domain_name.gsub(/\Awww\./, '')
 
   # Enable CORS headers for Google fonts
-  config.font_assets.origin = "http://www.brother.ly"
+  config.font_assets.origin = "http://#{Rails.application.secrets.domain_name}"
 
   # Serve static assets over the CDN
   config.action_controller.asset_host = Rails.application.secrets.cdn_domain_name

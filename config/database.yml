@@ -15,8 +15,3 @@ production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV["MAX_THREADS"] %>
-
-staging:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
-  pool: <%= ENV["MAX_THREADS"] %>
