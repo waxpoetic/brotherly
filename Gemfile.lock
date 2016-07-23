@@ -37,22 +37,6 @@ GIT
       selectize-rails (~> 0.6)
 
 GIT
-  remote: git://github.com/tubbo/controller_resources.git
-  revision: c7bb3451cee6a8535f5ae2ea5e08b600bba7a2a6
-  branch: release/0.1
-  specs:
-    controller_resources (0.1.2)
-      decent_exposure (~> 2)
-      rails
-
-GIT
-  remote: git://github.com/tubbo/makeover.git
-  revision: a651abf26eb067c602156d2f702347bbede8c2c6
-  specs:
-    makeover (1.0.0.rc2)
-      rails
-
-GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: c51dee6492c465e29561fbd42db56cdaf37de53c
   specs:
@@ -247,6 +231,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    makeover (1.0.0.rc1)
+      rails
     meta_request (0.4.0)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -466,7 +452,6 @@ GEM
     tilt (2.0.4)
     titleist (0.1.0)
       rails
-    tilt (2.0.5)
     tool (0.2.3)
     turbolinks (5.0.0)
       turbolinks-source (~> 5)
@@ -512,7 +497,7 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter
   coffee-rails
-  controller_resources!
+  controller_resources
   devise
   email_validator
   eventbrite-client!
@@ -526,7 +511,7 @@ DEPENDENCIES
   kaminari
   librato-rails
   lodash-rails
-  makeover!
+  makeover
   meta_request
   newrelic_rpm
   pg
