@@ -21,12 +21,6 @@ module Eventbrite
       described_class.new id: id, name: name
     end
 
-    before do
-      allow_any_instance_of(Gateway).to receive(:create_event).and_return(
-        double(success?: true, id: id)
-      )
-    end
-
     it 'creates event on eventbrite' do
       expect(subject.save).to be true
     end

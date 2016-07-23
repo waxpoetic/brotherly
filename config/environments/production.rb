@@ -95,14 +95,16 @@ Rails.application.configure do
   # Enable CORS headers for Google fonts
   config.font_assets.origin = "http://#{Rails.application.secrets.domain_name}"
 
--  # Use SendGrid to send email.
--  ActionMailer::Base.smtp_settings = {
--    address: 'smtp.sendgrid.net',
--    port: '587',
--    authentication: :plain,
--    user_name: Rails.application.secrets.sendgrid_username,
--    password: Rails.application.secrets.sendgrid_password,
--    domain: config.domain,
--    enable_starttls_auto: true
--  }
+  # Use SendGrid to send email.
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    authentication: :plain,
+    user_name: Rails.application.secrets.sendgrid_username,
+    password: Rails.application.secrets.sendgrid_password,
+    domain: config.domain,
+    enable_starttls_auto: true
+  }
+
+  config.eventbrite_gateway = 'Eventbrite::Gateway'
 end
