@@ -3,7 +3,7 @@ class EpisodePresenter < ApplicationPresenter
   VIDEO_WIDTH = 640
 
   # Content type of video streams.
-  VIDEO_TYPE = 'application/x-mpegURL'
+  VIDEO_TYPE = 'application/x-mpegURL'.freeze
 
   # Protocol used for transcode streams.
   TRANSCODE_PROTOCOL = 'https://'.freeze

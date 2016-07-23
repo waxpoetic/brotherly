@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # Don't render the layout when serving an Ajax request.
   layout :use_layout?
-  DEFAULT_LAYOUT = 'application'
+  DEFAULT_LAYOUT = 'application'.freeze
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
