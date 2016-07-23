@@ -34,7 +34,7 @@ class Transcode
     raise ArgumentError, "Video cannot be blank" unless @id.present?
     raise ArgumentError, "Name cannot be blank" unless @name.present?
     @input = "store/#{@id}"
-    @output_prefix = [PREFIX, @id].join('/')
+    @output_prefix = "#{PREFIX}/#{@id}/"
   end
 
   # Parameters for each individual preset.
