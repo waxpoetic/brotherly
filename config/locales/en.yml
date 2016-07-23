@@ -1,4 +1,16 @@
 en:
+  titles:
+    application: brother.ly
+    format: '%{page} | %{app}'
+    subscribers:
+      new: Subscribe to the brother.ly mailing list
+    artists:
+      index: artists
+      show: '%{name}'
+    episodes:
+      index: episode archives
+      show: '%{name}'
+      podcast: brother.ly podcast
   subscribers:
     new:
       content: You'll be the first to know about new events and recording uploads.

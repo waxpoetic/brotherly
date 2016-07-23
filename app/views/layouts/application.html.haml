@@ -4,7 +4,7 @@
     = render 'metadata'
     = title_tag
     = favicon_link_tag
-    = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t(:title, scope: :podcast)
+    = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t('titles.episodes.podcast')
     = javascript_include_tag 'modernizr', 'application'
     = stylesheet_link_tag 'application'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?

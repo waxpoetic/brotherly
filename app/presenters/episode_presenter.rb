@@ -35,8 +35,8 @@ class EpisodePresenter < ApplicationPresenter
       model,
       :flyer_file,
       fallback: fallback_flyer,
-      title: 'Flyer',
-      alt: 'Flyer'
+      title: model.name,
+      alt: model.name
     )
   end
 

@@ -1,12 +1,2 @@
 en:
-  titles:
-    application: brother.ly
-    format: '%{page} | %{app}'
-    subscribers:
-      new: Subscribe to the brother.ly mailing list
-    artists:
-      index: artists
-      show: '%{name}'
-    episodes:
-      index: episode archives
-      show: '%{name}'
+

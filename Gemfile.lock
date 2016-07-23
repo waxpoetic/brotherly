@@ -31,6 +31,14 @@ GIT
       rails
 
 GIT
+  remote: git://github.com/tubbo/titleist.git
+  revision: 570f0c0f2862398d0162a194c381b9efc3c83539
+  branch: master
+  specs:
+    titleist (0.1.0)
+      rails
+
+GIT
   remote: git://github.com/waxpoetic/eventbrite-client.rb.git
   revision: c51dee6492c465e29561fbd42db56cdaf37de53c
   specs:
@@ -464,8 +472,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.4)
-    titleist (0.1.0)
-      rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -557,7 +563,7 @@ DEPENDENCIES
   spring-commands-sidekiq
   spring-watcher-listen
   sprockets-rails (~> 2)
-  titleist
+  titleist!
   turbolinks!
   uglifier
   vcr
