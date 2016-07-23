@@ -1,6 +1,4 @@
 class ArtistPresenter < ApplicationPresenter
-  delegate_all
-
   def image
     h.attachment_image_tag(
       model,

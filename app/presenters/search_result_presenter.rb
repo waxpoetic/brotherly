@@ -1,6 +1,4 @@
 class SearchResultPresenter < ApplicationPresenter
-  delegate_all
-
   def name
     model.content
   end

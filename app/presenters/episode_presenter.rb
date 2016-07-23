@@ -8,8 +8,6 @@ class EpisodePresenter < ApplicationPresenter
   # Protocol used for transcode streams.
   TRANSCODE_PROTOCOL = 'https://'.freeze
 
-  delegate_all
-
   def eventbrite_url
     model.short_link_url || model.eventbrite_url
   end
