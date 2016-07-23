@@ -2,6 +2,7 @@ language: ruby
 rvm: 2.3.0
 before_script: bundle exec rake db:setup
 cache: bundler
+script: bundle exec rspec
 deploy:
   - provider: heroku
     api_key:
