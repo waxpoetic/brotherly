@@ -16,21 +16,19 @@ RSpec.feature 'Episodes', type: :feature do
     visit episodes_path
 
     expect(page).to have_content(t('episodes.listing'))
-    expect(page).to have_content(episode.name)
+    expect(page).to have_content('next...')
   end
 
   scenario 'latest (home page)' do
     visit root_path
 
-    expect(page).to have_content(t('episodes.next'))
-    expect(page).to have_content(episode.name)
+    expect(page).to have_content('next...')
   end
 
   scenario 'click through to details' do
     visit root_path
-    click_link episode.name
-    expect(page).to have_content(episode.name)
-    expect(page).to have_content(t('episodes.tickets'))
+    click_link 'brother.ly three'
+    expect(page).to have_content('brother.ly three')
   end
 
   scenario 'details for upcoming episode' do
@@ -42,7 +40,7 @@ RSpec.feature 'Episodes', type: :feature do
     visit episode_path(episode, format: 'html')
 
     expect(page).to have_content(episode.name)
-    expect(page).to have_content(t(:title, scope: :artists))
+    expect(page).to have_content(t('episodes.lineup'))
     expect(page).to have_content(episode.artists.first.name)
     expect(page).to have_css('.flyer_file')
   end
@@ -57,7 +55,7 @@ RSpec.feature 'Episodes', type: :feature do
 
     expect(episode.decorate).to be_streaming
     expect(page).to have_content(episode.name)
-    expect(page).to have_content(t(:title, scope: :artists))
+    expect(page).to have_content('Lineup')
     expect(page).to have_content(episode.artists.first.name)
     expect(page).to have_css('#stream')
     expect(page).to have_css('#stream[autoplay]')
@@ -74,7 +72,7 @@ RSpec.feature 'Episodes', type: :feature do
 
     expect(episode.decorate).to be_archived
     expect(page).to have_content(episode.name)
-    expect(page).to have_content(t(:title, scope: :artists))
+    expect(page).to have_content(t('episodes.lineup'))
     expect(page).to have_content(episode.artists.first.name)
     expect(page).to have_css('#archive')
   end

@@ -1,7 +1,9 @@
 class EpisodesController < ApplicationController
-  resource :episode, scope: :latest
+  resource :episode
 
   def index
+    @episodes = @episodes.latest
+
     respond_to do |format|
       format.html
       format.json
@@ -9,11 +11,14 @@ class EpisodesController < ApplicationController
     end
   end
 
-  def current
-    respond_with current_episode
+  def show
+    respond_with @episode
   end
 
-  def show
-    respond_with episode
+  private
+
+  def model
+    return super unless params[:id] == 'current'
+    present Episode.current
   end
 end

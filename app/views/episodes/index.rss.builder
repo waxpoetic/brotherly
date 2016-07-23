@@ -7,8 +7,8 @@ cache podcast_cache_key do
           xml.link "http://#{config.name}"
           xml.description config.description
           xml.language 'en'
-          xml.pubDate episodes.last.published_at
-          xml.lastBuildDate episodes.last.published_at
+          xml.pubDate @episodes.last.published_at
+          xml.lastBuildDate @episodes.last.published_at
           xml.itunes :author, config.name
           xml.itunes :keywords, config.keywords.join(', ')
           xml.itunes :explicit, config.explicit
@@ -19,11 +19,11 @@ cache podcast_cache_key do
           end
           xml.itunes :block, 'no'
           xml.itunes :category, text: 'Music'
-          xml.atom :link, href: episodes_url(format: 'xml'), rel: 'self', type: 'application/rss+xml'
+          xml.atom :link, href: episodes_url(format: 'rss'), rel: 'self', type: 'application/rss+xml'
         end
 
-        cache episodes.in_podcast do
-          episodes.in_podcast.map(&:decorate).each do |episode|
+        cache @episodes.in_podcast do
+          @episodes.in_podcast.map(&:decorate).each do |episode|
             cache episode do
               xml.item do
                 xml.title episode.name

@@ -1,9 +1,8 @@
-- title 'Artists'
-- cache artists do
+- cache @artists do
   .row
     .large-12.columns
       %h1= t :listing, scope: :artists
   .row
-    = render artists
+    = render @artists
   .row
     %br

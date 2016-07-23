@@ -14,17 +14,6 @@ RSpec.describe ApplicationHelper, type: :helper do
       eq(File.basename(controller.controller_name.to_s))
   end
 
-  it 'sets new title' do
-    expect { helper.title('new title') }.not_to raise_error
-    expect(helper.content_for(:title)).to eq('new title')
-  end
-
-  it 'builds title into tag' do
-    expect(helper.title_tag).to eq("<title>#{config.name}</title>")
-    expect { helper.title('new title') }.not_to raise_error
-    expect(helper.title_tag).to eq("<title>new title | #{config.name}</title>")
-  end
-
   it 'provides the config to the view' do
     expect(helper.config).to eq(Rails.application.config)
   end

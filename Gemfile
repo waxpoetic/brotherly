@@ -32,6 +32,7 @@ gem 'semver'
 gem 'aws-sdk'
 gem 'sitemap_generator'
 gem 'videojs_rails'
+gem 'titleist'
 
 gem 'lodash-rails'
 gem 'sass', '~> 3.3'

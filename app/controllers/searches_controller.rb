@@ -1,9 +1,6 @@
 class SearchesController < ApplicationController
-  expose :search do
-    Search.create params[:search][:query]
-  end
-
   def show
+    @search = Search.create params[:search][:query]
     respond_with search
   end
 end
