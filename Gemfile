@@ -77,7 +77,7 @@ group :test do
   gem 'webmock'
 end
 
-group :production, :staging do
+group :production do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'redis-rack-cache'
