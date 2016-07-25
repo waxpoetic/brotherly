@@ -51,6 +51,7 @@ group :development do
   gem 'meta_request'
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
+  gem 'scss_lint'
 end
 
 group :development, :test do

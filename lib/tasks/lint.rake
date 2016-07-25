@@ -11,13 +11,23 @@ namespace :lint do
 
   desc 'Run SCSS lint checks'
   task :scss do
-    system 'bin/scss-lint'
+    require 'scss_lint'
+    require 'scss_lint/cli'
+    logger = SCSSLint::Logger.new(STDOUT)
+    puts 'Running SCSSLint...'
+    code = SCSSLint::CLI.new(logger).run %w(
+      app/assets/stylesheets
+      --format=TAP
+    )
+    exit code if code > 0
   end
 
   desc 'Run CoffeeScript lint checks'
   task :coffee do
     files = Dir['app/assets/javascripts/**/*.coffee'].join("\s")
+    puts 'Running CoffeeLint...'
     system "coffeelint #{files}"
+    exit 1 unless $CHILD_STATUS.success?
   end
 end
 

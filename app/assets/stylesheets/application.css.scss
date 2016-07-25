@@ -1514,7 +1514,7 @@ $topbar-dropdown-bg: $topbar-bg;
 }
 
 // Turbolinks progress bar
-html.turbolinks-progress-bar::before {
-  background-color: $primary-color !important;
-  height: 3px !important;
+.turbolinks-progress-bar {
+  background-color: $primary-color;
+  height: 3px;
 }
