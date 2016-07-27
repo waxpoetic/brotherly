@@ -13,6 +13,7 @@ Rails.application.config.assets.precompile += %w(
   administrate/application.js
   admin/banner.css
   modernizr.js
+  refile.js
   video-js.swf
   vjs.eot
   vjs.svg
