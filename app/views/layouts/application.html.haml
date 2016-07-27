@@ -7,6 +7,7 @@
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t('titles.episodes.podcast')
     = javascript_include_tag 'modernizr', 'application'
     = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video-js-cdn.min.css'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
   %body{ class: section_name }
     = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?

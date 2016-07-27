@@ -9,7 +9,13 @@
             - if episode.streaming?
               = youtube_stream src: episode.stream_url, autoplay: episode.autoplay
             - elsif episode.archived?
-              = videojs_rails sources: { m3u8: { src: episode.video, type: EpisodePresenter::VIDEO_TYPE } }, width: EpisodePresenter::VIDEO_WIDTH, id: 'archive'
+              %video{ class: 'video-js', id: 'archive', controls: 'controls', preload: 'auto', width: 640, poster: episode.flyer_file }
+                %source{ src: episode.video, type: 'application/x-mpegURL' }
+              = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
+              = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'
+              = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.3.0/videojs-contrib-hls.min.js'
+              :javascript
+                videojs('archive');
             - else
               = episode.flyer
         .info.row
