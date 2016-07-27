@@ -1,3 +1,12 @@
+- content_for :metadata do
+  - if @episode.archived?
+    %meta{ property: 'og:video', content: @episode.video }
+    %meta{ property: 'og:video:height', content: 640 }
+    %meta{ property: 'og:video:width', content: 385 }
+    %meta{ property: 'og:video:type', content: 'application/x-mpegURL' }
+    %link{ rel: 'video_src', href: @episode.video }
+    %meta{ name: 'medium', content: 'video' }
+
 - self.title = @episode.title
 - cache @episode do
   - cache [@episode, :title] do

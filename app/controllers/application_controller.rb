@@ -60,4 +60,10 @@ class ApplicationController < ActionController::Base
     @current_episode = present Episode.current
     @search = present Search.new
   end
+
+  def present(model)
+    super
+  rescue NameError
+    model
+  end
 end

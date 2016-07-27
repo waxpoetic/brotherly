@@ -18,5 +18,7 @@
 %meta{property: 'og:image', content: image_url('logo.png', host: Rails.configuration.action_controller.asset_host)}
 %meta{property: 'og:url', content: config.domain}
 %meta{property: "fb:admins", content: Rails.application.secrets.facebook_admin_id}
+/ Custom
+= yield :metadata
 / Rails
 = csrf_meta_tags

@@ -7,9 +7,11 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     using Admin::Search
 
+    helper TitleistHelper
+
     before_action :authenticate_user!
 
-    layout 'administrate/application'
+    # layout 'administrate/application'
 
     protected
 
