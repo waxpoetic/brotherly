@@ -17,4 +17,13 @@ module Brotherly
   def self.secrets
     Rails.application.secrets
   end
+
+  def self.stage
+    case Rails.configuration.domain
+    when /beta/
+      'staging'
+    when /\.dev/
+      'development'
+    end
+  end
 end

@@ -9,9 +9,7 @@ as defined by the routes in the `admin/` namespace
 
 <div class="sidebar__banner">
   <h1>brother.ly <%= Brotherly.version %></h1>
-  <% unless Rails.env.production? %>
-    <p class="environment"><%= Rails.env %></p>
-  <% end %>
+  <p class="environment"><%= Brotherly.stage %></p>
 </div>
 
 <ul class="sidebar__list">
