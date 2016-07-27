@@ -10,7 +10,7 @@
             - if @episode.streaming?
               = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
             - elsif @episode.archived?
-              %video{ class: 'video-js', id: 'archive', controls: 'controls', preload: 'auto', width: 640, poster: @episode.flyer_file }
+              %video{ class: 'video-js vjs-sublime-skin', id: 'archive', controls: 'controls', preload: 'auto', width: 640, poster: @episode.flyer_file }
                 %source{ src: @episode.video, type: 'application/x-mpegURL' }
               = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
               = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'
