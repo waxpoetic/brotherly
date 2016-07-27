@@ -10,12 +10,11 @@ class DashboardManifest
   # Dashboards returned from this method must be Rails models for Administrate
   # to work correctly.
   DASHBOARDS = [
-    :users,
-    :artists,
     :episodes,
     :performances,
+    :artists,
     :subscribers,
-    :metrics
+    :users,
   ].freeze
 
   # `ROOT_DASHBOARD`
@@ -24,5 +23,5 @@ class DashboardManifest
   #
   # This dashboard will likely be the first page that admins see
   # when they log into the dashboard.
-  ROOT_DASHBOARD = :metrics
+  ROOT_DASHBOARD = :episodes
 end
