@@ -1,4 +1,6 @@
 class ApplicationPresenter < Makeover::Presenter
+  delegate :t, :translate, to: I18n
+
   # Default title of every show and edit page.
   #
   # @return [String]
