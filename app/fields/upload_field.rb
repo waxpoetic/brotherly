@@ -1,11 +1,11 @@
 require 'administrate/field/base'
 
 class UploadField < Administrate::Field::Base
-  # def attribute
-  #   super.to_s.gsub(/_id/, '').to_sym
-  # end
+  def filename
+    data.try :filename
+  end
 
-  def to_s
-    data
+  def url
+    data.try :url
   end
 end
