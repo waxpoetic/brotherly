@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
     @search = present Search.new
   end
 
-  def present(model)
+  def present(model, *_args)
     super
   rescue NameError
     model
