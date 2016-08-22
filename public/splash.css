@@ -1,0 +1,49 @@
+body{
+	text-align: center;
+	background: url(skyline.png) center bottom repeat-x hsl(51, 48%, 98%);
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+
+}
+
+.center{
+	width: auto;
+	margin: auto;
+	padding: 40px;
+}
+
+
+.main{
+	border: 1px solid #CA992C;
+	margin-right: auto;
+	margin-left: auto;
+	width: 800px;
+	height: 400px;
+	background-color: rgba(246, 245, 248, 0.71);
+	position: relative;
+}
+
+h1,h3{
+	
+	font-weight: normal;
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+h1{
+	font: 2.5em Georgia, "Times New Roman", Times, serif;
+	color: #846007;
+}
+
+.maincontent{	
+	color: #034f57;
+	word-spacing: 0;
+	letter-spacing: .3px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 200;
+	width: 700;
+	margin-top:-130px;
+	margin-left:-350px;
+	font-size: 1.1em;
+}
