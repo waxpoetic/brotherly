@@ -48,6 +48,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'administrate'
 gem 'sprockets-rails', '~> 2'
+gem 'rack-env-notifier'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-foundation', '~> 5'
