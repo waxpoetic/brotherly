@@ -55,3 +55,11 @@ argument to the Rake task:
 All tag pushes to GitHub result in a deployment to the production
 server, which should be configured on the app using the 'heroku' remote
 Git repo `git@heroku.com:brotherly.git`.
+
+## License
+
+This software is released under the [Simplified BSD
+License](https://opensource.org/licenses/BSD-2-Clause). See the
+`BSD-LICENSE` file for more details.
+
+
