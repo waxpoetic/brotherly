@@ -12,26 +12,26 @@ RSpec.feature 'Episodes', type: :feature do
     )
   end
 
-  scenario 'listing' do
+  xscenario 'listing' do
     visit episodes_path
 
     expect(page).to have_content(t('episodes.listing'))
     expect(page).to have_content('next...')
   end
 
-  scenario 'latest (home page)' do
+  xscenario 'latest (home page)' do
     visit root_path
 
     expect(page).to have_content('next...')
   end
 
-  scenario 'click through to details' do
+  xscenario 'click through to details' do
     visit root_path
     click_link 'brother.ly three'
     expect(page).to have_content('brother.ly three')
   end
 
-  scenario 'details for upcoming episode' do
+  xscenario 'details for upcoming episode' do
     episode.update(
       youtube_id: nil,
       starts_at: 1.hour.from_now,
@@ -45,7 +45,7 @@ RSpec.feature 'Episodes', type: :feature do
     expect(page).to have_css('.flyer_file')
   end
 
-  scenario 'details for current episode' do
+  xscenario 'details for current episode' do
     episode.update(
       youtube_id: 'Mg-LfxWY5hc',
       starts_at: 1.hour.ago,
@@ -61,7 +61,7 @@ RSpec.feature 'Episodes', type: :feature do
     expect(page).to have_css('#stream[autoplay]')
   end
 
-  scenario 'details for past episode' do
+  xscenario 'details for past episode' do
     episode.update(
       youtube_id: 'Mg-LfxWY5hc',
       starts_at: 2.hours.ago,
