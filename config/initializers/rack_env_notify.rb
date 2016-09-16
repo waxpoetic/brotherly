@@ -1,2 +1,2 @@
-Rack::EnvNotify.notify = !Rails.env.production?
-Rack::EnvNotify.message = "#{Rails.env} (#{SemVer.version})"
+Rack::EnvNotifier.notify = !Rails.env.production?
+Rack::EnvNotifier.message = "#{Rails.env} (#{SemVer.version})"
