@@ -1,0 +1,24 @@
+/! HTTP
+meta content: "text/html; charset=UTF-8" http-equiv="Content-Type" 
+meta charset: "utf-8" 
+meta name: 'viewport', content: "width=device-width, initial-scale=1.0" 
+/! SEO
+meta name: 'description', content: config.description 
+meta name: 'keywords', content: config.keywords.join(", ") 
+/! Twitter
+meta name: 'twitter:card', content: 'summary_large_image' 
+meta name: 'twitter:site', content: '@brotherlyparty' 
+meta name: 'twitter:creator', content: '@brotherlyparty' 
+meta name: 'twitter:title', content: app_title 
+meta name: 'twitter:description', content: config.description 
+meta name: 'twitter:image', content: image_url('logo.png', host: Rails.configuration.action_controller.asset_host) 
+/! Open Graph
+meta property: 'og:title', content: app_title 
+meta property: 'og:type', content: 'website' 
+meta property: 'og:image', content: image_url('logo.png', host: Rails.configuration.action_controller.asset_host) 
+meta property: 'og:url', content: config.domain 
+meta property: "fb:admins", content: Rails.application.secrets.facebook_admin_id 
+/! Custom
+= yield :metadata
+/! Rails
+= csrf_meta_tags

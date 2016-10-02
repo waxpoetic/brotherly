@@ -1,6 +1,6 @@
-!!!
-%html{lang: I18n.locale.to_s, 'xmlns:og' => 'http://ogp.me/ns'}
-  %head
+doctype html
+html lang: I18n.locale.to_s, 'xmlns:og' => 'http://ogp.me/ns' 
+  head
     = render 'metadata'
     = title_tag
     = favicon_link_tag
@@ -9,23 +9,23 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video-js-cdn.min.css'
     = stylesheet_link_tag 'application'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
-  %body{ class: section_name }
+  body  class: section_name  
     = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
-    %header
-      %nav.top-bar{ 'data-topbar' => true }
-        %ul.title-area
-          %li.name
-            %h1= link_to config.name, root_path, class: 'logo'
+    header
+      nav.top-bar  'data-topbar' => true  
+        ul.title-area
+          li.name
+            h1= link_to config.name, root_path, class: 'logo'
 
-        %section.top-bar-section#search.search
-          %ul
-            %li.has-dropdown
+        section.top-bar-section#search.search
+          ul
+            li.has-dropdown
               = simple_form_for @search, url: search_path, method: :get, remote: true, id: 'search_form' do |f|
                 = f.input :query, as: :search, label: false, placeholder: 'Search...', input_html: { autocomplete: 'off' }
-              %ul.dropdown.results{ style: 'margin-top: 10px' }
-                / Search results go here
-        %section.top-bar-section.links
-          %ul.right
+              ul.dropdown.results  style: 'margin-top: 10px'  
+                /! Search results go here
+        section.top-bar-section.links
+          ul.right
             - cache [@recent_episodes, :current] do
               = nav_link @current_episode.button_title, root_path
             = nav_link t(:past_episode, scope: :nav), episodes_path
@@ -34,53 +34,53 @@
       #flash.flash.row
         .large-12.columns
           - flash.each do |type, message|
-            %div{ class: "alert-box #{type}", data: { alert: true  } }
+            div  class: "alert-box #{type}", data: { alert: true  }  
               = message
               = link_to '&times;'.html_safe, '#', class: 'close'
-    %main{ class: page_name }
+    main  class: page_name  
       .messages.row
         = render 'flash'
       .content.row
         = yield
       .modal.row
-        #dialog.dialog.reveal-modal{ data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog' }
-          / Dialog content goes here
-    %footer
+        #dialog.dialog.reveal-modal  data: { reveal: true }, 'aria-labelledby' => 'Dialog', 'aria-hidden' => 'true', role: 'dialog'  
+          /! Dialog content goes here
+    footer
       .row
         .copyright.large-4.columns
-          %h3= t :about, scope: :footer
-          %p
+          h3= t :about, scope: :footer
+          p
             = t :copyright, scope: :footer
-            &copy; #{copyright_year}
+            | &copy; #{copyright_year}
             #{link_to "Wax Poetic Music", 'http://waxpoeticrecords.com'}.
-            %br
-          Created by <strong>team brother.ly</strong> in Philadelphia.
+            br
+          | Created by <strong>team brother.ly</strong> in Philadelphia.
         - cache [@recent_episodes, :list] do
           .recent.large-4.columns
-            %h3= t :recent, scope: :episodes
-            %ul
+            h3= t :recent, scope: :episodes
+            ul
             - @recent_episodes.each do |episode|
-              %li= link_to episode.name, episode
+              li= link_to episode.name, episode
         .social.large-4.columns
-          %h3= t '.social'
-          %ul
-            %li
+          h3= t '.social'
+          ul
+            li
               = link_to 'https://facebook.com/brotherlyparty' do
                 = icon :facebook
                 = t '.facebook'
-            %li
+            li
               = link_to 'https://twitter.com/brotherlyparty' do
                 = icon :twitter
                 = t '.twitter'
-            %li
+            li
               = link_to 'http://bit.ly/brotherly-youtube' do
                 = icon :youtube
                 = t '.youtube'
-            %li
+            li
               = link_to 'http://instagram.com/brother.ly' do
                 = icon :instagram
                 = t '.instagram'
-            %li
+            li
               = link_to 'http://github.com/waxpoetic/brotherly/issues/new' do
                 = icon :github
                 = t '.github'

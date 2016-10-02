@@ -3,10 +3,10 @@
     .performances.row
       .row
         .large-12.columns
-          %h3= t :performances, scope: :episodes
+          h3= t :performances, scope: :episodes
       .row
         - episode.performances.each do |performance|
-          %ul
+          ul
             - cache performance, summary: true do
               = render 'performance', performance: performance
 

@@ -9,20 +9,20 @@
             - if @episode.streaming?
               = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
             - elsif @episode.archived?
-              %video{ class: 'video-js', id: 'archive', controls: 'controls', preload: 'auto', width: 640, poster: @episode.flyer_file }
-                %source{ src: @episode.video, type: 'application/x-mpegURL' }
+              video  class: 'video-js', id: 'archive', controls: 'controls', preload: 'auto', width: 640, poster: @episode.flyer_file  
+                source  src: @episode.video, type: 'application/x-mpegURL'  
               = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
               = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'
               = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.3.0/videojs-contrib-hls.min.js'
-              :javascript
-                videojs('archive');
+              javascript:
+                | videojs('archive');
             - else
               = @episode.flyer
         .info.row
           .name.row
             .large-12.columns
-              %h3= @episode.title
-              %br
+              h3= @episode.title
+              br
           .description.row
             .large-8.columns
               = simple_format @episode.description
@@ -31,46 +31,46 @@
         .buttons.row
           .large-12.columns
             .actions
-              %ul{ style: 'list-style-type: none' }
+              ul  style: 'list-style-type: none'  
                 - if @episode.audio?
-                  %li.audio
+                  li.audio
                     = link_to @episode.audio, class: 'secondary button' do
                       = icon :music
-                      &nbsp;
+                      | &nbsp;
                       = t :audio, scope: :episodes
                 - if @episode.show_ticket_link?
-                  %li.eventbrite
+                  li.eventbrite
                     = link_to @episode.eventbrite_url, class: 'success button', target: '_blank' do
                       = icon :ticket
-                      &nbsp;
+                      | &nbsp;
                       = t :tickets, scope: :episodes
                 - if @episode.show_facebook_event?
-                  %li.facebook
+                  li.facebook
                     = link_to @episode.facebook_url, class: 'button', target: '_blank' do
                       = icon :facebook
-                      &nbsp;
+                      | &nbsp;
                       = t :share, scope: :episodes
         - if @episode.future? && @episode.artists.any?
           .collection.artists.row
             .large-12.columns
-              %h2= t :lineup, scope: :episodes
-              %ul
+              h2= t :lineup, scope: :episodes
+              ul
                 - @episode.artists.each do |artist|
-                  %li.row
+                  li.row
                     = link_to artist, title: artist.name do
                       .large-4.columns
                         = attachment_image_tag artist, :image_file
                       .large-8.columns
-                        %h5= artist.name
+                        h5= artist.name
         - if @episode.performances.any?
           .collection.performances.row
             .large-12.columns
-              %h2= t :performances, scope: :episodes
-              %ul.performances
+              h2= t :performances, scope: :episodes
+              ul.performances
                 - @episode.performances.each do |performance|
-                  %li.row
+                  li.row
                     = link_to episode_performance_path(@episode, performance), title: performance.title do
                       .large-4.columns
                         = performance.artist.decorate.image
                       .large-8.columns
-                        %h5= performance.artist.name
+                        h5= performance.artist.name

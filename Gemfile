@@ -10,7 +10,7 @@ gem 'active_model-jobs'
 gem 'makeover'
 gem 'simple_form'
 gem 'devise'
-gem 'haml-rails'
+gem 'slim-rails'
 gem 'refile', github: 'refile/refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
@@ -49,6 +49,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
   gem 'scss_lint', require: false
+  gem 'haml2slim', require: false
 end
 
 group :development, :test do

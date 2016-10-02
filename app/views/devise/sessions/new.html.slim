@@ -1,4 +1,4 @@
-%h2= t :login, scope: :users
+h2= t :login, scope: :users
 = simple_form_for resource, as: resource_name, url: session_path(resource_name), class: 'user-login' do |f|
   = devise_error_messages!
   .form-inputs

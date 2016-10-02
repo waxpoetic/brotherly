@@ -1,4 +1,4 @@
-%nav.right
+nav.right
   - if controller_name != 'sessions'
     = link_to "Log in", new_session_path(resource_name), class: 'tiny secondary button'
   - if devise_mapping.registerable? && controller_name != 'registrations'
@@ -10,7 +10,7 @@
   - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
     = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: 'tiny secondary button'
   - if devise_mapping.omniauthable?
-    %br/
+    br/
     - resource_class.omniauth_providers.each do |provider|
       = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'tiny secondary button'
-      %br/
+      br/
