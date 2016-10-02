@@ -60,7 +60,7 @@ module Eventbrite
     end
 
     def gateway
-      @gateway ||= Gateway.new
+      @gateway ||= Rails.configuration.eventbrite_gateway.constantize.new
     end
   end
 end

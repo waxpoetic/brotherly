@@ -75,5 +75,7 @@ module Brotherly
     config.domain = 'http://brotherly.dev'
 
     config.makeover.helpers << Refile::AttachmentHelper
+
+    config.eventbrite_gateway = 'Eventbrite::BogusGateway'
   end
 end

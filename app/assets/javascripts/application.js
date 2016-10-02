@@ -3,10 +3,12 @@
 //= require foundation
 //= require refile
 //= require lodash
-//= require jquery.turbolinks
+//= require video
+//= require videojs-contrib-hls
 //= require turbolinks
 //= require_self
 //= require_tree .
 
-$.turbo.use('page:load', 'page:fetch', 'page:update', 'opened.fndtn.reveal');
-$(function() { $(document).foundation(); });
+$(document).on('ready turbolinks:load', function() {
+  $(document).foundation();
+});

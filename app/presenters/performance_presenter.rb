@@ -1,6 +1,4 @@
 class PerformancePresenter < ApplicationPresenter
-  delegate_all
-
   delegate :name, to: :artist, prefix: true
 
   def cover_image

@@ -44,7 +44,7 @@ class Search
 
   # Collection of results that came back in the query.
   #
-  # @return [Array<ActiveRecord::Base>]
+  # @return [Array<ApplicationRecord>]
   def results
     models.map do |model|
       Results.new(documents, model).records

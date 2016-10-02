@@ -1,2 +1,8 @@
----
-exclude: vendor/bundle/**/*
+scss_files: 'app/assets/stylesheets/**/*.scss'
+exclude:
+  - 'vendor/bundle/**/*'
+  - 'bower_components/**/*'
+linters:
+  Comment:
+    exclude:
+      - 'app/assets/stylesheets/application.css.scss'
