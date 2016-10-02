@@ -526,11 +526,8 @@ DEPENDENCIES
   pry-rails
   puma
   rack-cache
-<<<<<<< c28a58f512135965547aefee999e2e83030e728a
   rack-env-notifier
-=======
   rack-cors
->>>>>>> Trying to fix stopped up tests
   rails (~> 5)
   rails-assets-foundation (~> 5)!
   rails_12factor
