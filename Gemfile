@@ -41,10 +41,8 @@ gem 'turbolinks'
 # gem 'administrate', github: 'thoughtbot/administrate'
 gem 'sprockets-rails', '~> 2'
 gem 'rack-env-notifier'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-foundation', '~> 5'
-end
+gem 'bourbon'
+gem 'neat'
 
 group :development do
   gem 'meta_request'
