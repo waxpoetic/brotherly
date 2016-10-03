@@ -1,0 +1,39 @@
+$sidebar-tiles: 5;
+$main-tiles: 7;
+
+header {
+  .masthead {
+    @include outer-container;
+
+    border-bottom: 3px solid $white;
+
+    .logo {
+      @include span-columns($sidebar-tiles);
+    }
+  }
+
+  .navigation {
+    @include span-columns($main-tiles);
+
+    nav {
+      display: flex;
+    }
+
+    a {
+      flex: 1;
+      font-size: 3rem;
+    }
+  }
+
+  .underbar {
+    @include outer-container;
+
+    .slogan {
+      @include span-columns($sidebar-tiles);
+    }
+
+    .flash {
+      @include span-columns($main-tiles);
+    }
+  }
+}
