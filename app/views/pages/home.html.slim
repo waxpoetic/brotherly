@@ -1,0 +1,10 @@
+section.video-player
+  = render 'video', src: @episode.video_url
+
+section.news
+  .sidebar
+    - @features.each do |feature|
+      = link_to feature.url, class: 'feature', style: feature.css do
+        p= feature.title
+  .articles
+    = render @articles

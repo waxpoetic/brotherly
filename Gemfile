@@ -31,7 +31,6 @@ gem 'rack-cors'
 
 gem 'lodash-rails'
 gem 'sass-rails'
-gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 # gem 'autoprefixer-rails'

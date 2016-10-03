@@ -1,0 +1,29 @@
+// Home page showing recent news, featured articles, and the latest
+// videos.
+
+.pages.home {
+  .video-player {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.news {
+  .sidebar {
+    .feature {
+      border: 1px solid $white;
+      color: $white;
+      font-size: 24px;
+    }
+  }
+
+  article {
+    h1 {
+      font: serif 16px;
+    }
+
+    .title {
+      border-bottom: 1px solid $white;
+    }
+  }
+}

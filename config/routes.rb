@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'episodes#show', id: 'current'
+  get :about, to: 'pages#about'
+
+  root to: 'pages#home'
 end
