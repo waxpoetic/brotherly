@@ -1,18 +1,33 @@
 doctype html
-html lang: I18n.locale.to_s, 'xmlns:og' => 'http://ogp.me/ns' 
+html lang=I18n.locale xmlns:og="http://ogp.me/ns"
   head
     = render 'metadata'
     = title_tag
     = favicon_link_tag
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t('titles.episodes.podcast')
     = javascript_include_tag 'modernizr', 'application'
-    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video-js-cdn.min.css'
     = stylesheet_link_tag 'application'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
-  body  class: section_name  
+  body
     = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
     header
-      nav.top-bar  'data-topbar' => true  
+      section.masthead
+        .logo
+          = link_to root_path do
+            = image_tag 'logo.png'
+        .links
+          nav
+            = link_to t(:about, scope: [:titles, :pages]), page_path(:about)
+            = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
+            = link_to t(:past, scope: [:titles, :episodes]), past_episodes_path
+      section.underbar
+        .slogan
+          h2= t '.slogan'
+        .flash
+          - flash.each do |type, message|
+            = render 'flash', type: type, message: message
+    header
+      nav.top-bar
         ul.title-area
           li.name
             h1= link_to config.name, root_path, class: 'logo'

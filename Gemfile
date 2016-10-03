@@ -43,6 +43,7 @@ gem 'sprockets-rails', '~> 2'
 gem 'rack-env-notifier'
 gem 'bourbon'
 gem 'neat'
+gem 'babel-transpiler'
 
 group :development do
   gem 'meta_request'
