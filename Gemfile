@@ -38,7 +38,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'turbolinks'
-gem 'administrate', github: 'thoughtbot/administrate'
+# gem 'administrate', github: 'thoughtbot/administrate'
 gem 'sprockets-rails', '~> 2'
 gem 'rack-env-notifier'
 
