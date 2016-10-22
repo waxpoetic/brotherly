@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     collection do
       get :upcoming
     end
+
+    member do
+      get :player
+    end
   end
   resources :subscribers
   devise_for :users, path_names: {
