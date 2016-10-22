@@ -3,19 +3,20 @@
     - if @episode.streaming?
       = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
     - elsif @episode.archived?
-      video#archive.video-js.vjs-sublime-skin controls="controls" preload="auto" width=640 poster="#{@episode.flyer_file}"
+      video#archive.video-js.vjs-sublime-skin controls="controls" preload="auto" poster="#{@episode.poster_url}"
         source src="#{@episode.video}" type="application/x-mpegURL"
       = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
       = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'
       = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.3.0/videojs-contrib-hls.min.js'
       javascript:
-        | videojs('archive');
+        videojs('archive');
     - else
       = @episode.flyer
   section.current-episode__filmstrip
     nav.filmstrip
       - @episodes.map(&:present).each do |episode|
         = link_to episode, class: filmstrip_link_class(episode) do
-          = image_tag episode.flyer
+          = episode.cover_image
   section.current-episode__description
+    h3 = @episode.name
     = @episode.description

@@ -7,3 +7,7 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+body {
+  background: $base-background-color;
+}

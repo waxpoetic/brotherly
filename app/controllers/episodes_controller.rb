@@ -11,6 +11,14 @@ class EpisodesController < ApplicationController
     end
   end
 
+  def upcoming
+    @episodes = @episodes.future
+  end
+
+  def past
+    @episodes = @episodes.past
+  end
+
   def show
     respond_with @episode
   end

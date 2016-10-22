@@ -11,6 +11,8 @@ en:
       index: episode archives
       show: '%{name}'
       podcast: brother.ly podcast
+      upcoming: Upcoming
+      past: Archives
   subscribers:
     new:
       content: You'll be the first to know about new events and recording uploads.
@@ -24,6 +26,7 @@ en:
         updated_at: Updated
   layouts:
     application:
+      slogan: Streaming live electronic music from philadelphia
       social: connect
       facebook: Like on Facebook
       twitter: Follow on Twitter

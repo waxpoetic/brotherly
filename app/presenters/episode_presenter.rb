@@ -39,6 +39,26 @@ class EpisodePresenter < ApplicationPresenter
     )
   end
 
+  def poster_url
+    h.attachment_url(
+      model,
+      :flyer_file,
+      fallback: "http://placehold.it/640x480?text=#{placeholder_text}",
+      title: model.name,
+      alt: model.name
+    )
+  end
+
+  def cover_image
+    h.attachment_image_tag(
+      model,
+      :flyer_file,
+      fallback: cover_image_fallback,
+      title: model.name,
+      alt: model.name
+    )
+  end
+
   def autoplay
     'autoplay' if autoplay?
   end
@@ -128,5 +148,9 @@ class EpisodePresenter < ApplicationPresenter
 
   def fallback_flyer
     "http://placehold.it/240x320?text=#{placeholder_text}"
+  end
+
+  def cover_image_fallback
+    "http://placehold.it/240x160?text=#{placeholder_text}"
   end
 end
