@@ -2,8 +2,8 @@
 class PerformancePresenter < ApplicationPresenter
   delegate :name, to: :artist, prefix: true
 
-  def cover_image
-    "http://placehold.it/960x320?text=#{placeholder_text}"
+  def cover_image_url
+    "http://placehold.it/240x160?text=#{placeholder_text}"
   end
 
   def audio

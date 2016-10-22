@@ -3,8 +3,8 @@ module EpisodesHelper
   # Unmodified CSS class for filmstrip episode links.
   INITIAL_LINK_CLASS = 'filmstrip__episode'
 
-  def filmstrip_link_class(episode)
-    if current_page? episode
+  def filmstrip_link_class(*routes)
+    if current_page?(routes)
       INITIAL_LINK_CLASS + '--active'
     else
       INITIAL_LINK_CLASS

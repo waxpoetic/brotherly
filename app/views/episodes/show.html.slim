@@ -21,7 +21,7 @@
   section.current-episode__filmstrip
     nav.filmstrip
       - @episode.performances.each do |performance|
-        = link_to performance, class: filmstrip_link_class(performance) do
+        = link_to [@episode, performance], class: filmstrip_link_class(@episode, performance) do
           = image_tag performance.cover_image_url
   section.current-episode__description
     h3 = @episode.name
