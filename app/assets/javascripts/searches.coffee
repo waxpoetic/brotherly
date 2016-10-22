@@ -4,7 +4,7 @@
 $(document).ready ->
   # Populate the results dropdown with new search term results, and show
   # an interstitial message while waiting for responses.
-  $('#search form')
+  $('#search_form')
     .on 'ajax:before', ->
       $('#search .results')
         .html('<li><label>Searching...</label></li>')
@@ -18,5 +18,5 @@ $(document).ready ->
     $(event.currentTarget).closest('form').trigger 'submit.rails'
 
   # Bind autocomplete function to search form.
-  $('#search form input')
+  $('#search_form input[type="search"]')
     .on 'keydown', _.debounce(submitForm, 350)

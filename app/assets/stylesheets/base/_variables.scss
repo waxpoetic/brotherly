@@ -3,6 +3,7 @@ $medium-screen: 600px;
 $large-screen: 900px;
 
 // Typography
+$font-stack-system: Helvetica, sans-serif;
 $base-font-family: $font-stack-system;
 $heading-font-family: $base-font-family;
 
@@ -24,6 +25,7 @@ $blue: #1565c0;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$white: #eee;
 
 // Font Colors
 $base-font-color: $dark-gray;

@@ -17,7 +17,7 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
             = image_tag 'logo.png'
         .links
           nav
-            = link_to t(:about, scope: [:titles, :pages]), page_path(:about)
+            = link_to t(:about, scope: [:titles, :pages]), about_path
             = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
             = link_to t(:past, scope: [:titles, :episodes]), past_episodes_path
       section.underbar

@@ -1,10 +1,21 @@
-section.video-player
-  = render 'video', src: @episode.video_url
-
-section.news
-  .sidebar
-    - @features.each do |feature|
-      = link_to feature.url, class: 'feature', style: feature.css do
-        p= feature.title
-  .articles
-    = render @articles
+.current-episode
+  section.current-episode__video
+    - if @episode.streaming?
+      = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
+    - elsif @episode.archived?
+      video#archive.video-js.vjs-sublime-skin controls="controls" preload="auto" width=640 poster="#{@episode.flyer_file}"
+        source src="#{@episode.video}" type="application/x-mpegURL"
+      = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
+      = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'
+      = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.3.0/videojs-contrib-hls.min.js'
+      javascript:
+        | videojs('archive');
+    - else
+      = @episode.flyer
+  section.current-episode__filmstrip
+    nav.filmstrip
+      - @episodes.map(&:present).each do |episode|
+        = link_to episode, class: filmstrip_link_class(episode) do
+          = image_tag episode.flyer
+  section.current-episode__description
+    = @episode.description

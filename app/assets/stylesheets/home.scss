@@ -1,29 +1,28 @@
-// Home page showing recent news, featured articles, and the latest
-// videos.
-
-.pages.home {
-  .video-player {
+.current-episode {
+  .current-episode__video {
     margin: 0 auto;
     width: 80%;
   }
+  .current-episode__past-episodes {
+  }
+  .current-episode__description {
+  }
 }
 
-.news {
-  .sidebar {
-    .feature {
-      border: 1px solid $white;
-      color: $white;
-      font-size: 24px;
-    }
+.filmstrip {
+  @include outer-container;
+
+  %episode-thumbnail {
+    text-decoration: none;
   }
 
-  article {
-    h1 {
-      font: serif 16px;
-    }
+  .filmstrip__episode {
+    @include span-columns(3);
+    @extend %episode-thumbnail;
+  }
 
-    .title {
-      border-bottom: 1px solid $white;
-    }
+  .filmstrip__episode-active {
+    @extend %episode-thumbnail;
+    border: 1px solid white;
   }
 }

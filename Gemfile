@@ -38,11 +38,11 @@ gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'turbolinks'
 # gem 'administrate', github: 'thoughtbot/administrate'
-gem 'sprockets-rails', '~> 2'
 gem 'rack-env-notifier'
 gem 'bourbon'
 gem 'neat'
-gem 'babel-transpiler'
+# gem 'babel-transpiler'
+gem 'coffee-rails'
 
 group :development do
   gem 'meta_request'

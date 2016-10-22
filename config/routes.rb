@@ -3,6 +3,10 @@ require 'sidekiq/web' if defined? Sidekiq
 Rails.application.routes.draw do
   resources :artists, only: [:index, :show]
   resources :episodes, only: [:index, :show] do
+    collection do
+      get :upcoming
+      get :past
+    end
     resources :performances, only: [:show]
   end
   resources :subscribers

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @featured = present Feature.latest(3)
-    @articles = present Article.latest(5)
+    @episode = present Episode.current
+    @episodes = present Episode.latest
   end
 end
