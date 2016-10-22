@@ -41,7 +41,6 @@ gem 'turbolinks'
 gem 'rack-env-notifier'
 gem 'bourbon'
 gem 'neat'
-gem 'babel-transpiler'
 
 group :development do
   gem 'meta_request'
