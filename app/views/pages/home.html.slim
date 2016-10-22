@@ -1,6 +1,6 @@
 - if @episode.archived?
   - content_for :metadata do
-    meta name="twitter:player" content="#{url_for([@episode, :player])}"
+    meta name="twitter:player" content="#{player_episode_path(@episode)}"
     meta name="twitter:player:height" content="480"
     meta name="twitter:player:width" content="320"
     meta name="twitter:player:stream" content="#{@episode.video}"
