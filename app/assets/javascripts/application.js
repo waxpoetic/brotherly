@@ -5,5 +5,5 @@
 //= require video
 //= require videojs-contrib-hls
 //= require turbolinks
-//= require_self
 //= require_tree .
+//= require_self
