@@ -3,7 +3,7 @@
     - if @episode.streaming?
       = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
     - elsif @episode.archived?
-      video#archive.video-js.vjs-sublime-skin controls="controls" preload="auto" poster="#{@episode.poster_url}"
+      video#archive.video-js.vjs-sublime-skin.vjs-16-9 width="640" height="264" controls="controls" preload="auto" poster="#{@episode.poster_url}"
         source src="#{@episode.video}" type="application/x-mpegURL"
       = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
       = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'

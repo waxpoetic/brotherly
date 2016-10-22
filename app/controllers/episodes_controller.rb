@@ -1,8 +1,9 @@
 class EpisodesController < ApplicationController
   resource :episode
+  self.collection_actions << :upcoming
 
   def index
-    @episodes = @episodes.latest
+    @episodes = @episodes.past
 
     respond_to do |format|
       format.html
@@ -13,10 +14,6 @@ class EpisodesController < ApplicationController
 
   def upcoming
     @episodes = @episodes.future
-  end
-
-  def past
-    @episodes = @episodes.past
   end
 
   def show

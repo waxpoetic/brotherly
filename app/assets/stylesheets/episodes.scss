@@ -1,0 +1,15 @@
+.episodes {
+  @include outer-container;
+}
+
+  .episodes__title {
+  }
+
+  .episodes__summary {
+    @include span-columns(3);
+    text-align: center;
+  }
+
+  .episodes__none {
+    text-align: center;
+  }

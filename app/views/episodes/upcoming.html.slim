@@ -1,4 +1,9 @@
-- @episodes.each do |episode|
-  .upcoming-episode
-    = link_to episode do
-      = episode.flyer
+
+.episodes
+  .episodes__title
+    h1 upcoming episodes
+  - if @episodes.empty?
+    .episodes__none
+      h2 No episodes have been scheduled yet. Check back soon!
+  - else
+    = render @episodes.map(&:present)

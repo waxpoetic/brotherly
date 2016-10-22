@@ -1,9 +1,10 @@
-.current-episode {}
+.current-episode {
+  @include outer-container;
+}
+
   .current-episode__video {
     video {
       margin: 0 auto;
-      //height: 280px;
-      //width: 100%;
     }
   }
   .current-episode__filmstrip {
