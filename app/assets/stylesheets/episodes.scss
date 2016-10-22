@@ -1,53 +1,15 @@
 .episodes {
-  .episode-summary {
-    background: $jet;
-    min-height: 260px;
-
-    .flyer-file {
-      left: 2em;
-      position: relative;
-    }
-
-    ul {
-      margin-left: 0;
-    }
-
-    .artist-name {
-      color: $aluminum;
-      font-size: .8rem;
-      list-style-type: none;
-      margin-top: 10px;
-    }
-
-    time {
-      font-size: .8rem;
-    }
-  }
-
-  .video {
-    padding-bottom: 10px;
-  }
-
-  .info {
-    background: $jet;
-    margin-top: 20px;
-    padding: 10px;
-  }
-
-  .actions {
-    padding-top: 19px;
-  }
+  @include outer-container;
 }
 
-.collection {
-  background: $jet;
-  margin: 0 auto;
-
-  ul {
-    list-style-type: none;
-
-    li {
-      padding: 10px 0;
-    }
+  .episodes__title {
   }
-}
+
+  .episodes__summary {
+    @include span-columns(3);
+    text-align: center;
+  }
+
+  .episodes__none {
+    text-align: center;
+  }

@@ -1,0 +1,44 @@
+doctype html
+html lang=I18n.locale xmlns:og="http://ogp.me/ns"
+  head
+    = render 'metadata'
+    = title_tag
+    = favicon_link_tag
+    = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t('titles.episodes.podcast')
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application'
+    = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
+  body
+    = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
+    header
+      section.top-bar
+        .top-bar__logo
+          = link_to root_path do
+            = image_tag 'logo.jpeg'
+        .top-bar__links
+          = image_tag 'skyline.png', class: 'skyline'
+          nav
+            = link_to t(:about, scope: [:titles, :pages]), about_path
+            = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
+            = link_to t(:past, scope: [:titles, :episodes]), episodes_path
+    main
+      = yield
+    / footer
+    /   .social
+    /     h3= t '.social'
+    /     nav
+    /       = link_to 'https://facebook.com/brotherlyparty' do
+    /         = icon :facebook
+    /         = t '.facebook'
+    /       = link_to 'https://twitter.com/brotherlyparty' do
+    /         = icon :twitter
+    /         = t '.twitter'
+    /       = link_to 'http://bit.ly/brotherly-youtube' do
+    /         = icon :youtube
+    /         = t '.youtube'
+    /       = link_to 'http://instagram.com/brother.ly' do
+    /         = icon :instagram
+    /         = t '.instagram'
+    /       = link_to 'http://github.com/waxpoetic/brotherly/issues/new' do
+    /         = icon :github
+    /         = t '.github'

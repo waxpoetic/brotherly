@@ -1,0 +1,15 @@
+- content_for :title, 'Dashboard'
+
+.row
+  .col-12
+    h1 brother.ly admin
+br
+br
+.row
+  .col-4
+    h2 Next event
+
+    - if Episode.upcoming.empty?
+      p No events are scheduled
+    - else
+      p= Episode.upcoming.first.name

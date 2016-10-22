@@ -1,128 +1,66 @@
-body {
-  background-size: 198% auto;
-}
+$sidebar-tiles: 5;
+$main-tiles: 7;
 
 .top-bar {
-  .name {
+  @include outer-container;
+  background: image-url('background-pattern.jpeg') 0px 3px;
+
+  div {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  clear: both;
+}
+
+.skyline {
+  margin-top: 1px;
+}
+
+.top-bar__logo {
+  float: left;
+}
+
+.top-bar__links {
+  float: right;
+
+  img {
+    @media screen and (max-width: 920px) {
+      display: none;
+    }
+  }
+
+  nav {
+    display: flex;
+    border-bottom: 4px solid #eee;
     position: relative;
-    top: 5px;
-
-    .logo {
-      font-size: 32px;
-      font-weight: 900;
+    bottom: 5px;
+    @media screen and (max-width: 920px) {
+      border-bottom: none;
     }
   }
-}
-
-.search-form {
-  .input {
-    height: 75px;
-  }
-
-  input {
-    background: $black;
-    border: 0;
-    color: $smoke;
-
-    &::-webkit-input-placeholder {
-      color: $aluminum;
-    }
-  }
-}
-
-@mixin navigation-item {
-  padding: 10px 5px;
-
-  .dropdown {
-    background: $jet;
-    margin-top: 42px;
-  }
-
-  a:not(.button) {
-    line-height: 35px;
-  }
-}
-
-.links {
-  margin-right: 15px;
-
-  .nav-item.active:not(.has-form) {
-    @include navigation-item;
-  }
-
-  .nav-item:not(.has-form) {
-    @include navigation-item;
-  }
-
-  .nav-link {
-    border: $vapor 1px solid;
-    border-radius: 3px;
-    box-sizing: border-box;
-    color: $vapor;
-    display: inline-block;
-    float: right;
-    font-size: 12px;
-    height: 38px;
-    padding: 0 20px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: all ease .3s;
-    white-space: nowrap;
-
-    &:hover {
-      border-color: $nav-link-hover-border-color;
-      color: $nav-link-hover-color;
-    }
-  }
-}
-
-.search {
-  input {
-    background: transparent;
-    border: $vapor 1px solid;
-    border-radius: 3px;
-    color: $vapor;
-    font-size: 18px;
-    padding: 19px;
-    width: 500px;
-
-    &:focus {
-      background: $jet;
-      color: $aluminum;
-    }
-  }
-}
-
-main {
-  margin-bottom: 25px;
-}
-
-footer {
-  background: $footer-bg;
-  color: $jet;
-  height: 36%;
-  min-height: 25%;
-  opacity: .5;
 
   a {
-    color: $white;
-  }
+    flex: 1;
+    text-align: center;
+    font-family: Georgia, Times, serif;
 
-  h3 {
-    color: $jet;
-  }
-
-  .copyright {
-    p {
-      padding-top: 13px;
+    @media screen and (max-width: 920px) {
+      padding: 0 34px;
     }
   }
 }
 
-.dialog {
-  background: $jet;
-
-  label {
-    color: $white;
-  }
+.underbar {
+  @include outer-container;
 }
+
+  h2.underbar__slogan {
+    //@include span-columns($sidebar-tiles);
+    font-size: .9em;
+  }
+
+  .underbar__flash {
+    @include span-columns($main-tiles);
+  }

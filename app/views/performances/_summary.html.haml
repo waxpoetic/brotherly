@@ -1,7 +1,0 @@
-.performance-summary.row
-  = link_to performance do
-    .large-8.columns
-      = attachment_image_tag performance.artist, :image_file, :fill, 250, 250, fallback: "http://placehold.it/250x250?text=#{performance.artist.name}"
-    .large-4.columns
-      %p.name= performance.artist.name
-      %p.duration Duration: #{performance.duration}

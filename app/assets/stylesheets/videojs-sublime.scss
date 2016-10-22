@@ -4,19 +4,19 @@
 
 // The color of icons, text, and the big play button border.
 // Try changing to #0f0
-$vjs-primary-foreground-color: $white; // #fff default
+$vjs-primary-foreground-color: #fff; // #fff default
 
 // The default color of control backgrounds is mostly black but with a little
 // bit of blue so it can still be seen on all-black video frames, which are common.
 // Try changing to #900
-$vjs-primary-background-color: $tuatara;  // #2B333F default
+$vjs-primary-background-color: #2b333f; //$tuatara;  // #2B333F default
 
 // Try changing to true
 $center-big-play-button: true; // true default
 
 button.vjs-control {
   &:hover {
-    background: $steel;
+    background: $medium-gray;
   }
 }
 
@@ -28,6 +28,8 @@ button.vjs-control {
 
   /* The main font color changes the ICON COLORS as well as the text */
   color: $vjs-primary-foreground-color;
+
+  margin: 0 auto;
 }
 
 /* The "Big Play Button" is the play button that shows before the video plays.
@@ -76,9 +78,9 @@ button.vjs-control {
 .video-js .vjs-big-play-button,
 .video-js .vjs-menu-button .vjs-menu-content {
   /* IE8 - has no alpha support */
-  background-color: $jet;
+  background-color: $dark-gray;
   /* Opacity: 1.0 = 100%, 0.0 = 0% */
-  background-color: rgba($jet, 0.5);
+  background-color: rgba($dark-gray, 0.5);
   // background-color: transparent;
 }
 

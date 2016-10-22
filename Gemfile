@@ -10,7 +10,7 @@ gem 'active_model-jobs'
 gem 'makeover'
 gem 'simple_form'
 gem 'devise'
-gem 'haml-rails'
+gem 'slim-rails'
 gem 'refile', github: 'refile/refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
@@ -31,7 +31,6 @@ gem 'rack-cors'
 
 gem 'lodash-rails'
 gem 'sass-rails'
-gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 # gem 'autoprefixer-rails'
@@ -39,18 +38,16 @@ gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'turbolinks'
 # gem 'administrate', github: 'thoughtbot/administrate'
-gem 'sprockets-rails', '~> 2'
 gem 'rack-env-notifier'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-foundation', '~> 5'
-end
+gem 'bourbon'
+gem 'neat'
 
 group :development do
   gem 'meta_request'
   gem 'web-console', '~> 2.0'
   gem 'rubocop'
   gem 'scss_lint', require: false
+  gem 'haml2slim', require: false
 end
 
 group :development, :test do

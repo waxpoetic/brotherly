@@ -1,0 +1,10 @@
+h2= t :login, scope: :users
+= simple_form_for resource, as: resource_name, url: session_path(resource_name), class: 'user-login' do |f|
+  = devise_error_messages!
+  .form-inputs
+    = f.input :name, required: true, autofocus: true
+    = f.input :password, required: true
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, "Log in"
+= render "devise/shared/links"

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show]
   resources :episodes, only: [:index, :show] do
     resources :performances, only: [:show]
+
+    collection do
+      get :upcoming
+    end
   end
   resources :subscribers
   devise_for :users, path_names: {
@@ -20,5 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'episodes#show', id: 'current'
+  get :about, to: 'pages#about'
+
+  root to: 'pages#home'
 end

@@ -1,8 +1,9 @@
 class EpisodesController < ApplicationController
   resource :episode
+  self.collection_actions << :upcoming
 
   def index
-    @episodes = @episodes.latest
+    @episodes = @episodes.past
 
     respond_to do |format|
       format.html
@@ -11,8 +12,16 @@ class EpisodesController < ApplicationController
     end
   end
 
+  def upcoming
+    @episodes = @episodes.future
+  end
+
   def show
     respond_with @episode
+  end
+
+  def player
+    layout false
   end
 
   private
