@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 class EpisodesController < ApplicationController
   resource :episode
-  self.collection_actions << :upcoming
+  collection_actions << :upcoming
 
   def index
     @episodes = @episodes.past

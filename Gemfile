@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5'
@@ -33,7 +34,7 @@ gem 'lodash-rails'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
-# gem 'autoprefixer-rails'
+gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'font_assets'
 gem 'turbolinks'
@@ -41,6 +42,7 @@ gem 'turbolinks'
 gem 'rack-env-notifier'
 gem 'bourbon'
 gem 'neat'
+gem 'normalize-rails'
 
 group :development do
   gem 'meta_request'

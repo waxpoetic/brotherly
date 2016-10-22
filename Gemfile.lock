@@ -83,6 +83,8 @@ GEM
     airbrake-ruby (1.5.0)
     arel (7.1.2)
     ast (2.3.0)
+    autoprefixer-rails (6.5.1)
+      execjs
     aws-sdk (2.6.5)
       aws-sdk-resources (= 2.6.5)
     aws-sdk-core (2.6.5)
@@ -218,6 +220,7 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    normalize-rails (3.0.3)
     oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -443,6 +446,7 @@ PLATFORMS
 DEPENDENCIES
   active_model-jobs
   airbrake
+  autoprefixer-rails
   aws-sdk
   bitly
   bourbon
@@ -466,6 +470,7 @@ DEPENDENCIES
   meta_request
   neat
   newrelic_rpm
+  normalize-rails
   pg
   pg_search
   poltergeist

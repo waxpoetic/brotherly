@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if defined? Refile::S3
   aws = {
     access_key_id: Rails.application.secrets.aws_access_key_id,

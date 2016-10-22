@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Article features on the sidebar are wrapped in this object.
 class FeaturePresenter < ApplicationPresenter
   def url

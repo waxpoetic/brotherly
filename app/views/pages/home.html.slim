@@ -6,19 +6,17 @@
     meta name="twitter:player:stream" content="#{@episode.video}"
     meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;"
 
-.current-episode
-  section.current-episode__video
+.episode
+  section.episode__video
     - if @episode.streaming?
       = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
-    - else #if @episode.archived?
+    - else
       = render 'episodes/video', poster: @episode.poster_url, src: @episode.video
-    /- else
-    /  = @episode.flyer
-  section.current-episode__filmstrip
+  section.episode__filmstrip
     nav.filmstrip
       - @episodes.map(&:present).each do |episode|
         = link_to episode, class: filmstrip_link_class(episode) do
           = image_tag episode.cover_image_url
-  section.current-episode__description
+  section.episode__description
     h3 = @episode.name
     = @episode.description

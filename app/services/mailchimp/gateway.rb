@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Mailchimp
   # A wrapper for Gibbon that acts as our gateway to the Mailchimp
   # service. Although Gibbon actually performs the HTTP requests related

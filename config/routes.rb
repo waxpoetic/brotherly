@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'sidekiq/web' if defined? Sidekiq
 
 Rails.application.routes.draw do

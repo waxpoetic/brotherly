@@ -1,27 +1,16 @@
+# frozen_string_literal: true
 class EpisodePresenter < ApplicationPresenter
   # Hard-set width of videos.
   VIDEO_WIDTH = 640
 
   # Content type of video streams.
-  VIDEO_TYPE = 'application/x-mpegURL'.freeze
+  VIDEO_TYPE = 'application/x-mpegURL'
 
   # Protocol used for transcode streams.
-  TRANSCODE_PROTOCOL = 'https://'.freeze
-
-  def eventbrite_url
-    model.short_link_url || model.eventbrite_url
-  end
+  TRANSCODE_PROTOCOL = 'https://'
 
   def artists
     model.performances.play_order.map(&:artist).map(&:decorate)
-  end
-
-  def cache_key_for(section)
-    [model.cache_key, section].join('/')
-  end
-
-  def date
-    starts_at.to_date
   end
 
   def performances
@@ -43,9 +32,7 @@ class EpisodePresenter < ApplicationPresenter
     h.attachment_url(
       model,
       :flyer_file,
-      fallback: "http://placehold.it/640x480?text=#{placeholder_text}",
-      title: model.name,
-      alt: model.name
+      fallback: "http://placehold.it/640x480?text=#{placeholder_text}"
     )
   end
 
@@ -53,9 +40,7 @@ class EpisodePresenter < ApplicationPresenter
     h.attachment_url(
       model,
       :flyer_file,
-      fallback: cover_image_fallback,
-      title: model.name,
-      alt: model.name
+      fallback: cover_image_fallback
     )
   end
 
@@ -66,17 +51,6 @@ class EpisodePresenter < ApplicationPresenter
   def stream_url
     return unless model.youtube_id.present?
     "http://www.youtube.com/embed/#{model.youtube_id}"
-  end
-
-  def archive_url
-  end
-
-  def current_title
-    model.future? ? t(:next, scope: :episodes) : t(:latest, scope: :episodes)
-  end
-
-  def button_title
-    current_title.gsub(/ episode/, '')
   end
 
   def audio
@@ -96,14 +70,6 @@ class EpisodePresenter < ApplicationPresenter
 
   def video?
     model.video_file_id.present? && model.transcoded?
-  end
-
-  def show_ticket_link?
-    model.future? && model.eventbrite_url.present?
-  end
-
-  def show_facebook_event?
-    model.future? && model.facebook_url.present?
   end
 
   def enclosure

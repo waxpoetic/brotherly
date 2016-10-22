@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddMediaTimestamps < ActiveRecord::Migration
   def change
     %i(episodes performances).each do |table|

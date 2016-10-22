@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Eventbrite
   RSpec.describe Gateway do
     let :event do

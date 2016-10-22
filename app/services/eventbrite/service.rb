@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Eventbrite
   class Service < Brotherly::Service
     remote Event

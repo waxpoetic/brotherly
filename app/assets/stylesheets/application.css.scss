@@ -3,10 +3,61 @@
  *= require_self
  */
 
+/**
+ * CONTENTS
+ *
+ * TOOLS
+ * Bourbon..............Useful mixins.
+ * Neat.................Grid framework
+ */
 @import 'bourbon';
 @import 'neat';
-@import 'base/base';
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
-@import 'videojs-sublime';
-@import '*';
+//@import 'mixins/*';
+/*
+ * SETTINGS
+ *
+ * Variables...............Globally-available variables
+ */
+@import 'settings/variables';
+/*
+ * GENERIC
+ *
+ * Normalize.css........CSS Reset
+ * VideoJS Sublime......Skin for VJS Player
+ */
+//@import 'normalize-rails';
+@import 'generic/videojs-sublime';
+/*
+ * BASE
+ *
+ * Layout...............Generic element styles
+ * Buttons..............Generic button styles
+ * Forms................Base form styles
+ * Lists................<ul> and <ol> styles
+ * Media................Base styles for <video> components
+ * Typography...........H1–H6 styles.
+ */
+@import 'base/layout';
+@import 'base/buttons';
+@import 'base/forms';
+@import 'base/lists';
+@import 'base/media';
+@import 'base/tables';
+@import 'base/typography';
+/*
+ * OBJECTS
+ *
+ * Filmstrip............Browse multiple videos in a playlist
+ */
+@import 'objects/*';
+/*
+ * COMPONENTS
+ *
+ * Episode..............View a single episode and its data
+ * Episodes.............List multiple episodes
+ */
+@import 'components/*';
+/*
+ * TRUMPS
+ */
+//@import 'trumps/*';

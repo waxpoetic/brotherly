@@ -1,0 +1,11 @@
+.filmstrip {
+  @include outer-container;
+}
+
+  .filmstrip__episode {
+    @include span-columns(3);
+  }
+
+  .filmstrip__episode-active {
+    border: 1px solid $white;
+  }

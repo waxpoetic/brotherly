@@ -1,8 +1,13 @@
 scss_files: 'app/assets/stylesheets/**/*.scss'
 exclude:
-  - 'vendor/bundle/**/*'
-  - 'bower_components/**/*'
+  - app/assets/stylesheets/videojs-sublime.scss
 linters:
   Comment:
     exclude:
-      - 'app/assets/stylesheets/application.css.scss'
+      - app/assets/stylesheets/application.css.scss
+  EmptyRule:
+    enabled: false
+  Indentation:
+    enabled: false
+  SelectorFormat:
+    enabled: false

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ActiveRecord::Base.send :include, ActiveModel::Jobs
 
 ActiveRecord::Base.class_eval do

@@ -1,6 +1,10 @@
+# frozen_string_literal: true
 module MetadataHelper
   def logo_image_url
-    image_url 'logo.jpeg', host: Rails.configuration.action_controller.asset_host
+    image_url(
+      'logo.jpeg',
+      host: Rails.configuration.action_controller.asset_host
+    )
   end
 
   def meta_keywords
@@ -28,12 +32,11 @@ module MetadataHelper
   end
 
   def open_graph_type
-    case
-    when @episode.present?
+    if @episode.present?
       'video.episode'
-    when @artist.present?
+    elsif @artist.present?
       'profile'
-    when @article.present?
+    elsif @article.present?
       'article'
     else
       'website'

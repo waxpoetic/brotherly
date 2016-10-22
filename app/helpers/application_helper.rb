@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
   # Name of the current action.
@@ -21,13 +22,6 @@ module ApplicationHelper
   # @return [ActiveSupport::OrderedOptions]
   def config
     Rails.configuration
-  end
-
-  # The navigation subscribe text in addition to its icon.
-  #
-  # @return [String::SafeBuffer]
-  def subscribe_text
-    "#{icon('envelope')} #{t(:subscribe, scope: :nav)}".html_safe
   end
 
   # Create an +<li>+ and +<a>+ tag fragment that is used in the

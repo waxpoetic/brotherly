@@ -3,15 +3,14 @@ $main-tiles: 7;
 
 .top-bar {
   @include outer-container;
-  background: image-url('background-pattern.jpeg') 0px 3px;
+  background: image-url('background-pattern.jpeg') 0 3px;
+  clear: both;
 
   div {
+    display: inline;
     margin: 0;
     padding: 0;
-    display: inline;
   }
-
-  clear: both;
 }
 
 .skyline {
@@ -32,35 +31,23 @@ $main-tiles: 7;
   }
 
   nav {
-    display: flex;
-    border-bottom: 4px solid #eee;
-    position: relative;
+    border-bottom: 4px solid $white;
     bottom: 5px;
+    display: flex;
+    position: relative;
+
     @media screen and (max-width: 920px) {
-      border-bottom: none;
+      border-bottom: 0;
     }
   }
 
   a {
     flex: 1;
-    text-align: center;
     font-family: Georgia, Times, serif;
+    text-align: center;
 
     @media screen and (max-width: 920px) {
       padding: 0 34px;
     }
   }
 }
-
-.underbar {
-  @include outer-container;
-}
-
-  h2.underbar__slogan {
-    //@include span-columns($sidebar-tiles);
-    font-size: .9em;
-  }
-
-  .underbar__flash {
-    @include span-columns($main-tiles);
-  }

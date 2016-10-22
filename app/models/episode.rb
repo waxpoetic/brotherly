@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # A full-length episode of a brother.ly live broadcast. Contains the
 # full-length audio and visual recording, as well as a collection of
 # performances (with their own recordings) and metadata.
@@ -40,7 +41,7 @@ class Episode < ApplicationRecord
   end
 
   def streaming?
-    Time.current.between? starts_at, ends_at
+    youtube_id.present?
   end
 
   def past?
@@ -48,7 +49,7 @@ class Episode < ApplicationRecord
   end
 
   def archived?
-    past? && video_file_id.present?
+    video_file_id.present?
   end
 
   def published?

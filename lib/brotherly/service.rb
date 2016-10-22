@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'active_model'
 
 module Brotherly
@@ -63,7 +64,7 @@ module Brotherly
       local
     end
 
-    def respond_to?(method, *args)
+    def respond_to_missing?(method, include_private = false)
       local_name == method || super
     end
 

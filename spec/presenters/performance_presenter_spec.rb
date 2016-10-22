@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe PerformancePresenter do
@@ -8,7 +9,7 @@ RSpec.describe PerformancePresenter do
   subject { described_class.new performance }
 
   it 'returns the cover image for this performance' do
-    expect(subject.cover_image).to include('placehold.it')
+    expect(subject.cover_image_url).to include('placehold.it')
   end
 
   it 'returns the audio file url for this performance' do

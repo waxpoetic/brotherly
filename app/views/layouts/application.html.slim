@@ -23,22 +23,3 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
             = link_to t(:past, scope: [:titles, :episodes]), episodes_path
     main
       = yield
-    / footer
-    /   .social
-    /     h3= t '.social'
-    /     nav
-    /       = link_to 'https://facebook.com/brotherlyparty' do
-    /         = icon :facebook
-    /         = t '.facebook'
-    /       = link_to 'https://twitter.com/brotherlyparty' do
-    /         = icon :twitter
-    /         = t '.twitter'
-    /       = link_to 'http://bit.ly/brotherly-youtube' do
-    /         = icon :youtube
-    /         = t '.youtube'
-    /       = link_to 'http://instagram.com/brother.ly' do
-    /         = icon :instagram
-    /         = t '.instagram'
-    /       = link_to 'http://github.com/waxpoetic/brotherly/issues/new' do
-    /         = icon :github
-    /         = t '.github'
