@@ -1,0 +1,18 @@
+.episode {
+  @include outer-container;
+}
+
+  .episode__video {
+    video {
+      margin: 0 auto;
+    }
+  }
+
+  .episode__filmstrip {
+    background: $black;
+    margin-top: 15px;
+    padding: 5px;
+  }
+
+  .episode__description {
+  }
