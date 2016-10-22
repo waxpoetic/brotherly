@@ -49,8 +49,8 @@ class EpisodePresenter < ApplicationPresenter
     )
   end
 
-  def cover_image
-    h.attachment_image_tag(
+  def cover_image_url
+    h.attachment_url(
       model,
       :flyer_file,
       fallback: cover_image_fallback,

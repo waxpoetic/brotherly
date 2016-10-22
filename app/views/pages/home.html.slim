@@ -1,22 +1,24 @@
+- if @episode.archived?
+  - content_for :metadata do
+    meta name="twitter:player" content="#{url_for([@episode, :player])}"
+    meta name="twitter:player:height" content="480"
+    meta name="twitter:player:width" content="320"
+    meta name="twitter:player:stream" content="#{@episode.video}"
+    meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;"
+
 .current-episode
   section.current-episode__video
     - if @episode.streaming?
       = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
-    - elsif @episode.archived?
-      video#archive.video-js.vjs-sublime-skin.vjs-16-9 width="640" height="264" controls="controls" preload="auto" poster="#{@episode.poster_url}"
-        source src="#{@episode.video}" type="application/x-mpegURL"
-      = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
-      = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/video.min.js'
-      = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.3.0/videojs-contrib-hls.min.js'
-      javascript:
-        videojs('archive');
-    - else
-      = @episode.flyer
+    - else #if @episode.archived?
+      = render 'episodes/video', poster: @episode.poster_url, src: @episode.video
+    /- else
+    /  = @episode.flyer
   section.current-episode__filmstrip
     nav.filmstrip
       - @episodes.map(&:present).each do |episode|
         = link_to episode, class: filmstrip_link_class(episode) do
-          = episode.cover_image
+          = image_tag episode.cover_image_url
   section.current-episode__description
     h3 = @episode.name
     = @episode.description

@@ -14,11 +14,9 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
       section.top-bar
         .top-bar__logo
           = link_to root_path do
-            = image_tag 'logo.png'
-        .top-bar__spacer
-          / noop
+            = image_tag 'logo.jpeg'
         .top-bar__links
-          = image_tag 'skyline.png'
+          = image_tag 'skyline.png', class: 'skyline'
           nav
             = link_to t(:about, scope: [:titles, :pages]), about_path
             = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path

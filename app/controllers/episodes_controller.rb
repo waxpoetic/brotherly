@@ -20,6 +20,10 @@ class EpisodesController < ApplicationController
     respond_with @episode
   end
 
+  def player
+    layout false
+  end
+
   private
 
   def model

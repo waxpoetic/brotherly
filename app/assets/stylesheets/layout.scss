@@ -3,27 +3,52 @@ $main-tiles: 7;
 
 .top-bar {
   @include outer-container;
+  background: image-url('background-pattern.jpeg') 0px 3px;
+
+  div {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  clear: both;
 }
 
-.top-bar__spacer {
-  background: image-url('background-pattern.jpg');
+.skyline {
+  margin-top: 1px;
 }
 
 .top-bar__logo {
-  @include span-columns($sidebar-tiles);
+  float: left;
 }
 
 .top-bar__links {
-  @include span-columns($main-tiles);
+  float: right;
+
+  img {
+    @media screen and (max-width: 920px) {
+      display: none;
+    }
+  }
 
   nav {
     display: flex;
+    border-bottom: 4px solid #eee;
+    position: relative;
+    bottom: 5px;
+    @media screen and (max-width: 920px) {
+      border-bottom: none;
+    }
   }
 
   a {
     flex: 1;
     text-align: center;
     font-family: Georgia, Times, serif;
+
+    @media screen and (max-width: 920px) {
+      padding: 0 34px;
+    }
   }
 }
 
