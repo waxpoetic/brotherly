@@ -30,7 +30,7 @@ gem 'titleist'
 gem 'rack-cors'
 
 gem 'lodash-rails'
-gem 'sass-rails'
+gem 'sass-rails', github: 'rails/sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 # gem 'autoprefixer-rails'
@@ -41,8 +41,7 @@ gem 'turbolinks'
 gem 'rack-env-notifier'
 gem 'bourbon'
 gem 'neat'
-# gem 'babel-transpiler'
-gem 'coffee-rails'
+gem 'babel-transpiler'
 
 group :development do
   gem 'meta_request'
