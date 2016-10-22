@@ -20,7 +20,7 @@ module Mailchimp
       self[method.to_s]
     end
 
-    def respond_to?(method)
+    def respond_to_missing?(method, include_private = false)
       @request.keys.include?(method.to_s) || super
     end
   end

@@ -9,20 +9,8 @@ class EpisodePresenter < ApplicationPresenter
   # Protocol used for transcode streams.
   TRANSCODE_PROTOCOL = 'https://'
 
-  def eventbrite_url
-    model.short_link_url || model.eventbrite_url
-  end
-
   def artists
     model.performances.play_order.map(&:artist).map(&:decorate)
-  end
-
-  def cache_key_for(section)
-    [model.cache_key, section].join('/')
-  end
-
-  def date
-    starts_at.to_date
   end
 
   def performances
@@ -69,17 +57,6 @@ class EpisodePresenter < ApplicationPresenter
     "http://www.youtube.com/embed/#{model.youtube_id}"
   end
 
-  def archive_url
-  end
-
-  def current_title
-    model.future? ? t(:next, scope: :episodes) : t(:latest, scope: :episodes)
-  end
-
-  def button_title
-    current_title.gsub(/ episode/, '')
-  end
-
   def audio
     h.attachment_url model, :audio_file
   end
@@ -97,14 +74,6 @@ class EpisodePresenter < ApplicationPresenter
 
   def video?
     model.video_file_id.present? && model.transcoded?
-  end
-
-  def show_ticket_link?
-    model.future? && model.eventbrite_url.present?
-  end
-
-  def show_facebook_event?
-    model.future? && model.facebook_url.present?
   end
 
   def enclosure

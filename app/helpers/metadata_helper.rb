@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 module MetadataHelper
   def logo_image_url
-    image_url 'logo.jpeg', host: Rails.configuration.action_controller.asset_host
+    image_url(
+      'logo.jpeg',
+      host: Rails.configuration.action_controller.asset_host
+    )
   end
 
   def meta_keywords
