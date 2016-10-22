@@ -7,17 +7,18 @@
  * CONTENTS
  *
  * TOOLS
- * Mixins...............Useful mixins.
+ * Bourbon..............Useful mixins.
+ * Neat.................Grid framework
  */
 @import 'bourbon';
 @import 'neat';
-@import 'mixins/*';
+//@import 'mixins/*';
 /*
  * SETTINGS
  *
  * Variables...............Globally-available variables
  */
-@import 'base/variables';
+@import 'settings/variables';
 /*
  * GENERIC
  *
@@ -25,16 +26,18 @@
  * VideoJS Sublime......Skin for VJS Player
  */
 @import 'normalize-rails';
-@import 'videojs-sublime';
+@import 'generic/videojs-sublime';
 /*
  * BASE
  *
+ * Layout...............Generic element styles
  * Buttons..............Generic button styles
  * Forms................Base form styles
  * Lists................<ul> and <ol> styles
  * Media................Base styles for <video> components
  * Typography...........H1–H6 styles.
  */
+@import 'base/layout';
 @import 'base/buttons';
 @import 'base/forms';
 @import 'base/lists';
@@ -57,4 +60,4 @@
 /*
  * TRUMPS
  */
-@import 'trumps/*';
+//@import 'trumps/*';
