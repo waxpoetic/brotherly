@@ -41,7 +41,7 @@ class Episode < ApplicationRecord
   end
 
   def streaming?
-    Time.current.between? starts_at, ends_at
+    youtube_id.present?
   end
 
   def past?
@@ -49,7 +49,7 @@ class Episode < ApplicationRecord
   end
 
   def archived?
-    past? && video_file_id.present?
+    video_file_id.present?
   end
 
   def published?
