@@ -12,7 +12,6 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
     = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
     header
       section.top-bar
-        = image_tag 'logo.png'
         .top-bar__logo
           = link_to root_path do
             = image_tag 'logo.png'

@@ -30,7 +30,7 @@ gem 'titleist'
 gem 'rack-cors'
 
 gem 'lodash-rails'
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 # gem 'autoprefixer-rails'
