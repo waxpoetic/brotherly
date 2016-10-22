@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddSubscriberJob < ActiveJob::Base
   queue_as :default
 

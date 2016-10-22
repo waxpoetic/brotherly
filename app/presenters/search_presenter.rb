@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SearchPresenter < ApplicationPresenter
   def results
     model.results.map do |result|

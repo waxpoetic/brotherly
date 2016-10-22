@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :db do
   desc 'Rebuild the multisearch index'
   task :index do

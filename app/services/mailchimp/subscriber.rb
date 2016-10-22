@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Mailchimp
   class Subscriber
     include ActiveModel::Model
@@ -36,7 +37,7 @@ module Mailchimp
     #
     # @return [Boolean]
     def persisted?
-      @response && @response.success?
+      @response&.success?
     end
 
     private

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
   # Name of the current action.

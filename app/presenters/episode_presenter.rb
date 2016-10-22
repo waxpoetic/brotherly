@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 class EpisodePresenter < ApplicationPresenter
   # Hard-set width of videos.
   VIDEO_WIDTH = 640
 
   # Content type of video streams.
-  VIDEO_TYPE = 'application/x-mpegURL'.freeze
+  VIDEO_TYPE = 'application/x-mpegURL'
 
   # Protocol used for transcode streams.
-  TRANSCODE_PROTOCOL = 'https://'.freeze
+  TRANSCODE_PROTOCOL = 'https://'
 
   def eventbrite_url
     model.short_link_url || model.eventbrite_url

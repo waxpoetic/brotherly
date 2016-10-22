@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Converts a given +Refile::Attachment+ to HLS with AWS Elastic Transcoder.
 # This allows videos to be streamed on the web application without
 # causing too much strain on the client. We convert videos to HLS via
@@ -14,13 +15,13 @@ class Transcode
   }.freeze
 
   # Video format we will be transcoding to.
-  FORMAT = 'HLSv3'.freeze
+  FORMAT = 'HLSv3'
 
   # How long HLS segments will be (in seconds).
-  SEGMENT_DURATION = '2'.freeze
+  SEGMENT_DURATION = '2'
 
   # Folder prefix for transcoded files.
-  PREFIX = 'episodes'.freeze
+  PREFIX = 'episodes'
 
   attr_reader :id, :name, :input, :output_prefix
 

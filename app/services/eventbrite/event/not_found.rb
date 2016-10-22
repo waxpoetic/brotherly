@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Eventbrite
   class Event
     # Thrown when an event cannot be found on Eventbrite.

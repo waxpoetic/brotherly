@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SearchResultPresenter < ApplicationPresenter
   def name
     model.content

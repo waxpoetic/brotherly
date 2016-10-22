@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Mailchimp
   # Common response object to both the gateway and bogus gateway.
   class Response

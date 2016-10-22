@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ArtistPresenter < ApplicationPresenter
   def image
     h.attachment_image_tag(

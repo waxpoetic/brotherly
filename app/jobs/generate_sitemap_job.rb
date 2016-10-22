@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GenerateSitemapJob < ActiveJob::Base
   queue_as :default
 

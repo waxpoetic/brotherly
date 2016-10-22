@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # Make Poltergeist and Capybara work with AR and Warden
 #

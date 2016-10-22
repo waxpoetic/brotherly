@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Standardized searching for any model class that wishes to implement
 # it. This module implements the +.search+ method on your model, which
 # takes a String query and uses +PgSearch+ (and the PostgreSQL TSEARCH

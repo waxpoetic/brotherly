@@ -1,4 +1,5 @@
-DEFAULT_LEVEL = 'patch'.freeze
+# frozen_string_literal: true
+DEFAULT_LEVEL = 'patch'
 
 namespace :release do
   task :bump, [:level] do |_, arguments|

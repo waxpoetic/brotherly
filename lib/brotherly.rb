@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'active_support/dependencies/autoload'
 
 # Library code that supports the rest of the application, including

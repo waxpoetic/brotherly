@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Bitly
   class Service < Brotherly::Service
     remote ShortLink

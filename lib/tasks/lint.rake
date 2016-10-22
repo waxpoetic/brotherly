@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :lint do
   begin
     require 'rubocop/rake_task'
@@ -19,7 +20,7 @@ namespace :lint do
       app/assets/stylesheets
       --format=TAP
     )
-    exit code if code > 0
+    exit code if code.positive?
   end
 
   desc 'Run CoffeeScript lint checks'

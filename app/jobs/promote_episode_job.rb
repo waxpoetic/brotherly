@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # "Promotes" an episode by firing off its service workers, which either
 # post about or create the episode on our various social media and event
 # support networks.

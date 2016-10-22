@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Eventbrite
   class Response
     attr_reader :id, :event, :tickets
