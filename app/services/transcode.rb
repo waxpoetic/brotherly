@@ -23,8 +23,6 @@ class Transcode
   # Folder prefix for transcoded files.
   PREFIX = 'episodes'
 
-  attr_reader :id, :name, :input, :output_prefix
-
   # Derive input name and output prefixes from refile video attachment.
   #
   # @param id [String] Identifier to video file which is being transcoded.

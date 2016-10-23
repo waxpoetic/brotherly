@@ -3,8 +3,20 @@ require 'spec_helper'
 require './app/services/transcode'
 
 RSpec.describe Transcode, type: :service do
+  let :attachment_id do
+    SecureRandom.hex
+  end
+
+  let :episode_slug do
+    'episode-name'
+  end
+
   subject do
-    described_class.new SecureRandom.hex, 'episode-name'
+    described_class.new attachment_id, episode_slug
+  end
+
+  def assigns(name)
+    subject.instance_variable_get("@#{name}")
   end
 
   it 'turns presets into output params' do
@@ -16,7 +28,7 @@ RSpec.describe Transcode, type: :service do
   end
 
   it 'builds playlist params' do
-    expect(subject.playlist[:name]).to eq subject.name
+    expect(subject.playlist[:name]).to eq episode_slug
     expect(subject.playlist[:format]).to eq Transcode::FORMAT
     expect(subject.playlist[:output_keys]).to eq(Transcode::VIDEO_PRESETS.keys)
   end
@@ -25,14 +37,14 @@ RSpec.describe Transcode, type: :service do
     expect(subject.attributes[:pipeline_id]).to eq(
       Rails.application.secrets.aws_transcoder_pipeline_id
     )
-    expect(subject.attributes[:input][:key]).to eq(subject.input)
-    expect(subject.attributes[:output_key_prefix]).to eq(subject.output_prefix)
+    expect(subject.attributes[:input][:key]).to eq(assigns(:input))
+    expect(subject.attributes[:output_key_prefix]).to eq(assigns(:output_prefix))
     expect(subject.attributes[:outputs]).to eq(subject.outputs)
     expect(subject.attributes[:playlists]).to include(subject.playlist)
   end
 
   it 'creates elastic transcoder job and tests persistence' do
-    subject.instance_variable_set '@persisted', nil
+    expect(subject.send(:transcoder)).to be_a(Aws::ElasticTranscoder::Client)
     allow(subject.send(:transcoder)).to \
       receive(:create_job)
       .with(subject.attributes)
