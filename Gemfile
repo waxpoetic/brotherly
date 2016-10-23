@@ -28,6 +28,7 @@ gem 'sitemap_generator'
 gem 'videojs_rails'
 gem 'titleist'
 gem 'rack-cors'
+gem 'halt'
 
 gem 'lodash-rails'
 gem 'sass-rails'

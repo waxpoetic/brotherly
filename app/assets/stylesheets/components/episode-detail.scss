@@ -6,6 +6,19 @@
     video {
       margin: 0 auto;
     }
+
+    .youtube-video-wrapper {
+      position: relative;
+      min-height: 600px;
+    }
+
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
   }
 
   .episode__filmstrip {

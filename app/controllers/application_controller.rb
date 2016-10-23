@@ -2,6 +2,7 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
   include Makeover::Presentable
+  include Halt
 
   # Respond with HTML in a standardized way
   responders :flash, :http_cache
@@ -15,18 +16,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :find_episode_resources
-
   # Handle 404s in a standardized way.
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
-  # Render the 404 page and log the AR error message.
-  #
-  # @param exception [ActiveRecord::RecordNotFound]
-  def not_found(exception)
-    logger.error exception.message
-    render :not_found, status: :not_found, error: exception
-  end
 
   protected
 
@@ -55,12 +46,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def find_episode_resources
-    @recent_episodes = present Episode.recent
-    @current_episode = present Episode.current
-    @search = present Search.new
-  end
 
   def present(model, *_args)
     super

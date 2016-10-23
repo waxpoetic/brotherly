@@ -21,8 +21,6 @@ Rails.application.routes.draw do
     sign_up:  'signup'
   }
 
-  resource :search, only: [:show]
-
   if defined? Sidekiq
     authenticate :user, ->(u) { u.is_admin? } do
       mount Sidekiq::Web => '/sidekiq'
