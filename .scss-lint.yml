@@ -1,6 +1,6 @@
 scss_files: 'app/assets/stylesheets/**/*.scss'
 exclude:
-  - app/assets/stylesheets/videojs-sublime.scss
+  - app/assets/stylesheets/generic/videojs-sublime.scss
 linters:
   Comment:
     exclude:
