@@ -54,10 +54,6 @@ module Brotherly
     # Capacity for when new events are created.
     config.capacity = 200
 
-    # Eager-load application library code.
-    config.eager_load_namespaces << Brotherly
-    config.autoload_paths << Rails.root.join('lib')
-
     # Seed tables in development.
     config.seeds = %w(artists episodes performances)
 
