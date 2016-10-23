@@ -9,8 +9,6 @@ begin
   end.join(',')
 
   namespace :test do
-    RSpec::Core::RakeTask.new :all
-
     desc 'Run RSpec unit tests'
     RSpec::Core::RakeTask.new :unit do |t|
       t.pattern = "spec/{#{NOT_FEATURES}}/**/*_spec.rb"
@@ -22,7 +20,6 @@ begin
     end
   end
 
-  desc 'Run all RuboCop lint checks and RSpec code examples'
-  task test: %w(test:all)
+  RSpec::Core::RakeTask.new :test
 rescue LoadError
 end

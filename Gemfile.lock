@@ -233,10 +233,6 @@ GEM
     parser (2.3.1.4)
       ast (~> 2.2)
     pg (0.19.0)
-    pg_search (1.0.6)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
     pkg-config (1.1.7)
     poltergeist (1.10.0)
       capybara (~> 2.1)
@@ -472,7 +468,6 @@ DEPENDENCIES
   newrelic_rpm
   normalize-rails
   pg
-  pg_search
   poltergeist
   pry-byebug
   pry-rails

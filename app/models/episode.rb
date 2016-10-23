@@ -5,7 +5,6 @@
 class Episode < ApplicationRecord
   extend FriendlyId
 
-  include Searchable
   include SitemapGeneration
   include Media
 
@@ -22,9 +21,6 @@ class Episode < ApplicationRecord
   scope :in_podcast, -> { where.not audio_file_id: nil }
 
   friendly_id :number
-
-  searchable :name
-  multisearchable against: [:name]
 
   attachment :flyer_file
 

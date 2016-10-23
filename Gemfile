@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5'
 gem 'pg'
-gem 'pg_search'
 gem 'puma'
 gem 'controller_resources'
 gem 'responders'

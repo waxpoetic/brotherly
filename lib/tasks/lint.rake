@@ -10,27 +10,22 @@ namespace :lint do
     end
   end
 
-  desc 'Run SCSS lint checks'
-  task :scss do
-    require 'scss_lint'
-    require 'scss_lint/cli'
-    logger = SCSSLint::Logger.new(STDOUT)
-    puts 'Running SCSSLint...'
-    code = SCSSLint::CLI.new(logger).run %w(
-      app/assets/stylesheets
-      --format=TAP
-    )
-    exit code if code.positive?
+  begin
+    require 'scss_lint/rake_task'
+    SCSSLint::RakeTask.new :scss do |t|
+      t.files = FileList.new('app/assets/stylesheets/**/*.scss')
+    end
+  rescue LoadError
+    task :scss do
+      p 'scss-lint is not installed. scss lint checks will not run.'
+    end
   end
 
-  desc 'Run CoffeeScript lint checks'
-  task :coffee do
-    files = Dir['app/assets/javascripts/**/*.coffee'].join("\s")
-    puts 'Running CoffeeLint...'
-    system "coffeelint #{files}"
-    exit 1 unless $CHILD_STATUS.success?
+  desc 'Run JavaScript lint checks'
+  task :js do
+    sh 'jshint app/assets/javascripts/*.js'
   end
 end
 
 desc 'Run code linters'
-task lint: %w(lint:ruby lint:scss lint:coffee)
+task lint: %w(lint:ruby lint:scss lint:js)

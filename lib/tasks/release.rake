@@ -20,7 +20,7 @@ namespace :release do
   end
 
   [:major, :minor, :patch, :special].each do |level|
-    desc "Deploy and release a new #{level} version"
+    desc "Deploy a new #{level} version to production"
     task level do
       Rake::Task[:release].invoke level
     end

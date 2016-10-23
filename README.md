@@ -44,7 +44,8 @@ push to GitHub which automatically deploys to Heroku.
 
     bin/rake release
 
-By default, this will bump the **patch** version of the `.semver` file.
+By default, this will bump the **patch** version of the application.
+
 To bump other parts of the version string, specify the type as the
 argument to the Rake task:
 
@@ -53,8 +54,9 @@ argument to the Rake task:
     bin/rake release:patch
 
 All tag pushes to GitHub result in a deployment to the production
-server, which should be configured on the app using the 'heroku' remote
-Git repo `git@heroku.com:brotherly.git`.
+server at http://brother.ly automatically after a successful CI build.
+Successful CI builds of the 'master' branch are deployed to
+http://beta.brother.ly.
 
 ## License
 

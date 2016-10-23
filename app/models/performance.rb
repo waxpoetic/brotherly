@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 class Performance < ApplicationRecord
-  include Searchable
   include Media
-
-  # multisearchable against: [:title]
 
   belongs_to :artist
   belongs_to :episode

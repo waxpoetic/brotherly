@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 class User < ApplicationRecord
-  include Searchable
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable,
          :trackable, :validatable
-
-  searchable :name
 
   # Use ActiveJob to send mails in the background
   #

@@ -2,11 +2,7 @@
 class Artist < ApplicationRecord
   extend FriendlyId
 
-  include Searchable
   include SitemapGeneration
-
-  searchable :name
-  multisearchable against: [:name]
 
   friendly_id :name
 
