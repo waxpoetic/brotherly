@@ -17,6 +17,14 @@ class EpisodePresenter < ApplicationPresenter
     model.performances.map(&:decorate)
   end
 
+  def recommendations
+    Episode.latest.map(&:present)
+  end
+
+  def video_cache_key
+    archived? ? :archive : :stream
+  end
+
   def flyer
     h.attachment_image_tag(
       model,
