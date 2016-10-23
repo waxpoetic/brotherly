@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/thoughtbot/administrate.git
-  revision: e533a6088521421445036634b6f9c3be6c5d0467
+  revision: 73d4d558d5d1ba0fa8abc9c5849ad2f929b94711
   specs:
     administrate (0.2.2)
       autoprefixer-rails (~> 6.0)
@@ -485,7 +485,6 @@ DEPENDENCIES
   halt
   haml2slim
   jquery-rails
-  kaminari
   librato-rails
   lodash-rails
   makeover

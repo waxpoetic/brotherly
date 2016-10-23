@@ -5,18 +5,16 @@ module Admin
   # options, such as the records shown per page, for all admin
   # controllers.
   class ApplicationController < Administrate::ApplicationController
-    using Admin::Search
-
-    helper TitleistHelper
+    # helper TitleistHelper
 
     before_action :authenticate_user!
 
     # layout 'administrate/application'
 
-    protected
+    # protected
 
-    def records_per_page
-      params[:per_page] || 36
-    end
+    # def records_per_page
+    #   params[:per_page] || 36
+    # end
   end
 end

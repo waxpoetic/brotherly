@@ -21,14 +21,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def per_page
-    params[:limit] || 50
-  end
-
-  def current_page
-    params[:page] || 1
-  end
-
   def use_layout?
     request.xhr? ? false : DEFAULT_LAYOUT
   end
