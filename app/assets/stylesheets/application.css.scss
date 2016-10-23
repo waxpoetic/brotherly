@@ -24,9 +24,11 @@
  *
  * Normalize.css........CSS Reset
  * VideoJS Sublime......Skin for VJS Player
+ * Turbolinks Progress Bar
  */
 //@import 'normalize-rails';
 @import 'generic/videojs-sublime';
+@import 'generic/turbolinks';
 /*
  * BASE
  *
@@ -55,6 +57,7 @@
  *
  * Episode..............View a single episode and its data
  * Episodes.............List multiple episodes
+ * Top Bar..............Navigation and masthead
  */
 @import 'components/*';
 /*
