@@ -43,6 +43,7 @@ Metrics/LineLength:
     - 'db/schema.rb'
     - 'app/presenters/episode_presenter.rb'
     - 'spec/presenters/episode_presenter_spec.rb'
+    - 'Gemfile'
 
 Rails/Output:
   Exclude:
