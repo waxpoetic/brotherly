@@ -64,15 +64,6 @@ module Brotherly
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'
 
-    # Global configuration for pg search
-    config.search = {
-      tsearch: {
-        prefix: true,
-        any_word: true
-      },
-      trigram: {}
-    }
-
     config.domain = 'http://brotherly.dev'
 
     config.makeover.helpers << Refile::AttachmentHelper

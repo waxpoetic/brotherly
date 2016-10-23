@@ -76,7 +76,5 @@ en:
     past_episode: Archives
     artists: Artists
     subscribe: Subscribe
-  search:
-    empty: No results
   users:
     login: Log In

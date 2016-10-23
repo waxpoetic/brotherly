@@ -2,8 +2,8 @@
 require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
-  it 'renders home page' do
-    get :home
+  it 'renders about page' do
+    get :about
 
     expect(response).to be_success
   end

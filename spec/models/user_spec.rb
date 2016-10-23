@@ -9,8 +9,4 @@ RSpec.describe User, type: :model do
       subject.send_devise_notification(:password_change, user: subject)
     ).to be_a(ActiveJob::Base)
   end
-
-  it 'can be searched' do
-    expect(User.search(subject.name)).to include(subject)
-  end
 end
