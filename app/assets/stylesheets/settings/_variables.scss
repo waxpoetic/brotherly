@@ -26,9 +26,10 @@ $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
 $white: #eee;
-$yellowish: #ece4b7;
+$eggshell: #f2edd7;
 $black: #000;
 $tinted-black: rgba($black, .06);
+$maroon: #200f17;
 
 // Font Colors
 $base-font-color: #ddd;
@@ -39,7 +40,7 @@ $base-border-color: $light-gray;
 $base-border: 1px solid $base-border-color;
 
 // Background Colors
-$base-background-color: #200f17;
+$base-background-color: $maroon;
 $secondary-background-color: tint($base-border-color, 75%);
 
 // Forms

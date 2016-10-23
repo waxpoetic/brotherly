@@ -11,3 +11,5 @@ linters:
     enabled: false
   SelectorFormat:
     enabled: false
+  PropertySortOrder:
+    enabled: false

@@ -3,6 +3,7 @@ $main-tiles: 7;
 
 .top-bar {
   @include outer-container;
+  max-width: 100%;
   background: image-url('background-pattern.jpg') 0 3px;
   clear: both;
 
@@ -31,7 +32,7 @@ $main-tiles: 7;
   }
 
   nav {
-    border-bottom: 4px solid $white;
+    border-bottom: 4px solid $eggshell;
     bottom: 5px;
     display: flex;
     position: relative;
