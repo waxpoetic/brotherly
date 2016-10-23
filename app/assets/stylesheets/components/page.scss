@@ -1,0 +1,10 @@
+.page {
+  @include outer-container;
+}
+
+  .page__title {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  .page__content {}
