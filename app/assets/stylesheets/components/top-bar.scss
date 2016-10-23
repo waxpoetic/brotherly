@@ -3,7 +3,7 @@ $main-tiles: 7;
 
 .top-bar {
   @include outer-container;
-  background: image-url('background-pattern.jpeg') 0 3px;
+  background: image-url('background-pattern.jpg') 0 3px;
   clear: both;
 
   div {
