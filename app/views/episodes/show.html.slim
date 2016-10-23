@@ -1,28 +1,30 @@
+- title name: @episode.title
 - if @episode.archived?
   - content_for :metadata do
+    meta property="og:video" content="#{@episode.video}"
+    meta property="og:video:height" content="640"
+    meta property="og:video:width" content="385"
+    meta property="og:video:type" content="application/x-mpegURL"
+    link rel="video_src" href="#{@episode.video}"
+    meta name="medium" content="video"
     meta name="twitter:player" content="#{player_episode_path(@episode)}"
     meta name="twitter:player:height" content="480"
     meta name="twitter:player:width" content="320"
     meta name="twitter:player:stream" content="#{@episode.video}"
     meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;"
-    meta  property: 'og:video', content: @episode.video  
-    meta  property: 'og:video:height', content: 640  
-    meta  property: 'og:video:width', content: 385  
-    meta  property: 'og:video:type', content: 'application/x-mpegURL'  
-    link  rel: 'video_src', href: @episode.video  
-    meta  name: 'medium', content: 'video'  
 
-.current-episode
-  section.current-episode__video
-    - if @episode.streaming?
-      = youtube_stream src: @episode.stream_url, autoplay: @episode.autoplay
-    - else
+.episode
+  section.episode__video
+    - if @episode.archived?
       = render 'episodes/video', poster: @episode.poster_url, src: @episode.video
-  section.current-episode__filmstrip
+    - else
+       .youtube-video-wrapper
+        iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true" autoplay="autoplay"
+  section.episode__filmstrip
     nav.filmstrip
-      - @episode.performances.each do |performance|
-        = link_to [@episode, performance], class: filmstrip_link_class(@episode, performance) do
-          = image_tag performance.cover_image_url
-  section.current-episode__description
+      - @episodes.map(&:present).each do |episode|
+        = link_to episode, class: filmstrip_link_class(episode) do
+          = image_tag episode.cover_image_url
+  section.episode__description
     h3 = @episode.name
     = @episode.description

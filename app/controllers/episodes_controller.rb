@@ -18,6 +18,7 @@ class EpisodesController < ApplicationController
   end
 
   def show
+    @episodes = Episode.latest
     respond_with @episode
   end
 
@@ -28,7 +29,7 @@ class EpisodesController < ApplicationController
   private
 
   def model
-    return super unless params[:id] == 'current'
+    return super unless params[:id] == '_current'
     present Episode.current
   end
 end
