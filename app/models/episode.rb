@@ -24,7 +24,6 @@ class Episode < ApplicationRecord
 
   attachment :flyer_file
 
-  after_create :promote!, if: :future?
   after_create :shorten!, unless: :short_url?
 
   def self.current
@@ -69,10 +68,6 @@ class Episode < ApplicationRecord
   end
 
   private
-
-  def promote!
-    PromoteEpisodeJob.perform_later self
-  end
 
   def shorten!
     GenerateShortLinkJob.perform_later self
