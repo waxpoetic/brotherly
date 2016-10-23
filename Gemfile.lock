@@ -1,4 +1,21 @@
 GIT
+  remote: git://github.com/thoughtbot/administrate.git
+  revision: 73d4d558d5d1ba0fa8abc9c5849ad2f929b94711
+  specs:
+    administrate (0.2.2)
+      autoprefixer-rails (~> 6.0)
+      bourbon (~> 4.2)
+      datetime_picker_rails (~> 0.0.7)
+      jquery-rails (~> 4.0)
+      kaminari (~> 0.16)
+      momentjs-rails (~> 2.8)
+      neat (~> 1.1)
+      normalize-rails (~> 3.0)
+      rails (>= 4.2, < 5.1)
+      sass-rails (~> 5.0)
+      selectize-rails (~> 0.6)
+
+GIT
   remote: https://github.com/refile/refile-s3.git
   revision: 78a74b60a597dd1174b0599be919689d41d5f118
   specs:
@@ -123,6 +140,8 @@ GEM
       rails
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    datetime_picker_rails (0.0.7)
+      momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -211,6 +230,8 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    momentjs-rails (2.15.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -361,6 +382,7 @@ GEM
     scss_lint (0.50.2)
       rake (>= 0.9, < 12)
       sass (~> 3.4.20)
+    selectize-rails (0.12.3)
     semver (1.0.1)
     sexp_processor (4.7.0)
     sidekiq (4.1.4)
@@ -443,6 +465,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model-jobs
+  administrate!
   airbrake
   autoprefixer-rails
   aws-sdk
@@ -462,7 +485,6 @@ DEPENDENCIES
   halt
   haml2slim
   jquery-rails
-  kaminari
   librato-rails
   lodash-rails
   makeover
@@ -507,6 +529,9 @@ DEPENDENCIES
   videojs_rails
   web-console (~> 2.0)
   webmock
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.13.2
