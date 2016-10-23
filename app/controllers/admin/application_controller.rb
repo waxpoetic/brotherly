@@ -16,5 +16,10 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 36
     # end
+
+    def find_resource(param)
+      return super unless resource_class.respond_to? :friendly
+      resource_class.friendly.find(param)
+    end
   end
 end

@@ -33,7 +33,13 @@ Then, run the following command to start the server:
 
 ## Development
 
-Contributions are welcome! This project is released under the MIT
+To run tests:
+
+    bin/rake test
+    bin/rake test:unit
+    bin/rake test:features
+
+Contributions are welcome! This project is released under the BSD
 License, and issue reports as well as pull requests (with accompanying
 tests) are accepted as contributions to the site.
 

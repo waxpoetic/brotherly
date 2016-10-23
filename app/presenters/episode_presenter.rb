@@ -18,7 +18,7 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def recommendations
-    Episode.latest.map(&:present)
+    Episode.latest.limit(4).map(&:present)
   end
 
   def video_cache_key
@@ -48,7 +48,10 @@ class EpisodePresenter < ApplicationPresenter
     h.attachment_url(
       model,
       :flyer_file,
-      fallback: cover_image_fallback
+      :fill,
+      240,
+      160,
+      fallback: cover_image_fallback,
     )
   end
 

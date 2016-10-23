@@ -20,7 +20,7 @@ class Episode < ApplicationRecord
   scope :upcoming, -> { future.latest }
   scope :in_podcast, -> { where.not audio_file_id: nil }
 
-  friendly_id :number
+  friendly_id :number, use: [:finders, :slugged]
 
   attachment :flyer_file
 
