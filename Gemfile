@@ -12,9 +12,9 @@ gem 'makeover'
 gem 'simple_form'
 gem 'devise'
 gem 'slim-rails'
-gem 'refile', github: 'refile/refile', require: 'refile/rails'
+gem 'refile', git: 'https://github.com/refile/refile.git', require: 'refile/rails'
 gem 'refile-mini_magick'
-gem 'eventbrite-client', github: 'waxpoetic/eventbrite-client.rb'
+gem 'eventbrite-client', git: 'https://github.com/waxpoetic/eventbrite-client.rb.git'
 gem 'bitly'
 gem 'friendly_id'
 gem 'foreman'
@@ -76,7 +76,7 @@ group :production do
   gem 'redis-rack-cache', '2.0.0.pre'
   gem 'rails_12factor'
   gem 'sidekiq'
-  gem 'sinatra', github: 'sinatra/sinatra', require: false
-  gem 'refile-s3', github: 'refile/refile-s3'
+  gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', require: false
+  gem 'refile-s3', git: 'https://github.com/refile/refile-s3.git'
   gem 'airbrake'
 end
