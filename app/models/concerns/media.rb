@@ -9,8 +9,8 @@ module Media
   VIDEO_EXTENSIONS = %w(m3u8 mp4 flv).freeze
 
   included do
-    attachment :audio_file, extension: AUDIO_EXTENSIONS
-    attachment :video_file, extension: VIDEO_EXTENSIONS
+    attachment :audio_file
+    attachment :video_file
 
     after_save :transcode_video!, if: :needs_video_transcode?
   end
@@ -21,6 +21,10 @@ module Media
 
   def video_transcoded?
     video_transcoded_at.present?
+  end
+
+  def playlist_name
+    name.parameterize
   end
 
   protected

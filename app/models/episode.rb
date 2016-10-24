@@ -63,10 +63,6 @@ class Episode < ApplicationRecord
     name.gsub(/brother\.ly\s/, '')
   end
 
-  def playlist_name
-    name.parameterize
-  end
-
   private
 
   def shorten!
