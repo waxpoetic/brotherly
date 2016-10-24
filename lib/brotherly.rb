@@ -22,4 +22,8 @@ module Brotherly
       'development'
     end
   end
+
+  def basic_auth?
+    secrets.http_basic_username && secrets.http_basic_password
+  end
 end

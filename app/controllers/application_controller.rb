@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
   # Handle 404s in a standardized way.
   halt ActiveRecord::RecordNotFound, with: :not_found
 
+  # Require username & password to view staging server.
+  http_basic_authenticate_with(
+    username: Brotherly.secrets.http_basic_username,
+    password: Brotherly.secrets.http_basic_password
+  ) if Brotherly.basic_auth?
+
   protected
 
   def use_layout?
