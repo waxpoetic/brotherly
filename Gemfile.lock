@@ -1,21 +1,4 @@
 GIT
-  remote: git://github.com/thoughtbot/administrate.git
-  revision: 73d4d558d5d1ba0fa8abc9c5849ad2f929b94711
-  specs:
-    administrate (0.2.2)
-      autoprefixer-rails (~> 6.0)
-      bourbon (~> 4.2)
-      datetime_picker_rails (~> 0.0.7)
-      jquery-rails (~> 4.0)
-      kaminari (~> 0.16)
-      momentjs-rails (~> 2.8)
-      neat (~> 1.1)
-      normalize-rails (~> 3.0)
-      rails (>= 4.2, < 5.1)
-      sass-rails (~> 5.0)
-      selectize-rails (~> 0.6)
-
-GIT
   remote: https://github.com/refile/refile-s3.git
   revision: 78a74b60a597dd1174b0599be919689d41d5f118
   specs:
@@ -43,6 +26,23 @@ GIT
       rack (~> 2.0)
       rack-protection (= 2.0.0.beta2)
       tilt (~> 2.0)
+
+GIT
+  remote: https://github.com/thoughtbot/administrate.git
+  revision: 73d4d558d5d1ba0fa8abc9c5849ad2f929b94711
+  specs:
+    administrate (0.2.2)
+      autoprefixer-rails (~> 6.0)
+      bourbon (~> 4.2)
+      datetime_picker_rails (~> 0.0.7)
+      jquery-rails (~> 4.0)
+      kaminari (~> 0.16)
+      momentjs-rails (~> 2.8)
+      neat (~> 1.1)
+      normalize-rails (~> 3.0)
+      rails (>= 4.2, < 5.1)
+      sass-rails (~> 5.0)
+      selectize-rails (~> 0.6)
 
 GIT
   remote: https://github.com/waxpoetic/eventbrite-client.rb.git
