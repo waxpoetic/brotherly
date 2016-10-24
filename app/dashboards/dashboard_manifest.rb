@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # DashboardManifest tells Administrate which dashboards to display
 class DashboardManifest
   # `DASHBOARDS`
@@ -14,7 +15,7 @@ class DashboardManifest
     :performances,
     :artists,
     :subscribers,
-    :users,
+    :users
   ].freeze
 
   # `ROOT_DASHBOARD`

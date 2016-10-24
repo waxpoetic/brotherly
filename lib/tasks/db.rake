@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :db do
   desc 'Import database from db/import/production.dump'
   task import: :environment do

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Admin
   # Base controller for the admin panel, using the +Admin::Search+
   # refinement to +Administrate::Search+. This controller is also

@@ -51,7 +51,7 @@ class EpisodePresenter < ApplicationPresenter
       :fill,
       240,
       160,
-      fallback: cover_image_fallback,
+      fallback: cover_image_fallback
     )
   end
 
