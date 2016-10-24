@@ -3,4 +3,4 @@
 production:
   :concurrency: 7
 :queues:
-  - default
+  - brotherly_production_default
