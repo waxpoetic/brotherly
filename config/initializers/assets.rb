@@ -12,7 +12,6 @@ Rails.application.config.assets.paths << 'administrate'
 Rails.application.config.assets.precompile += %w(
   administrate/application.css
   administrate/application.js
-  admin/banner.css
   modernizr.js
   refile.js
   video-js.swf
