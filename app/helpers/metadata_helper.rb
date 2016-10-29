@@ -9,23 +9,15 @@ module MetadataHelper
   end
 
   def meta_title
-    if page_title.present?
-      page_title
-    else
-      app_title
-    end
+    page_title || app_title
   end
 
   def meta_description
-    if @episode.present?
-      @episode.description
-    else
-      config.description
-    end
+    @episode&.description || config.description
   end
 
   def meta_share_image
-    @episode&.cover_image_url || logo_image_url
+    @episode&.flyer_image_url || logo_image_url
   end
 
   def open_graph_type

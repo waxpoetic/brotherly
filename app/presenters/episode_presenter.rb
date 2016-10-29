@@ -51,6 +51,10 @@ class EpisodePresenter < ApplicationPresenter
     )
   end
 
+  def flyer_image_url
+    h.attachment_url(model, :flyer_file, fallback: cover_image_fallback)
+  end
+
   def autoplay
     'autoplay' if autoplay?
   end
