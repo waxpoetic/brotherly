@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def model
-    present super
+    present model_class.friendly.find(params[:id])
   end
 
   def collection

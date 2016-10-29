@@ -18,7 +18,9 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def recommendations
-    Episode.latest.limit(4).map(&:present)
+    Episode.latest.limit(4).map(&:present).reject do |episode|
+      episode.id == model.id
+    end
   end
 
   def video_cache_key
