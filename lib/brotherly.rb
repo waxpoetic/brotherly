@@ -15,7 +15,7 @@ module Brotherly
   end
 
   def self.stage
-    case secrets.domain
+    case secrets.domain_name
     when 'beta.brother.ly'
       'staging'
     when 'brother.ly'
