@@ -18,7 +18,9 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    @episodes = Episode.latest
+    @recommendations = present(
+      Episode.latest.where.not(id: @episode.id).limit(4)
+    )
     respond_with @episode
   end
 

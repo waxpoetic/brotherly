@@ -17,12 +17,6 @@ class EpisodePresenter < ApplicationPresenter
     model.performances.map(&:decorate)
   end
 
-  def recommendations
-    Episode.latest.limit(4).map(&:present).reject do |episode|
-      episode.id == model.id
-    end
-  end
-
   def video_cache_key
     archived? ? :archive : :stream
   end

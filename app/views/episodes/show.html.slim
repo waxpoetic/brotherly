@@ -26,7 +26,7 @@
     - cache [@episode, :recommendations] do
       section.episode__filmstrip
         nav.filmstrip
-          - @episode.recommendations.each do |episode|
+          - @recommendations.each do |episode|
             = link_to episode, class: 'filmstrip__frame' do
               = image_tag episode.cover_image_url
     - cache [@episode, :description] do
