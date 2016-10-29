@@ -15,10 +15,12 @@ module Brotherly
   end
 
   def self.stage
-    case Rails.configuration.domain
-    when /beta/
+    case secrets.domain
+    when 'beta.brother.ly'
       'staging'
-    when /\.dev/
+    when 'brother.ly'
+      'production'
+    else
       'development'
     end
   end

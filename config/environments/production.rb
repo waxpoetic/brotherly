@@ -103,7 +103,7 @@ Rails.application.configure do
     authentication: :plain,
     user_name: Rails.application.secrets.sendgrid_username,
     password: Rails.application.secrets.sendgrid_password,
-    domain: config.domain,
+    domain: Rails.application.secrets.domain_name,
     enable_starttls_auto: true
   }
 

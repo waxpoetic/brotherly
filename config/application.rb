@@ -60,8 +60,6 @@ module Brotherly
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'
 
-    config.domain = 'http://brotherly.dev'
-
     config.makeover.helpers << Refile::AttachmentHelper
 
     config.eventbrite_gateway = 'Eventbrite::BogusGateway'
