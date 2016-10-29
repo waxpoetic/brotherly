@@ -17,6 +17,7 @@ meta property="og:title" content="#{meta_title}"
 meta property="og:type" content="#{open_graph_type}"
 meta property="og:image" content="#{meta_share_image}"
 meta property="og:url" content="#{request.original_url}"
+meta property="og:description" content="#{meta_description}"
 meta property="fb:admins" content="#{Rails.application.secrets.facebook_admin_id}"
 / Custom
 = yield :metadata
