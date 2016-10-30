@@ -29,6 +29,17 @@
     }
   }
 
+  .episode__links {
+    background: $black;
+    margin-top: 15px;
+    padding: 5px;
+    font-size: 1.2rem;
+
+    .filmstrip {
+      text-align: center;
+    }
+  }
+
   .episode__filmstrip {
     background: $black;
     margin-top: 15px;

@@ -21,6 +21,10 @@ class EpisodePresenter < ApplicationPresenter
     archived? ? :archive : :stream
   end
 
+  def includes_links?
+    model.facebook_url.present? || model.eventbrite_url.present?
+  end
+
   def flyer
     h.attachment_image_tag(
       model,

@@ -11,3 +11,7 @@
       background: lighten($black, 15%);
     }
   }
+
+  .filmstrip__full {
+    @include span-columns(12);
+  }

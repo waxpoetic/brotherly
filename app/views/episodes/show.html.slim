@@ -23,8 +23,13 @@
         - else
            .youtube-video-wrapper
             iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true" autoplay="autoplay"
+    - cache [@episode, :links] do
+      - if @episode.includes_links?
+        section.episode__links
+          nav.filmstrip
+            = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
     - cache [@episode, :recommendations] do
-      section.episode__filmstrip
+      section.episode__filmstrip.episode__recommendations
         nav.filmstrip
           - @recommendations.each do |episode|
             = link_to episode, class: 'filmstrip__frame' do
