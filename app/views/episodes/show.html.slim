@@ -22,7 +22,7 @@
           = render 'episodes/video', poster: @episode.poster_url, src: @episode.video
         - else
            .youtube-video-wrapper
-            iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true" autoplay="autoplay"
+            iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
     - cache [@episode, :links] do
       - if @episode.includes_links?
         section.episode__links
@@ -38,3 +38,5 @@
       section.episode__description
         h3 = @episode.name
         = @episode.description
+    section.episode__chat
+      iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0"
