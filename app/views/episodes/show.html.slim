@@ -16,28 +16,24 @@
 
 - cache @episode do
   .episode
-    - cache [@episode, :video, @episode.video_cache_key] do
-      section.episode__video
-        - if @episode.archived?
-          = render 'episodes/video', poster: @episode.poster_url, src: @episode.video
-        - else
-           .youtube-video-wrapper
-            iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
-    - cache [@episode, :links] do
-      - if @episode.includes_links?
-        section.episode__links
-          nav.filmstrip
-            = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
+    section.episode__video
+      - if @episode.archived?
+        = render 'episodes/video', poster: @episode.poster_url, src: @episode.video
+      - else
+         .youtube-video-wrapper
+          iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
+    - if @episode.includes_links?
+      section.episode__links
+        nav.filmstrip
+          = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
     section.episode__chat
       iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
-    - cache [@episode, :recommendations] do
-      section.episode__filmstrip.episode__recommendations
-        nav.filmstrip
-          - @recommendations.each do |episode|
-            = link_to episode, class: 'filmstrip__frame' do
-              = image_tag episode.cover_image_url
-    - cache [@episode, :description] do
-      section.episode__description
-        h3 = @episode.name
-        = @episode.description
+    section.episode__filmstrip.episode__recommendations
+      nav.filmstrip
+        - @recommendations.each do |episode|
+          = link_to episode, class: 'filmstrip__frame' do
+            = image_tag episode.cover_image_url
+    section.episode__description
+      h3 = @episode.name
+      = @episode.description
 
