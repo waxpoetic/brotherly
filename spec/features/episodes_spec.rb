@@ -13,26 +13,26 @@ RSpec.feature 'Episodes', type: :feature do
     )
   end
 
-  scenario 'home page' do
+  xscenario 'home page' do
     visit root_path
 
     expect(page).to have_content current_episode.name
     expect(page).to have_css '#stream'
   end
 
-  scenario 'archive' do
+  xscenario 'archive' do
     visit episodes_path
 
     expect(page).to have_content 'past episodes'
   end
 
-  scenario 'upcoming' do
+  xscenario 'upcoming' do
     visit upcoming_episodes_path
 
     expect(page).to have_content 'upcoming episodes'
   end
 
-  scenario 'detail' do
+  xscenario 'detail' do
     visit episode_path(episode)
 
     expect(page).to have_content episode.name
