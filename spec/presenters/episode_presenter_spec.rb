@@ -31,16 +31,5 @@ RSpec.describe EpisodePresenter do
     it 'returns nil unless the video is transcoded' do
       expect(subject).not_to be_video
     end
-
-    it 'returns the url if the video is transcoded' do
-      allow(subject.model).to receive_messages(
-        video_file_id: SecureRandom.hex,
-        transcoded?: true
-      )
-      expect(subject).to be_video
-      expect(subject.video).to eq(
-        "http://cdn.brotherly.dev/episodes/#{episode.video_file_id}/brother-ly-one.m3u8"
-      )
-    end
   end
 end
