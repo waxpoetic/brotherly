@@ -76,15 +76,8 @@ class EpisodePresenter < ApplicationPresenter
     model.audio_file_id.present?
   end
 
-  # Build the HLS playlist URL from video file ID and CDN domain name.
-  #
-  # @return [String] URL to transcoded video file.
-  def video
-    "http://#{Rails.application.secrets.cdn_domain_name}/episodes/#{model.video_file_id}/#{model.playlist_name}.m3u8"
-  end
-
   def video?
-    model.video_file_id.present? && model.transcoded?
+    model.video_url.present?
   end
 
   def enclosure

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219032731) do
+ActiveRecord::Schema.define(version: 20161219033223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20161219032731) do
     t.string   "youtube_id"
     t.datetime "audio_transcoded_at"
     t.string   "short_link_url"
+    t.string   "video_url"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20161219032731) do
     t.datetime "updated_at",          null: false
     t.string   "audio_file_id"
     t.datetime "audio_transcoded_at"
+    t.string   "video_url"
     t.index ["artist_id"], name: "index_performances_on_artist_id", using: :btree
     t.index ["episode_id"], name: "index_performances_on_episode_id", using: :btree
   end
