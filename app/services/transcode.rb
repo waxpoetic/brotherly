@@ -23,23 +23,22 @@ class Transcode
   # Folder prefix for transcoded files.
   PREFIX = 'episodes'
 
-  attr_reader :id, :name, :input, :output_prefix
+  attr_reader :id, :name, :output_prefix
 
   # Derive input name and output prefixes from refile video attachment.
   #
   # @param id [String] Identifier to video file which is being transcoded.
   # @param name [String] Name of the HLS playlist.
-  def initialize(id, name)
+  def initialize(id)
     @id = id
-    @name = name
+    @name = id.parameterize.gsub(%r{\Araw-videos-|-mp4\Z}, '')
     raise ArgumentError, "Video cannot be blank" unless @id.present?
     raise ArgumentError, "Name cannot be blank" unless @name.present?
-    @input = "raw-videos/#{@id}"
-    @output_prefix = "#{PREFIX}/#{@id}/"
+    @output_prefix = "#{PREFIX}/#{name}/"
   end
 
   def self.call(id)
-    new(id, id).save
+    new(id).save
   end
 
   # Parameters for each individual preset.
@@ -48,11 +47,15 @@ class Transcode
   def outputs
     VIDEO_PRESETS.map do |variant, preset_id|
       {
-        key: "#{@name}-#{variant}",
+        key: "#{name}-#{variant}",
         preset_id: preset_id,
         segment_duration: SEGMENT_DURATION
       }
     end
+  end
+
+  def output_keys
+    outputs.map { |output| output[:key] }
   end
 
   # Parameters for the HLS playlist.
@@ -60,9 +63,9 @@ class Transcode
   # @return [Hash] HLS playlist contents
   def playlist
     {
-      name: @name,
+      name: name,
       format: FORMAT,
-      output_keys: outputs.map { |o| o[:key] }
+      output_keys: output_keys
     }
   end
 
@@ -72,8 +75,8 @@ class Transcode
   def attributes
     {
       pipeline_id: '1477977126515-j3oa1g',
-      input: { key: @input },
-      output_key_prefix: @output_prefix,
+      input: { key: id },
+      output_key_prefix: output_prefix,
       outputs: outputs,
       playlists: [playlist]
     }
