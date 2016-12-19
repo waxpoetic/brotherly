@@ -48,7 +48,7 @@ class Episode < ApplicationRecord
   end
 
   def archived?
-    video_file_id.present?
+    video_url.present?
   end
 
   def published?
