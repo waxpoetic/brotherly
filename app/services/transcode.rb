@@ -34,8 +34,12 @@ class Transcode
     @name = name
     raise ArgumentError, "Video cannot be blank" unless @id.present?
     raise ArgumentError, "Name cannot be blank" unless @name.present?
-    @input = "store/#{@id}"
+    @input = "raw-videos/#{@id}"
     @output_prefix = "#{PREFIX}/#{@id}/"
+  end
+
+  def self.call(id)
+    new(id, id).save
   end
 
   # Parameters for each individual preset.
@@ -44,7 +48,7 @@ class Transcode
   def outputs
     VIDEO_PRESETS.map do |variant, preset_id|
       {
-        key: variant,
+        key: "#{@name}-#{variant}",
         preset_id: preset_id,
         segment_duration: SEGMENT_DURATION
       }
@@ -58,7 +62,7 @@ class Transcode
     {
       name: @name,
       format: FORMAT,
-      output_keys: VIDEO_PRESETS.keys
+      output_keys: outputs.map { |o| o[:key] }
     }
   end
 
@@ -67,7 +71,7 @@ class Transcode
   # @return [Hash] job params
   def attributes
     {
-      pipeline_id: Rails.application.secrets.aws_transcoder_pipeline_id,
+      pipeline_id: '1477977126515-j3oa1g',
       input: { key: @input },
       output_key_prefix: @output_prefix,
       outputs: outputs,
