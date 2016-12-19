@@ -121,3 +121,4 @@ Session.vim
 /spec/examples.txt
 /db/import
 bower_components
+node_modules

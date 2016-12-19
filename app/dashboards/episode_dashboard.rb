@@ -22,11 +22,10 @@ class EpisodeDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    short_url: Field::String,
+    short_link_url: Field::String,
     eventbrite_event_id: Field::Number,
-    audio_file: UploadField,
     flyer_file: UploadField,
-    video_file: UploadField
+    video_url: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -55,9 +54,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :ends_at,
     :published_at,
     :description,
-    :audio_file,
-    :flyer_file,
-    :video_file
+    :video_url
   ].freeze
 
   # Overwrite this method to customize how episodes are displayed

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024010527) do
+ActiveRecord::Schema.define(version: 20161219033223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,19 +36,16 @@ ActiveRecord::Schema.define(version: 20161024010527) do
     t.datetime "ends_at"
     t.datetime "published_at"
     t.text     "description"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "slug"
-    t.string   "short_url"
     t.string   "eventbrite_event_id"
     t.string   "audio_file_id"
     t.string   "flyer_file_id"
-    t.boolean  "transcoded",          default: false, null: false
     t.string   "youtube_id"
     t.datetime "audio_transcoded_at"
-    t.datetime "video_transcoded_at"
-    t.string   "video_file_id"
     t.string   "short_link_url"
+    t.string   "video_url"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -72,8 +69,7 @@ ActiveRecord::Schema.define(version: 20161024010527) do
     t.datetime "updated_at",          null: false
     t.string   "audio_file_id"
     t.datetime "audio_transcoded_at"
-    t.datetime "video_transcoded_at"
-    t.string   "video_file_id"
+    t.string   "video_url"
     t.index ["artist_id"], name: "index_performances_on_artist_id", using: :btree
     t.index ["episode_id"], name: "index_performances_on_episode_id", using: :btree
   end

@@ -16,8 +16,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     ends_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    audio_file: UploadField,
-    video_file: UploadField
+    video_url: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -42,8 +41,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     :episode,
     :starts_at,
     :ends_at,
-    :audio_file,
-    :video_file
+    :video_url
   ].freeze
 
   # Overwrite this method to customize how performances are displayed

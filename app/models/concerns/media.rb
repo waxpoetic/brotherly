@@ -6,30 +6,12 @@ module Media
   extend ActiveSupport::Concern
 
   AUDIO_EXTENSIONS = %w(mp3 wav).freeze
-  VIDEO_EXTENSIONS = %w(m3u8 mp4 flv).freeze
 
   included do
     attachment :audio_file
-    attachment :video_file
-
-    after_save :transcode_video!, if: :needs_video_transcode?
-  end
-
-  def needs_video_transcode?
-    video_file_id_changed? || !video_transcoded?
-  end
-
-  def video_transcoded?
-    video_transcoded_at.present?
   end
 
   def playlist_name
     name.parameterize
-  end
-
-  protected
-
-  def transcode_video!
-    TranscodeVideoJob.perform_later self
   end
 end
