@@ -24,10 +24,14 @@ class Episode < ApplicationRecord
 
   attachment :flyer_file
 
-  after_create :shorten!, unless: :short_url?
+  after_create :shorten!, unless: :shortened?
 
   def self.current
     latest.first
+  end
+
+  def shortened?
+    short_link_url.present?
   end
 
   def future?

@@ -30,7 +30,7 @@ cache podcast_cache_key do
                 xml.description episode.description
                 xml.pubDate episode.published_at
                 xml.enclosure episode.enclosure
-                xml.link episode.short_url
+                xml.link episode.short_link_url
                 xml.guid({isPermaLink: 'false'}, episode_url(episode))
                 xml.itunes :author, config.name
                 xml.itunes :subtitle, episode.subtitle

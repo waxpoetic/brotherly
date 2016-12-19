@@ -22,7 +22,7 @@ class EpisodeDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    short_url: Field::String,
+    short_link_url: Field::String,
     eventbrite_event_id: Field::Number,
     audio_file: UploadField,
     flyer_file: UploadField,
