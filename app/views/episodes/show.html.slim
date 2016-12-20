@@ -33,7 +33,7 @@
         - @episode.performances.each do |performance|
           .filmstrip__frame
             = link_to [@episode, performance], title: performance.artist.name do
-              = attachment_image_tag performance.artist, :image_file, :fill, 196, 110, fallback: "http://placehold.it/240x160?text=#{performance.artist.name}"
+              = attachment_image_tag performance, :image, :fill, 196, 110, fallback: "http://placehold.it/196x110?text=#{performance.artist.name}"
               p= performance.artist.name
     section.episode__description
       h3 = @episode.name
