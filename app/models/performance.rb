@@ -10,6 +10,8 @@ class Performance < ApplicationRecord
 
   scope :play_order, -> { order 'starts_at DESC' }
 
+  attachment :image
+
   def name
     "#{artist.name} at #{episode.name}"
   end

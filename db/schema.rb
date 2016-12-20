@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219033223) do
+ActiveRecord::Schema.define(version: 20161220192150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161219033223) do
     t.string   "audio_file_id"
     t.datetime "audio_transcoded_at"
     t.string   "video_url"
+    t.string   "image_id"
     t.index ["artist_id"], name: "index_performances_on_artist_id", using: :btree
     t.index ["episode_id"], name: "index_performances_on_episode_id", using: :btree
   end

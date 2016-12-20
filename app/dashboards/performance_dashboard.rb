@@ -16,7 +16,8 @@ class PerformanceDashboard < Administrate::BaseDashboard
     ends_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    video_url: Field::String
+    video_url: Field::String,
+    image: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -41,12 +42,13 @@ class PerformanceDashboard < Administrate::BaseDashboard
     :episode,
     :starts_at,
     :ends_at,
-    :video_url
+    :video_url,
+    :image
   ].freeze
 
   # Overwrite this method to customize how performances are displayed
   # across all pages of the admin dashboard.
   def display_resource(performance)
-    "#{performance.artist.name} at #{performance.episode.name}"
+    performance.name
   end
 end
