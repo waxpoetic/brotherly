@@ -1,8 +1,6 @@
 class RecommendationsPresenter < Makeover::Presenter
   include Makeover::Presentable
 
-  delegate :each, to: :records
-
   def each
     records.each do |record|
       present(record, with: RecommendationPresenter)
@@ -12,7 +10,7 @@ class RecommendationsPresenter < Makeover::Presenter
   private
 
   def records
-    @records ||= model.performances + latest_episodes
+    @records ||= model.performances.to_a + latest_episodes.to_a
   end
 
   def latest_episodes
