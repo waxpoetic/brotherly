@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 class PerformancePresenter < ApplicationPresenter
   delegate :name, to: :artist, prefix: true
+  delegate :poster_url, to: :episode
+
+  def video
+    model.video_url
+  end
 
   def cover_image_url
     "http://placehold.it/240x160?text=#{placeholder_text}"
@@ -16,5 +21,9 @@ class PerformancePresenter < ApplicationPresenter
 
   def title
     model.name
+  end
+
+  def episode
+    EpisodePresenter.new(model.episode)
   end
 end
