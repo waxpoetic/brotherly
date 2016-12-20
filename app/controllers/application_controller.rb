@@ -30,7 +30,11 @@ class ApplicationController < ActionController::Base
   end
 
   def model
-    present model_class.friendly.find(params[:id])
+    if model_class.public_methods.include? :friendly
+      present model_class.friendly.find(params[:id])
+    else
+      present model_class.find(params[:id])
+    end
   end
 
   def collection
@@ -41,7 +45,8 @@ class ApplicationController < ActionController::Base
 
   def present(model, *_args)
     super
-  rescue NameError
+  rescue NameError => exception
+    Rails.logger.error "#present --> #{exception}"
     model
   end
 end
