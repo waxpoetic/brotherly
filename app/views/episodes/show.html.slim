@@ -30,9 +30,11 @@
       iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
     section.episode__filmstrip.episode__recommendations
       nav.filmstrip
-        - @recommendations.each do |episode|
-          = link_to episode, class: 'filmstrip__frame' do
-            = image_tag episode.cover_image_url
+        - @recommendations.each do |recommendation|
+          .filmstrip__frame
+            = link_to recommendation, title: recommendation.caption do
+              = image_tag recommendation.image
+              p= recommendation.caption
     section.episode__description
       h3 = @episode.name
       = @episode.description
