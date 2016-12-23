@@ -17,13 +17,13 @@
   .episode
     section.episode__video
       = render 'episodes/video', poster: @performance.poster_url, src: @performance.video_url
-    / section.episode__filmstrip.episode__recommendations
-    /   nav.filmstrip
-    /     - present(Episode.latest, with: EpisodesPresenter).each do |episode|
-    /       .filmstrip__frame
-    /         = link_to episode, title: episode.title do
-    /           = attachment_image_tag episode, :cover_image, :fill, 240, 160, fallback: "http://placehold.it/240x160?text=#{episode.title}"
-    /           p= performance.artist.name
+    section.episode__filmstrip.episode__recommendations
+      nav.filmstrip
+        - @performance.siblings.each do |video|
+          .filmstrip__frame
+            = link_to video.url, title: video.name do
+              = attachment_image_tag performance, :image, :fill, 196, 110, fallback: "http://placehold.it/196x110?text=#{video.name}"
+              p= performance.name
     section.episode__description
       h3 = @performance.name
       = @performance.artist.description

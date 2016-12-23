@@ -24,6 +24,16 @@ class PerformancePresenter < ApplicationPresenter
   end
 
   def episode
-    EpisodePresenter.new(model.episode)
+    @episode ||= EpisodePresenter.new(model.episode)
+  end
+
+  def recommendations
+    @recommendations ||= RecommendationPresenter.wrap(sibling_videos)
+  end
+
+  private
+
+  def sibling_videos
+    model.episode + model.episode.performances
   end
 end

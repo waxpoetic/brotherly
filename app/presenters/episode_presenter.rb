@@ -9,12 +9,26 @@ class EpisodePresenter < ApplicationPresenter
   # Protocol used for transcode streams.
   TRANSCODE_PROTOCOL = 'https://'
 
-  def artists
-    model.performances.play_order.map(&:artist).map(&:decorate)
+  def performances
+    model.performances.play_order
   end
 
-  def performances
-    model.performances.map(&:decorate)
+  def artists
+    performances.map(&:artist).map(&:present)
+  end
+
+  def related_videos
+    @related_videos ||= performances + Episode.latest.without(model)
+  end
+
+  def recommendations
+    @recommendations ||= VideoPresenter.wrap(related_videos)
+  end
+
+  def recommendations
+    @performances ||= recommendations.map do |recommendation|
+      present recommendation, with: VideoPresenter
+    end
   end
 
   def video_cache_key

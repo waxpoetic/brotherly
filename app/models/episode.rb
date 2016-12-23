@@ -19,10 +19,11 @@ class Episode < ApplicationRecord
   scope :future, -> { where 'starts_at >= ?', Time.zone.now }
   scope :upcoming, -> { future.latest }
   scope :in_podcast, -> { where.not audio_file_id: nil }
+  scope :without, -> (episode) { where.not id: episode.id }
 
   friendly_id :number, use: [:finders, :slugged]
 
-  attachment :flyer_file
+  attachment :image
 
   after_create :shorten!, unless: :shortened?
 
