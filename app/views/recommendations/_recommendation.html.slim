@@ -1,0 +1,6 @@
+.filmstrip__frame
+  = link_to recommendation.url, title: recommendation.name, class: 'recommendation' do
+    .recommendation__image
+      img src="#{recommendation.image}" alt="#{recommendation.caption}"
+    .recommendation__caption
+      p= recommendation.caption

@@ -22,17 +22,23 @@
       - else
          .youtube-video-wrapper
           iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
-    - if @episode.includes_links?
-      section.episode__links
-        nav.filmstrip
-          = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
+    section.episode__links
+      nav.buttons
+        = button_to @episode.eventbrite_url, class: 'button buttons__button--eventbrite' do
+          = icon :event, class: 'button__icon'
+          span.button__text Buy Tickets
+        = button_to @episode.facebook_event_url, class: 'button buttons__button--facebook' do
+          = icon :facebook, class: 'button__icon'
+          span.button__text Share on Facebook
+        = button_to Rails.configuration.youtube_channel_url, class: 'button buttons__button--youtube' do
+          = icon :youtube, class: 'button__icon'
+          span.button__text Subscribe on YouTube
     - unless @episode.archived?
       section.episode__chat
-        iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
+        iframe#chat src="#{@episode.live_chat_url}" frameborder="0" style="width:100%"
     section.episode__recommendations.video__recommendations
       nav.filmstrip
-        - @episode.recommendations.each do |recommendation|
-          = render recommendation
+        = render @episode.recommendations
     section.episode__description.video__description
       h3 = @episode.name
       = @episode.description

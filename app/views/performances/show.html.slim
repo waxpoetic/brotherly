@@ -19,12 +19,8 @@
       = render 'episodes/video', poster: @performance.poster_url, src: @performance.video_url
     section.video__recommendations
       nav.filmstrip
-        - @performance.siblings.each do |video|
-          .filmstrip__frame
-            = link_to video.url, title: video.name do
-              = attachment_image_tag performance, :image, :fill, 196, 110, fallback: "http://placehold.it/196x110?text=#{video.name}"
-              p= performance.name
+        = render @performance.recommendations
     section.video__description
       h3 = @performance.name
-      = @performance.artist.description
+      = @performance.description
 

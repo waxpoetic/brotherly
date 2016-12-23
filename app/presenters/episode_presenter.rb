@@ -25,10 +25,8 @@ class EpisodePresenter < ApplicationPresenter
     @recommendations ||= VideoPresenter.wrap(related_videos)
   end
 
-  def recommendations
-    @performances ||= recommendations.map do |recommendation|
-      present recommendation, with: VideoPresenter
-    end
+  def live_chat_url
+    "https://www.youtube.com/live_chat?v=#{model.youtube_video_id}&embed_domain=#{Brotherly.secrets.domain_name}"
   end
 
   def video_cache_key
