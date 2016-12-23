@@ -1,3 +1,2 @@
-.episodes__summary
-  = link_to episode, title: episode.title, class: 'row' do
-    = image_tag episode.cover_image_url
+= link_to episode, title: episode.title, class: 'gallery__link' do
+  img src="#{episode.cover_image_url}" alt="#{episode.title}"
