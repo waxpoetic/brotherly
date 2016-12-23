@@ -4,7 +4,17 @@ class ArtistPresenter < ApplicationPresenter
     h.attachment_image_tag(
       model,
       :image_file,
-      fallback: "http://placehold.it/250x250?text=#{placeholder_text}"
+      fallback: fallback_image_url
+    )
+  end
+
+  def fallback_image_url
+    "http://placehold.it/250x250?text=#{placeholder_text}"
+  end
+
+  def preview_image
+    h.attachment_image_tag(
+      model, :image, :fill, 250, 250, fallback: fallback_image_url
     )
   end
 

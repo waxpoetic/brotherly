@@ -1,9 +1,6 @@
-
-.episodes
-  .episodes__title
-    h1 upcoming episodes
-  - if @episodes.empty?
-    .episodes__none
-      h2 No episodes have been scheduled yet. Check back soon!
+nav.gallery
+  - if @episodes.any?
+    = render @episodes
   - else
-    = render @episodes.map(&:present)
+    .gallery__empty
+      h2= t :empty, scope: %i(gallery episodes)

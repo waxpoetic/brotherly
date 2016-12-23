@@ -80,3 +80,6 @@ en:
     subscribe: Subscribe
   users:
     login: Log In
+  gallery:
+    episodes:
+      empty: No episodes have been scheduled yet. Check back soon!
