@@ -1,9 +1,9 @@
 class RecommendationPresenter < ApplicationPresenter
   # Width of all preview images in px
-  IMAGE_WIDTH = 220
+  IMAGE_WIDTH = 196
 
   # Height of all preview images in px
-  IMAGE_HEIGHT = 120
+  IMAGE_HEIGHT = 110
 
   # Create +RecommendationPresenter+ objects for each model in a given
   # collection.

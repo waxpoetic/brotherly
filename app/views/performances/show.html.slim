@@ -14,17 +14,17 @@
   meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;"
 
 - cache @performance do
-  .episode
-    section.episode__video
+  .performance.video
+    section.video__player
       = render 'episodes/video', poster: @performance.poster_url, src: @performance.video_url
-    section.episode__filmstrip.episode__recommendations
+    section.video__recommendations
       nav.filmstrip
         - @performance.siblings.each do |video|
           .filmstrip__frame
             = link_to video.url, title: video.name do
               = attachment_image_tag performance, :image, :fill, 196, 110, fallback: "http://placehold.it/196x110?text=#{video.name}"
               p= performance.name
-    section.episode__description
+    section.video__description
       h3 = @performance.name
       = @performance.artist.description
 

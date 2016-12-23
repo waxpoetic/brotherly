@@ -1,8 +1,8 @@
-.episode {
+.video {
   @include outer-container;
 }
 
-  .episode__video {
+  .video__player {
     video {
       margin: 0 auto;
     }
@@ -29,22 +29,11 @@
     }
   }
 
-  .episode__links {
-    background: $black;
-    margin-top: 15px;
-    padding: 5px;
-    font-size: 1.2rem;
-
-    .filmstrip {
-      text-align: center;
-    }
-  }
-
-  .episode__filmstrip {
+  .video__recommendations {
     background: $black;
     margin-top: 15px;
     padding: 5px;
   }
 
-  .episode__description {
+  .video__description {
   }
