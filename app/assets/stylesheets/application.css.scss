@@ -49,14 +49,17 @@
 /*
  * OBJECTS
  *
- * Filmstrip............Browse multiple videos in a playlist
+ * Filmstrip...............Browse multiple videos in a playlist
+ * Video...................Detail page for a specific video
+ * YouTube Video Wrapper...Responsive wrapper for YouTube video players
  */
 @import 'objects/*';
 /*
  * COMPONENTS
  *
- * Episode..............View a single episode and its data
- * Episodes.............List multiple episodes
+ * Episode..............Full-length episode recording or live stream
+ * Performance..........Artist's performance on an episode
+ * Artist...............Artist promo page
  * Top Bar..............Navigation and masthead
  */
 @import 'components/*';

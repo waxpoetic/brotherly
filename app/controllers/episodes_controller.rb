@@ -18,7 +18,6 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    @recommendations = present @episode, with: RecommendationsPresenter
     respond_with @episode
   end
 

@@ -1,0 +1,26 @@
+.video {
+  @include outer-container;
+}
+
+  .video__player {
+    video {
+      margin: 0 auto;
+    }
+
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .video__recommendations {
+    background: $black;
+    margin-top: 15px;
+    padding: 5px;
+  }
+
+  .video__description {
+  }

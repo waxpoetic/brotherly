@@ -12,9 +12,9 @@ class Performance < ApplicationRecord
 
   attachment :image
 
-  def name
+  delegate :name, to: :artist
+
+  def title
     "#{artist.name} at #{episode.name}"
   end
-
-  alias title name
 end
