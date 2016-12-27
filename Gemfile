@@ -43,6 +43,7 @@ gem 'rack-env-notifier'
 gem 'bourbon'
 gem 'neat'
 gem 'normalize-rails'
+gem 'jquery-slick-rails'
 
 group :development do
   gem 'meta_request'
