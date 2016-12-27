@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery.slick
 //= require jquery_ujs
 //= require refile
 //= require lodash

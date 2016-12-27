@@ -74,7 +74,7 @@ class Transcode
   # @return [Hash] job params
   def attributes
     {
-      pipeline_id: ENV['AWS_TRANSCODER_PIPELINE_ID'],
+      pipeline_id: Rails.application.secrets.aws_transcoder_pipeline_id,
       input: { key: id },
       output_key_prefix: output_prefix,
       outputs: outputs,
