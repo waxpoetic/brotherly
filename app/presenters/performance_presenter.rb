@@ -3,7 +3,7 @@ class PerformancePresenter < ApplicationPresenter
   delegate :name, to: :artist, prefix: true
 
   def poster_url
-    h.attachment_url model, :image
+    h.attachment_url(model, :image) || episode.poster_url
   end
 
   def video
