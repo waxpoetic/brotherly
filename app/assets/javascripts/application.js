@@ -8,3 +8,7 @@
 //= require turbolinks
 //= require_tree .
 //= require_self
+
+$(document).on('ready page:change', function(event) {
+  module.init($(event.currentTarget));
+});
