@@ -14,7 +14,7 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def performances
-    model.performances.map(&:decorate)
+    model.performances.order(:starts_at).map(&:decorate)
   end
 
   def video_cache_key
