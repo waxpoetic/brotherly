@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
-  def slick_slider_options
-    {
-      slidesToShow: 4,
-      slidesToScroll: 4,
-    }.to_json
-  end
-
   # Name of the current action.
   #
   # @return [String]
