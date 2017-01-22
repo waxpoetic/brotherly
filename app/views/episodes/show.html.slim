@@ -28,8 +28,9 @@
       section.episode__links
         nav.filmstrip
           = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
-    section.episode__chat
-      iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
+    - if @episode.youtube_id.present?
+      section.episode__chat
+        iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
     section.episode__filmstrip.episode__recommendations
       nav.filmstrip
         - @episode.performances.order(:starts_at).take(4).each do |performance|
