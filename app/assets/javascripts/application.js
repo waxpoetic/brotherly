@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.slick
 //= require refile
 //= require lodash
 //= require video

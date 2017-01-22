@@ -32,8 +32,8 @@
       section.episode__chat
         iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
     section.episode__filmstrip.episode__recommendations
-      nav.filmstrip
-        - @episode.performances.take(4).each do |performance|
+      nav.filmstrip data-slick="#{slick_slider_options}"
+        - @episode.performances.each do |performance|
           .filmstrip__frame
             = link_to [@episode, performance], title: performance.artist.name do
               = attachment_image_tag performance, :image, :fill, 196, 110, fallback: "http://placehold.it/196x110?text=#{performance.artist.name}"

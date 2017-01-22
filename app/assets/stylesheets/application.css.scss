@@ -9,9 +9,13 @@
  * TOOLS
  * Bourbon..............Useful mixins.
  * Neat.................Grid framework
+ * Slick................Carousel plugin
  */
 @import 'bourbon';
 @import 'neat';
+@import 'slick';
+@import 'slick-theme';
+
 //@import 'mixins/*';
 /*
  * SETTINGS

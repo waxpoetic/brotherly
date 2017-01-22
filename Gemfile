@@ -29,6 +29,7 @@ gem 'videojs_rails'
 gem 'titleist'
 gem 'rack-cors'
 gem 'halt'
+gem 'jquery-slick-rails'
 
 gem 'lodash-rails'
 gem 'sass-rails'
