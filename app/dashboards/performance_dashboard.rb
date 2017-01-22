@@ -17,7 +17,7 @@ class PerformanceDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     video_url: Field::String,
-    image: Field::String
+    image: UploadField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
