@@ -15,3 +15,9 @@
   .filmstrip__full {
     //@include span-columns(12);
   }
+
+  .slick-slide {
+    img {
+      margin: 0 auto;
+    }
+  }
