@@ -24,7 +24,7 @@
           iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
       - else
         = @episode.flyer
-    - if @episode.includes_links?
+    - if @episode.eventbrite_url.present?
       section.episode__links
         nav.filmstrip
           = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
