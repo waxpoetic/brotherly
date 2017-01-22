@@ -19,9 +19,11 @@
     section.episode__video
       - if @episode.archived?
         = render 'episodes/video', poster: @episode.poster_url, src: @episode.video_url
-      - else
+      - elsif @episode.youtube_id.present?
          .youtube-video-wrapper
           iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
+      - else
+        = @episode.flyer
     - if @episode.includes_links?
       section.episode__links
         nav.filmstrip
