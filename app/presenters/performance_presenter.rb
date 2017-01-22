@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 class PerformancePresenter < ApplicationPresenter
   delegate :name, to: :artist, prefix: true
-  delegate :poster_url, to: :episode
+
+  def poster_url
+    h.attachment_url model, :image
+  end
 
   def video
     model.video_url
