@@ -74,7 +74,7 @@ end
 group :production do
   gem 'rack-cache'
   gem 'redis-rails', '~> 5'
-  gem 'redis-rack-cache', '2.0.0.pre'
+  gem 'redis-rack-cache'
   gem 'rails_12factor'
   gem 'sidekiq'
   gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', require: false
