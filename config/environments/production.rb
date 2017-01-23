@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.cache_store = :redis_store, \
   #                      "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
   config.session_store :redis_store, \
-                       servers: "#{Rails.application.secrets.redis_host}/0/brotherly-rails-session"
+                       servers: ["#{Rails.application.secrets.redis_host}/0/brotherly-rails-session"]
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter     = :sidekiq
