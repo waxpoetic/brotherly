@@ -54,7 +54,8 @@ class EpisodeDashboard < Administrate::BaseDashboard
     :ends_at,
     :published_at,
     :description,
-    :video_url
+    :video_url,
+    :flyer_file
   ].freeze
 
   # Overwrite this method to customize how episodes are displayed
