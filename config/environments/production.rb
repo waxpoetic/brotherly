@@ -54,8 +54,8 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   config.action_dispatch.rack_cache = {
-    metastore: "#{Rails.application.secrets.redis_host}/0/brotherly-rack-metastore",
-    entitystore: "#{Rails.application.secrets.redis_host}/0/brotherly-rack-entitystore"
+    metastore: URI.parse("#{Rails.application.secrets.redis_host}/0/brotherly-rack-metastore"),
+    entitystore: URI.parse("#{Rails.application.secrets.redis_host}/0/brotherly-rack-entitystore")
   }
 
   # Store the cache and session in Redis
