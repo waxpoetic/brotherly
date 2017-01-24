@@ -34,29 +34,29 @@ class Episode < ApplicationRecord
     short_link_url.present?
   end
 
-  def future?
-    return true if starts_at.blank?
-    starts_at >= Time.current
+  # Test whether to show a buy ticket link since the event is upcoming.
+  def upcoming?
+    starts_at.present? && starts_at >= Time.current && eventbrite_url.present?
   end
 
-  def streaming?
-    youtube_id.present?
+  # Test whether we are between the start and end times of a given
+  # Episode, and whether a Youtube ID is present indicating a live
+  # stream is occurring.
+  def live?
+    starts_at.present? && ends_at.present? &&
+    Time.current >= starts_at &&
+      Time.current <= ends_at &&
+      youtube_id.present?
   end
 
-  def past?
-    !future?
-  end
-
+  # Test whether a +video_url+ is present and it is past the time at
+  # which this episode has started.
   def archived?
-    video_url.present?
+    video_url.present? && Time.current >= ends_at
   end
 
   def published?
     published_at.present?
-  end
-
-  def transcoded?
-    video_transcoded_at.present?
   end
 
   def event

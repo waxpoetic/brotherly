@@ -15,36 +15,25 @@
     meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;"
 
 - cache @episode do
-  .episode
-    section.episode__video
+  article.video.video--episode
+    section.video__player
       - if @episode.archived?
-        = render 'episodes/video', poster: @episode.poster_url, src: @episode.video_url
-      - elsif @episode.youtube_id.present?
-         .youtube-video-wrapper
+        = render 'video', poster: @episode.poster_url, src: @episode.video_url
+      - elsif @episode.live?
+         .hero-wrapper
           iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"
       - else
-        = @episode.flyer
-    - if @episode.eventbrite_url.present?
-      section.episode__links
-        nav.filmstrip
-          = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full' if @episode.eventbrite_url.present?
-    - if @episode.youtube_id.present?
-      section.episode__chat
+        .hero-wrapper
+          = @episode.flyer
+    - if @episode.upcoming?
+      section.video__links
+        nav
+          = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full'
+    - if @episode.live?
+      section.video__chat
         iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
-    section.episode__filmstrip.episode__recommendations
-      nav.filmstrip
-        - @episode.performances.each do |performance|
-          .filmstrip__frame
-            = link_to [@episode, performance], title: performance.artist.name do
-              = attachment_image_tag performance, :image, :fill, 196, 110, fallback: "http://placehold.it/196x110?text=#{performance.artist.name}"
-              p= performance.artist.name
-    section.episode__description
+    section.video__filmstrip
+      = render 'filmstrip', frames: @episode.performances
+    section.video__description
       h3 = @episode.name
       = @episode.description
-
-javascript:
-  $(".filmstrip").slick({
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      swipeToSlide: !0
-  })

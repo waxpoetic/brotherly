@@ -26,11 +26,10 @@
 /*
  * GENERIC
  *
- * Normalize.css........CSS Reset
- * VideoJS Sublime......Skin for VJS Player
- * Turbolinks Progress Bar
+ * VideoJS Sublime............Skin for VJS Player
+ * Turbolinks Progress Bar....Styles for the top bar that is shown
+ *                            during page reload.
  */
-//@import 'normalize-rails';
 @import 'generic/videojs-sublime';
 @import 'generic/turbolinks';
 /*
@@ -54,13 +53,14 @@
  * OBJECTS
  *
  * Filmstrip............Browse multiple videos in a playlist
+ * Hero Wrapper.........Responsively wrap hero images and videos
  */
 @import 'objects/*';
 /*
  * COMPONENTS
  *
- * Episode..............View a single episode and its data
- * Episodes.............List multiple episodes
+ * Video................Video pages for episodes and performances
+ * Episodes.............Gallery of upcoming or past episodes
  * Top Bar..............Navigation and masthead
  */
 @import 'components/*';

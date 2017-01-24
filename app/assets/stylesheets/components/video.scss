@@ -1,23 +1,10 @@
-.episode {
+.video {
   @include outer-container;
 }
 
-  .episode__video {
+  .video__player {
     video {
       margin: 0 auto;
-    }
-
-    .youtube-video-wrapper {
-      position: relative;
-      min-height: 600px;
-
-      @media screen and (max-width: 420px) {
-        min-height: 400px;
-      }
-
-      @media screen and (max-width: 360px) {
-        min-height: 200px;
-      }
     }
 
     iframe {
@@ -29,7 +16,7 @@
     }
   }
 
-  .episode__links {
+  .video__links {
     background: $black;
     margin-top: 15px;
     padding: 5px;
@@ -40,11 +27,11 @@
     }
   }
 
-  .episode__filmstrip {
+  .video__filmstrip {
     background: $black;
     margin-top: 15px;
     padding: 5px;
   }
 
-  .episode__description {
+  .video__description {
   }
