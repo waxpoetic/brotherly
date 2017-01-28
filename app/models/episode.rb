@@ -48,11 +48,11 @@ class Episode < ApplicationRecord
   end
 
   def started?
-    starts_at <= Time.current
+    starts_at.present? && starts_at <= Time.current
   end
 
   def ended?
-    ends_at >= Time.current
+    ends_at.present? && ends_at <= Time.current
   end
 
   def now?
