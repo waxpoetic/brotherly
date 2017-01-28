@@ -26,8 +26,16 @@ class Episode < ApplicationRecord
 
   after_create :shorten!, unless: :shortened?
 
+  validates :starts_at, presence: true
+  validates :ends_at, presence: true
+  validate :starts_before_ends
+
   def self.current
     latest.first
+  end
+
+  def future?
+    starts_at.present? && starts_at >= Time.current
   end
 
   def shortened?
@@ -36,23 +44,32 @@ class Episode < ApplicationRecord
 
   # Test whether to show a buy ticket link since the event is upcoming.
   def upcoming?
-    starts_at.present? && starts_at >= Time.current && eventbrite_url.present?
+    future? && eventbrite_url.present?
+  end
+
+  def started?
+    starts_at <= Time.current
+  end
+
+  def ended?
+    ends_at >= Time.current
+  end
+
+  def now?
+    started? && !ended?
   end
 
   # Test whether we are between the start and end times of a given
   # Episode, and whether a Youtube ID is present indicating a live
   # stream is occurring.
   def live?
-    starts_at.present? && ends_at.present? &&
-    Time.current >= starts_at &&
-      Time.current <= ends_at &&
-      youtube_id.present?
+    now? && youtube_id.present?
   end
 
   # Test whether a +video_url+ is present and it is past the time at
   # which this episode has started.
   def archived?
-    video_url.present? && Time.current >= ends_at
+    ended? && video_url.present?
   end
 
   def published?
@@ -71,5 +88,12 @@ class Episode < ApplicationRecord
 
   def shorten!
     GenerateShortLinkJob.perform_later self
+  end
+
+  def starts_before_ends
+    return unless ends_at.present? && starts_at.present?
+    unless ends_at > starts_at
+      errors.add :base, 'cannot start before it ends'
+    end
   end
 end
