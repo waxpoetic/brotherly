@@ -60,8 +60,18 @@ module Brotherly
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'
 
+    # Add Refile helpers like +attachment_url+ and
+    # +attachment_image_tag+ for rendering attachments in presenters.
     config.makeover.helpers << Refile::AttachmentHelper
 
+    # Eventbrite defaults to using bogus gateway so real calls aren't
+    # made in test or dev
     config.eventbrite_gateway = 'Eventbrite::BogusGateway'
+
+    # Shorthand for finding DB name of current env
+    config.db_name = config.database_configuration[Rails.env]['database']
+
+    # Heroku production app name
+    config.app_name = 'brotherly'
   end
 end
