@@ -1,0 +1,6 @@
+nav.filmstrip
+  - frames.each do |frame|
+    .filmstrip__frame
+      = link_to frame.url, title: frame.caption do
+        = frame.image
+        p= frame.caption

@@ -1,0 +1,12 @@
+.hero-wrapper {
+  position: relative;
+  min-height: 600px;
+
+  @media screen and (max-width: 420px) {
+    min-height: 400px;
+  }
+
+  @media screen and (max-width: 360px) {
+    min-height: 200px;
+  }
+}

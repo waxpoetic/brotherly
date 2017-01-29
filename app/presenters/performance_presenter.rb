@@ -2,8 +2,20 @@
 class PerformancePresenter < ApplicationPresenter
   delegate :name, to: :artist, prefix: true
 
+  def url
+    h.episode_performance_path(model.episode, model)
+  end
+
+  def caption
+    model.artist.name
+  end
+
   def poster_url
-    h.attachment_url(model, :image) || episode.poster_url
+    h.attachment_url model, :image, fallback: episode.poster_url
+  end
+
+  def image
+    h.attachment_image_tag model, :image, fallback: episode.poster_url
   end
 
   def video
