@@ -4,6 +4,7 @@
 //= require refile
 //= require lodash
 //= require video
+//= require videojs-ga
 //= require turbolinks
 //= require_self
 
@@ -11,7 +12,11 @@ $(document)
   .on('turbolinks:load', function(event) {
     // Load VideoJS player into #archive element if it exists
     if ($('#player').length) {
-      videojs('player');
+      videojs('player', {}, function(player) {
+        player.ga({
+          eventsToTrack: ['loaded', 'start', 'end', 'seek', 'play', 'pause', 'resize', 'volumeChange', 'error', 'fullscreen']
+        });
+      });
     }
 
     // Configure slick-slider for .filmstrip components
