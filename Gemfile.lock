@@ -200,6 +200,8 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     librato-metrics (1.6.1)
       aggregate (~> 0.2.2)
       faraday (~> 0.7)
@@ -488,6 +490,7 @@ DEPENDENCIES
   haml2slim
   jquery-rails
   jquery-slick-rails
+  launchy
   librato-rails
   lodash-rails
   makeover
@@ -537,4 +540,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.2
+   1.14.3

@@ -3,14 +3,39 @@ require 'rails_helper'
 
 RSpec.feature 'Performances', type: :feature do
   let :performance do
-    performances :del_at_four
+    performances :mr_jennings_at_three
   end
 
-  scenario 'go to a performance by its episode' do
-    skip 'not yet implemented'
-    visit episodes_path(performance.episode, format: 'html')
-    click_link performance.artist.name
+  let :episode do
+    performance.episode
+  end
+
+  let :cover do
+    Refile::FileDouble.new 'cover_image', 't.jpg', content_type: 'image/jpeg'
+  end
+
+  before do
+    performance.update video_url: 'http://example.com', image: cover
+  end
+
+  scenario 'can be visited directly' do
+    visit episode_performance_path(episode, performance)
+
     expect(page).to have_content(performance.artist.name)
-    expect(page).to have_content(performance.episode.name)
+    expect(page).to have_css('video')
+  end
+
+  scenario 'can be clicked into via their episodes' do
+    visit episodes_path
+
+    click_link episode.name
+
+    expect(page).to have_content(episode.name)
+    expect(page).to have_content(performance.artist.name)
+
+    click_link performance.artist.name
+
+    expect(page).to have_content(performance.artist.name)
+    expect(page).to have_css('video')
   end
 end

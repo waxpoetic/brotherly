@@ -69,6 +69,7 @@ group :test do
   gem 'codeclimate-test-reporter', require: nil
   gem 'vcr'
   gem 'webmock'
+  gem 'launchy'
 end
 
 group :production do
