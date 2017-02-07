@@ -1,4 +1,3 @@
-doctype html
 html lang=I18n.locale xmlns:og="http://ogp.me/ns"
   head
     = render 'metadata'
@@ -22,5 +21,6 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
           = link_to t(:about, scope: [:titles, :pages]), about_path
           = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
           = link_to t(:past, scope: [:titles, :episodes]), episodes_path
+          = link_to t(:calendar, scope: [:titles, :pages]), calendar_path
     main
       = yield

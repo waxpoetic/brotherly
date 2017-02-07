@@ -13,6 +13,8 @@ en:
       podcast: brother.ly podcast
       upcoming: Upcoming
       past: Archives
+    pages:
+      calendar: Calendar
   subscribers:
     new:
       content: You'll be the first to know about new events and recording uploads.
