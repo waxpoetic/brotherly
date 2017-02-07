@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 require 'rails_helper'
-require 'refile/file_double'
 
 RSpec.feature 'Episodes', type: :feature do
-  let :current_episode do
-    episodes :current
+  let :episode do
+    episodes :four
   end
 
   let :video do
@@ -13,26 +12,29 @@ RSpec.feature 'Episodes', type: :feature do
     )
   end
 
-  xscenario 'home page' do
-    visit root_path
-
-    expect(page).to have_content current_episode.name
-    expect(page).to have_css '#stream'
+  before do
+    episode.update starts_at: 1.hour.ago, ends_at: 1.hour.from_now
   end
 
-  xscenario 'archive' do
+  scenario 'home page' do
+    visit root_path
+
+    expect(page).to have_content episode.name
+  end
+
+  scenario 'archive' do
     visit episodes_path
 
     expect(page).to have_content 'past episodes'
   end
 
-  xscenario 'upcoming' do
+  scenario 'upcoming' do
     visit upcoming_episodes_path
 
     expect(page).to have_content 'upcoming episodes'
   end
 
-  xscenario 'detail' do
+  scenario 'detail' do
     visit episode_path(episode)
 
     expect(page).to have_content episode.name
