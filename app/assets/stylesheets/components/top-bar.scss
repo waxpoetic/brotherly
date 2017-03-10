@@ -5,6 +5,8 @@ $main-tiles: 7;
   @include outer-container;
   max-width: 100%;
   clear: both;
+  position:relative;
+  top:-2px;
 
   div {
     margin: 0;
@@ -35,43 +37,47 @@ background-position:50% 60px;
 text-align:center;
 background:#e9e3c8;
   nav {  
+    clear:both;
     margin-bottom: 2px;
     display: flex;
-    justify-content:flex-start;
     flex-wrap:wrap;
     position: relative;
-    padding:0;
-
-    @media screen and (max-width: 920px) {
-      border-bottom: 0;
-    }
+    padding:20px 0 20px 0;
     @media (max-width:455px) {
-    	margin-left:auto;
-    	margin-right:auto;
+    	justify-content:left;
     	width:300px;
-  		justify-content:center;
+    	padding:0;
   		}
     
   }
   
   .nav-item{
-  	margin:0 2px 0 2px;
-    padding:20px;
-  	width:110px;
-  	background:#f8f4e2;
-  	@media (max-width:455px) {
-  		border-left:1px solid $maroon;
-  		justify-content:center;
-  		margin:2px;
-    	padding:0;
-    }
   }
   
-  .nav-item:hover{
+  a:hover{
   background:#fcfbf8;
   }
 
   a {
+  	position:relative;
+  	top:1px;
+	margin:0 2px 0 2px;
+    padding:20px;
+  	width:110px;
+  	background:#f8f4e2;
+  	border: 4px solid #fff;
+  	border-width: 0 1px 0 1px;
+  	@media (max-width:455px) {
+  		display:block;
+  		border:1px solid #fff;
+  		border-left:2px solid $maroon;
+  		margin:2px;
+    	padding:2px;
+    }
+  
+  
+  
+  
   	color:$maroon;
     flex: 1;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
