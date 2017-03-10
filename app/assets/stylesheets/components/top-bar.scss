@@ -4,50 +4,78 @@ $main-tiles: 7;
 .top-bar {
   @include outer-container;
   max-width: 100%;
-  background: image-url('background-pattern.jpg') 0 3px;
   clear: both;
 
   div {
-    display: inline;
     margin: 0;
     padding: 0;
   }
 }
 
 .skyline {
-  margin-top: 1px;
 }
 
 .top-bar__logo {
-  float: left;
+border-top:1px solid #e9e3c8;
+text-align:center;
+    img{
+    	margin:20px auto 0 auto;
+    	width:800px;
+    }
+    
+    @media screen and (max-width: 920px) {
+    
+    }
+  
 }
 
 .top-bar__links {
-  float: right;
-
-  img {
-    @media screen and (max-width: 920px) {
-      display: none;
-    }
-  }
-
-  nav {
-    bottom: 5px;
+text-align:center;
+background:#e9e3c8;
+  nav {  
+    margin-bottom: 2px;
     display: flex;
+    justify-content:flex-start;
+    flex-wrap:wrap;
     position: relative;
+    padding:0;
 
     @media screen and (max-width: 920px) {
       border-bottom: 0;
     }
+    @media (max-width:455px) {
+    	margin-left:auto;
+    	margin-right:auto;
+    	width:300px;
+  		justify-content:center;
+  		}
+    
+  }
+  
+  .nav-item{
+  	margin:0 2px 0 2px;
+    padding:20px;
+  	width:110px;
+  	background:#f8f4e2;
+  	@media (max-width:455px) {
+  		border-left:1px solid $maroon;
+  		justify-content:center;
+  		margin:2px;
+    	padding:0;
+    }
+  }
+  
+  .nav-item:hover{
+  background:#fcfbf8;
   }
 
   a {
+  	color:$maroon;
     flex: 1;
-    font-family: Georgia, Times, serif;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     text-align: center;
 
     @media screen and (max-width: 920px) {
-      padding: 0 34px;
     }
   }
 }

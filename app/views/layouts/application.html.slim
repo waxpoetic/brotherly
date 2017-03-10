@@ -12,15 +12,18 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
   body
     = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
     header.top-bar
-      .top-bar__logo
-        = link_to root_path do
-          = image_tag 'logo.jpg'
       .top-bar__links
-        = image_tag 'skyline.png', class: 'skyline'
         nav
-          = link_to t(:about, scope: [:titles, :pages]), about_path
-          = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
-          = link_to t(:past, scope: [:titles, :episodes]), episodes_path
-          = link_to t(:calendar, scope: [:titles, :pages]), calendar_path
+          .nav-item
+            = link_to t(:about, scope: [:titles, :pages]), about_path
+          .nav-item  
+            = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
+          .nav-item
+            = link_to t(:past, scope: [:titles, :episodes]), episodes_path
+          .nav-item
+            = link_to t(:calendar, scope: [:titles, :pages]), calendar_path
+      .top-bar__logo
+          = link_to root_path do
+          = image_tag 'logo.png'
     main
       = yield
