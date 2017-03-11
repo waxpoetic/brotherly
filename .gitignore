@@ -123,3 +123,4 @@ Session.vim
 bower_components
 node_modules
 .env.production
+client_secret.json

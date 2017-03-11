@@ -33,7 +33,7 @@ gem 'videojs_rails'
 gem 'rack-cors'
 gem 'halt'
 gem 'jquery-slick-rails'
-gem 'google_calendar'
+gem 'google-api-client'
 
 gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git'
 gem 'autoprefixer-rails'
