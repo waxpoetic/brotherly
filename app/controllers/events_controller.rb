@@ -9,8 +9,17 @@ class EventsController < ApplicationController
     respond_with @event
   end
 
-  def auth
-    Event.calendar.login params[:code]
-    redirect_to root_path
+  def authorize_google_api
+    @calendar = Event.calendar
+
+    if @calendar.authorized?
+      redirect_to root_path, notice: 'Google API has already been authorized' and return
+    end
+
+    if @calendar.login params[:code]
+      redirect_to root_path, notice: 'Google API has been authorized'
+    else
+      redirect_to root_path, alert: 'Google API could not be authorized'
+    end
   end
 end

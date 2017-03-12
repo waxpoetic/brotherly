@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get :calendar, to: 'events#index', as: :calendar
   get "calendar/events/:id", to: 'events#show', as: :event
 
-  get :oauth2callback, to: 'events#auth'
+  get :oauth2callback, to: 'events#authorize_google_api'
 
   root to: 'episodes#show', id: '_current'
 end
