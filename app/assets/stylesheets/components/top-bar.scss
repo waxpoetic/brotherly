@@ -4,50 +4,86 @@ $main-tiles: 7;
 .top-bar {
   @include outer-container;
   max-width: 100%;
-  background: image-url('background-pattern.jpg') 0 3px;
   clear: both;
+  position:relative;
+  top:-2px;
 
   div {
-    display: inline;
     margin: 0;
     padding: 0;
   }
 }
 
-.skyline {
-  margin-top: 1px;
-}
 
 .top-bar__logo {
-  float: left;
+border-top:1px solid #e9e3c8;
+text-align:center;
+background:url("skyline2.png") repeat-x;
+background-size:1100px;
+background-position:50% 60px;
+    img{
+    	margin:20px auto 20px auto;
+    	width:700px;
+    }
+    
+    @media screen and (max-width: 700px) {
+    	background-image:none;
+    
+    }
+  
 }
 
 .top-bar__links {
-  float: right;
-
-  img {
-    @media screen and (max-width: 920px) {
-      display: none;
-    }
-  }
-
-  nav {
-    bottom: 5px;
+text-align:center;
+background:#e9e3c8;
+  nav {  
+    clear:both;
+    margin-bottom: 2px;
     display: flex;
+    flex-wrap:wrap;
     position: relative;
-
-    @media screen and (max-width: 920px) {
-      border-bottom: 0;
-    }
+    padding:20px 0 20px 0;
+    @media (max-width:455px) {
+    	justify-content:left;
+    	width:300px;
+    	padding:0;
+  		}
+    
+  }
+  
+  .nav-item{
+  }
+  
+  a:hover{
+  background:#fcfbf8;
   }
 
   a {
+  	position:relative;
+  	top:1px;
+	margin:0 2px 0 2px;
+    padding:20px;
+  	width:110px;
+  	background:#f8f4e2;
+  	border: 4px solid #fff;
+  	border-width: 0 1px 0 1px;
+  	@media (max-width:455px) {
+  		display:block;
+  		border:1px solid #fff;
+  		border-left:2px solid $maroon;
+  		margin:2px;
+    	padding:2px;
+    }
+  
+  
+  
+  
+  	color:$maroon;
     flex: 1;
-    font-family: Georgia, Times, serif;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     text-align: center;
 
     @media screen and (max-width: 920px) {
-      padding: 0 34px;
     }
   }
 }
