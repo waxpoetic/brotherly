@@ -32,7 +32,6 @@ class Event
       @client_id_key = Brotherly.secrets.google_calendar_client_id
       @client_secret = Brotherly.secrets.google_calendar_client_secret
       @project_id = Rails.configuration.google_project_id
-      @user_id = 'default' #Brotherly.secrets.google_calendar_user_id
       @redis_url = "#{Brotherly.secrets.redis_url}/0/brotherly-google-token-store"
     end
 
@@ -55,24 +54,39 @@ class Event
       }
     end
 
+    # Test if credentials can be fetched from the local store.
+    #
+    # @return [Boolean] whether +credentials+ are present.
     def authorized?
       credentials.present?
     end
 
+    # Google-hosted URL that authorizes this application to read the
+    # Google Calendar for +brotherlyparty@gmail.com+.
+    #
+    # @return [String] Google OAuth 2 URL
     def authorize_url
       authorizer.get_authorization_url base_url: REDIRECT_URL
     end
 
+    # Retrieve credentials and store them in the local +token_store+ by
+    # supplying the validation key.
+    #
+    # @param code [String] Authorization code for this request.
+    # @return [Hash] +credentials+ that have been stored.
     def login(code)
-      @credentials = authorizer.get_and_store_credentials_from_code(
+      authorizer.get_and_store_credentials_from_code(
         user_id: GOOGLE_USER_ID,
         code: code,
         base_url: REDIRECT_URL
       )
+      credentials
     end
 
     private
 
+    # @private
+    # @return [Google::Auth::UserAuthorizer]
     def authorizer
       Google::Auth::UserAuthorizer.new(
         client_id, GOOGLE_API_SCOPE, token_store
@@ -105,7 +119,7 @@ class Event
     # @private
     # @return [Google::Auth::Credentials]
     def credentials
-      @credentials ||= authorizer.get_credentials(@user_id)
+      @credentials ||= authorizer.get_credentials GOOGLE_USER_ID
     end
 
     # Build a client ID authorization object from the derived
@@ -140,6 +154,10 @@ class Event
       }.deep_stringify_keys
     end
 
+    # OAuth token storage in Redis.
+    #
+    # @private
+    # @return [Google::Auth::Stores::RedisTokenStore]
     def token_store
       @token_store ||= Google::Auth::Stores::RedisTokenStore.new(
         url: "#{Brotherly.secrets.redis_url}/0",

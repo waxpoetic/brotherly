@@ -1,14 +1,12 @@
 namespace :calendar do
   desc 'Authorize access with the Google Calendar API'
   task authorize: :environment do
-    calendar = Event::Calendar.new
-
-    if calendar.authorized?
+    if Event.calendar.authorized?
       puts 'You are already authorized.'
     else
-      puts "Open this URL and input the code: #{calendar.authorize_url}"
+      puts "Open this URL and input the code: #{Event.calendar.authorize_url}"
       code = STDIN.gets.chomp
-      calendar.login(code)
+      Event.calendar.login(code)
       puts 'Calendar has been authorized'
     end
   end
