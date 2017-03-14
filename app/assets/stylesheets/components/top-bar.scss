@@ -29,14 +29,16 @@ $gold: #e9e3c8;
 
 .top-bar__links {
   @include span-columns(8);
+  height: 20%;
 
   nav {
     float: right;
     margin-bottom: 2px;
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    // position: relative;
     width: 100%;
+    height: 100%;
 
     // @media (max-width: 455px) {
     //   justify-content: left;
