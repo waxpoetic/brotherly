@@ -1,0 +1,21 @@
+.home-page
+  / for SEO
+  h1 style="display:none" brother.ly
+
+  section.home-page__slideshow
+    - @current_episodes.each do |episode|
+      .slideshow__slide.slideshow__slide--current
+        h2 Now Playing
+        = render 'video', src: episode.video_url, poster: episode.poster_url
+    - @upcoming_episodes.each do |episode|
+      .slideshow__slide.slideshow__slide--upcoming
+        h2 Up Next
+        = image_tag episode.poster_url
+    section.section.slideshow__slide.slideshow_slide--workshop
+      = image_tag 'workshop.png'
+      h2 Every Month
+
+  section.home-page__features
+    h2 Featured
+    - @features.each do |feature|
+      = render present(feature)

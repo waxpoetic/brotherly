@@ -4,6 +4,7 @@
 //= require refile
 //= require lodash
 //= require video
+//= require fullpage
 //= require turbolinks
 //= require_self
 
@@ -19,6 +20,16 @@ $(document)
       slidesToShow: 4,
       swipeToSlide: true
     });
+
+    $('.home-page__slideshow').slick({
+      slidesToShow: 1,
+      swipeToSlide: true
+    });
+
+    // // Configure fullPage.js
+    // $('.home-page__slideshow').fullpage({
+    //   verticalCentered: true
+    // });
   })
   .on('turbolinks:before-visit', function() {
     // Dispose VideoJS elements before unloading the page
