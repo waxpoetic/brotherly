@@ -3,6 +3,7 @@ $main-tiles: 7;
 
 .top-bar {
   height: 20%;
+  min-height:80px;
   @include outer-container;
   background: $black;
   max-width: 100%;
@@ -27,46 +28,29 @@ $gold: #e9e3c8;
   }
 
 .top-bar__logo {
- @include span-columns(3); 
+ @include span-columns(4); 
 
   img {
     display: inline-block;
     vertical-align:middle;
-    width:auto;
-    height:100%;
+    max-width:100%;
+    height:80%;
   }
 }
 
 .top-bar__links {
-min-height:20%;
+min-height:100%;
   @include span-columns(8);
 
   nav {
+    position: relative;
+    left:-10px;
     float: right;
     margin-bottom: 2px;
     display: flex;  
     align-items: center;
-    // position: relative;
     width: 100%;
     height: 100%;
-
-    // @media (max-width: 455px) {
-    //   justify-content: left;
-    //   width: 300px;
-    //   padding: 0;
-    // }
-
-    // @media (max-width: 375px) {
-    //   width: 260px;
-    // }
-
-    // @media (max-width: 768px) {
-    //   width: 400px;
-    // }
-
-    // @media (max-width: 1024px) {
-    //   width: 700px;
-    // }
   }
 
   /* https://css-tricks.com/centering-in-the-unknown/ */
@@ -86,7 +70,8 @@ min-height:20%;
     font-family: "Montserrat-Bold", sans-serif;
     text-align: center;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 2.4vw;
+    padding:0 5px;
     
     &:hover {
       background: lighten($black, 20%);
@@ -94,29 +79,6 @@ min-height:20%;
       transition: background-color .8s, color .8s;
     }
 
-    // iPhone 5
-    @media screen and (min-width: 320px) {
-      font-size: .2rem;
-    }
-
-    // iPhone 6
-    @media screen and (min-width: 360px) {
-    }
-
-    // iPhone 6 Plus
-    @media screen and (min-width: 414px) {
-      font-size: .6rem;
-    }
-
-    // iPad
-    @media (min-width: 768px) {
-      font-size: 1.2rem;
-    }
-
-    // iPad Pro
-    @media (min-width: 1024px) {
-      font-size: 1.5rem;
-    }
 
     // TODO: font-size: 1.5rem for iPad Pro
   }
