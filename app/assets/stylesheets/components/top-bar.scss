@@ -2,8 +2,8 @@ $sidebar-tiles: 5;
 $main-tiles: 7;
 
 .top-bar {
-  height: 20%;
-  min-height:80px;
+  height: 15%;
+  min-height:100px;
   @include outer-container;
   background: $black;
   max-width: 100%;
@@ -28,23 +28,21 @@ $gold: #e9e3c8;
   }
 
 .top-bar__logo {
- @include span-columns(4); 
-
+  @include span-columns(3);
   img {
     display: inline-block;
     vertical-align:middle;
-    max-width:100%;
-    height:80%;
+    max-height:100px;
+    padding:10px 0 10px 10px;
   }
 }
 
 .top-bar__links {
 min-height:100%;
-  @include span-columns(8);
+  @include span-columns(9);
 
   nav {
     position: relative;
-    left:-10px;
     float: right;
     margin-bottom: 2px;
     display: flex;  
