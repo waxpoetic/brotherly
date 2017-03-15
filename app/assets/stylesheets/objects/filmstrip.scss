@@ -17,11 +17,16 @@
   }
 
   .slick-slide {
+    height:initial;
     img {
       margin: 0 auto;
     }
   }
 
+  .slick-slider{
+    margin-bottom:0;
+  }
+    
   .slick-arrow {
     z-index: 99;
   }
