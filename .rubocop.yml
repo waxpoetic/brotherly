@@ -63,3 +63,17 @@ Style/MultilineBlockChain:
 
 Style/StringLiterals:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+
+Rails/ReversibleMigration:
+  Exclude:
+    - 'db/migrate/20151109015541_add_audio_file_to_performances.rb'
+    - 'db/migrate/20151109015634_add_audio_file_to_episodes.rb'
+    - 'db/migrate/20151221195024_drop_image_id_from_artists.rb'
+    - 'db/migrate/20151221195617_drop_preview_image_id_from_episodes.rb'
+    - 'db/migrate/20161023050525_drop_pg_search_documents.rb'
+    - 'db/migrate/20161219032731_drop_video_transcoding.rb'

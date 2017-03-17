@@ -92,8 +92,6 @@ class Episode < ApplicationRecord
 
   def starts_before_ends
     return unless ends_at.present? && starts_at.present?
-    unless ends_at > starts_at
-      errors.add :base, 'cannot start before it ends'
-    end
+    errors.add :base, 'cannot start before it ends' unless ends_at > starts_at
   end
 end

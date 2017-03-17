@@ -3,6 +3,6 @@ class GenerateSitemapJob < ActiveJob::Base
   queue_as :default
 
   def perform
-    require "#{Rails.root}/config/sitemap.rb"
+    require Rails.root.join('config', 'sitemap.rb')
   end
 end

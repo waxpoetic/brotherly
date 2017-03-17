@@ -31,7 +31,7 @@ class Transcode
   # @param name [String] Name of the HLS playlist.
   def initialize(id)
     @id = id
-    @name = id.parameterize.gsub(%r{\Araw-videos-|-mp4\Z}, '')
+    @name = id.parameterize.gsub(/\Araw-videos-|-mp4\Z/, '')
     raise ArgumentError, "Video cannot be blank" unless @id.present?
     raise ArgumentError, "Name cannot be blank" unless @name.present?
     @output_prefix = "#{PREFIX}/#{name}/"
