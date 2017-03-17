@@ -4,7 +4,6 @@
 //= require refile
 //= require lodash
 //= require video
-//= require fullpage
 //= require turbolinks
 //= require_self
 
