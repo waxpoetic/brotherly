@@ -18,7 +18,6 @@ RSpec.feature 'View page', type: :feature do
 
   scenario 'home page' do
     visit root_path
-    save_and_open_screenshot
 
     expect(page).to have_content('Up Next')
     expect(page).to have_content('Featured')
