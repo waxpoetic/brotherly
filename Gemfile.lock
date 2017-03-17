@@ -162,8 +162,6 @@ GEM
       thor (~> 0.19.1)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    fullpage-rails (0.0.1)
-      jquery-rails (>= 1.0.0)
     gibbon (2.2.4)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
@@ -513,7 +511,6 @@ DEPENDENCIES
   font_assets
   foreman
   friendly_id
-  fullpage-rails
   gibbon
   google-api-client
   halt
