@@ -1,83 +1,82 @@
 $sidebar-tiles: 5;
 $main-tiles: 7;
+$gold: #e9e3c8;
 
 .top-bar {
-  height: 15%;
-  min-height:100px;
   @include outer-container;
+
+  height: 15%;
+  min-height: 100px;
   background: $black;
   max-width: 100%;
   clear: both;
   position: relative;
-  border-bottom:2px solid $dark-gray;
-  margin-bottom:10px;
+  border-bottom: 2px solid $dark-gray;
+  margin-bottom: 10px;
+
   div {
     margin: 0;
     padding: 0;
   }
 }
 
-$gold: #e9e3c8;
-
-
-.top-bar__logo:before{
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  }
 
 .top-bar__logo {
   @include span-columns(3);
+
   img {
     display: inline-block;
-    vertical-align:middle;
-    max-height:100px;
-    padding:10px 0 10px 10px;
-  }
-}
-
-.top-bar__links {
-min-height:100%;
-  @include span-columns(9);
-
-  nav {
-    position: relative;
-    float: right;
-    margin-bottom: 2px;
-    display: flex;  
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    vertical-align: middle;
+    max-height: 100px;
+    padding: 10px 0 10px 10px;
   }
 
-  /* https://css-tricks.com/centering-in-the-unknown/ */
-  a:before{
+  &::before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle;
   }
-  
+}
+
+.top-bar__links {
+  @include span-columns(9);
+  min-height: 100%;
+
+  nav {
+    position: relative;
+    float: right;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
   a {
     display: inline-block;
-    vertical-align:middle;
-    height:100%;
+    vertical-align: middle;
+    height: 100%;
     color: $white;
     flex: 1;
     font-family: "Montserrat-Bold", sans-serif;
     text-align: center;
     text-transform: uppercase;
     font-size: 2.4vw;
-    padding:0 5px;
-    
+    padding: 0 5px;
+
     &:hover {
       background: lighten($black, 20%);
       color: darken($white, 20%);
       transition: background-color .8s, color .8s;
     }
 
-
-    // TODO: font-size: 1.5rem for iPad Pro
+    // https://css-tricks.com/centering-in-the-unknown
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
   }
 }

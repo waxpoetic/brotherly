@@ -1,40 +1,9 @@
-.filmstrip {
-  //@include outer-container;
-}
-
+.filmstrip {}
   .filmstrip__frame {
-    //@include span-columns(3);
     text-align: center;
     transition: background-color 250ms $base-timing;
 
     &:hover {
       background: lighten($black, 15%);
     }
-  }
-
-  .filmstrip__full {
-    //@include span-columns(12);
-  }
-
-  .slick-slide {
-    height:initial;
-    img {
-      margin: 0 auto;
-    }
-  }
-
-  .slick-slider{
-    margin-bottom:0;
-  }
-    
-  .slick-arrow {
-    z-index: 99;
-  }
-
-  .slick-prev {
-    padding-left: 30px;
-  }
-
-  .slick-next {
-    padding-right: 49px;
   }
