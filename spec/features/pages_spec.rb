@@ -15,4 +15,12 @@ RSpec.feature 'View page', type: :feature do
     expect(page).to have_content('events calendar')
     expect(page).to have_css('iframe')
   end
+
+  scenario 'home page' do
+    visit root_path
+    save_and_open_screenshot
+
+    expect(page).to have_content('Up Next')
+    expect(page).to have_content('Featured')
+  end
 end
