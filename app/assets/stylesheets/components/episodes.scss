@@ -1,17 +1,17 @@
 .episodes {
-	@include outer-container;
+  @include outer-container;
 }
 
 .episodes__title {
 }
 
 .episodes__summary {
-	padding-bottom:7px;
-	@include span-columns(3);
-	text-align: center;
+  @include span-columns(3);
+
+  padding-bottom: 7px;
+  text-align: center;
 }
 
 .episodes__none {
-	text-align: center;
+  text-align: center;
 }
-
