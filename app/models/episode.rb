@@ -18,7 +18,7 @@ class Episode < ApplicationRecord
   scope :recent, -> { past.latest }
   scope :future, -> { where 'starts_at >= ?', Time.zone.now }
   scope :upcoming, -> { future.latest }
-  scope :current, -> { where 'starts_at >= ? AND ends_at <= ?', Time.zone.now, Time.zone.now }
+  scope :current, -> { where 'starts_at <= ? AND ends_at >= ?', Time.zone.now, Time.zone.now }
   scope :in_podcast, -> { where.not audio_file_id: nil }
   scope :featured, -> { where featured: true }
 

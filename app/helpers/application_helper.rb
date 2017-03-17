@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
+  def home_page_slideshow_settings
+    {
+      autoplay: @current_episodes.empty?
+    }.to_json
+  end
+
   # Name of the current action.
   #
   # @return [String]

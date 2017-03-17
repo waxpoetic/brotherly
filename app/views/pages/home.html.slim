@@ -2,11 +2,12 @@
   / for SEO
   h1 style="display:none" brother.ly
 
-  section.home-page__slideshow
+  section.home-page__slideshow data-slick="#{home_page_slideshow_settings}"
     - @current_episodes.each do |episode|
-      .slideshow__slide.slideshow__slide--current
-        h2 Now Playing
-        = render 'video', src: episode.video_url, poster: episode.poster_url
+      .slideshow__slide.slideshow__slide--current data-youtube="#{episode.youtube_id}"
+        h2 Now Playing: #{episode.title}
+        .hero-wrapper
+          /iframe#stream src="#{episode.stream_url}?rel=0&autoplay=1" frameborder="0" allowfullscreen="true"
     - @upcoming_episodes.each do |episode|
       .slideshow__slide.slideshow__slide--upcoming
         h2 Up Next

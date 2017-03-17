@@ -1,0 +1,13 @@
+.home-page {}
+
+  .home-page__slideshow {}
+
+  .home-page__features {
+    h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      background: $black;
+      color: $white;
+    }
+  }

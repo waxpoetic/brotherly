@@ -8,6 +8,7 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.3.0/videojs-contrib-hls.min.js'
+    = javascript_include_tag 'https://www.youtube.com/iframe_api'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
   body
     = render 'tags' if Rails.application.secrets.google_tag_manager_id.present?
