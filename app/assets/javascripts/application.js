@@ -21,15 +21,11 @@ $(document)
       swipeToSlide: true
     });
 
+    // Configure slick-slider for the home page slideshow
     $('.home-page__slideshow').slick({
       slidesToShow: 1,
       swipeToSlide: true
     });
-
-    // // Configure fullPage.js
-    // $('.home-page__slideshow').fullpage({
-    //   verticalCentered: true
-    // });
   })
   .on('turbolinks:before-visit', function() {
     // Dispose VideoJS elements before unloading the page
