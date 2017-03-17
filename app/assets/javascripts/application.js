@@ -8,7 +8,7 @@
 //= require_self
 
 $(document)
-  .on('turbolinks:load', function(event) {
+  .on('turbolinks:load', function() {
     // Load VideoJS player into #archive element if it exists
     if ($('#player').length) {
       videojs('player');

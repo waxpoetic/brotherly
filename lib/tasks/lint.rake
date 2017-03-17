@@ -23,7 +23,7 @@ namespace :lint do
 
   desc 'Run JavaScript lint checks'
   task :js do
-    sh 'jshint app/assets/javascripts/*.js'
+    sh 'eslint app/assets/javascripts/**/*.js'
   end
 end
 
