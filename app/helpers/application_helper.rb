@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
+  def nav_link_to(name, route=nil)
+    label = t(name, scope: [:titles, :pages])
+    route ||= send "#{name}_path"
+
+    link_to label, route, class: active_class_for(route)
+  end
+
+  def active_class_for(route)
+    'active' if current_page?(route)
+  end
+
   def home_page_slideshow_settings
     {
       autoplay: @current_episodes.empty?
