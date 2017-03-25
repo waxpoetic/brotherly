@@ -1,7 +1,7 @@
 .events-listing {
-  @include grid-container;
+  @include outer-container;
 }
 
   .events-listing__event {
-    @include grid-column(3);
+    @include span-columns(3);
   }

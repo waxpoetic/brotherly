@@ -23,8 +23,10 @@ class Event
     )
     GOOGLE_USER_ID = 'default'
     GOOGLE_API_SCOPE = Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY
-    DEFAULT_MAX_RESULTS = 2500
     DEFAULT_ORDER_BY = 'startTime'
+    DEFAULT_MAX_RESULTS = 2500
+
+    attr_reader :id
 
     def initialize(client_id: nil)
       @id = Rails.configuration.google_calendar_id
@@ -48,7 +50,7 @@ class Event
     def query
       @query ||= {
         single_events: true,
-        order_by: DEFAULT_ORDER_ATTRIBUTE,
+        order_by: DEFAULT_ORDER_BY,
         max_results: DEFAULT_MAX_RESULTS,
         time_min: Time.current.iso8601
       }
@@ -98,7 +100,7 @@ class Event
     # @private
     # @return [Google::Api::Response]
     def response
-      service.list_events(query)
+      service.list_events(id, query)
     end
 
     # The Google Calendar service object used to communicate with the

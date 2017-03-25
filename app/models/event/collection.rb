@@ -23,6 +23,7 @@ class Event
       end
     end
 
+
     # Search event records by given params.
     #
     # @param params [Hash] Parameters to match over events.
@@ -63,12 +64,6 @@ class Event
       self
     end
 
-    # Outputs the query used by the calendar, for debugging purposes.
-    #
-    # @return [Hash] Query for searching calendar items.
-    def to_query
-      @calendar.query
-    end
 
     # Find an event by its ID.
     #
@@ -79,6 +74,29 @@ class Event
       params = super { |event| event.id == id }
       raise NotFoundError, id if params.blank?
       Event.from_calendar(params)
+    end
+
+    # Outputs the query used by the calendar, for debugging purposes.
+    #
+    # @return [Hash] Query for searching calendar items.
+    def to_query
+      @calendar.query
+    end
+
+    # Returns a default +ActiveModel+ object that is used to determine
+    # partial path for rendering the collection.
+    #
+    # @return [Event]
+    def to_model
+      Event.new
+    end
+
+    # Returns the entire collection as an +Array+ for usage in rendering
+    # as a collection.
+    #
+    # @return [Array<Event>]
+    def to_ary
+      to_a
     end
   end
 end

@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Handle 404s in a standardized way.
-  halt ActiveRecord::RecordNotFound, Event::NotFoundError, with: :not_found
+  halt ActiveRecord::RecordNotFound, with: :not_found
+  halt Event::NotFoundError, with: :not_found
 
   protected
 

@@ -5,6 +5,7 @@
 # +Event::Collection+.
 class Event
   include ActiveModel::Model
+  include ActiveModel::Conversion
 
   attr_accessor :id
   attr_accessor :title
@@ -31,7 +32,7 @@ class Event
     #
     # @return [Event::Collection]
     def all
-      @all ||= Collection.new
+      @all ||= Event::Collection.new
     end
 
     # All events on the calendar since 1 hour ago from the time that
@@ -108,7 +109,6 @@ class Event
   # @return [Date|DateTime] depending on where we are reading
   # information from
   def parse_date(google_time)
-    return Date.parse(google_time.date) unless google_time.date_time.present?
-    DateTime.parse(google_time.date_time)
+    google_time.date_time || google_time.date
   end
 end
