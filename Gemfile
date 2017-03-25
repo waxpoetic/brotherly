@@ -30,9 +30,6 @@ gem 'sitemap_generator'
 gem 'slim-rails'
 gem 'titleist'
 gem 'videojs_rails'
-gem 'rack-cors'
-gem 'halt'
-gem 'jquery-slick-rails'
 gem 'google-api-client'
 
 gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git'
@@ -74,6 +71,7 @@ group :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'vcr'
   gem 'webmock'
+  gem 'rails-controller-testing'
 end
 
 group :production do
