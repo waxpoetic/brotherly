@@ -36,4 +36,4 @@
       = render 'filmstrip', frames: @episode.performances
     section.video__description
       h3 = @episode.name
-      = @episode.description
+      = raw @episode.description
