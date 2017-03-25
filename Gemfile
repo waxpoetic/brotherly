@@ -40,6 +40,10 @@ gem 'jquery-rails'
 gem 'lodash-rails'
 gem 'neat'
 gem 'normalize-rails'
+gem 'rack-env-notifier'
+gem 'sass-rails'
+gem 'turbolinks'
+gem 'uglifier'
 
 group :development do
   gem 'haml2slim', require: false
