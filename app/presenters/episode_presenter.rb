@@ -55,6 +55,17 @@ class EpisodePresenter < ApplicationPresenter
     )
   end
 
+  def watch_it_again_url
+    h.attachment_url(
+      model,
+      :flyer_file,
+      :fill,
+      1400,
+      700,
+      fallback: cover_image_fallback
+    )
+  end
+
   def flyer_image_url
     h.attachment_url(model, :flyer_file, fallback: cover_image_fallback)
   end

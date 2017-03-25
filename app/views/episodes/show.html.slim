@@ -18,7 +18,7 @@
   article.video.video--episode
     section.video__player
       - if @episode.archived?
-        = render 'video', poster: @episode.poster_url, src: @episode.video_url
+        = render 'video', poster: @episode.poster_url, src: @episode.video_url, name: @episode.title.parameterize
       - elsif @episode.live?
          .hero-wrapper
           iframe#stream src="#{@episode.stream_url}" frameborder="0" allowfullscreen="true"

@@ -3,7 +3,9 @@ class PagesController < ApplicationController
   def home
     @current_episodes = EpisodesPresenter.new Episode.current
     @upcoming_episodes = EpisodesPresenter.new Episode.upcoming
-    @past_episodes = EpisodesPresenter.new Episode.recent.limit(5)
+    @past_performances = PerformancesPresenter.new(
+      Performance.where(episode: Episode.recent).where.not(video_url: nil)
+    )
     # TODO: Article.featured
     @features = Episode.featured + Performance.featured
   end
