@@ -8,7 +8,9 @@ class Event
   class Collection
     include Enumerable
 
-    delegate :events, :query, to: :@calendar
+    attr_reader :calendar
+
+    delegate :events, :query, to: :calendar
 
     def initialize
       @calendar = Event::Calendar.new

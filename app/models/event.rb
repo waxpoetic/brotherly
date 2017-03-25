@@ -40,7 +40,7 @@ class Event
     #
     # @return [Event::Collection]
     def recent
-      since 1.hour.ago.to_datetime
+      since 1.month.ago
     end
 
     # Populate +Event+ model object with data from an +Event::Calendar+
@@ -86,9 +86,9 @@ class Event
 
   # Test if this event is occurring all day.
   #
-  # @return [Boolean] whether +starts_at+ is a +Date+ object.
+  # @return [Boolean] whether +starts_at+ is not a +DateTime+ object.
   def all_day?
-    starts_at.is_a? Date
+    !starts_at.is_a? DateTime
   end
 
   # Timestamp string for the front-end.

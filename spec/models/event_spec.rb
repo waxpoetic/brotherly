@@ -7,9 +7,8 @@ RSpec.describe Event, type: :model do
       title: 'The Superb Owl',
       description: 'Quite indeed a spectacular bird-of-prey.',
       location: 'Philadelphia, PA',
-      starts_at: 1.hour.ago.to_datetime,
-      ends_at: Time.current.to_datetime,
-      all_day: false
+      starts_at: double(date_time: 1.hour.ago.to_datetime),
+      ends_at: double(date_time: Time.current.to_datetime)
     }
   end
 
@@ -17,36 +16,37 @@ RSpec.describe Event, type: :model do
     described_class.new attributes
   end
 
-  describe '.calendar' do
-    it 'returns a Google::Calendar object representing the calendar' do
-      expect(described_class.calendar).to be_a(Google::Calendar)
-    end
-  end
-
   describe '.all' do
     it 'collects events from the calendar as event objects' do
       expect(described_class.all).to be_a(Event::Collection)
     end
 
-    it 'delegates to collection on the class level' do
-      expect(described_class.all).to be_any
-      expect(described_class).to be_any
+    xit 'delegates to collection on the class level' do
+      collection = double 'Event::Collection', any?: true
+      allow(Event).to receive(:all).and_return(collection)
+      expect(Event).to be_any
     end
   end
 
-  describe '#all_day?' do
-    it 'is true when all_day is set to true' do
-      expect(event).to be_all_day
+  describe '.recent' do
+    xit 'finds events in the last hour' do
+      collection = double 'Event::Collection', since: []
+      allow(described_class).to receive(:all).and_return(collection)
+      expect(described_class.recent).to be_any
     end
+  end
 
-    it 'returns false when all_day is set to false' do
-      event.all_day = false
-      expect(event).not_to be_all_day
-    end
-
-    it 'returns false when all_day is set to nil' do
-      event.all_day = nil
-      expect(event).not_to be_all_day
+  describe '.from_calendar' do
+    it 'creates a new Event in memory from GCal data' do
+      item = double(
+        id: '12345',
+        summary: 'test',
+        description: 'test',
+        location: 'test',
+        start: double(date: 1.day.ago.to_date, date_time: nil),
+        end: double(date: Date.today, date_time: nil)
+      )
+      expect(described_class.from_calendar(item)).to be_valid
     end
   end
 
@@ -62,6 +62,18 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe '#all_day?' do
+    it 'is true when starts_at is a Date' do
+      allow(event).to receive(:starts_at).and_return(1.day.ago.to_date)
+      expect(event).to be_all_day
+    end
+
+    it 'is false when starts_at is a DateTime' do
+      allow(event).to receive(:starts_at).and_return(1.hour.ago.to_datetime)
+      expect(event).not_to be_all_day
+    end
+  end
+
   describe '#time' do
     it 'returns human-readable timestamp of event' do
       expect(event.time).to include('from')
@@ -69,7 +81,8 @@ RSpec.describe Event, type: :model do
     end
 
     it 'returns "all day" when all day' do
-      event.all_day = true
+      allow(event).to receive(:starts_at).and_return(1.day.ago.to_date)
+      allow(event).to receive(:ends_at).and_return(1.day.ago.to_date)
       expect(event.time).to include('all day')
     end
   end
