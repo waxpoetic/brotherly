@@ -1,6 +1,8 @@
-li.events-listing__event
-  details.event-summary
-    summary.event-summary__title= event.title
-    p.event-summary__details
-      .event-summary__location= event.location
-      .event-summary__time= event.time
+section.event-summary
+  h2.event-summary__title
+    = link_to event.title, event
+  time.event-summary__time rel="#{event.starts_at.to_i}"
+    = event.time
+  nav.event__buttons
+    - if event.facebook_url.present?
+      = button_to 'Share on Facebook', event.facebook_url, class: 'button--facebook'

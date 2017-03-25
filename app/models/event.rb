@@ -40,7 +40,7 @@ class Event
     #
     # @return [Event::Collection]
     def recent
-      since 1.month.ago
+      since 1.year.ago
     end
 
     # Populate +Event+ model object with data from an +Event::Calendar+
@@ -95,8 +95,16 @@ class Event
   #
   # @return [String]
   def time
-    return "#{starts_at.to_s(:long)} all day" if all_day?
+    return "#{starts_at} all day" if all_day?
     "from #{starts_at.to_s(:short)} to #{ends_at.to_s(:short)}"
+  end
+
+  def facebook_url
+    description
+  end
+
+  def to_param
+    [title.parameterize, starts_at.to_date].join('-')
   end
 
   private

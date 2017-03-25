@@ -1,7 +1,0 @@
-.events-listing {
-  @include outer-container;
-}
-
-  .events-listing__event {
-    @include span-columns(3);
-  }

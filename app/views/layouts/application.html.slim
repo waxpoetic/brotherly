@@ -21,5 +21,5 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
           = link_to t(:upcoming, scope: [:titles, :episodes]), upcoming_episodes_path
           = link_to t(:past, scope: [:titles, :episodes]), episodes_path
           = link_to t(:calendar, scope: [:titles, :pages]), calendar_path
-    main
+    main.content
       = yield
