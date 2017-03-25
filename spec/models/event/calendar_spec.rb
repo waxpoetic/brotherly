@@ -6,7 +6,7 @@ class Event
       described_class.new
     end
 
-    it 'authorizes the event calendar' do
+    xit 'authorizes the event calendar' do
       VCR.use_cassette :google_calendar_authorize_url do
         expect { calendar.authorize_url }.not_to raise_error
       end
