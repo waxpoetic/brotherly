@@ -16,12 +16,6 @@ RSpec.feature 'Episodes', type: :feature do
     episode.update starts_at: 1.hour.ago, ends_at: 1.hour.from_now
   end
 
-  scenario 'home page' do
-    visit root_path
-
-    expect(page).to have_content episode.name
-  end
-
   scenario 'archive' do
     visit episodes_path
 

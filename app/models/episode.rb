@@ -18,7 +18,9 @@ class Episode < ApplicationRecord
   scope :recent, -> { past.latest }
   scope :future, -> { where 'starts_at >= ?', Time.zone.now }
   scope :upcoming, -> { future.latest }
+  scope :current, -> { where 'starts_at <= ? AND ends_at >= ?', Time.zone.now, Time.zone.now }
   scope :in_podcast, -> { where.not audio_file_id: nil }
+  scope :featured, -> { where featured: true }
 
   friendly_id :number, use: [:finders, :slugged]
 
@@ -29,10 +31,6 @@ class Episode < ApplicationRecord
   validates :starts_at, presence: true
   validates :ends_at, presence: true
   validate :starts_before_ends
-
-  def self.current
-    latest.first
-  end
 
   def future?
     starts_at.present? && starts_at >= Time.current

@@ -7,22 +7,51 @@
 //= require turbolinks
 //= require_self
 
-$(document)
-  .on('turbolinks:load', function() {
-    // Load VideoJS player into #archive element if it exists
-    if ($('#player').length) {
-      videojs('player');
-    }
 
+function withVideoPlayer(slick, current, callback) {
+  var slide = $(slick.$slides[current]),
+      element = slide.find('.video-player');
+
+  if (element.length) {
+    var player = videojs(element.attr('id'));
+    callback(player)
+  }
+}
+
+$(document)
+  .on('turbolinks:load', function(event) {
     // Configure slick-slider for .filmstrip components
     $('.filmstrip').slick({
       slidesToShow: 4,
       swipeToSlide: true
     });
+
+    // Configure slick-slider for the home page slideshow
+    $('.home-page__slideshow')
+      .on('afterChange', function(event, slick, currentSlide) {
+        withVideoPlayer(slick, currentSlide, function(player) {
+          player.play();
+        });
+      })
+      .on('beforeChange', function(event, slick, currentSlide) {
+        withVideoPlayer(slick, currentSlide, function(player) {
+          player.pause();
+          player.dispose();
+        });
+      })
+      .slick({
+        slidesToShow: 1,
+        swipeToSlide: true
+      });
+
+    // // Load VideoJS players
+    // $('.video-player').each(function(i, element) {
+    //   videojs($(element).attr('id'));
+    // });
   })
   .on('turbolinks:before-visit', function() {
     // Dispose VideoJS elements before unloading the page
-    if ($('#player').length) {
-      videojs('player').dispose();
-    }
+    $('.video-player').each(function(i, element) {
+      videojs($(element).attr('id')).dispose();
+    });
   })

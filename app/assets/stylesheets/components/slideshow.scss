@@ -1,0 +1,22 @@
+.slideshow {}
+
+  .slideshow__slide {
+    position: relative;
+
+    // slide title
+    h2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      background: $black;
+      color: $white;
+      font-family: "Montserrat-Bold", sans-serif;
+      text-transform: uppercase;
+      z-index: 99;
+    }
+
+    img {
+      width: 100%;
+    }
+  }

@@ -1,0 +1,26 @@
+.home-page
+  / for SEO
+  h1 style="display:none" brother.ly
+
+  section.home-page__slideshow
+    - @current_episodes.each do |episode|
+      .slideshow__slide.slideshow__slide--current data-youtube="#{episode.youtube_id}"
+        h2= link_to "Now Playing: #{episode.title}", episode
+        .hero-wrapper
+          iframe#stream src="#{episode.stream_url}?rel=0&autoplay=1&&showinfo=0&controls=0" frameborder="0" allowfullscreen="true"
+    - @upcoming_episodes.each do |episode|
+      .slideshow__slide.slideshow__slide--upcoming
+        h2= link_to "Up Next: #{episode.title}", episode
+        = image_tag episode.poster_url
+    .slideshow__slide.slideshow_slide--workshop
+      = image_tag 'workshop.png'
+      h2= link_to 'Every Month: The brother.ly Electronic Music Workshop', '/workshop'
+    - @past_performances.each do |performance|
+      .slideshow__slide.slideshow__slide--upcoming
+        h2= link_to "Watch It Again: #{performance.title}", performance.episode
+        = render 'video', src: performance.video_url, poster: performance.poster_url, name: performance.name.parameterize
+
+  section.home-page__features
+    h2 Featured
+    - @features.each do |feature|
+      = render present(feature)

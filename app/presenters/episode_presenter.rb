@@ -40,7 +40,7 @@ class EpisodePresenter < ApplicationPresenter
     h.attachment_url(
       model,
       :flyer_file,
-      fallback: "http://placehold.it/640x480?text=#{placeholder_text}"
+      fallback: "http://placehold.it/1536x1213?text=#{placeholder_text}",
     )
   end
 
@@ -51,6 +51,17 @@ class EpisodePresenter < ApplicationPresenter
       :fill,
       240,
       160,
+      fallback: cover_image_fallback
+    )
+  end
+
+  def watch_it_again_url
+    h.attachment_url(
+      model,
+      :flyer_file,
+      :fill,
+      1400,
+      700,
       fallback: cover_image_fallback
     )
   end

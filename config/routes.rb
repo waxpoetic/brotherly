@@ -42,5 +42,5 @@ Rails.application.routes.draw do
 
   get :oauth2callback, to: 'events#authorize_google_api'
 
-  root to: 'episodes#show', id: '_current'
+  root to: 'pages#home'
 end

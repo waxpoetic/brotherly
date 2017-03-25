@@ -9,6 +9,7 @@ class Performance < ApplicationRecord
   validates :ends_at,   presence: true
 
   scope :play_order, -> { order 'starts_at DESC' }
+  scope :featured, -> { where featured: true }
 
   attachment :image
 

@@ -16,7 +16,7 @@
 - cache @performance do
   .video.video--performance
     section.video__player
-      = render 'video', poster: @performance.poster_url, src: @performance.video_url
+      = render 'video', poster: @performance.poster_url, src: @performance.video_url, name: @performance.name.parameterize
     section.video__description
       h3 = @performance.name
       = @performance.artist.description
