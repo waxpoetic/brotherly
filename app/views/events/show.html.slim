@@ -1,0 +1,14 @@
+article.event
+  header.event__heading
+    h1.event__title
+      = @event.title
+    time.event__time
+      - if @event.all_day?
+        #{@event.starts_at} all day
+      - else
+        from #{@event.starts_at} to #{@event.ends_at}
+  main.event__details
+    .event__location
+      = google_map_to @event.location
+    .event__description
+      = simple_format @event.description

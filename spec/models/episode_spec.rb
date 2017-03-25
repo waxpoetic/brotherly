@@ -12,10 +12,6 @@ RSpec.describe Episode, type: :model do
     )
   end
 
-  let :event do
-    double 'Eventbrite::Event'
-  end
-
   it 'can be in the future' do
     expect(subject).not_to be_future
     subject.starts_at = 1.hour.from_now
@@ -63,12 +59,6 @@ RSpec.describe Episode, type: :model do
     expect(subject).not_to be_shortened
     subject.short_link_url = 'http://bit.ly/brotherly-0'
     expect(subject).to be_shortened
-  end
-
-  it 'has an event' do
-    allow(Eventbrite::Event).to \
-      receive(:find).with(subject.eventbrite_event_id).and_return(event)
-    expect(subject.event).to eq event
   end
 
   it 'has a number' do

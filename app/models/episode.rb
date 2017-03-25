@@ -76,10 +76,6 @@ class Episode < ApplicationRecord
     published_at.present?
   end
 
-  def event
-    Eventbrite::Event.find eventbrite_event_id
-  end
-
   def number
     name.gsub(/brother\.ly\s/, '')
   end

@@ -8,7 +8,6 @@ gem 'bitly'
 gem 'controller_resources'
 gem 'devise'
 gem 'email_validator'
-gem 'eventbrite-client', git: 'https://github.com/waxpoetic/eventbrite-client.rb.git'
 gem 'foreman'
 gem 'friendly_id'
 gem 'gibbon'
@@ -30,6 +29,7 @@ gem 'sitemap_generator'
 gem 'slim-rails'
 gem 'titleist'
 gem 'videojs_rails'
+gem 'google-api-client'
 
 gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git'
 gem 'autoprefixer-rails'
@@ -70,6 +70,7 @@ group :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'vcr'
   gem 'webmock'
+  gem 'rails-controller-testing'
 end
 
 group :production do
