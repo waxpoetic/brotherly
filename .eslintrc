@@ -109,7 +109,7 @@
         "no-extra-parens": "error",
         "no-floating-decimal": "error",
         "no-implicit-coercion": "error",
-        "no-implicit-globals": "error",
+        "no-implicit-globals": "ignore",
         "no-implied-eval": "error",
         "no-inline-comments": "error",
         "no-invalid-this": "error",

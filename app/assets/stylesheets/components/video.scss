@@ -5,11 +5,14 @@
 
 .video {
   @include outer-container;
+  margin: 0;
+  max-width: 100%;
 }
 
   .video__player {
     video {
       margin: 0 auto;
+      width: 100%;
     }
 
     iframe {

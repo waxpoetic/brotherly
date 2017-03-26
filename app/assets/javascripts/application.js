@@ -20,6 +20,12 @@ function withVideoPlayer(slick, current, callback) {
 
 $(document)
   .on('turbolinks:load', function(event) {
+    // Load static VideoJS player elements
+    $('.video__player .video-player').each(function(i, element) {
+      var player = videojs($(element).attr('id'));
+      player.play();
+    });
+
     // Configure slick-slider for .filmstrip components
     $('.filmstrip').slick({
       slidesToShow: 4,
@@ -44,10 +50,6 @@ $(document)
         swipeToSlide: true
       });
 
-    // // Load VideoJS players
-    // $('.video-player').each(function(i, element) {
-    //   videojs($(element).attr('id'));
-    // });
   })
   .on('turbolinks:before-visit', function() {
     // Dispose VideoJS elements before unloading the page
