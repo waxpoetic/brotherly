@@ -19,6 +19,7 @@ module Facebook
     attr_accessor :description
     attr_accessor :location
     attr_accessor :url
+    attr_accessor :updated_time
 
     def initialize(params = {})
       @attributes = params.deep_symbolize_keys
@@ -80,7 +81,8 @@ module Facebook
         owner: owner,
         location: venue,
         facebook_event_id: id,
-        facebook_event_url: url
+        facebook_event_url: url,
+        facebook_updated_at: updated_time
       }
     end
 

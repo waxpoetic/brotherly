@@ -74,10 +74,24 @@ class Event
     id.present?
   end
 
+  # Return whichever +updated_at+ timestamp is more recent.
+  #
+  # @return [DateTime]
+  def updated_at
+    @google_updated_at <=> @facebook_updated_at
+  end
+
   # Generated slug for direct event URLs.
   #
   # @return [String]
   def to_param
     [title.parameterize, starts_at.to_date].join('-')
+  end
+
+  # Cache key for this event including the ID and update_at.
+  #
+  # @return [String] "event/$EVENT_TITLE-$EVENT_DATE/$UPDATED_AT"
+  def cache_key
+    ['event', to_param, updated_at].join('/')
   end
 end

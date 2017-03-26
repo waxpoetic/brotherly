@@ -102,5 +102,15 @@ class Event
     def to_ary
       to_a
     end
+
+    # Cache key for the collection includes the most recent
+    # +:updated_at+ and busts the cache whenever that number changes
+    # (e.g., a new calendar event is added or an existing one is
+    # updated)
+    #
+    # @return [String] "events/$MAX_UPDATED_AT"
+    def cache_key
+      ['events', max(&:updated_at)].join('/')
+    end
   end
 end

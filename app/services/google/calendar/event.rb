@@ -8,6 +8,7 @@ module Google
       attr_reader :location
       attr_reader :starts_at
       attr_reader :ends_at
+      attr_reader :updated_at
 
       def initialize(params = {})
         @attributes = params.deep_symbolize_keys
@@ -16,9 +17,7 @@ module Google
         end
         @starts_at = parse_date @start
         @ends_at = parse_date @end
-      end
-
-      def facebook_event_id
+        @updated_at = @updated
       end
 
       # Attributes for the top-level +Event+ model.
@@ -30,7 +29,8 @@ module Google
           name: summary,
           location: location,
           starts_at: starts_at,
-          ends_at: ends_at
+          ends_at: ends_at,
+          google_updated_at: updated_at
         }
       end
 
