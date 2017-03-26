@@ -13,15 +13,25 @@ module Facebook
 
     PRIVACY_OPEN = 'OPEN'
 
+    attr_accessor :attributes
     attr_accessor :id
     attr_accessor :name
     attr_accessor :description
     attr_accessor :location
+    attr_accessor :url
 
     def initialize(params = {})
+      @attributes = params.deep_symbolize_keys
       params.each do |param, value|
         instance_variable_set "@#{param}", value
       end
+    end
+
+    # Find multiple events by their URL.
+    #
+    # @return [Array<Facebook::Event>]
+    def self.where(url: [])
+      Collection.new(url)
     end
 
     def self.find(id)
@@ -54,6 +64,38 @@ module Facebook
 
     def ends_at
       @ends_at ||= Time.parse(@end_time)
+    end
+
+    def cover_photo
+      @cover_photo ||= placeholder_image
+    end
+
+    # Attributes for the top-level +Event+ model.
+    #
+    # @return [Hash]
+    def to_event
+      {
+        title: name,
+        description: description,
+        owner: owner,
+        location: venue,
+        facebook_event_id: id,
+        facebook_event_url: url
+      }
+    end
+
+    private
+
+    # @private
+    # @return [String] Placeholder image URL from +placehold.it+
+    def placeholder_image
+      "http://placehold.it/#{WIDTH}X#{HEIGHT}?text=#{placeholder_text}"
+    end
+
+    # @private
+    # @return [String] Title for the placeholder image
+    def placeholder_text
+      title.gsub(/\s/, '+')
     end
   end
 end

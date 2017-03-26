@@ -7,10 +7,6 @@ module Google
     DEFAULT_MAX_RESULTS = 2500
     SERVICE = Apis::CalendarV3::CalendarService
 
-    include Enumerable
-
-    delegate :each, to: :events
-
     attr_reader :id
     attr_reader :client
 
@@ -19,11 +15,13 @@ module Google
       @client = Google::Client.new(API_SCOPE)
     end
 
-    # Iterate over found events in the calendar.
+    # Iterate over found events in the calendar. Not memoized so the
+    # queyr can be changed over time. This data should be cached later
+    # on in the +Event::Collection+ object.
     #
     # @return [Array]
     def events
-      @events ||= response.items.map { |item| Calendar::Event.new(item) }
+      response.items.map { |item| Calendar::Event.new(item) }
     end
 
     # The query used to search events in the Google Calendar API

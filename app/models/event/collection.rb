@@ -10,21 +10,23 @@ class Event
 
     attr_reader :calendar
 
-    delegate :events, :query, to: :calendar
+    delegate :query, to: :@calendar
 
     def initialize
-      @calendar = Event::Calendar.new
+      @calendar = Google::Calendar.new
+      @urls = @calendar.events.map(&:description).compact
+      @facebook = Facebook::Event.where url: @urls
     end
 
-    # Iterate over +Event+ records.
+    # Iterate over +Event+ records and attempt to find Facebook data
+    # for them.
     #
     # @return [Iterator]
     def each
-      @calendar.each do |event|
-        yield Event.from_calendar(event)
+      @calendar.events.each do |event|
+        yield Event.from(event, @facebook.find(event.description))
       end
     end
-
 
     # Search event records by given params.
     #
@@ -73,9 +75,9 @@ class Event
     # @return [Event] when an upcoming event is found.
     # @raise [Event::NotFoundError] when event cannot be found
     def find(id)
-      params = super { |event| event.id == id }
-      raise NotFoundError, id if params.blank?
-      Event.from_calendar(params)
+      event = super { |google_event| google_event.id == id }
+      raise NotFoundError, id if event.blank?
+      Event.from(event)
     end
 
     # Outputs the query used by the calendar, for debugging purposes.

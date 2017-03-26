@@ -1,6 +1,7 @@
 module Google
   class Calendar
     class Event
+      attr_reader :attributes
       attr_reader :id
       attr_reader :summary
       attr_reader :description
@@ -15,6 +16,35 @@ module Google
         end
         @starts_at = parse_date @start
         @ends_at = parse_date @end
+      end
+
+      def facebook_event_id
+      end
+
+      # Attributes for the top-level +Event+ model.
+      #
+      # @return [Hash]
+      def to_event
+        {
+          id: id,
+          name: summary,
+          location: location,
+          starts_at: starts_at,
+          ends_at: ends_at
+        }
+      end
+
+      private
+
+      # Parse google time into either a +DateTime+ (for events with a
+      # start/end time) or +Date+ (for all-day eventS) object.
+      #
+      # @private
+      # @param google_time [Object] Time object from API
+      # @return [Date|DateTime] depending on where we are reading
+      # information from
+      def parse_date(google_time)
+        google_time.date_time || google_time.date
       end
     end
   end
