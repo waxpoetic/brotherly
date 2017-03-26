@@ -4,6 +4,7 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
     = title_tag
     = favicon_link_tag
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t('titles.episodes.podcast')
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Passion+One'
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/video.js/5.11.0/alt/video.novtt.min.js'
