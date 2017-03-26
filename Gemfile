@@ -30,6 +30,7 @@ gem 'slim-rails'
 gem 'titleist'
 gem 'videojs_rails'
 gem 'google-api-client'
+gem 'koala'
 
 gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git'
 gem 'autoprefixer-rails'

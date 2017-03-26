@@ -99,15 +99,60 @@ class Event
     "from #{starts_at.to_s(:short)} to #{ends_at.to_s(:short)}"
   end
 
+  # brother.ly admins place the Facebook URL in the description of the
+  # calendar event.
+  #
+  # @return [String]
   def facebook_url
     description
   end
 
+  # Parse out the Facebook Event ID from the URL.
+  #
+  # @return [String]
+  def facebook_event_id
+    if facebook_url =~ %r{https://www.facebook.com/events/(\d+)}
+      $1
+    end
+  end
+
+  # Generated slug for direct event URLs.
+  #
+  # @return [String]
   def to_param
     [title.parameterize, starts_at.to_date].join('-')
   end
 
+  # Facebook event description or hard-coded description from calendar
+  # event.
+  #
+  # @return [String]
+  def summary
+    facebook_event&.description || description || 'No description available'
+  end
+
+  # Cover image URL for the Facebook event that will be shown on the
+  # "More Info" page. This defaults to a placeholder image from
+  # +placehold.it+ but we should probably be doing something better.
+  #
+  # @return [String] URL to the cover photo image
+  def cover_image
+    facebook_event&.cover_photo || placeholder_image
+  end
+
   private
+
+  # @private
+  # @return [String] Placeholder image URL from +placehold.it+
+  def placeholder_image
+    "http://placehold.it/#{WIDTH}X#{HEIGHT}?text=#{placeholder_text}"
+  end
+
+  # @private
+  # @return [String] Title for the placeholder image
+  def placeholder_text
+    title.gsub(/\s/, '+')
+  end
 
   # Parse google time into either a +DateTime+ (for events with a
   # start/end time) or +Date+ (for all-day eventS) object.
@@ -118,5 +163,15 @@ class Event
   # information from
   def parse_date(google_time)
     google_time.date_time || google_time.date
+  end
+
+  # Retrieves information from the Facebook Graph API about this event
+  # if a URL is given as the description in the Google Calendar entry.
+  #
+  # @private
+  # @return [Facebook::Event] Graph API model for this Facebook event
+  def facebook_event
+    return unless facebook_event_id.present?
+    Facebook::Event.find facebook_event_id
   end
 end
