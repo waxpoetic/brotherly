@@ -8,13 +8,9 @@ module ApplicationHelper
     link_to label, route, class: active_class_for(route)
   end
 
-  def active_class_for(route)
-    'active' if current_page?(route)
-  end
-
-  def home_page_slideshow_settings
+  def home_page_slideshow_settings(current_episodes)
     {
-      autoplay: @current_episodes.empty?
+      autoplay: current_episodes.empty?
     }.to_json
   end
 
@@ -41,19 +37,6 @@ module ApplicationHelper
     Rails.configuration
   end
 
-  # Create an +<li>+ and +<a>+ tag fragment that is used in the
-  # navigation as a link button.
-  #
-  # @param [String] text
-  # @param [String] href
-  # @option [Boolean] modal - +true+ to open in a modal dialog
-  def nav_link(text, href, modal: false)
-    link_method = modal ? :link_to_modal : :link_to
-    content_tag :li, class: [active_link?(href), 'nav-item'].join("\s") do
-      send link_method, text, href, class: 'nav-link'
-    end
-  end
-
   # Return the year or range of years the copyright in the footer is
   # good for.
   #
@@ -63,33 +46,10 @@ module ApplicationHelper
     "#{config.founding_year} - #{current_year}"
   end
 
-  # Open the link at +href+ in a modal dialog.
-  #
-  # @param [String] text
-  # @param [String] href
-  # @param [Hash] options
-  # @return [String::SafeBuffer]
-  def link_to_modal(text, href, options = {})
-    data = options[:data] || {}
-    link_to text, href, options.merge(
-      data: data.merge(
-        'reveal-ajax' => true,
-        'reveal-id' => 'dialog'
-      )
-    )
-  end
-
-  # Create an open graph +<meta>+ tag.
-  #
-  # @return [String::SafeBuffer]
-  def og(name, content)
-    tag :meta, property: "og:#{name}", content: content
-  end
-
   private
 
-  def active_link?(href)
-    'active' if current_page? href
+  def active_class_for(route)
+    'active' if current_page?(route)
   end
 
   def current_year

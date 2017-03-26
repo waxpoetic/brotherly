@@ -50,6 +50,8 @@ module Brotherly
     config.name = 'brother.ly'
     config.description = "Philadelphia's monthly electronic music showcase"
     config.keywords = %w(live electronic music philadelphia)
+
+    # Hard-coded "founding year" of brother.ly, used in the copyright.
     config.founding_year = 2015
 
     # Whether the podcast is explicit or not.

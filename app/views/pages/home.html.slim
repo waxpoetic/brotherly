@@ -2,7 +2,7 @@
   / for SEO
   h1 style="display:none" brother.ly
 
-  section.home-page__slideshow
+  section.home-page__slideshow data-slick="#{home_page_slideshow_settings(@current_episodes)}"
     - @current_episodes.each do |episode|
       .slideshow__slide.slideshow__slide--current data-youtube="#{episode.youtube_id}"
         h2= link_to "Now Playing: #{episode.title}", episode
