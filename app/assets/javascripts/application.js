@@ -36,6 +36,7 @@ $(document)
     $('.home-page__slideshow')
       .on('afterChange', function(event, slick, currentSlide) {
         withVideoPlayer(slick, currentSlide, function(player) {
+          slick.pause();
           player.play();
         });
       })
@@ -44,10 +45,13 @@ $(document)
           player.pause();
           player.dispose();
         });
+
+        slick.play();
       })
       .slick({
         slidesToShow: 1,
-        swipeToSlide: true
+        swipeToSlide: true,
+        autoplay: true
       });
 
   })
