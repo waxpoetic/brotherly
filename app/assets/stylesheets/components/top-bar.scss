@@ -5,13 +5,14 @@ $gold: #e9e3c8;
 .top-bar {
   @include outer-container;
 
-  height: 15%;
-  min-height: 100px;
+  height: 7.5%;
+  min-height: 5%;
   background: $black;
   max-width: 100%;
   clear: both;
   position: relative;
-  border-bottom: 2px solid $dark-gray;
+  border-bottom: 2px solid $mustard;
+  margin-bottom: 10px;
 
   div {
     margin: 0;
@@ -58,15 +59,15 @@ $gold: #e9e3c8;
     height: 100%;
     color: $white;
     flex: 1;
-    font-family: "Montserrat-Bold", sans-serif;
+    font-family: 'Passion One', cursive;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 1.1vw;
+    font-size: 1.7vw;
     padding: 0 5px;
 
     &:hover {
-      background: lighten($black, 20%);
-      color: darken($white, 20%);
+      background: #44211d;
+      color: lighten($mustard, 5%);
+      text-shadow: 1px 1px 1px $black;
       transition: background-color .8s, color .8s;
     }
     &.active {

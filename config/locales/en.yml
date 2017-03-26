@@ -11,13 +11,13 @@ en:
       index: episode archives
       show: '%{name}'
       podcast: brother.ly podcast
-      upcoming: Upcoming
-      past: Archives
+      upcoming: upcoming
+      past: archives
     pages:
-      calendar: Calendar
-      about: About
-      upcoming: Upcoming
-      past: Archives
+      calendar: calendar
+      about: about
+      upcoming: upcoming
+      past: archives
   subscribers:
     new:
       content: You'll be the first to know about new events and recording uploads.
