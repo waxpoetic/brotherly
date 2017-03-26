@@ -3,6 +3,11 @@
 # Represents a single event in the google calendar. Reads from the
 # +Event::Calendar+ service and collects the query in
 # +Event::Collection+.
+#
+# TODO: This class should really be an amalgamation of a
+# +Facebook::Event+ and a +Google::Calendar::Event+, but I haven't
+# separated out the Google Calendar logic from the straight-up event
+# logic here.
 class Event
   include ActiveModel::Model
   include ActiveModel::Conversion
@@ -41,22 +46,6 @@ class Event
     # @return [Event::Collection]
     def recent
       since 1.year.ago
-    end
-
-    # Populate +Event+ model object with data from an +Event::Calendar+
-    # item.
-    #
-    # @param item [Event::Calendar::Item]
-    # @return [Event]
-    def from_calendar(item)
-      new(
-        id: item.id,
-        title: item.summary,
-        description: item.description,
-        location: item.location,
-        starts_at: item.start,
-        ends_at: item.end
-      )
     end
 
     # Forward all unknown methods to the collection.
