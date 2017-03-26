@@ -65,14 +65,14 @@ $gold: #e9e3c8;
     padding: 0 5px;
 
     &:hover {
-      background: #44211d;
+      background: $dark-red;
       color: lighten($mustard, 5%);
       text-shadow: 1px 1px 1px $black;
       transition: background-color .8s, color .8s;
     }
     &.active {
-      background: lighten($black, 15%);
-      color: darken($white, 20%);
+      background: $dark-red;
+      color: lighten($mustard, 5%);
     }
 
     // https://css-tricks.com/centering-in-the-unknown
