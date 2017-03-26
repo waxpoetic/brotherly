@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # A single event on the brother.ly events calendar. Amalgamates data
 # from +Google::Calendar::Event+ and +Facebook::Event using the
 # +Event::Collection+ object.
