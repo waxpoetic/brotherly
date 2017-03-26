@@ -20,7 +20,8 @@
       = image_tag 'workshop.png'
       h2= link_to 'Every Month: The brother.ly Electronic Music Workshop', '/workshop'
 
-  section.home-page__features
-    h2 Featured
-    - @features.each do |feature|
-      = render present(feature)
+  - if @features.any?
+    section.home-page__features
+      h2 Featured
+      - @features.each do |feature|
+        = render present(feature)
