@@ -20,6 +20,5 @@ RSpec.feature 'View page', type: :feature do
     visit root_path
 
     expect(page).to have_content('Up Next')
-    expect(page).to have_content('Featured')
   end
 end

@@ -38,8 +38,9 @@ Rails.application.routes.draw do
   get :about, to: 'pages#about'
   get :workshop, to: 'pages#workshop'
 
-  get :calendar, to: 'events#index', as: :calendar
-  get "calendar/events/:id", to: 'events#show', as: :event
+  get :calendar, to: 'pages#calendar'
+  # get :calendar, to: 'events#index', as: :calendar
+  # get "calendar/events/:id", to: 'events#show', as: :event
 
   get :oauth2callback, to: 'events#authorize_google_api'
 
