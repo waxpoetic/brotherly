@@ -2,6 +2,11 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+git_source :github do |name|
+  repo = name =~ %r{/} ? name : "#{name}/#{name}"
+  "https://github.com/#{repo}.git"
+end
+
 gem 'active_model-jobs'
 gem 'aws-sdk'
 gem 'bitly'
@@ -20,7 +25,7 @@ gem 'pg'
 gem 'puma'
 gem 'rack-cors'
 gem 'rails', '~> 5'
-gem 'refile', git: 'https://github.com/refile/refile.git', require: 'refile/rails'
+gem 'refile', github: 'refile/refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 gem 'responders'
 gem 'semver'
@@ -31,7 +36,7 @@ gem 'titleist'
 gem 'videojs_rails'
 gem 'google-api-client'
 
-gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git'
+gem 'administrate', github: 'thoughtbot/administrate'
 gem 'autoprefixer-rails'
 gem 'bourbon'
 gem 'font-awesome-sass'
@@ -75,11 +80,10 @@ end
 
 group :production do
   gem 'airbrake'
-  gem 'rack-cache'
   gem 'rails_12factor'
   gem 'redis-rack-cache'
-  gem 'redis-rails', '~> 5'
-  gem 'refile-s3', git: 'https://github.com/refile/refile-s3.git'
+  gem 'redis-rails', '5.0.2.pre'
+  gem 'refile-s3', github: 'refile/refile-s3'
   gem 'sidekiq'
-  gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', require: false
+  gem 'sinatra', github: 'sinatra', require: false
 end
