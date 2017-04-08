@@ -1,12 +1,6 @@
-admin:
-  name: 'admin'
-  email: 'admin@example.com'
-  is_admin: true
-
-user:
-  name: 'user'
-  email: 'test@example.com'
-  is_admin: false
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :name, :email
+end
 
 # == Schema Information
 #

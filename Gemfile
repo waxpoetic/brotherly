@@ -35,6 +35,7 @@ gem 'slim-rails'
 gem 'titleist'
 gem 'videojs_rails'
 gem 'google-api-client'
+gem 'active_model_serializers'
 
 gem 'administrate', github: 'thoughtbot/administrate'
 gem 'autoprefixer-rails'
@@ -56,6 +57,7 @@ group :development do
   gem 'rubocop'
   gem 'scss_lint', require: false
   gem 'web-console', '~> 2.0'
+  gem 'annotate'
 end
 
 group :development, :test do
@@ -85,5 +87,6 @@ group :production do
   gem 'redis-rails', '~> 5'
   gem 'refile-s3', github: 'refile/refile-s3'
   gem 'sidekiq'
+  gem 'sidekiq-cron'
   gem 'sinatra', github: 'sinatra', require: false
 end

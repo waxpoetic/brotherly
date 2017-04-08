@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-class Subscriber < ApplicationRecord
-  validates :email, presence: true, email: true
-
-  after_create :add!
+class SubscriberSerializer < ActiveModel::Serializer
+  attributes :id, :name, :email
 end
 
 # == Schema Information
