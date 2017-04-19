@@ -1,0 +1,2 @@
+class EventsPresenter < CollectionPresenter
+end

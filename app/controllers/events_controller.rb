@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.recent
+    @events = present Event.recent
     respond_with @events
   end
 
   def show
-    @event = Event.find params[:id]
+    @event = present Event.find(params[:id])
     respond_with @event
   end
 

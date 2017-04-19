@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  before_validation :parse_google_timestamps
+
   validates :name, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
@@ -9,5 +11,16 @@ class Event < ApplicationRecord
 
   def all_day?
     !starts_at.is_a?(DateTime)
+  end
+
+  def facebook_url
+    description if description.starts_with? 'http'
+  end
+
+  private
+
+  def parse_google_timestamps
+    self.starts_at ||= self.class.parse_date(starts_at)
+    self.ends_at   ||= self.class.parse_date(ends_at)
   end
 end
