@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   validates :starts_at, presence: true
   validates :ends_at, presence: true
 
+  scope :recent, -> { where 'starts_at >= ?', Time.current }
+
   def self.parse_date(google_time)
     google_time.date_time || google_time.date
   end

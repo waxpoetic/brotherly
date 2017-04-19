@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get :about, to: 'pages#about'
   get :workshop, to: 'pages#workshop'
 
-  get :calendar, to: 'pages#calendar'
+  get :calendar, to: 'events#index'
   get :events, to: 'events#index', as: :events
   get "calendar/events/:id", to: 'events#show', as: :event
 
