@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'sidekiq/web' if defined? Sidekiq
+require 'sidekiq/cron/web' if defined? Sidekiq::Cron
 
 Rails.application.routes.draw do
   namespace :admin do
