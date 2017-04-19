@@ -85,5 +85,6 @@ group :production do
   gem 'redis-rails', '~> 5'
   gem 'refile-s3', github: 'refile/refile-s3'
   gem 'sidekiq'
+  gem 'sidekiq-cron'
   gem 'sinatra', github: 'sinatra', require: false
 end
