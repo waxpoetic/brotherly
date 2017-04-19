@@ -1,2 +1,4 @@
 download_events:
+  name: Pull Google Calendar events every hour
+  class: DownloadEventsJob
   cron: '1 0/1 * * *'
