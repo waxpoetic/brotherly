@@ -4,9 +4,11 @@ if defined? Sidekiq
     config.redis = { size: 1 }
   end
 
-  schedule_file = Rails.root.join 'config', 'schedule.yml'
+  Sidekiq.configure_server do
+    schedule_file = Rails.root.join 'config', 'schedule.yml'
 
-  if File.exists?(schedule_file) && Sidekiq.server?
-    Sidekiq::Cron::Job.load_from_hash YAML.load_file(schedule_file)
+    if File.exists?(schedule_file) && Sidekiq.server?
+      Sidekiq::Cron::Job.load_from_hash YAML.load_file(schedule_file)
+    end
   end
 end
