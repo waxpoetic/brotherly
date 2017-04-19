@@ -61,7 +61,7 @@ module Brotherly
     config.capacity = 200
 
     # Seed tables in development.
-    config.seeds = %w(artists episodes performances)
+    config.seeds = %w(artists episodes performances events)
 
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'

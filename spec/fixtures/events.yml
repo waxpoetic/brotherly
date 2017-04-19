@@ -1,0 +1,20 @@
+tomorrow:
+  title: An Event Happening Tomorrow
+  description: https://www.facebook.com/events/1798106497073589
+  location: 'The Pharmacy 1300 S 18th St, Philadelphia, Pennsylvania 19146'
+  starts_at: <%= 1.day.from_now.to_date %>
+  ends_at: <%= (1.day + 3.hours).from_now.to_date %>
+
+next_week:
+  title: Next Week Event
+  description: https://www.facebook.com/events/1798106497073589
+  location: 'The Pharmacy 1300 S 18th St, Philadelphia, Pennsylvania 19146'
+  starts_at: <%= 7.days.from_now.to_date %>
+  ends_at: <%= (7.days + 3.hours).from_now.to_date %>
+
+next_month:
+  title: Next Month Event
+  description: https://www.facebook.com/events/1798106497073589
+  location: 'The Pharmacy 1300 S 18th St, Philadelphia, Pennsylvania 19146'
+  starts_at: <%= 1.month.from_now.to_date %>
+  ends_at: <%= (1.month + 3.hours).from_now.to_date %>
