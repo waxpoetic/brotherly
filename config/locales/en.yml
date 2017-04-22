@@ -14,10 +14,11 @@ en:
       upcoming: Upcoming
       past: Archives
     pages:
-      calendar: Calendar
       about: About
       upcoming: Upcoming
       past: Archives
+    events:
+      index: Calendar
   subscribers:
     new:
       content: You'll be the first to know about new events and recording uploads.
