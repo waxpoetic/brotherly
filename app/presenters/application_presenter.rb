@@ -14,7 +14,7 @@ class ApplicationPresenter < Makeover::Presenter
   #
   # @return [String]
   def title
-    model.name.titleize
+    model&.title || model.name.titleize
   end
 
   def placeholder_text

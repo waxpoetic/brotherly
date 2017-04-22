@@ -3,7 +3,7 @@ class EventPresenter < ApplicationPresenter
     facebook_url.present?
   end
 
-  def starts_at
+  def time
     model.starts_at.to_s :long
   end
 
