@@ -2,7 +2,7 @@
 desc 'transcode all videos'
 task transcode: :environment do
   s3 = Aws::S3::Client.new
-  dir = s3.list_objects(bucket: 'files.brother.ly', prefix: 'raw-videos')
+  dir = s3.list_objects(bucket: 'files.brother.ly', prefix: 'raw-videos/evening with mr jennings')
   dir.contents.each do |video|
     if video.key =~ /mp4\Z/
       puts "transcoding #{video.key}"
