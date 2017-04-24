@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @current_episodes = EpisodesPresenter.new Episode.current
     @upcoming_episodes = EpisodesPresenter.new Episode.upcoming
     @past_performances = PerformancesPresenter.new(
-      Performance.where(episode: Episode.recent).where.not(video_url: nil).order(:created_at)
+      Performance.where(episode: Episode.recent).where.not(video_url: nil).order('created_at DESC')
     )
     # TODO: Article.featured
     @features = Episode.featured + Performance.featured
