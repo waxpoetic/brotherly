@@ -48,6 +48,7 @@ class Transcode
     VIDEO_PRESETS.map do |variant, preset_id|
       {
         key: "#{name}-#{variant}",
+        thumbnail_pattern: "#{name}-#{variant}-{count}",
         preset_id: preset_id,
         segment_duration: SEGMENT_DURATION
       }
