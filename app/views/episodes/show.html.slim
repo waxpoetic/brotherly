@@ -2,16 +2,16 @@
 
 - if @episode.archived?
   - content_for :metadata do
-    meta property="og:video" content="#{@episode.video}"
+    meta property="og:video" content="#{@episode.video_url}"
     meta property="og:video:height" content="640"
     meta property="og:video:width" content="385"
     meta property="og:video:type" content="application/x-mpegURL"
-    link rel="video_src" href="#{@episode.video}"
+    link rel="video_src" href="#{@episode.video_url}"
     meta name="medium" content="video"
     meta name="twitter:player" content="#{player_episode_path(@episode)}"
     meta name="twitter:player:height" content="480"
     meta name="twitter:player:width" content="320"
-    meta name="twitter:player:stream" content="#{@episode.video}"
+    meta name="twitter:player:stream" content="#{@episode.video_url}"
     meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;"
 
 - cache @episode do
