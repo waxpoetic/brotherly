@@ -1,25 +1,19 @@
 # frozen_string_literal: true
-require 'active_record/fixtures'
 
-puts "-- seed '#{Rails.env}'"
+# This is intended to be run on developer machines, and gets them set up
+# with the same data that exists on production. Given how many images we
+# have, it may take a while to run.
 
-# if Rails.env.development?
-puts '   add fixtures'
-ActiveRecord::FixtureSet.create_fixtures(
-  'spec/fixtures', Rails.application.config.seeds
-)
-# end
+puts "-- seed '#{Rails.env}' with data from production"
 
-unless User.where(name: 'admin').any?
-  puts '   add initial admin user'
-  User.create!(
-    name: 'admin',
-    email: Rails.application.secrets.admin_email,
-    password: Rails.application.secrets.admin_password,
-    password_confirmation: Rails.application.secrets.admin_password,
-    remember_me: true,
-    is_admin: true
-  )
+Brotherly::Seed.each do |seed|
+  if seed.response.success?
+    seed.clear!
+    seed.data.each do |params|
+      record = model.create(params)
+      puts record.errors.full_messages.to_sentence unless record.valid?
+    end
+  end
 end
 
-puts '   -> done'
+puts '-- done'

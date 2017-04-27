@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # Respond with HTML in a standardized way
   responders :flash, :http_cache
-  respond_to :html
+  respond_to :html, :json
 
   # Don't render the layout when serving an Ajax request.
   layout :use_layout?

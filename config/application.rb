@@ -22,10 +22,6 @@ end
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env
 
-require 'google/apis/calendar_v3'
-require 'googleauth'
-require 'googleauth/stores/redis_token_store'
-
 require 'brotherly'
 
 module Brotherly
