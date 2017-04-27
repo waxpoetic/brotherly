@@ -1,122 +1,97 @@
 # frozen_string_literal: true
 
-# Represents a single event in the google calendar. Reads from the
-# +Event::Calendar+ service and collects the query in
-# +Event::Collection+.
+# A single event on the brother.ly events calendar. Amalgamates data
+# from +Google::Calendar::Event+ and +Facebook::Event using the
+# +Event::Collection+ object.
 class Event
   include ActiveModel::Model
   include ActiveModel::Conversion
 
   attr_accessor :id
   attr_accessor :title
+  attr_accessor :owner
   attr_accessor :description
   attr_accessor :location
   attr_accessor :starts_at
   attr_accessor :ends_at
+  attr_accessor :facebook_event_id
+  attr_accessor :facebook_event_url
 
   attr_reader :attributes
 
   delegate :to_json, :[], :include?, to: :attributes
 
-  def initialize(params = {})
-    @attributes = params.with_indifferent_access
-    @attributes[:starts_at] = parse_date(params[:starts_at])
-    @attributes[:ends_at] = parse_date(params[:ends_at])
-    super @attributes
+  # Collection of +Event+ records from the +Event::Calendar+.
+  #
+  # @return [Event::Collection]
+  def self.all
+    @all ||= Event::Collection.new
   end
 
-  class << self
-    delegate :calendar, to: :all
-
-    # Collection of +Event+ records from the +Event::Calendar+.
-    #
-    # @return [Event::Collection]
-    def all
-      @all ||= Event::Collection.new
-    end
-
-    # All events on the calendar since 1 hour ago from the time that
-    # this method was called.
-    #
-    # @return [Event::Collection]
-    def recent
-      since 1.year.ago
-    end
-
-    # Populate +Event+ model object with data from an +Event::Calendar+
-    # item.
-    #
-    # @param item [Event::Calendar::Item]
-    # @return [Event]
-    def from_calendar(item)
-      new(
-        id: item.id,
-        title: item.summary,
-        description: item.description,
-        location: item.location,
-        starts_at: item.start,
-        ends_at: item.end
-      )
-    end
-
-    # Forward all unknown methods to the collection.
-    #
-    # @param method [Symbol]
-    # @param arguments [Array]
-    def method_missing(method, *arguments)
-      return super unless respond_to? method
-      all.public_send method, *arguments
-    end
-
-    # Respond to methods defined on the collection at the class level.
-    #
-    # @param method [Symbol]
-    # @param include_private [Boolean] Default: false
-    def respond_to_missing?(method, include_private = false)
-      all.respond_to?(method) || super
-    end
+  # Collect origin objects together and merge their +to_event+
+  # methods. All origins must respond to +to_event+.
+  #
+  # @param origins [Array<Object>]
+  # @return [Event] New event object with amalgamated params.
+  def self.from(*origins)
+    new(
+      origins.compact.each_with_object({}) do |params, origin|
+        params.merge(origin.to_event)
+      end
+    )
   end
 
-  # Test if event has been saved.
+  # All events on the calendar since 1 hour ago from the time that
+  # this method was called.
+  #
+  # @return [Event::Collection]
+  def self.recent
+    since 1.year.ago
+  end
+
+  # Forward all unknown methods to the collection.
+  #
+  # @param method [Symbol]
+  # @param arguments [Array]
+  def self.method_missing(method, *arguments)
+    return super unless respond_to? method
+    all.public_send method, *arguments
+  end
+
+  # Respond to methods defined on the collection at the class level.
+  #
+  # @param method [Symbol]
+  # @param include_private [Boolean] Default: false
+  def self.respond_to_missing?(method, include_private = false)
+    all.respond_to?(method) || super
+  end
+
+  # Test if event has been saved. Required for +ActiveModel+
+  # implementation.
   #
   # @return [Boolean]
   def persisted?
     id.present?
   end
 
-  # Test if this event is occurring all day.
+  # Return whichever +updated_at+ timestamp is more recent.
   #
-  # @return [Boolean] whether +starts_at+ is not a +DateTime+ object.
-  def all_day?
-    !starts_at.is_a? DateTime
+  # @return [DateTime]
+  def updated_at
+    @google_updated_at <=> @facebook_updated_at
   end
 
-  # Timestamp string for the front-end.
+  # Generated slug for direct event URLs.
   #
   # @return [String]
-  def time
-    return "#{starts_at} all day" if all_day?
-    "from #{starts_at.to_s(:short)} to #{ends_at.to_s(:short)}"
-  end
-
-  def facebook_url
-    description
-  end
-
   def to_param
     [title.parameterize, starts_at.to_date].join('-')
   end
 
-  private
-
-  # Parse google time into either a +DateTime+ (for events with a
-  # start/end time) or +Date+ (for all-day eventS) object.
+  # Cache key for this event including the ID and update_at.
   #
-  # @private
-  # @param google_time [Object] Time object from API
-  # @return [Date|DateTime] depending on where we are reading
-  # information from
-  def parse_date(google_time)
-    google_time.date_time || google_time.date
+  # @return [String] "event/$EVENT_TITLE-$EVENT_DATE/$UPDATED_AT"
+  def cache_key
+    ['event', to_param, updated_at].join('/')
   end
 end
