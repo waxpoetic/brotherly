@@ -1,7 +1,7 @@
 #{$all-buttons} {
   appearance: none;
-  background-color: $action-color;
-  border: 0;
+  background-color: transparent; //$action-color;
+  border: 1px solid $action-color;
   border-radius: $base-border-radius;
   color: $white;
   cursor: pointer;
@@ -22,6 +22,7 @@
   &:focus {
     background-color: shade($action-color, 20%);
     color: $white;
+    transition: background-color .5s;
   }
 
   &:disabled {
@@ -35,5 +36,5 @@
 }
 
 .button--primary {
-  background: blue;
+  background-color: $action-color;
 }

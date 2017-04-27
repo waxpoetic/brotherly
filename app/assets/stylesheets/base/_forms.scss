@@ -36,6 +36,7 @@ select[multiple] {
   padding: $base-spacing / 3;
   transition: border-color $base-duration $base-timing;
   width: 100%;
+  color: #ccc;
 
   &:hover {
     border-color: shade($base-border-color, 20%);
@@ -84,4 +85,8 @@ select {
   margin-bottom: $small-spacing;
   max-width: 100%;
   width: auto;
+}
+
+.new-user-form {
+  margin: 10px 120px 0;
 }

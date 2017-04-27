@@ -2,6 +2,8 @@ en:
   titles:
     application: brother.ly
     format: '%{page} | %{app}'
+    sessions:
+      new: Log In
     subscribers:
       new: Subscribe to the brother.ly mailing list
     artists:
@@ -18,6 +20,9 @@ en:
       about: About
       upcoming: Upcoming
       past: Archives
+    sessions:
+      new: Log In
+
   subscribers:
     new:
       content: You'll be the first to know about new events and recording uploads.
@@ -81,5 +86,4 @@ en:
     past_episode: Archives
     artists: Artists
     subscribe: Subscribe
-  users:
-    login: Log In
+
