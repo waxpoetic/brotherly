@@ -5,4 +5,5 @@ section.event-summary
     = event.time
   nav.event__buttons
     - if event.facebook_url.present?
-      = button_to 'Share on Facebook', event.facebook_url, class: 'button--facebook'
+      = link_to event.facebook_url, class: 'button--facebook'
+        span Facebook Event

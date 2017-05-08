@@ -1,6 +1,20 @@
 # frozen_string_literal: true
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
+  def google_map_to(location)
+    api_key = Brotherly.secrets.google_maps_api_key
+    src = "https://www.google.com/maps/embed/v1/place?q=#{location}&key=#{api_key}"
+    props = {
+      width: 600,
+      height: 450,
+      frameborder: 0,
+      style: 'border:0',
+      src: src,
+      allowfullscreen: true
+    }
+    tag :iframe, props
+  end
+
   def nav_link_to(name, route=nil)
     label = t(name, scope: [:titles, :pages])
     route ||= send "#{name}_path"
