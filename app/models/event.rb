@@ -7,6 +7,8 @@ class Event < ApplicationRecord
 
   scope :recent, -> { where 'starts_at >= ?', Time.current }
 
+  after_create :obtain_facebook_data
+
   def self.parse_date(google_time)
     google_time.date_time || google_time.date
   end
@@ -24,5 +26,9 @@ class Event < ApplicationRecord
   def parse_google_timestamps
     self.starts_at ||= self.class.parse_date(starts_at)
     self.ends_at   ||= self.class.parse_date(ends_at)
+  end
+
+  def obtain_facebook_data
+    FacebookifyEventJob.perform_later self
   end
 end

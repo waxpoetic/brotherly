@@ -3,6 +3,10 @@ class EventPresenter < ApplicationPresenter
     facebook_url.present?
   end
 
+  def description
+    model.facebook_description
+  end
+
   def time
     model.starts_at.strftime '%a %b %e @ %l:%M %p'
   end
