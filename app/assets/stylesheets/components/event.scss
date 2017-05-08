@@ -1,7 +1,22 @@
-.event {}
-  .event__heading {}
-  .event__title {}
-  .event__time {}
-  .event__details {}
-  .event__location {}
-  .event__description {}
+.event {
+  margin-top: 15px;
+}
+
+  .event__heading {
+    @include outer-container;
+  }
+
+    .event__title {
+      @include span-columns(8);
+    }
+
+    .event__time {
+      @include span-columns(4);
+    }
+
+  .event__details {
+    @include outer-container;
+  }
+
+    .event__location {}
+    .event__description {}

@@ -1,3 +1,8 @@
 .calendar {}
-  .calendar__title {}
-  .calendar__events {}
+  .calendar__title {
+    @include outer-container;
+    margin-top: 15px;
+  }
+  .calendar__events {
+    @include outer-container;
+  }

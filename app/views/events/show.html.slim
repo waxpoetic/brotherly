@@ -1,10 +1,13 @@
 article.event
   header.event__heading
     h1.event__title
+      - if @event.facebook_url.present?
+        = link_to @event.facebook_url do
+          i.fa.fa-facebook &nbsp;
       = @event.title
     time.event__time
       - if @event.all_day?
-        #{@event.starts_at} all day
+        #{@event.time} all day
       - else
         from #{@event.starts_at} to #{@event.ends_at}
   main.event__details

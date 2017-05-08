@@ -3,7 +3,7 @@ section.event-summary
     = link_to event.title, event
   time.event-summary__time rel="#{event.starts_at.to_i}"
     = event.time
-  nav.event__buttons
+  nav.event-summary__buttons
     - if event.facebook_url.present?
       = link_to event.facebook_url, class: 'button--facebook'
-        span Facebook Event
+        i.fa.fa-facebook &nbsp;

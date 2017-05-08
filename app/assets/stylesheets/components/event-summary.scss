@@ -1,5 +1,21 @@
-.event-summary {}
-  .event-summary__title {}
-  .event-summary__details {}
-  .event-summary__location {}
-  .event-summary__time {}
+.event-summary {
+  @include span-columns(3);
+  //border: 1px solid $white;
+  padding: 15px;
+  background: darken($maroon, 3%);
+}
+
+  .event-summary__title {
+  }
+
+    .event-summary__buttons {
+      a {
+        float: right;
+      }
+    }
+
+    .event-summary__time {
+      font-size: .8rem;
+      text-transform: uppercase;
+    }
+
