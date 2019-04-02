@@ -51,7 +51,7 @@ $(document)
       .slick({
         slidesToShow: 1,
         swipeToSlide: true,
-        autoplay: true
+        autoplay: false
       });
 
   })
