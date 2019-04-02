@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.6.2'
 
 git_source :github do |name|
   repo = name =~ %r{/} ? name : "#{name}/#{name}"
