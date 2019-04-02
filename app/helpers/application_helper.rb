@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def home_page_slideshow_settings(current_episodes)
     {
-      autoplay: current_episodes.empty?
+      autoplay: false #current_episodes.empty?
     }.to_json
   end
 
