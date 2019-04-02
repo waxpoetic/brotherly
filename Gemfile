@@ -81,8 +81,8 @@ end
 group :production do
   gem 'airbrake'
   gem 'rails_12factor'
-  gem 'redis-rack-cache', '2.0.2.pre'
-  gem 'redis-rails', '~> 5'
+  gem 'redis-rack-cache'
+  gem 'redis-rails'
   gem 'refile-s3', github: 'refile/refile-s3'
   gem 'sidekiq'
   gem 'sinatra', github: 'sinatra', require: false
