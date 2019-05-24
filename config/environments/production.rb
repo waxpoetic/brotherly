@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -59,8 +60,8 @@ Rails.application.configure do
   }
 
   # Store the cache and session in Redis
-  # config.cache_store = :redis_store, \
-  #                      "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
+  config.cache_store = :redis_store, \
+                       "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
   config.session_store :redis_store, \
                        servers: ["#{Rails.application.secrets.redis_host}/0/brotherly-rails-session"]
 

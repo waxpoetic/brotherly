@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include ControllerResources
   include Makeover::Presentable
@@ -19,6 +20,8 @@ class ApplicationController < ActionController::Base
   # Handle 404s in a standardized way.
   halt ActiveRecord::RecordNotFound, with: :not_found
   halt Event::NotFoundError, with: :not_found
+
+  before_action :cache_page, if: -> { request.get? }
 
   protected
 
@@ -49,5 +52,9 @@ class ApplicationController < ActionController::Base
   rescue NameError => exception
     Rails.logger.error "#present --> #{exception}"
     model
+  end
+
+  def cache_page
+    expires_in 24.hours, public: true
   end
 end
