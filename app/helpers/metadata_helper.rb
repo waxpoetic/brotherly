@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 module MetadataHelper
   def logo_image_url
-    image_url 'logo.jpg'
+    image_url 'logo.png'
   end
 
   def meta_keywords
