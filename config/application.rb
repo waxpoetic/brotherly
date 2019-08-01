@@ -48,7 +48,7 @@ module Brotherly
 
     # Page and podcast metadata.
     config.name = 'brother.ly'
-    config.description = "Philadelphia's monthly electronic music showcase"
+    config.description = "Philadelphia's electronic music showcase"
     config.keywords = %w(live electronic music philadelphia)
 
     # Hard-coded "founding year" of brother.ly, used in the copyright.
