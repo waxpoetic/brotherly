@@ -1,7 +1,8 @@
 {
     "extends": "eslint:recommended",
+    "parser": "babel-eslint",
     "rules": {
-      "semi": ["error", "always"],
+      "semi": ["off", "never"],
       "eqeqeq": ["error", "always"]
     },
     "globals": {
@@ -16,6 +17,7 @@
       "I18n": true,
       "strftime": true,
       "LocalTime": true,
-      "videojs": true
+      "videojs": true,
+      "require": true
     }
 }

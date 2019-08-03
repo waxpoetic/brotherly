@@ -1,5 +1,4 @@
 /**
- *= require video-js
  *= require_self
  */
 
@@ -10,6 +9,7 @@
  * Bourbon..............Useful mixins.
  * Neat.................Grid framework
  * Slick................Carousel plugin
+ * VideoJS..............HTML5 Video Player
  */
 @import 'bourbon';
 @import 'neat';
@@ -17,6 +17,7 @@
 @import 'slick-theme';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import 'video.js/src/css/vjs'
 
 //@import 'mixins/*';
 /*

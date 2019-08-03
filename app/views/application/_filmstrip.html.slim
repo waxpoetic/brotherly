@@ -1,4 +1,4 @@
-nav.filmstrip
+nav.filmstrip data-controller="filmstrip"
   - frames.each do |frame|
     .filmstrip__frame
       = link_to frame.url, title: frame.caption do
