@@ -5,7 +5,6 @@ html lang=I18n.locale xmlns:og="http://ogp.me/ns"
     = favicon_link_tag
     = auto_discovery_link_tag :rss, episodes_path(format: 'rss'), title: t('titles.episodes.podcast')
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://www.youtube.com/iframe_api'
     = render 'pingdom_rum' if Rails.application.secrets.pingdom_rum_id.present?
