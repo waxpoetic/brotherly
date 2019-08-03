@@ -49,6 +49,14 @@ module ApplicationHelper
     "#{config.founding_year} - #{current_year}"
   end
 
+  def icon(icon, **options)
+    css = ['fa', "fa-#{icon}"]
+    css << options[:class] if options.key? :class
+    options[:class] = css
+
+    content_tag(:i, nil, options)
+  end
+
   private
 
   def active_class_for(route)
