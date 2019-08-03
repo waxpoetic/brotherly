@@ -9,14 +9,14 @@
  * Bourbon..............Useful mixins.
  * Neat.................Grid framework
  * Slick................Carousel plugin
+ * Font Awesome.........Icon font
  * VideoJS..............HTML5 Video Player
  */
-@import 'bourbon';
-@import 'neat';
+@import 'bourbon/app/assets/stylesheets/bourbon';
+@import 'bourbon-neat/app/assets/stylesheets/neat';
 @import 'slick';
 @import 'slick-theme';
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
+@import 'font-awesome/scss/font-awesome';
 @import 'video.js/dist/video-js';
 
 //@import 'mixins/*';
@@ -35,6 +35,7 @@
  */
 @import 'generic/videojs-sublime';
 @import 'generic/turbolinks';
+@import 'generic/font-awesome-sprockets';
 /*
  * BASE
  *
