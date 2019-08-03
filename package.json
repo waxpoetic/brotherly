@@ -6,9 +6,14 @@
     "eslint": "^6.1.0",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.9.3"
+    "stylelint-scss": "^3.9.3",
+    "webpack-dev-server": "^3.7.2"
   },
   "scripts": {
     "lint": "stylelint app/assets/stylesheets && eslint app/assets/javascripts"
+  },
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7",
+    "stimulus": "^1.1.1"
   }
 }

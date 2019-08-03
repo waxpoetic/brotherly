@@ -312,6 +312,8 @@ GEM
       rack (>= 1.1.3)
     rack-protection (2.0.5)
       rack
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -519,6 +521,10 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    webpacker (4.0.7)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -596,6 +602,7 @@ DEPENDENCIES
   videojs_rails
   web-console (~> 2.0)
   webmock
+  webpacker
 
 RUBY VERSION
    ruby 2.6.2p47

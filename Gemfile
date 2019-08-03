@@ -49,6 +49,7 @@ gem 'rack-env-notifier'
 gem 'sass-rails'
 gem 'turbolinks'
 gem 'uglifier'
+gem 'webpacker'
 
 group :development do
   gem 'haml2slim', require: false
