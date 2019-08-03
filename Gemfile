@@ -1,9 +1,10 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
 ruby '2.6.2'
 
 git_source :github do |name|
-  repo = name =~ %r{/} ? name : "#{name}/#{name}"
+  repo = name.match?(%r{/}) ? name : "#{name}/#{name}"
   "https://github.com/#{repo}.git"
 end
 
@@ -16,6 +17,7 @@ gem 'email_validator'
 gem 'foreman'
 gem 'friendly_id'
 gem 'gibbon'
+gem 'google-api-client'
 gem 'halt'
 gem 'jquery-slick-rails'
 gem 'librato-rails'
@@ -34,7 +36,6 @@ gem 'sitemap_generator'
 gem 'slim-rails'
 gem 'titleist'
 gem 'videojs_rails'
-gem 'google-api-client'
 
 gem 'administrate', github: 'thoughtbot/administrate'
 gem 'autoprefixer-rails'
@@ -72,10 +73,10 @@ group :test do
   gem 'codeclimate-test-reporter', require: nil
   gem 'launchy'
   gem 'poltergeist'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
   gem 'vcr'
   gem 'webmock'
-  gem 'rails-controller-testing'
 end
 
 group :production do
