@@ -1,5 +1,7 @@
 language: ruby
 rvm: 2.6.2
+services:
+  - postgresql
 before_script: bundle exec rake db:setup
 cache: bundler
 script: bundle exec rspec
