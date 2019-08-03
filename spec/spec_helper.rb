@@ -1,10 +1,19 @@
 # frozen_string_literal: true
+
 require 'bundler/setup'
-require 'codeclimate-test-reporter'
+require 'simplecov'
 require 'vcr'
 
-# Start test coverage reporting
-CodeClimate::TestReporter.start
+# Track code coverage with SimpleCov. CodeClimate uses this to generate
+# test coverage reports.
+SimpleCov.start 'rails' do
+  add_group 'Presenters', 'app/presenters'
+  add_filter 'app/dashboards'
+  add_filter 'app/controllers/admin'
+  add_filter 'app/fields'
+  add_group 'Services', 'app/services'
+  add_group 'Errors', 'app/errors'
+end
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'

@@ -123,8 +123,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     cliver (0.3.2)
-    codeclimate-test-reporter (0.6.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.0)
@@ -518,7 +516,6 @@ DEPENDENCIES
   bitly
   bourbon
   capybara
-  codeclimate-test-reporter
   controller_resources
   devise
   email_validator
@@ -563,6 +560,7 @@ DEPENDENCIES
   semver
   sidekiq
   simple_form
+  simplecov
   sinatra!
   sitemap_generator
   slim-rails

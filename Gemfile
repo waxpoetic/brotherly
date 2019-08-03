@@ -20,7 +20,6 @@ gem 'gibbon'
 gem 'google-api-client'
 gem 'halt'
 gem 'jquery-slick-rails'
-gem 'librato-rails'
 gem 'makeover'
 gem 'newrelic_rpm'
 gem 'pg'
@@ -70,17 +69,18 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'codeclimate-test-reporter', require: nil
   gem 'launchy'
   gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
+  gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
 end
 
 group :production do
   gem 'airbrake'
+  gem 'librato-rails'
   gem 'rails_12factor'
   gem 'redis-rack-cache'
   gem 'redis-rails'
