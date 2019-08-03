@@ -36,10 +36,6 @@ module Brotherly
     # Use EST as our local time zone. (UTC is default)
     config.time_zone = 'Eastern Time (US & Canada)'
 
-    # Raise errors during transactional callback methods. This will be
-    # the default in upcoming versions of Rails.
-    config.active_record.raise_in_transactional_callbacks = true
-
     # Always show debug logs, because we filter them out in syslog.
     config.log_level = :debug
 
