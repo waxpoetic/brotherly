@@ -11,22 +11,11 @@ namespace :lint do
     end
   end
 
-  begin
-    require 'scss_lint/rake_task'
-    SCSSLint::RakeTask.new :scss do |t|
-      t.files = FileList.new('app/assets/stylesheets/**/*.scss')
-    end
-  rescue LoadError
-    task :scss do
-      p 'scss-lint is not installed. scss lint checks will not run.'
-    end
-  end
-
-  desc 'Run JavaScript lint checks'
-  task :js do
-    sh 'eslint app/assets/javascripts/**/*.js'
+  desc 'Run JavaScript and SCSS lint checks with Yarn'
+  task :yarn do
+    sh 'yarn run lint'
   end
 end
 
 desc 'Run code linters'
-task lint: %w[lint:ruby lint:scss lint:js]
+task lint: %w[lint:ruby lint:yarn]

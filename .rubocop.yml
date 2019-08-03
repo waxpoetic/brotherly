@@ -8,6 +8,11 @@ AllCops:
 Rails:
   Enabled: true
 
+Rails/BulkChangeTable:
+  Exclude:
+    - 'db/migrate/2016*'
+    - 'db/migrate/2015*'
+
 Lint/AssignmentInCondition:
   Exclude:
     - 'bin/spring'
@@ -18,11 +23,11 @@ Lint/HandleExceptions:
     - 'config/application.rb'
     - 'lib/tasks/*.rake'
 
-Style/AlignParameters:
+Layout/AlignParameters:
   Exclude:
     - 'bin/**/*'
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     - 'bin/**/*'
 
@@ -68,6 +73,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'config/**/*'
+    - 'app/views/**/*'
 
 Rails/ReversibleMigration:
   Exclude:

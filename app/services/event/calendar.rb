@@ -25,6 +25,7 @@ class Event
     GOOGLE_API_SCOPE = Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY
     DEFAULT_ORDER_BY = 'startTime'
     DEFAULT_MAX_RESULTS = 2500
+    CALENDAR_SERVICE = Google::Apis::CalendarV3::CalendarService
 
     attr_reader :id
 
@@ -34,7 +35,11 @@ class Event
       @client_id_key = Brotherly.secrets.google_calendar_client_id
       @client_secret = Brotherly.secrets.google_calendar_client_secret
       @project_id = Rails.configuration.google_project_id
-      @redis_url = "#{Brotherly.secrets.redis_url}/0/brotherly-google-token-store"
+      @redis_url = File.join(
+        Brotherly.secrets.redis_url,
+        '0',
+        'brotherly-google-token-store'
+      )
     end
 
     # Iterate over found events in the calendar.
@@ -109,7 +114,7 @@ class Event
     # @private
     # @return [Google::Apis::CalendarV3::CalendarService]
     def service
-      @service ||= Google::Apis::CalendarV3::CalendarService.new.tap do |service|
+      @service ||= CALENDAR_SERVICE.new.tap do |service|
         service.client_options.application_name = Rails.configuration.app_name
         service.authorization = credentials
       end
@@ -142,18 +147,7 @@ class Event
     # @private
     # @return [Hash].
     def config
-      @config ||= {
-        web: {
-          client_id: @client_id_key,
-          project_id: @project_id,
-          auth_uri: GOOGLE_AUTH_URI,
-          token_uri: GOOGLE_TOKEN_URI,
-          auth_provider_x509_cert_url: GOOGLE_CERT_URL,
-          client_secret: @client_secret,
-          redirect_urls: [REDIRECT_URL],
-          javascript_origins: JAVASCRIPT_ORIGIN_DOMAINS
-        }
-      }.deep_stringify_keys
+      @config ||= { web: web_params }.deep_stringify_keys
     end
 
     # OAuth token storage in Redis.
@@ -165,6 +159,19 @@ class Event
         url: "#{Brotherly.secrets.redis_url}/0",
         prefix: 'brotherly_google_user_token:'
       )
+    end
+
+    def web_params
+      {
+        client_id: @client_id_key,
+        project_id: @project_id,
+        auth_uri: GOOGLE_AUTH_URI,
+        token_uri: GOOGLE_TOKEN_URI,
+        auth_provider_x509_cert_url: GOOGLE_CERT_URL,
+        client_secret: @client_secret,
+        redirect_urls: [REDIRECT_URL],
+        javascript_origins: JAVASCRIPT_ORIGIN_DOMAINS
+      }
     end
   end
 end

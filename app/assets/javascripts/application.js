@@ -14,12 +14,12 @@ function withVideoPlayer(slick, current, callback) {
 
   if (element.length) {
     var player = videojs(element.attr('id'));
-    callback(player)
+    callback(player);
   }
 }
 
 $(document)
-  .on('turbolinks:load', function(event) {
+  .on('turbolinks:load', function() {
     // Load static VideoJS player elements
     $('.video__player .video-player').each(function(i, element) {
       var player = videojs($(element).attr('id'));
@@ -60,4 +60,4 @@ $(document)
     $('.video-player').each(function(i, element) {
       videojs($(element).attr('id')).dispose();
     });
-  })
+  });

@@ -7,7 +7,7 @@ class Artist < ApplicationRecord
 
   friendly_id :name
 
-  has_many :performances
+  has_many :performances, dependent: :destroy
   has_many :episodes, through: :performances
 
   validates :name, presence: true

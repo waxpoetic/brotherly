@@ -46,7 +46,7 @@ RSpec.describe Event, type: :model do
         description: 'test',
         location: 'test',
         start: double(date: 1.day.ago.to_date, date_time: nil),
-        end: double(date: Date.today, date_time: nil)
+        end: double(date: Time.zone.today, date_time: nil)
       )
       expect(described_class.from_calendar(item)).to be_valid
     end

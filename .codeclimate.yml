@@ -10,7 +10,7 @@ engines:
     enabled: true
   rubocop:
     enabled: true
-  scss-lint:
+  stylelint:
     enabled: true
   duplication:
     enabled: true

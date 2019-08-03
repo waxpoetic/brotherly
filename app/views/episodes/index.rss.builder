@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 cache podcast_cache_key do
-  xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:media" => "http://search.yahoo.com/mrss/", 'xmlns:atom' => "http://www.w3.org/2005/Atom", version: "2.0" do
+  options = {
+    "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd",
+    "xmlns:media" => "http://search.yahoo.com/mrss/",
+    'xmlns:atom' => "http://www.w3.org/2005/Atom",
+    version: "2.0"
+  }
+  xml.rss options do
     cache podcast_cache_key(:channel) do
       xml.channel 'atom:link' => 'self' do
         cache podcast_cache_key(:info) do
@@ -21,7 +27,12 @@ cache podcast_cache_key do
           end
           xml.itunes :block, 'no'
           xml.itunes :category, text: 'Music'
-          xml.atom :link, href: episodes_url(format: 'rss'), rel: 'self', type: 'application/rss+xml'
+          xml.atom(
+            :link,
+            href: episodes_url(format: 'rss'),
+            rel: 'self',
+            type: 'application/rss+xml'
+          )
         end
 
         cache @episodes.in_podcast do

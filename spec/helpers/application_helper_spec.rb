@@ -26,8 +26,8 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   it 'creates a nav link with active class' do
     allow(helper).to receive(:current_page?).with('/bar').and_return(true)
-    expect(helper.nav_link_to(:foo, '/bar')).to eq(
-      %(<a class="active" href="/bar"><span class="translation_missing" title="translation missing: en.titles.pages.foo">Foo</span></a>)
+    expect(helper.nav_link_to(:foo, '/bar')).to(
+      include('<a class="active" href="/bar">')
     )
   end
 
