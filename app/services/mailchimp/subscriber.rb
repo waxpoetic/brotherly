@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Mailchimp
   class Subscriber
     include ActiveModel::Model

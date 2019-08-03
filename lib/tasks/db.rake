@@ -2,7 +2,7 @@
 
 namespace :db do
   desc 'Pull down production data to the current environment'
-  task pull: %w(environment db:pull:images) do
+  task pull: %w[environment db:pull:images] do
     config = Rails.configuration
     sh "dropdb #{config.db_name}"
     sh "heroku pg:pull DATABASE_URL #{config.db_name} --app #{config.app_name}"

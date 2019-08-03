@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   # Front-end for the +Event::Calendar+, allowing query manipulation and
   # record retrieval without having to write for the Google API
@@ -24,7 +26,6 @@ class Event
         yield Event.from_calendar(event)
       end
     end
-
 
     # Search event records by given params.
     #
@@ -66,7 +67,6 @@ class Event
       self
     end
 
-
     # Find an event by its ID.
     #
     # @param id [String] ID of the given event.
@@ -75,6 +75,7 @@ class Event
     def find(id)
       params = super { |event| event.id == id }
       raise NotFoundError, id if params.blank?
+
       Event.from_calendar(params)
     end
 

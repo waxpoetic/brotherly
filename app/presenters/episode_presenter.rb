@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EpisodePresenter < ApplicationPresenter
   # Hard-set width of videos.
   VIDEO_WIDTH = 640
@@ -40,7 +41,7 @@ class EpisodePresenter < ApplicationPresenter
     h.attachment_url(
       model,
       :flyer_file,
-      fallback: "http://placehold.it/1536x1213?text=#{placeholder_text}",
+      fallback: "http://placehold.it/1536x1213?text=#{placeholder_text}"
     )
   end
 
@@ -75,7 +76,8 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def stream_url
-    return unless model.youtube_id.present?
+    return if model.youtube_id.blank?
+
     "http://www.youtube.com/embed/#{model.youtube_id}"
   end
 
@@ -117,17 +119,20 @@ class EpisodePresenter < ApplicationPresenter
 
   def published_at
     return unless model.published_at
+
     model.published_at.to_s(:rfc822)
   end
 
   def posted_at
     return if model.published_at.present?
+
     h.distance_of_time_in_words model.published_at
   end
 
   def autoplay?
-    return false unless model.starts_at.present?
-    return true unless model.ends_at.present?
+    return false if model.starts_at.blank?
+    return true if model.ends_at.blank?
+
     model.starts_at <= Time.current && model.ends_at >= Time.current
   end
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ApplicationPresenter < Makeover::Presenter
   delegate :t, :translate, to: I18n
 

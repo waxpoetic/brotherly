@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :calendar do
   desc 'Authorize access with the Google Calendar API. This only has to be done once.'
   task authorize: :environment do

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Converts a given +Refile::Attachment+ to HLS with AWS Elastic Transcoder.
 # This allows videos to be streamed on the web application without
 # causing too much strain on the client. We convert videos to HLS via
@@ -32,8 +33,9 @@ class Transcode
   def initialize(id)
     @id = id
     @name = id.parameterize.gsub(/\Araw-videos-|-mp4\Z/, '')
-    raise ArgumentError, "Video cannot be blank" unless @id.present?
-    raise ArgumentError, "Name cannot be blank" unless @name.present?
+    raise ArgumentError, "Video cannot be blank" if @id.blank?
+    raise ArgumentError, "Name cannot be blank" if @name.blank?
+
     @output_prefix = "#{PREFIX}/#{name}/"
   end
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module EpisodesHelper
   # Unmodified CSS class for filmstrip episode links.
   INITIAL_LINK_CLASS = 'filmstrip__episode'

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Mailchimp
   RSpec.describe Subscriber do
     let :described_class do

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RecommendationPresenter < Makeover::Presenter
   def caption
     model.is_a?(Performance) ? model.artist.name : model.name

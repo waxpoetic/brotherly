@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Admin
   # Base controller for the admin panel, using the +Admin::Search+
   # refinement to +Administrate::Search+. This controller is also
@@ -20,6 +21,7 @@ module Admin
 
     def find_resource(param)
       return super unless resource_class.respond_to? :friendly
+
       resource_class.friendly.find(param)
     end
   end

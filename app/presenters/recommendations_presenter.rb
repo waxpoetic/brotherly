@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RecommendationsPresenter < Makeover::Presenter
   include Makeover::Presentable
 

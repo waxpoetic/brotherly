@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 cache podcast_cache_key do
-  xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd",  "xmlns:media" => "http://search.yahoo.com/mrss/", 'xmlns:atom' => "http://www.w3.org/2005/Atom", version: "2.0" do
+  xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:media" => "http://search.yahoo.com/mrss/", 'xmlns:atom' => "http://www.w3.org/2005/Atom", version: "2.0" do
     cache podcast_cache_key(:channel) do
       xml.channel 'atom:link' => 'self' do
         cache podcast_cache_key(:info) do
@@ -31,7 +33,7 @@ cache podcast_cache_key do
                 xml.pubDate episode.published_at
                 xml.enclosure episode.enclosure
                 xml.link episode.short_link_url
-                xml.guid({isPermaLink: 'false'}, episode_url(episode))
+                xml.guid({ isPermaLink: 'false' }, episode_url(episode))
                 xml.itunes :author, config.name
                 xml.itunes :subtitle, episode.subtitle
                 xml.itunes :summary, episode.description

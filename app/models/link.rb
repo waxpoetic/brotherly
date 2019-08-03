@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Link
   attr_reader :name, :href
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EpisodesController < ApplicationController
   resource :episode
   collection_actions << :upcoming
@@ -30,6 +31,7 @@ class EpisodesController < ApplicationController
 
   def model
     return super unless params[:id] == '_current'
+
     present Episode.current
   end
 end

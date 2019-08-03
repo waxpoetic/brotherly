@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'administrate/base_dashboard'
 
 class EpisodeDashboard < Administrate::BaseDashboard
@@ -33,9 +34,9 @@ class EpisodeDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :name,
-    :starts_at
+  COLLECTION_ATTRIBUTES = %i[
+    name
+    starts_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -45,17 +46,17 @@ class EpisodeDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :name,
-    :facebook_url,
-    :eventbrite_url,
-    :youtube_id,
-    :starts_at,
-    :ends_at,
-    :published_at,
-    :description,
-    :video_url,
-    :flyer_file
+  FORM_ATTRIBUTES = %i[
+    name
+    facebook_url
+    eventbrite_url
+    youtube_id
+    starts_at
+    ends_at
+    published_at
+    description
+    video_url
+    flyer_file
   ].freeze
 
   # Overwrite this method to customize how episodes are displayed

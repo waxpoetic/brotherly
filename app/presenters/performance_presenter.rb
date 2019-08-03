@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class PerformancePresenter < ApplicationPresenter
   delegate :name, to: :artist, prefix: true
 

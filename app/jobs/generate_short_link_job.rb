@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-class GenerateShortLinkJob < ActiveJob::Base
+
+class GenerateShortLinkJob < ApplicationJob
   queue_as :default
 
   def perform(episode)

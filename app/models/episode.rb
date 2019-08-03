@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # A full-length episode of a brother.ly live broadcast. Contains the
 # full-length audio and visual recording, as well as a collection of
 # performances (with their own recordings) and metadata.
@@ -22,7 +23,7 @@ class Episode < ApplicationRecord
   scope :in_podcast, -> { where.not audio_file_id: nil }
   scope :featured, -> { where featured: true }
 
-  friendly_id :number, use: [:finders, :slugged]
+  friendly_id :number, use: %i[finders slugged]
 
   attachment :flyer_file
 
@@ -86,6 +87,7 @@ class Episode < ApplicationRecord
 
   def starts_before_ends
     return unless ends_at.present? && starts_at.present?
+
     errors.add :base, 'cannot start before it ends' unless ends_at > starts_at
   end
 end

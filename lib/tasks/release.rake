@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 DEFAULT_LEVEL = 'patch'
 
 namespace :release do
@@ -19,7 +20,7 @@ namespace :release do
     system 'git push origin master && git push origin --tags'
   end
 
-  [:major, :minor, :patch, :special].each do |level|
+  %i[major minor patch special].each do |level|
     desc "Deploy a new #{level} version to production"
     task level do
       Rake::Task[:release].invoke level
@@ -28,6 +29,6 @@ namespace :release do
 end
 
 desc "Deploy and release a new version (default level: #{DEFAULT_LEVEL})"
-task :release, [:level] => %w(
+task :release, [:level] => %w[
   release:bump release:commit release:tag release:push
-)
+]

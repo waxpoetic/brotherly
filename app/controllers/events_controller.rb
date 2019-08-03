@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def index
     @events = Event.recent
@@ -13,7 +15,7 @@ class EventsController < ApplicationController
     @calendar = Event.calendar
 
     if @calendar.authorized?
-      redirect_to root_path, notice: 'Google API has already been authorized' and return
+      redirect_to(root_path, notice: 'Google API has already been authorized') && return
     end
 
     if @calendar.login params[:code]

@@ -65,6 +65,7 @@ class Event
     # @param arguments [Array]
     def method_missing(method, *arguments)
       return super unless respond_to? method
+
       all.public_send method, *arguments
     end
 
@@ -96,6 +97,7 @@ class Event
   # @return [String]
   def time
     return "#{starts_at} all day" if all_day?
+
     "from #{starts_at.to_s(:short)} to #{ends_at.to_s(:short)}"
   end
 

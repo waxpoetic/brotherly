@@ -13,14 +13,14 @@ class Event
     GOOGLE_AUTH_URI = 'https://accounts.google.com/o/oauth2/auth'
     GOOGLE_TOKEN_URI = 'https://accounts.google.com/o/oauth2/token'
     GOOGLE_CERT_URL = 'https://www.googleapis.com/oauth2/v1/certs'
-    JAVASCRIPT_ORIGIN_DOMAINS = %w(
+    JAVASCRIPT_ORIGIN_DOMAINS = %w[
       https://brother.ly
       http://brother.ly
       https://www.brother.ly
       http://www.brother.ly
       https://beta.brother.ly
       http://beta.brother.ly
-    )
+    ].freeze
     GOOGLE_USER_ID = 'default'
     GOOGLE_API_SCOPE = Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY
     DEFAULT_ORDER_BY = 'startTime'

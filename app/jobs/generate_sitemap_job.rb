@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-class GenerateSitemapJob < ActiveJob::Base
+
+class GenerateSitemapJob < ApplicationJob
   queue_as :default
 
   def perform

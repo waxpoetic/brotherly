@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'csv'
 
 namespace :import do
@@ -6,6 +7,7 @@ namespace :import do
   task subscribers: :environment do
     csv_file = Rails.root.join 'db', 'import', 'subscribers.csv'
     raise "Download #{csv_file} from MailChimp" unless File.exist? csv_file
+
     CSV.foreach csv_file do |row|
       unless row[1] == 'Name' && row[2] == 'Email'
         Subscriber.create name: row[1], email: row[2]

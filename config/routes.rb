@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'sidekiq/web' if defined? Sidekiq
 
 Rails.application.routes.draw do
@@ -10,8 +11,8 @@ Rails.application.routes.draw do
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
 
-  resources :artists, only: [:index, :show]
-  resources :episodes, only: [:index, :show] do
+  resources :artists, only: %i[index show]
+  resources :episodes, only: %i[index show] do
     resources :performances, only: [:show]
 
     collection do
@@ -24,9 +25,9 @@ Rails.application.routes.draw do
   end
   resources :subscribers
   devise_for :users, path_names: {
-    sign_in:  'login',
+    sign_in: 'login',
     sign_out: 'logout',
-    sign_up:  'signup'
+    sign_up: 'signup'
   }
 
   if defined? Sidekiq

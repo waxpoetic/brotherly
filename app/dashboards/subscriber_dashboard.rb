@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'administrate/base_dashboard'
 
 class SubscriberDashboard < Administrate::BaseDashboard
@@ -21,10 +22,10 @@ class SubscriberDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :name,
-    :email,
-    :created_at
+  COLLECTION_ATTRIBUTES = %i[
+    name
+    email
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,9 +35,9 @@ class SubscriberDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :name,
-    :email
+  FORM_ATTRIBUTES = %i[
+    name
+    email
   ].freeze
 
   # Overwrite this method to customize how subscribers are displayed

@@ -1,22 +1,22 @@
 # frozen_string_literal: true
-require File.expand_path('../boot', __FILE__)
+
+require File.expand_path('boot', __dir__)
 
 ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 
 require 'rails'
 
-%w(
+%w[
   active_record
   action_controller
   action_view
   action_mailer
   active_job
   sprockets
-).each do |framework|
-  begin
-    require "#{framework}/railtie"
-  rescue LoadError
-  end
+].each do |framework|
+
+  require "#{framework}/railtie"
+rescue LoadError
 end
 
 # Require the gems listed in Gemfile
@@ -45,7 +45,7 @@ module Brotherly
     # Page and podcast metadata.
     config.name = 'brother.ly'
     config.description = "Philadelphia's electronic music showcase"
-    config.keywords = %w(live electronic music philadelphia)
+    config.keywords = %w[live electronic music philadelphia]
 
     # Hard-coded "founding year" of brother.ly, used in the copyright.
     config.founding_year = 2015
@@ -57,7 +57,7 @@ module Brotherly
     config.capacity = 200
 
     # Seed tables in development.
-    config.seeds = %w(artists episodes performances)
+    config.seeds = %w[artists episodes performances]
 
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'

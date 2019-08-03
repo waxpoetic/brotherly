@@ -1,16 +1,17 @@
 # frozen_string_literal: true
+
 # Helper methods that pertain to the entire application.
 module ApplicationHelper
-  def nav_link_to(name, route=nil)
-    label = t(name, scope: [:titles, :pages])
+  def nav_link_to(name, route = nil)
+    label = t(name, scope: %i[titles pages])
     route ||= send "#{name}_path"
 
     link_to label, route, class: active_class_for(route)
   end
 
-  def home_page_slideshow_settings(current_episodes)
+  def home_page_slideshow_settings(_current_episodes)
     {
-      autoplay: false #current_episodes.empty?
+      autoplay: false # current_episodes.empty?
     }.to_json
   end
 
@@ -27,6 +28,7 @@ module ApplicationHelper
   def section_name
     controller_name = File.basename(controller.controller_name.to_s)
     return 'users' if controller_name =~ /sessions/
+
     controller_name
   end
 
@@ -43,6 +45,7 @@ module ApplicationHelper
   # @return [String]
   def copyright_year
     return current_year.to_s if current_year == config.founding_year
+
     "#{config.founding_year} - #{current_year}"
   end
 

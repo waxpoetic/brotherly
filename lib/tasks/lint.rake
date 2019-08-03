@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :lint do
   begin
     require 'rubocop/rake_task'
@@ -28,4 +29,4 @@ namespace :lint do
 end
 
 desc 'Run code linters'
-task lint: %w(lint:ruby lint:scss lint:js)
+task lint: %w[lint:ruby lint:scss lint:js]

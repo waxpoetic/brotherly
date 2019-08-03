@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AddLinksToArtists < ActiveRecord::Migration
   def change
     enable_extension :hstore

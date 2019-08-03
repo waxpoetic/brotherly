@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-class AddSubscriberJob < ActiveJob::Base
+
+class AddSubscriberJob < ApplicationJob
   queue_as :default
 
   def perform(subscriber)

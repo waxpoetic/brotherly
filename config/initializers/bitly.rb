@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Bitly.use_api_version_3
 
 Bitly.configure do |config|

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'administrate/base_dashboard'
 
 class PerformanceDashboard < Administrate::BaseDashboard
@@ -25,9 +26,9 @@ class PerformanceDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :episode,
-    :artist
+  COLLECTION_ATTRIBUTES = %i[
+    episode
+    artist
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,13 +38,13 @@ class PerformanceDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :artist,
-    :episode,
-    :starts_at,
-    :ends_at,
-    :video_url,
-    :image
+  FORM_ATTRIBUTES = %i[
+    artist
+    episode
+    starts_at
+    ends_at
+    video_url
+    image
   ].freeze
 
   # Overwrite this method to customize how performances are displayed

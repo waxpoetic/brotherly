@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ArtistPresenter < ApplicationPresenter
   def image
     h.attachment_image_tag(
@@ -9,7 +10,8 @@ class ArtistPresenter < ApplicationPresenter
   end
 
   def links
-    return [] unless model.links.present?
+    return [] if model.links.blank?
+
     model.links.map do |name, href|
       Link.new name: name, href: href
     end
