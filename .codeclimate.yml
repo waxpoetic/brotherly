@@ -4,8 +4,9 @@ plugins:
     enabled: true
   bundler-audit:
     enabled: true
-  coffeelint:
+  eslint:
     enabled: true
+    channel: eslint-5
   fixme:
     enabled: true
   rubocop:
