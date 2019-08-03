@@ -8,16 +8,6 @@
     "globals": {
       "window": true,
       "document": true,
-      "$": true,
-      "jQuery": true,
-      "_": true,
-      "feature": true,
-      "JST": true,
-      "Turbolinks": true,
-      "I18n": true,
-      "strftime": true,
-      "LocalTime": true,
-      "videojs": true,
       "require": true
     }
 }
