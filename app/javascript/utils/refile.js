@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Copy-pasted from refile/refile so we can include it in Webpacker and
  * forego Sprockets for loading JS

@@ -3,7 +3,7 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
     - 'bin/**/*'
-    - 'bower_components/**/*'
+    - 'node_modules/**/*'
 
 Rails:
   Enabled: true

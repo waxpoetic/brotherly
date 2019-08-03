@@ -11,7 +11,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "scripts": {
-    "lint": "stylelint app/assets/stylesheets && eslint app/assets/javascripts"
+    "lint": "stylelint app/assets/stylesheets && eslint app/javascript"
   },
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
