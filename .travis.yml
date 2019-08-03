@@ -12,7 +12,6 @@ deploy:
     app: brotherly
     on:
       repo: waxpoetic/brotherly
-      all_branches: true
       tags: true
   - provider: heroku
     api_key:
@@ -20,6 +19,7 @@ deploy:
     app: brotherly-staging
     on:
       repo: waxpoetic/brotherly
+      branch: master
 
 addons:
   code_climate:
