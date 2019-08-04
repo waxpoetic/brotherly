@@ -1,9 +1,10 @@
 one:
   name: "brother.ly one"
+  slug: one
   starts_at: 2015-04-24 20:00:00
   ends_at: 2015-04-25 03:00:00
   facebook_url: https://www.facebook.com/events/430090893821048/
-  description: "To request an official invite to the live event visit brother.ly 
+  description: "To request an official invite to the live event visit brother.ly
 
   LINE UP:
 
@@ -13,25 +14,25 @@ one:
     MAMBISA
 
 
-    This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky, and as always... dress to impress. 
+    This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky, and as always... dress to impress.
 
     --limited tickets available--
 
 
 
     You know how sometimes you listen to that music?
-    You know the kind... the kind that gets intoxicating, 
+    You know the kind... the kind that gets intoxicating,
     makes you feel,
-    makes you want, 
+    makes you want,
     makes you love...
-    It gets you going, 
-    a ring in your ears, 
-    a sway in your hips, 
-    ...yeah, that music. 
+    It gets you going,
+    a ring in your ears,
+    a sway in your hips,
+    ...yeah, that music.
 
 
     You know that moment when you're dancing
-    and you take a deep breath 
+    and you take a deep breath
 
 
 
@@ -39,7 +40,7 @@ one:
 
 
 
-    Producers of Philadelphia, you now have a new home. 
+    Producers of Philadelphia, you now have a new home.
     We will gather every fourth Friday.
 
 
@@ -47,17 +48,18 @@ one:
 
 
     -----------------------------
-    brother.ly will be live streaming 
-    the inaugural fourth friday 
+    brother.ly will be live streaming
+    the inaugural fourth friday
     @ 10pm on April 24th
     -----------------------------
 
 
-    There will be a BYO private party. 
+    There will be a BYO private party.
     --limited tickets available--"
 
 two:
   name: "brother.ly two"
+  slug: two
   starts_at: 2015-05-22 20:00:00
   ends_at: 2015-05-23 04:00:00
   published_at: 2015-05-23 04:00:00
@@ -74,7 +76,7 @@ two:
     Tim The Enchanter
     https://soundcloud.com/tim-the-enchanter
 
-    RVLVR 
+    RVLVR
     https://soundcloud.com/rvlvr-music
 
     Research & Development
@@ -83,21 +85,22 @@ two:
   goldenSpiral (GoldenSpiral)
   https://soundcloud.com/golden-spiral
 
-  Producers of Philadelphia, you now have a new home. 
+  Producers of Philadelphia, you now have a new home.
   We will gather every fourth Friday.
 
-  This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky and as always...dress to impress. 
+  This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky and as always...dress to impress.
 
 
   -----------------------------
-  brother.ly will be live streaming 
-  every fourth friday 
-  @ 10pm 
+  brother.ly will be live streaming
+  every fourth friday
+  @ 10pm
   Doors @ 9pm
   -----------------------------"
 
 three:
   name: "brother.ly three"
+  slug: three
   starts_at: 2015-06-26 20:00:00
   ends_at: 2015-06-27 04:00:00
   published_at: 2015-06-27 11:00:00
@@ -123,22 +126,23 @@ https://soundcloud.com/wonderbars
 Sixninebot
 https://soundcloud.com/69bot
 
-Producers of Philadelphia, you now have a new home. 
+Producers of Philadelphia, you now have a new home.
 We will gather every fourth Friday.
-This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky. A chocolate fountain with fruits and other dip-ables will be supplied for your convenience. 
+This is a private BYO* party. Bring your own fancy cups to stay sustainably swanky. A chocolate fountain with fruits and other dip-ables will be supplied for your convenience.
 
-We value your self expression- 
-While we encourage fancy pants attire, it is up to you what that means. 
+We value your self expression-
+While we encourage fancy pants attire, it is up to you what that means.
 
 
 -----------------------------
-brother.ly will be live streaming 
-every fourth friday 
-@ 10pm 
+brother.ly will be live streaming
+every fourth friday
+@ 10pm
 Doors @ 9pm
 -----------------------------"
 four:
   name: "brother.ly four"
+  slug: four
   starts_at: <%= 1.hour.from_now %>
   ends_at: <%= 8.hours.from_now %>
   published_at: <%= 1.day.from_now %>
@@ -169,8 +173,8 @@ The Haunted Woods theme camp will be treating us to their many tricks. Stop by t
 
 This is a BYO* party and strictly 21+.
 
-Bring your own fancy cups to stay sustainably swanky. 
-A chocolate fountain with fruits and other dip-ables will be supplied for your convenience. 
+Bring your own fancy cups to stay sustainably swanky.
+A chocolate fountain with fruits and other dip-ables will be supplied for your convenience.
 
-We value your self expression- 
+We value your self expression-
 While we encourage lavish attire, it is up to you what that means."
