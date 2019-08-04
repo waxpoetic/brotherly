@@ -8,7 +8,7 @@ git_source :github do |name|
   "https://github.com/#{repo}.git"
 end
 
-gem 'active_model-jobs'
+gem 'active_model_jobs'
 gem 'administrate', github: 'thoughtbot/administrate'
 gem 'aws-sdk'
 gem 'bitly'

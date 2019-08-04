@@ -58,9 +58,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_model-jobs (0.2.0)
-      activejob
-      activemodel
+    active_model_jobs (0.2.1)
+      activejob (>= 5.0.0)
+      activemodel (>= 5.0.0)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -513,7 +513,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model-jobs
+  active_model_jobs
   administrate!
   airbrake
   aws-sdk
