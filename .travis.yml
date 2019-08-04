@@ -5,12 +5,13 @@ env:
     secure: Z2ttryjkg3gKr94PSwfQOBIotB2QGyB4NKBgboK2zRrRhdcrgqi1KT1Vkc2Hyn7DVuSMj7BWJBEN+98opkrgc/oqKiM5nS31pKy56f4vTxDwEmM8EiXnEi8ncazgu6fXkxf8zAjbEVcUEX4fp52MYn3Ct9ZonEcz281qOVYOShB8oaH6+YwQzUdx8mXPTLtTIN5QMhs+kzDug1t2DvJ0epMhOR5VyOnJMWtrEuvRNAhkh5pkDotcVokm82pj31uy+cfFa4LCXTU28FbV4QvJSJTvdI7CJORs5togBHiCjEMAyGPr59QjrV5lsi5anmvlF0N7/9UAhlGXMcDLEvLgCTAwGlSlEIXRaM7LFxiRuc3fJNdyxXKvQlsR+LcegoXO7/mG5zPI9wh7zLhGe1P5gret9LWxNeLHHZTRVCpnKcAkIrQnp70K7brNFO7B/mdbof22TabtgLfaMX7NxQlt3QBKy9ZGya3sbm7BjRfX5VZWI9UjuUwBkf30Xdf3vQtZLHbqW81WfmDR8F+V35VvB2RqKIITNSW6b8Up0XUuwnPo92SnkvpbIaUtNpt06swQRADCV2KoEStUnou77xyfJTZNdlH0qZ+4HrRzOND+QRZw4r+cht2xcl7Pxf/1C8fO/GScKnwC5WK2m83Rkeu+MEAO2HQSuaBEUpW7QvIOWJc=
 services:
   - postgresql
+cache: bundler
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - "./cc-test-reporter before-build"
   - bundle exec rake db:setup
-cache: bundler
+  - bin/yarn install --check-files
 script: bundle exec rspec
 after_script:
   - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
