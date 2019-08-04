@@ -457,8 +457,7 @@ GEM
       railties (>= 3.1)
       slim (~> 3.0)
     slop (3.6.0)
-    spring (2.0.0)
-      activesupport (>= 4.2)
+    spring (2.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     spring-commands-sidekiq (1.0.0)
@@ -489,7 +488,6 @@ GEM
     unf_ext (0.0.7.2)
     unicode-display_width (1.5.0)
     vcr (3.0.3)
-    videojs_rails (4.12.15)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (2.3.0)
@@ -571,7 +569,6 @@ DEPENDENCIES
   titleist
   uglifier
   vcr
-  videojs_rails
   web-console (~> 2.0)
   webmock
   webpacker

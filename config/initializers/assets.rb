@@ -14,11 +14,4 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 Rails.application.config.assets.precompile += %w[
   administrate/application.css
   administrate/application.js
-  modernizr.js
-  refile.js
-  video-js.swf
-  vjs.eot
-  vjs.svg
-  vjs.ttf
-  vjs.woff
 ]

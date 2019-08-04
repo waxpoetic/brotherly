@@ -40,7 +40,6 @@ gem 'sitemap_generator'
 gem 'slim-rails'
 gem 'titleist'
 gem 'uglifier'
-gem 'videojs_rails'
 gem 'webpacker'
 
 group :development do
