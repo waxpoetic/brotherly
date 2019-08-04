@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-if defined? Refile::S3
+credentials = Rails.application.secrets.aws_access_key_id.present? &&
+              Rails.application.secrets.aws_secret_access_key.present? &&
+              Rails.application.secrets.aws_region.present? &&
+              Rails.application.secrets.cdn_domain_name.present?
+
+if defined?(Refile::S3) && credentials
   aws = {
     access_key_id: Rails.application.secrets.aws_access_key_id,
     secret_access_key: Rails.application.secrets.aws_secret_access_key,

@@ -6,6 +6,7 @@ services:
       context: .
       args:
         - RAILS_ENV=production
+        - SECRET_KEY_BASE
   sidekiq:
     image: registry.heroku.com/brotherly/worker
     build:
@@ -13,3 +14,4 @@ services:
       dockerfile: Dockerfile.worker
       args:
         - RAILS_ENV=production
+        - SECRET_KEY_BASE
