@@ -1,3 +1,0 @@
-# Block spiders from indexing the admin area
-User-agent: *
-Disallow: /admin
