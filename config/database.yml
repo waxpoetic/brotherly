@@ -2,16 +2,16 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  user: postgres
+  host: db
 
 development:
   <<: *default
   database: brotherly_development
-  host: db
 
 test:
   <<: *default
   database: brotherly_test
-  host: db
 
 production:
   <<: *default
