@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
 
   # Handle 404s in a standardized way.
   halt ActiveRecord::RecordNotFound, with: :not_found
-  halt Event::NotFoundError, with: :not_found
 
   before_action :cache_page, if: -> { request.get? }
 
