@@ -22,10 +22,6 @@ end
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env
 
-require 'google/apis/calendar_v3'
-require 'googleauth'
-require 'googleauth/stores/redis_token_store'
-
 require 'brotherly'
 
 module Brotherly
@@ -75,9 +71,5 @@ module Brotherly
 
     # Heroku production app name
     config.app_name = 'brotherly'
-
-    # Public identifier to the events calendar
-    config.google_calendar_id = 'brotherlyparty@gmail.com'
-    config.google_project_id = 'brotherly-161221'
   end
 end
