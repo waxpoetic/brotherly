@@ -12,4 +12,12 @@ class PagesController < ApplicationController
     # TODO: Article.featured
     @features = Episode.featured + Performance.featured
   end
+
+  def robots
+    @route = http_auth? ? '/' : '/admin'
+
+    respond_to do |format|
+      format.text # robots.text.erb
+    end
+  end
 end

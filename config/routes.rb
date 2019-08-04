@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get :about, to: 'pages#about'
   get :workshop, to: 'pages#workshop'
   get :calendar, to: 'pages#calendar'
+  get :robots, to: 'pages#robots'
 
   root to: 'pages#home'
 end

@@ -8,7 +8,7 @@ git_source :github do |name|
   "https://github.com/#{repo}.git"
 end
 
-gem 'active_model-jobs'
+gem 'active_model_jobs', '~> 0.2.2'
 gem 'administrate', github: 'thoughtbot/administrate'
 gem 'aws-sdk'
 gem 'bitly'
@@ -62,7 +62,6 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'poltergeist'
-  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
   gem 'simplecov'
   gem 'vcr'
