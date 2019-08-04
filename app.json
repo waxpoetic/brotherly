@@ -1,0 +1,165 @@
+{
+  "addons": [
+    "airbrake",
+    "librato",
+    "newrelic",
+    "heroku-postgresql",
+    "heroku-redis",
+    "sendgrid"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    },
+    {
+      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
+    }
+  ],
+  "env": {
+    "ADMIN_EMAIL": {
+      "required": true
+    },
+    "ADMIN_PASSWORD": {
+      "required": true
+    },
+    "AIRBRAKE_API_KEY": {
+      "required": true
+    },
+    "AIRBRAKE_PROJECT_ID": {
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_AUDIO_PIPELINE_ID": {
+      "required": true
+    },
+    "AWS_S3_BUCKET_NAME": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_TRANSCODER_PIPELINE_ID": {
+      "required": true
+    },
+    "CDN_DOMAIN_NAME": {
+      "required": true
+    },
+    "DEPLOY_TASKS": {
+      "required": true
+    },
+    "DOMAIN_NAME": {
+      "required": true
+    },
+    "EVENTBRITE_ANONYMOUS_TOKEN": {
+      "required": true
+    },
+    "EVENTBRITE_API_KEY": {
+      "required": true
+    },
+    "EVENTBRITE_AUTH_TOKEN": {
+      "required": true
+    },
+    "EVENTBRITE_CLIENT_SECRET": {
+      "required": true
+    },
+    "FACEBOOK_ADMIN_ID": {
+      "required": true
+    },
+    "FACEBOOK_APP_ID": {
+      "required": true
+    },
+    "GOOGLE_CALENDAR_CLIENT_ID": {
+      "required": true
+    },
+    "GOOGLE_CALENDAR_CLIENT_SECRET": {
+      "required": true
+    },
+    "HTTP_AUTH_PASSWORD": {
+      "required": true
+    },
+    "HTTP_AUTH_USERNAME": {
+      "required": true
+    },
+    "HTTP_BASIC_PASSWORD": {
+      "required": true
+    },
+    "HTTP_BASIC_USERNAME": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "LIBRATO_PASSWORD": {
+      "required": true
+    },
+    "LIBRATO_TOKEN": {
+      "required": true
+    },
+    "LIBRATO_USER": {
+      "required": true
+    },
+    "MAILCHIMP_API_KEY": {
+      "required": true
+    },
+    "MAILCHIMP_LIST_ID": {
+      "required": true
+    },
+    "MAX_THREADS": {
+      "required": true
+    },
+    "NEW_RELIC_APP_NAME": {
+      "required": true
+    },
+    "NEW_RELIC_LICENSE_KEY": {
+      "required": true
+    },
+    "NEW_RELIC_LOG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_ASSETS": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "REDIS_URL": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "WEB_CONCURRENCY": {
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "brotherly",
+  "scripts": {
+    "postdeploy": "bin/rails db:migrate"
+  },
+  "stack": "heroku-18"
+}
