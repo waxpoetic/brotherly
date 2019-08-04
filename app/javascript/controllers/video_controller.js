@@ -1,24 +1,17 @@
 import { Controller } from "stimulus"
 import videojs from "video.js"
+import "@videojs/http-streaming"
 
 /**
  * VideoJS Player
  */
 export default class extends Controller {
-  get id() {
-    return this.element.getAttribute('id')
-  }
-
   connect() {
-    this.player = videojs(this.id)
-    this.play()
-  }
+    const id = this.element.getAttribute('id')
+    const src = this.data.get('src')
+    const type = 'application/x-mpegURL'
 
-  play() {
-    this.player.play()
-  }
-
-  disconnect() {
-    this.player.dispose()
+    videojs(id)
+      .src({ src, type })
   }
 }

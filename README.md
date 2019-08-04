@@ -22,53 +22,70 @@ series in Philadelphia.
 
 ## Setup
 
-You'll need the following software on your computer before proceeding:
+To install the app on your machine for local development, you'll need
+[Docker][] installed.
 
-- Ruby 2.3.1 (we recommend using `chruby` and `ruby-install` to manage Rubies on your machine)
-- PostgreSQL 9.6
-- Git
+First, clone down the repo:
 
-Clone this repo:
+```bash
+git clone https://github.com/waxpoetic/brotherly.git
+cd brotherly
+```
 
-    git clone https://github.com/waxpoetic/brotherly.git
-    cd brotherly
+Set up your `$COMPOSE_FILE` to read from **docker-compose.yml** and
+**docker-compose.development.yml**. This isn't strictly necessary, but
+avoids a bunch of `-f` arguments in your compose commands. We recommend
+putting this in your `.envrc` if you use [direnv][]:
 
-Run the following command to install dependencies
+```bash
+export COMPOSE_FILE="docker-compose.yml:docker-compose.development.yml"
+```
 
-    bin/setup
+Next, build the image and install the database:
 
-Then, run the following command to start the server:
+```bash
+docker-compose run --rm web bin/rails db:setup
+```
 
-    bin/rails server
+Now you can start the server and browse to <http://localhost:3000> to
+view the running application!
 
-This will launch with essentially a "blank slate", with no data in the
-database other than the initial user account that you can log in with.
-The app will be available at <http://localhost:3000>.
+```bash
+docker-compose up -d
+```
+
+This includes a minimal amount of data to view all features on the site.
 
 The production data is stored in [Heroku](http://heroku.com), which is
-also where we host all of our apps, so in order to pull down this data
+also where we deploy all of our apps, so in order to pull down this data
 you'll need a Heroku account and be authorized on the production server
-to do this.
+to pull down data.
 
 Run the following command to import our production data:
 
     HEROKU_API_KEY='your-heroku-api-key' bin/rails db:import
 
-Access to this data is restricted to core team members only. We're
-working on providing some sample data so development isn't so
-constricted.
-
 ## Development
-
-To run tests:
-
-    bin/rails test
-    bin/rails test:unit
-    bin/rails test:features
 
 Contributions are welcome! This project is released under the BSD
 License, and issue reports as well as pull requests (with accompanying
 tests) are accepted as contributions to the site.
+
+To run tests:
+
+```bash
+bin/rspec
+```
+
+You can also run both Ruby and JS/CSS lint checks at once by running:
+
+```bash
+bin/rails lint
+```
+
+As stated above, a passing build is required for your contributions to
+be accepted into the codebase. Failing lint checks _might_ prevent a pull
+request from being merged, but a maintainer may override this.
 
 ## Deployment
 
@@ -90,6 +107,10 @@ All tag pushes to GitHub result in a deployment to the production
 server at http://brother.ly automatically after a successful CI build.
 Successful CI builds of the 'master' branch are deployed to
 http://beta.brother.ly.
+
+Much like the development environment, we use Docker to build the
+production image and ensure that the exact same code (and its
+dependencies) are used on production as are used on development.
 
 ## License
 

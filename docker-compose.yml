@@ -1,0 +1,29 @@
+#
+# Base services configuration for the application. This describes the bare
+# minimum containers that are used to construct any environment.
+#
+
+version: '3'
+services:
+  # PostgreSQL is the primary persistent data store for the application.
+  db:
+    image: postgres
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+
+  # The "majestic monolith" handling web
+  web:
+    command: bin/rails server -p 3000 -b '0.0.0.0'
+    depends_on:
+      - db
+    volumes:
+      - bundle:/usr/local/bundle/
+      - yarn:/usr/src/app/node_modules
+      - yarn_cache:/root/.yarn
+
+volumes:
+  postgresql:
+  elasticsearch:
+  bundle:
+  yarn:
+  yarn_cache:

@@ -1,0 +1,15 @@
+#
+# Additional services needed for testing
+#
+version: '3'
+services:
+  chrome:
+    image: selenium/standalone-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+  web:
+    build: .
+    depends_on:
+      - chrome
+    volumes:
+      - .:/usr/src/app
