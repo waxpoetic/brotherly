@@ -12,7 +12,7 @@ class Performance < ApplicationRecord
   scope :play_order, -> { order 'starts_at DESC' }
   scope :featured, -> { where featured: true }
 
-  attachment :image
+  has_one_attached :image
 
   def name
     "#{artist.name} at #{episode.name}"

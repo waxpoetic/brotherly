@@ -2,11 +2,11 @@
 
 module Podcast
   def audio
-    h.attachment_url model, :audio_file
+    h.rails_blob_url model.audio_file if audio?
   end
 
   def audio?
-    model.audio_file_id.present?
+    model.audio_file.attached?
   end
 
   def video?
@@ -16,7 +16,7 @@ module Podcast
   def enclosure
     {
       url: audio,
-      length: audio_file.download.size,
+      length: 999,
       type: 'audio/mp3'
     }
   end

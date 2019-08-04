@@ -9,7 +9,7 @@ module Media
   AUDIO_EXTENSIONS = %w[mp3 wav].freeze
 
   included do
-    attachment :audio_file
+    has_one_attached :audio_file
   end
 
   def playlist_name

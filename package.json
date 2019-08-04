@@ -16,6 +16,7 @@
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
     "@videojs/http-streaming": "^1.10.4",
+    "activestorage": "^5.2.3",
     "autoprefixer": "^9.6.1",
     "bourbon": "4.2.7",
     "bourbon-neat": "1.8.0",

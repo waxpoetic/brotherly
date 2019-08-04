@@ -54,7 +54,7 @@
                   li.row
                     = link_to artist, title: artist.name do
                       .large-4.columns
-                        = attachment_image_tag artist, :image_file
+                        = image_tag artist.image_file
                       .large-8.columns
                         h5= artist.name
         - if @episode.performances.any?

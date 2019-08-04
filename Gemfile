@@ -15,7 +15,6 @@ gem 'bitly'
 gem 'controller_resources'
 gem 'devise'
 gem 'email_validator'
-
 gem 'font_assets'
 gem 'foreman'
 gem 'friendly_id'
@@ -23,6 +22,7 @@ gem 'gibbon'
 gem 'halt'
 gem 'jquery-slick-rails'
 gem 'makeover'
+gem 'mini_magick'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'puma'
@@ -42,7 +42,6 @@ gem 'uglifier'
 gem 'webpacker'
 
 group :development do
-  gem 'haml2slim', require: false
   gem 'meta_request'
   gem 'rubocop'
   gem 'scss_lint', require: false
@@ -55,7 +54,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-commands-sidekiq'
-  gem 'spring-watcher-listen'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do

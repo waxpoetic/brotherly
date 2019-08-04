@@ -12,11 +12,19 @@ class PerformancePresenter < ApplicationPresenter
   end
 
   def poster_url
-    h.attachment_url model, :image, fallback: episode.poster_url
+    return episode.poster_url unless model.image.attached?
+
+    h.rails_blob_url model.image
   end
 
   def image
-    h.attachment_image_tag model, :image, fallback: episode.poster_url
+    h.image_tag image_url
+  end
+
+  def image_url
+    return cover_image_url unless model.image.attached?
+
+    h.rails_blob_url(model.image)
   end
 
   def video
@@ -28,11 +36,11 @@ class PerformancePresenter < ApplicationPresenter
   end
 
   def audio
-    h.attachment_url model, :audio_file
+    h.rails_blob_url model.audio_file if downloadable?
   end
 
   def downloadable?
-    model.audio_file.present?
+    model.audio_file.attached?
   end
 
   def title

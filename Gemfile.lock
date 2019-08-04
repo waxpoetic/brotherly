@@ -150,12 +150,6 @@ GEM
       activesupport (>= 4.2.0)
     halt (1.0.0)
       actionpack
-    haml (4.0.7)
-      tilt
-    haml2slim (0.4.7)
-      haml (>= 3.0)
-      nokogiri
-      ruby_parser
     hashdiff (0.3.0)
     hetchy (1.0.0)
     http-cookie (1.0.3)
@@ -365,8 +359,6 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.6)
     ruby-progressbar (1.10.0)
     ruby_dep (1.4.0)
-    ruby_parser (3.8.2)
-      sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.25)
     sassc (2.0.1)
@@ -383,7 +375,6 @@ GEM
       sass (~> 3.4.20)
     selectize-rails (0.12.6)
     semver (1.0.1)
-    sexp_processor (4.7.0)
     sidekiq (4.1.4)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -481,12 +472,12 @@ DEPENDENCIES
   friendly_id
   gibbon
   halt
-  haml2slim
   jquery-slick-rails
   launchy
   librato-rails
   makeover
   meta_request
+  mini_magick
   newrelic_rpm
   pg
   poltergeist
@@ -517,7 +508,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-commands-sidekiq
-  spring-watcher-listen
+  spring-watcher-listen (~> 2.0.0)
   titleist
   uglifier
   vcr

@@ -6,7 +6,7 @@ class RecommendationPresenter < Makeover::Presenter
   end
 
   def image
-    h.attachment_url image_record, image_attribute, :fill, 240, 160
+    h.image_url image_record.send(image_attribute).variant(fill: '240x160')
   end
 
   private

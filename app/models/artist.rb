@@ -12,5 +12,5 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true
 
-  attachment :image_file
+  has_one_attached :image_file
 end

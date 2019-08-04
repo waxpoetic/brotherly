@@ -27,7 +27,7 @@ class Episode < ApplicationRecord
 
   friendly_id :number, use: %i[finders slugged]
 
-  attachment :flyer_file
+  has_one_attached :flyer_file
 
   after_create :shorten!, unless: :shortened?
 

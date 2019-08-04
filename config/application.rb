@@ -5,19 +5,7 @@ require File.expand_path('boot', __dir__)
 ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 
 require 'rails'
-
-%w[
-  active_record
-  action_controller
-  action_view
-  action_mailer
-  active_job
-  sprockets
-].each do |framework|
-
-  require "#{framework}/railtie"
-rescue LoadError
-end
+require 'rails/all'
 
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env
@@ -57,10 +45,6 @@ module Brotherly
 
     # Configure CORS headers for font assets.
     config.font_assets.origin = '*'
-
-    # Add Refile helpers like +attachment_url+ and
-    # +attachment_image_tag+ for rendering attachments in presenters.
-    config.makeover.helpers << Refile::AttachmentHelper
 
     # Eventbrite defaults to using bogus gateway so real calls aren't
     # made in test or dev

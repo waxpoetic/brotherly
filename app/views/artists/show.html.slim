@@ -1,7 +1,7 @@
 .info.row
   .large-8.columns
     .row
-      = attachment_image_tag @artist, :image_file, :fill, 500, 500
+      = image_tag @artist.image_url(fill: '500x500')
     .row
       h1= @artist.name
     .row
@@ -25,6 +25,6 @@
             li.row
               = link_to performance.episode, title: performance.name do
                 .large-4.columns
-                  = attachment_image_tag performance.episode, :flyer_file
+                  = image_tag rails_blob_url(performance.episode.flyer_file) if performance.episode.flyer_file.attached?
                 .large-8.columns
                   h5= performance.episode.name

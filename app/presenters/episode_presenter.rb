@@ -29,48 +29,25 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def flyer
-    h.attachment_image_tag(
-      model,
-      :flyer_file,
-      fallback: fallback_flyer,
-      title: model.name,
-      alt: model.name,
-      class: 'flyer-file'
-    )
+    h.image_tag flyer_image_url, title: name, alt: name, class: 'flyer-file'
   end
 
   def poster_url
-    h.attachment_url(
-      model,
-      :flyer_file,
-      fallback: "http://placehold.it/1536x1213?text=#{placeholder_text}"
-    )
+    return fallback_flyer unless flyer_file.attached?
+
+    h.rails_blob_url(flyer_file)
   end
 
   def cover_image_url
-    h.attachment_url(
-      model,
-      :flyer_file,
-      :fill,
-      240,
-      160,
-      fallback: cover_image_fallback
-    )
-  end
+    return cover_image_fallback unless flyer_file.attached?
 
-  def watch_it_again_url
-    h.attachment_url(
-      model,
-      :flyer_file,
-      :fill,
-      1400,
-      700,
-      fallback: cover_image_fallback
-    )
+    h.rails_blob_url flyer_file.variant(fill: '240x160')
   end
 
   def flyer_image_url
-    h.attachment_url(model, :flyer_file, fallback: cover_image_fallback)
+    return cover_image_fallback unless flyer_file.attached?
+
+    h.rails_blob_url flyer_file.variant(fill: '240x160')
   end
 
   def autoplay
