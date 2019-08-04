@@ -63,7 +63,6 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'poltergeist'
-  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
   gem 'simplecov'
   gem 'vcr'

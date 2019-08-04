@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   # get "calendar/events/:id", to: 'events#show', as: :event
 
   get :oauth2callback, to: 'events#authorize_google_api'
+  get :robots, to: 'pages#robots'
 
   root to: 'pages#home'
 end
