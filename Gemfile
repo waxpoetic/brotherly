@@ -61,8 +61,8 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem 'poltergeist'
   gem 'rspec-rails', '~> 3.5'
+  gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'

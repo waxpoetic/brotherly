@@ -9,13 +9,33 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
 require 'refile/file_double'
+require 'socket'
 
 # Load support files
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
+
+Capybara.server = :puma, { Silent: true }
+
+Capybara.register_server :puma do |app, port, _host|
+  require 'rack/handler/puma'
+  Rack::Handler::Puma.run(app, Host: '0.0.0.0', Port: port, Threads: '0:4')
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w[headless disable-gpu] }
+  )
+
+  Capybara::Selenium::Driver.new app,
+                                 browser: :chrome,
+                                 desired_capabilities: capabilities
+end
+
+Capybara.javascript_driver = :headless_chrome
+Capybara.app_host = "http://#{IPSocket.getaddress(Socket.gethostname)}"
 
 RSpec.configure do |config|
   # Use fixtures to set up test data
