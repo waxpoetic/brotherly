@@ -10,7 +10,6 @@ RSpec.feature 'View page', type: :feature do
   end
 
   scenario 'events calendar' do
-    skip 'this will be tested elsewhere'
     visit calendar_path
 
     expect(page).to have_content('events calendar')

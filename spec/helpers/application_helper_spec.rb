@@ -37,11 +37,4 @@ RSpec.describe ApplicationHelper, type: :helper do
     allow(helper).to receive(:current_page?).with('foo').and_return(false)
     expect(helper.send(:active_class_for, 'foo')).to eq(nil)
   end
-
-  xit 'returns home page slideshow settings' do
-    expect(helper.home_page_slideshow_settings([])).to \
-      eq({ autoplay: true }.to_json)
-    expect(helper.home_page_slideshow_settings(['test'])).to \
-      eq({ autoplay: false }.to_json)
-  end
 end
