@@ -1,4 +1,26 @@
-.slideshow {}
+.slideshow {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+  .slideshow__button {
+    display: table-cell;
+    text-align: center;
+    // color: #CCC;
+
+    &:hover {
+      background: #000;
+      // color: #FFF;
+      transition: background-color .8s ease-in-out;
+    }
+  }
+
+    .slideshow__arrow {
+      font-size: 3em;
+      margin: 40vh auto;
+    }
+
+  .slideshow__slides {}
 
   .slideshow__slide {
     position: relative;
