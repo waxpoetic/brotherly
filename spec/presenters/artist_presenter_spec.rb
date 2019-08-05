@@ -17,6 +17,7 @@ RSpec.describe ArtistPresenter do
 
   it 'returns this artist image or a fallback' do
     expect(subject.image_file).not_to be_attached
-    expect(subject.image_url).to include('placehold.it')
+    expect(subject.image).to include('placehold.it')
+    expect(subject.thumbnail).to include('placehold.it')
   end
 end

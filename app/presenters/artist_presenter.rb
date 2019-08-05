@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class ArtistPresenter < ApplicationPresenter
-  def image_url(options = {})
-    if model.image_file.attached? && options.any?
-      h.rails_blob_url model.image_file.variant(options)
-    elsif model.image_file.attached?
-      h.rails_blob_url model.image_file.attachment
-    else
-      "http://placehold.it/250x250?text=#{placeholder_text}"
-    end
+  def thumbnail
+    image_url(250)
+  end
+
+  def image
+    image_url(500)
   end
 
   def links
@@ -21,5 +19,17 @@ class ArtistPresenter < ApplicationPresenter
 
   def title
     model.name
+  end
+
+  private
+
+  def image_url(size)
+    dimensions = "#{size}x#{size}"
+
+    if image_file.attached?
+      h.rails_blob_url model.image_file.variant(fill: dimensions)
+    else
+      "http://placehold.it/#{dimensions}?text=#{placeholder_text}"
+    end
   end
 end
