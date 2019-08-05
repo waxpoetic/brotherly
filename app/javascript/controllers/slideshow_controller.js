@@ -1,15 +1,22 @@
 import { Controller } from "stimulus"
-import $ from "jquery"
-import "slick-carousel"
+import Siema from "siema"
 
 export default class extends Controller {
-  get options() {
-    const slidesToShow = parseInt(this.data.get('slides') || 1)
+  connect() {
+    const selector = '.slideshow__slides'
+    const perPage = parseInt(this.data.get('slides') || 1)
+    const loop = true
 
-    return { slidesToShow, swipeToSlide: true, autoplay: false }
+    this.siema = new Siema({ selector, perPage, loop })
   }
 
-  connect() {
-    $(this.element).slick(this.options)
+  previous(event) {
+    event.preventDefault()
+    this.siema.prev()
+  }
+
+  next(event) {
+    event.preventDefault()
+    this.siema.next()
   }
 }

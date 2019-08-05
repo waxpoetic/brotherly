@@ -9,10 +9,13 @@ module ApplicationHelper
     link_to label, route, class: active_class_for(route)
   end
 
-  def home_page_slideshow_settings(_current_episodes)
-    {
-      autoplay: false # current_episodes.empty?
-    }.to_json
+  def slideshow_button(action)
+    direction = action == :previous ? 'left' : 'right'
+    event_binding = { action: "click->slideshow##{action}" }
+
+    link_to "##{action}", class: 'slideshow__button', data: event_binding do
+      icon direction, class: 'slideshow__arrow'
+    end
   end
 
   # Name of the current action.

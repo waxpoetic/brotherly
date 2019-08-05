@@ -8,15 +8,15 @@
  * TOOLS
  * Bourbon..............Useful mixins.
  * Neat.................Grid framework
- * Slick................Carousel plugin
  * Font Awesome.........Icon font
  * VideoJS..............HTML5 Video Player
  */
 @import 'bourbon/app/assets/stylesheets/bourbon';
 @import 'bourbon-neat/app/assets/stylesheets/neat';
-@import 'slick';
-@import 'slick-theme';
-@import 'font-awesome/scss/font-awesome';
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
 @import 'video.js/dist/video-js';
 
 //@import 'mixins/*';

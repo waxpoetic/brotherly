@@ -1,6 +1,12 @@
-nav.filmstrip data-controller="slideshow" data-slideshow-slides="4"
-  - frames.each do |frame|
-    .filmstrip__frame
-      = link_to frame.url, title: frame.caption do
-        = frame.image
-        p= frame.caption
+- if frames.any?
+  nav.filmstrip data-controller="slideshow" data-slideshow-slides="4"
+    = link_to '#previous', class: 'filmstrip__button', data: { action: 'click->slideshow#previous' } do
+      = icon 'arrow-left', class: 'filmstrip__arrow'
+    .filmstrip__frames
+      - frames.each do |frame|
+        .filmstrip__frame
+          = link_to frame.url, title: frame.caption do
+            = frame.image
+            p= frame.caption
+    = link_to '#next', class: 'filmstrip__button', data: { action: 'click->slideshow#next' } do
+      = icon 'arrow-right', class: 'filmstrip__arrow'
