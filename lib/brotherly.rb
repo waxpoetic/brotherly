@@ -14,6 +14,12 @@ module Brotherly
     Rails.application.secrets
   end
 
+  def self.domain_name
+    return secrets.domain_name if secrets.heroku_app_name.blank?
+
+    "#{secrets.heroku_app_name}.herokuapp.com"
+  end
+
   def self.stage
     case secrets.domain_name
     when 'beta.brother.ly'

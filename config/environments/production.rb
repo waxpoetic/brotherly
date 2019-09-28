@@ -95,7 +95,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Enable CORS headers for Google fonts
-  config.font_assets.origin = "http://#{Rails.application.secrets.domain_name}"
+  config.font_assets.origin = "http://#{Brotherly.domain_name}"
 
   # Use SendGrid to send email.
   ActionMailer::Base.smtp_settings = {

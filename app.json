@@ -49,9 +49,6 @@
     "DEPLOY_TASKS": {
       "required": true
     },
-    "DOMAIN_NAME": {
-      "required": true
-    },
     "EVENTBRITE_ANONYMOUS_TOKEN": {
       "required": true
     },
@@ -74,6 +71,12 @@
       "required": true
     },
     "GOOGLE_CALENDAR_CLIENT_SECRET": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
       "required": true
     },
     "HTTP_AUTH_PASSWORD": {

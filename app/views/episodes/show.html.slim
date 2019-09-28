@@ -31,7 +31,7 @@
           = link_to 'Buy Tickets', @episode.eventbrite_url, class: 'filmstrip__full'
     - if @episode.live?
       section.video__chat
-        iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{Brotherly.secrets.domain_name}" frameborder="0" style="width:100%"
+        iframe#chat src="https://www.youtube.com/live_chat?v=flQW5RbQz5E&embed_domain=#{request.host}" frameborder="0" style="width:100%"
     section.video__filmstrip
       = render 'filmstrip', frames: @episode.performances
     section.video__description
