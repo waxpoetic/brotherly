@@ -16,7 +16,7 @@
           h2= link_to "Up Next: #{episode.title}", episode
           = image_tag episode.poster_url
       - @past_performances.each do |performance|
-        .slideshow__slide.slideshow__slide--upcoming
+        .slideshow__slide
           h2= link_to "Watch It Again: #{performance.title}", performance.episode
           = render 'video', src: performance.video_url, poster: performance.poster_url, name: performance.name.parameterize
       .slideshow__slide.slideshow_slide--workshop
