@@ -55,15 +55,15 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   config.action_dispatch.rack_cache = {
-    metastore: URI.parse("#{Rails.application.secrets.redis_host}/0/brotherly-rack-metastore"),
-    entitystore: URI.parse("#{Rails.application.secrets.redis_host}/0/brotherly-rack-entitystore")
+    metastore: URI.parse("#{Rails.application.secrets.redis_url}/0/brotherly-rack-metastore"),
+    entitystore: URI.parse("#{Rails.application.secrets.redis_url}/0/brotherly-rack-entitystore")
   }
 
   # Store the cache and session in Redis
   config.cache_store = :redis_store, \
-                       "#{Rails.application.secrets.redis_host.gsub('h:', '')}/0/brotherly-rails-cache"
+                       "#{Rails.application.secrets.redis_url}/0/brotherly-rails-cache"
   config.session_store :redis_store, \
-                       servers: ["#{Rails.application.secrets.redis_host}/0/brotherly-rails-session"]
+                       servers: ["#{Rails.application.secrets.redis_url}/0/brotherly-rails-session"]
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter     = :sidekiq
