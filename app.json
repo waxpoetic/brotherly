@@ -31,9 +31,6 @@
     "AWS_ACCESS_KEY_ID": {
       "required": true
     },
-    "AWS_AUDIO_PIPELINE_ID": {
-      "required": true
-    },
     "AWS_S3_BUCKET_NAME": {
       "required": true
     },
@@ -82,12 +79,6 @@
     "HEROKU_PARENT_APP_NAME": {
       "required": true
     },
-    "HTTP_AUTH_PASSWORD": {
-      "required": true
-    },
-    "HTTP_AUTH_USERNAME": {
-      "required": true
-    },
     "LANG": {
       "required": true
     },
@@ -122,15 +113,6 @@
       "required": true
     },
     "RAILS_ENV": {
-      "required": true
-    },
-    "RAILS_LOG_TO_STDOUT": {
-      "required": true
-    },
-    "RAILS_SERVE_STATIC_ASSETS": {
-      "required": true
-    },
-    "RAILS_SERVE_STATIC_FILES": {
       "required": true
     },
     "REDIS_URL": {
