@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Store the cache and session in Redis
   config.cache_store = :redis_store, \
-                       "#{Rails.application.secrets.redis_host}/0/brotherly-rails-cache"
+                       "#{Rails.application.secrets.redis_host.gsub('h:', '')}/0/brotherly-rails-cache"
   config.session_store :redis_store, \
                        servers: ["#{Rails.application.secrets.redis_host}/0/brotherly-rails-session"]
 
