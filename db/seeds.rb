@@ -4,12 +4,12 @@ require 'active_record/fixtures'
 
 puts "-- seed '#{Rails.env}'"
 
-# if Rails.env.development?
-puts '   add fixtures'
-ActiveRecord::FixtureSet.create_fixtures(
-  'spec/fixtures', Rails.application.config.seeds
-)
-# end
+if Rails.env.development?
+  puts '   add fixtures'
+  ActiveRecord::FixtureSet.create_fixtures(
+    'spec/fixtures', Rails.application.config.seeds
+  )
+end
 
 unless User.where(name: 'admin').any?
   puts '   add initial admin user'

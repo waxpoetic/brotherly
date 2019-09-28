@@ -10,9 +10,6 @@
   "buildpacks": [
     {
       "url": "https://github.com/heroku/heroku-buildpack-ruby"
-    },
-    {
-      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
     }
   ],
   "env": {
@@ -38,9 +35,6 @@
       "required": true
     },
     "AWS_TRANSCODER_PIPELINE_ID": {
-      "required": true
-    },
-    "DEPLOY_TASKS": {
       "required": true
     },
     "DOMAIN_NAME": {
@@ -138,7 +132,7 @@
   },
   "name": "brotherly",
   "scripts": {
-    "postdeploy": "bin/rails db:seed"
+    "postdeploy": "bin/rails db:migrate db:seed assets:precompile"
   },
   "stack": "heroku-18"
 }
