@@ -16,27 +16,4 @@ before_script:
 - "./cc-test-reporter before-build"
 script: docker-compose run web rspec
 after_script:
-- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
-# before_deploy:
-# - docker-compose -f docker-compose.yml -f docker-compose.production.yml build web
-# - docker-compose -f docker-compose.yml -f docker-compose.production.yml build worker
-# - curl https://cli-assets.heroku.com/install.sh | sh
-# deploy:
-# - provider: script
-#   command:
-#   - docker-compose -f docker-compose.yml -f docker-compose.production.yml push web
-#   - docker-compose -f docker-compose.yml -f docker-compose.production.yml push worker
-#   - heroku container:release web worker -a brotherly
-#   on:
-#     repo: waxpoetic/brotherly
-#     tags: true
-# - provider: script
-#   command:
-#   - docker tag registry.heroku.com/brotherly/web registry.heroku.com/brotherly-staging/web
-#   - docker tag registry.heroku.com/brotherly/worker registry.heroku.com/brotherly-staging/worker
-#   - docker push registry.heroku.com/brotherly-staging/web
-#   - docker push registry.heroku.com/brotherly-staging/worker
-#   - heroku container:release web worker -a brotherly-staging
-#   on:
-#     repo: waxpoetic/brotherly
-#     branch: master
+- "./cc-test-reporter after-build --prefix /usr/src/app --exit-code $TRAVIS_TEST_RESULT"
