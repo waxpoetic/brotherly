@@ -13,10 +13,10 @@ before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
   > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
-- "./cc-test-reporter before-build"
+- docker-compose run web cc-test-reporter before-build
 script: docker-compose run web rspec
 after_script:
-- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+- docker-compose run web cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 # before_deploy:
 # - docker-compose -f docker-compose.yml -f docker-compose.production.yml build web
 # - docker-compose -f docker-compose.yml -f docker-compose.production.yml build worker
