@@ -1,4 +1,4 @@
 - if src.present?
-  video.video-player.video-js.vjs-sublime-skin.vjs-16-9 width="640" height="264" controls="controls" preload="auto" poster="#{poster}" id=name.parameterize data-controller="video" data-video-src=src
+  video.video-player.video-js.vjs-sublime-skin.vjs-16-9 width="640" height="264" controls="controls" preload="auto" poster="#{poster}" id="#{name.parameterize}" data-controller="video" data-video-src=src
     - unless request.user_agent =~ /Firefox/
       source src="#{src}" type="application/x-mpegURL"
