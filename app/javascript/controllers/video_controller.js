@@ -7,11 +7,9 @@ import "@videojs/http-streaming"
  */
 export default class extends Controller {
   connect() {
-    const id = this.element.getAttribute('id')
     const src = this.data.get('src')
     const type = 'application/x-mpegURL'
 
-    videojs(id)
-      .src({ src, type })
+    videojs(this.element).src({ src, type })
   }
 }
