@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddAudioFileToPerformances < ActiveRecord::Migration
+class AddAudioFileToPerformances < ActiveRecord::Migration[5.0]
   def change
     remove_column :performances, :audio_recording_id
     remove_column :performances, :video_recording_id

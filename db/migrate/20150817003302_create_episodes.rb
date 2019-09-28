@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateEpisodes < ActiveRecord::Migration
+class CreateEpisodes < ActiveRecord::Migration[5.0]
   def change
     create_table :episodes do |t|
       t.string :name
