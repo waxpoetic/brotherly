@@ -49,6 +49,9 @@
     "DEPLOY_TASKS": {
       "required": true
     },
+    "DOMAIN_NAME": {
+      "required": true
+    },
     "EVENTBRITE_ANONYMOUS_TOKEN": {
       "required": true
     },
