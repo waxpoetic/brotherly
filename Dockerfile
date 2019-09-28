@@ -51,4 +51,4 @@ ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 # Set up container defaults
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
-HEALTHCHECK CMD curl --fail "http://localhost:3000/" || exit 1
+HEALTHCHECK CMD curl --fail "http://localhost:3000/health" || exit 1

@@ -26,6 +26,11 @@ class ApplicationController < ActionController::Base
   before_action :cache_page, if: -> { request.get? }
   before_action :http_authenticate!, if: :http_auth?
 
+  # Health check endpoint
+  def health
+    head :ok
+  end
+
   protected
 
   def http_auth?
