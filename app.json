@@ -40,9 +40,6 @@
     "AWS_TRANSCODER_PIPELINE_ID": {
       "required": true
     },
-    "CDN_DOMAIN_NAME": {
-      "required": true
-    },
     "DEPLOY_TASKS": {
       "required": true
     },
