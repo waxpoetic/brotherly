@@ -1,6 +1,12 @@
 {
   "addons": [
-    "airbrake",
+    {
+      "plan": "airbrake:hrk-free-2018",
+      "as": [
+        "AIRBRAKE",
+        "BEARACHE"
+      ]
+    },
     "librato",
     "newrelic",
     "heroku-postgresql",
@@ -10,9 +16,6 @@
   "buildpacks": [
     {
       "url": "https://github.com/heroku/heroku-buildpack-ruby"
-    },
-    {
-      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
     }
   ],
   "env": {
@@ -20,12 +23,6 @@
       "required": true
     },
     "ADMIN_PASSWORD": {
-      "required": true
-    },
-    "AIRBRAKE_API_KEY": {
-      "required": true
-    },
-    "AIRBRAKE_PROJECT_ID": {
       "required": true
     },
     "AWS_ACCESS_KEY_ID": {
@@ -38,9 +35,6 @@
       "required": true
     },
     "AWS_TRANSCODER_PIPELINE_ID": {
-      "required": true
-    },
-    "DEPLOY_TASKS": {
       "required": true
     },
     "DOMAIN_NAME": {
@@ -79,15 +73,6 @@
     "LANG": {
       "required": true
     },
-    "LIBRATO_PASSWORD": {
-      "required": true
-    },
-    "LIBRATO_TOKEN": {
-      "required": true
-    },
-    "LIBRATO_USER": {
-      "required": true
-    },
     "MAILCHIMP_API_KEY": {
       "required": true
     },
@@ -97,31 +82,16 @@
     "MAX_THREADS": {
       "required": true
     },
-    "NEW_RELIC_APP_NAME": {
-      "required": true
-    },
-    "NEW_RELIC_LICENSE_KEY": {
-      "required": true
-    },
     "NEW_RELIC_LOG": {
       "required": true
     },
     "RACK_ENV": {
-      "required": true
+      "value": "deployment"
     },
     "RAILS_ENV": {
-      "required": true
-    },
-    "REDIS_URL": {
-      "required": true
+      "value": "production"
     },
     "SECRET_KEY_BASE": {
-      "required": true
-    },
-    "SENDGRID_PASSWORD": {
-      "required": true
-    },
-    "SENDGRID_USERNAME": {
       "required": true
     },
     "WEB_CONCURRENCY": {
@@ -138,7 +108,7 @@
   },
   "name": "brotherly",
   "scripts": {
-    "postdeploy": "bin/rails db:seed"
+    "postdeploy": "bin/rails db:setup"
   },
   "stack": "heroku-18"
 }
