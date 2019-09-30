@@ -15,8 +15,6 @@ gem 'bitly'
 gem 'controller_resources'
 gem 'devise'
 gem 'email_validator'
-
-gem 'font_assets'
 gem 'foreman'
 gem 'friendly_id'
 gem 'gibbon'

@@ -137,8 +137,6 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
-    font_assets (0.1.14)
-      rack
     foreman (0.82.0)
       thor (~> 0.19.1)
     friendly_id (5.1.0)
@@ -474,7 +472,6 @@ DEPENDENCIES
   controller_resources
   devise
   email_validator
-  font_assets
   foreman
   friendly_id
   gibbon

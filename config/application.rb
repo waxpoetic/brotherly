@@ -14,7 +14,6 @@ require 'rails'
   active_job
   sprockets
 ].each do |framework|
-
   require "#{framework}/railtie"
 rescue LoadError
 end
@@ -54,9 +53,6 @@ module Brotherly
 
     # Seed tables in development.
     config.seeds = %w[artists episodes performances]
-
-    # Configure CORS headers for font assets.
-    config.font_assets.origin = '*'
 
     # Add Refile helpers like +attachment_url+ and
     # +attachment_image_tag+ for rendering attachments in presenters.

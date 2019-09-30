@@ -38,10 +38,13 @@ RSpec.describe ApplicationHelper, type: :helper do
     expect(helper.send(:active_class_for, 'foo')).to eq(nil)
   end
 
-  xit 'returns home page slideshow settings' do
-    expect(helper.home_page_slideshow_settings([])).to \
-      eq({ autoplay: true }.to_json)
-    expect(helper.home_page_slideshow_settings(['test'])).to \
-      eq({ autoplay: false }.to_json)
+  it 'creates slideshow button link' do
+    left = helper.slideshow_button(:previous)
+    right = helper.slideshow_button(:next)
+
+    expect(left).to include('slideshow#previous')
+    expect(left).to include('fa-left')
+    expect(right).to include('slideshow#next')
+    expect(right).to include('fa-right')
   end
 end
