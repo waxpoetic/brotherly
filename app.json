@@ -1,12 +1,6 @@
 {
   "addons": [
-    {
-      "plan": "airbrake:hrk-free-2018",
-      "as": [
-        "AIRBRAKE",
-        "BEARACHE"
-      ]
-    },
+    "airbrake",
     "librato",
     "newrelic",
     "heroku-postgresql",
