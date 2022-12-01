@@ -76,5 +76,5 @@ group :production do
   gem 'redis-rails'
   gem 'refile-s3', github: 'refile/refile-s3'
   gem 'sidekiq'
-  gem 'sinatra', '~> 2.0.5', require: false
+  gem 'sinatra', '~> 2.2.3', require: false
 end
